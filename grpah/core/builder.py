@@ -105,7 +105,7 @@ class Builder:
             print(f"b = {b}, x = {x}")
             #todo: plot instead scatter
         #plt.scatter(draw_x, draw_y, marker='.', color='r')
-        plt.plot(draw_x, draw_y, marker='_', color='r')
+        plt.plot(draw_x, draw_y, marker='.', color='r')
 
         plt.show(block=not next)
 
