@@ -43,6 +43,7 @@ class Builder:
         plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
 
         ax.grid(which='major')
+        plt.title("Bifurcation")
 
         plt.show(block=not next)
 
@@ -107,17 +108,19 @@ class Builder:
         #plt.scatter(draw_x, draw_y, marker='.', color='r')
         plt.plot(draw_x, draw_y, marker='.', color='r')
 
+        plt.title("Bifurcation and down stable")
+
         plt.show(block=not next)
 
     @staticmethod
-    def time_series(time_range, x_start, b, a, should_skip, next):
+    def time_series(time_range, x_start, b, a, skip, next):
         """Построить временной ряд"""
         x_arr = dict()
 
         # x_0 возможно эта точка лишняя
         x_arr[b] = []
         x_0 = x_start
-        if should_skip:
+        if skip:
             for t in time_range:
                 x_t = Functions.f(a, b, x_0)
                 x_0 = x_t
@@ -132,6 +135,7 @@ class Builder:
         plt.plot(time_range, x_arr[b], marker='*')
         ax.grid(which='major')
 
+        plt.title("Time series")
         plt.show(block=not next)
 
     @staticmethod
@@ -147,7 +151,7 @@ class Builder:
         return res
 
     @staticmethod
-    def lamerei(a, x_start, b, time_range, skip):
+    def lamerei(a, x_start, b, time_range, skip, next):
         fig, ax = plt.subplots()
         ax.grid(which='major')
 
@@ -173,4 +177,4 @@ class Builder:
         x = np.arange(0, 2, 0.00001)
         plt.plot(x, Functions.f(a, b, x))
 
-        plt.show()
+        plt.show(block=not next)

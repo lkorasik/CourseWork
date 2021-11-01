@@ -2,30 +2,22 @@ import numpy as np
 
 
 class Parameters:
-    @staticmethod
-    def get_a():
-        return 1
+    def __init__(self):
+        self.a = 1
+        self.b = 0.582355932
+        self.b_start = 0.1
+        self.b_end = 0.5823
+        self.b_step = 0.001
+        self.precision = 0.0000001
+        self.time = 1000
+        self.x_start = 0.1
+        self.skip = False
 
-    @staticmethod
-    def get_b():
-        return 0.582355932
+    def get_time_range(self):
+        return range(1, self.time + 1)
 
-    @staticmethod
-    def get_precision():
-        return 0.0000001
+    def get_b_range_reversed(self):
+        return np.arange(self.b_end, self.b_end, -self.b_step)
 
-    @staticmethod
-    def get_time_range(count_iterations):
-        return range(1, count_iterations + 1)
-
-    @staticmethod
-    def get_start_x():
-        return 0.1
-
-    @staticmethod
-    def get_b_range(step):
-        return np.arange(0.5823, 0.1, -step)
-
-    @staticmethod
-    def lamerei_skip():
-        return False
+    def get_b_range(self):
+        return np.arange(self.b_start, self.b_end, self.b_step)

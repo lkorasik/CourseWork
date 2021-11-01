@@ -3,6 +3,7 @@ from functions import Functions
 from parameters import Parameters
 
 if __name__ == "__main__":
+    '''
     time_range = Parameters.get_time_range(1000)
     x_start = Parameters.get_start_x()
     b_range = Parameters.get_b_range(0.001)
@@ -40,3 +41,48 @@ if __name__ == "__main__":
     precision = Parameters.get_precision()
 
     #Builder.lamerei(a, x_start, b, time_range, Parameters.lamerei_skip())
+    '''
+    params = Parameters()
+
+    Builder.bifurcation(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        True
+    )
+    Builder.bifurcation_and_down_stable(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        params.x_start,
+        params.precision,
+        Functions.h,
+        Functions.dh,
+        True
+    )
+    Builder.time_series(
+        params.get_time_range(),
+        params.x_start,
+        params.b,
+        params.a,
+        True,
+        True
+    )
+    Builder.single_newton(
+        params.a,
+        params.b,
+        params.x_start,
+        params.precision,
+        Functions.h,
+        Functions.dh
+    )
+    Builder.lamerei(
+        params.a,
+        params.x_start,
+        params.b,
+        params.get_time_range(),
+        False,
+        False
+    )
