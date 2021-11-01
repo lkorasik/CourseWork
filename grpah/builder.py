@@ -2,9 +2,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from functions import Functions
+from parameters import Parameters
 
 
 class Builder:
+    @staticmethod
+    def bifurcation_wrap(params: Parameters, has_next):
+        Builder.bifurcation(
+            params.get_time_range(),
+            params.x_start,
+            params.get_b_range(),
+            params.a,
+            has_next
+        )
+
     @staticmethod
     def bifurcation(time_range, x_start, b_range, a, has_next_graphic):
         """Построить бифуркационную диаграмму"""
@@ -55,7 +66,20 @@ class Builder:
         '''
 
     @staticmethod
-    def bifurcation_and_down_stable(time_range, x_start, b_range, a, separator_x, precision, function, dfunction, has_next_graphic):
+    def bifurcation_and_down_stable_wrap(params: Parameters, has_next):
+        Builder.bifurcation_and_down_stable(
+            params.get_time_range(),
+            params.x_start,
+            params.get_b_range(),
+            params.a,
+            params.precision,
+            Functions.h,
+            Functions.dh,
+            has_next
+        )
+
+    @staticmethod
+    def bifurcation_and_down_stable(time_range, x_start, b_range, a, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -93,26 +117,30 @@ class Builder:
 
         ax.grid(which='major')
 
-        #plt.show(block=not next)
-        #plt.show(block=False)
-
         draw_x = []
         draw_y = []
-        x = 0.1
+        x = x_start
         for b in b_range:
-            #x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x.append(b)
             draw_y.append(x)
-            print(f"b = {b}, x = {x}")
-            #todo: plot instead scatter
-        #plt.scatter(draw_x, draw_y, marker='.', color='r')
         plt.plot(draw_x, draw_y, marker='.', color='r')
 
         plt.title("Bifurcation and down stable")
         fig.canvas.manager.set_window_title('Bifurcation and down stable')
 
         plt.show(block=not has_next_graphic)
+
+    @staticmethod
+    def time_series_wrap(params: Parameters, has_next):
+        Builder.time_series(
+            params.get_time_range(),
+            params.x_start,
+            params.b,
+            params.a,
+            params.skip,
+            has_next
+        )
 
     @staticmethod
     def time_series(time_range, x_start, b, a, skip, has_next_graphic):
@@ -142,6 +170,17 @@ class Builder:
         plt.show(block=not has_next_graphic)
 
     @staticmethod
+    def single_newton_wrap(params: Parameters):
+        Builder.single_newton(
+            params.a,
+            params.b,
+            params.x_start,
+            params.precision,
+            Functions.h,
+            Functions.dh
+        )
+
+    @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):
         """Найти один корень с помощью метода Ньютона"""
         x_0 = x_start
@@ -152,6 +191,17 @@ class Builder:
             x_0 = x_n
         res = x_0
         return res
+
+    @staticmethod
+    def lamerei_wrap(params: Parameters, has_next):
+        Builder.lamerei(
+            params.a,
+            params.x_start,
+            params.b,
+            params.get_time_range(),
+            params.skip,
+            has_next
+        )
 
     @staticmethod
     def lamerei(a, x_start, b, time_range, skip, has_next_graphic):
