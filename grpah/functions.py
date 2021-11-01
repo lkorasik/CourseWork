@@ -10,7 +10,7 @@ class Functions:
     @staticmethod
     def sf(a, b, x, shift):
         """Сдвиг функции f"""
-        return Functions.f(a, b, x) - shift
+        return (a * x ** 2) / ((b + x) ** 6) - shift
 
     @staticmethod
     def dsf(a, b, x):
@@ -23,7 +23,7 @@ class Functions:
 
     @staticmethod
     def h(a, b, x):
-        return x - Functions.f(a, b, x)
+        return x - (a * x ** 2) / ((b + x) ** 6)
 
     @staticmethod
     def dh(a, b, x):

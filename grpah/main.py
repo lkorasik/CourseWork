@@ -1,26 +1,88 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib import ticker
+from builder import Builder
+from functions import Functions
+from parameters import Parameters
 
-from funcs import *
-from setup import *
+if __name__ == "__main__":
+    '''
+    time_range = Parameters.get_time_range(1000)
+    x_start = Parameters.get_start_x()
+    b_range = Parameters.get_b_range(0.001)
+    a = Parameters.get_a()
 
-x = np.arange(x_min, x_max, step)
+    #Builder.bifurcation(time_range, x_start, b_range, a, True)
+    #Builder.bifurcation_and_down_stable(time_range, x_start, b_range, a, x_start, Parameters.get_precision(), Functions.h, Functions.dh, False)
 
-fig, ax = plt.subplots()
+    time_range = Parameters.get_time_range(300)
+    #x_start = Parameters.get_start_x()
+    x_start = 0.0001
+    b = Parameters.get_b()
+    a = Parameters.get_a()
 
-ax.tick_params(axis='both', which='major', length=20)
+    #Builder.time_series(time_range, x_start, b, a, False, False)
 
-ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
+    time_range = Parameters.get_time_range(300)
+    #x_start = Parameters.get_start_x()
+    x_start = 0.08
+    #b = 0.563
+    a = Parameters.get_a()
+    precision = Parameters.get_precision()
 
-ax.grid(which='major')
+    root = Builder.single_newton(a, b, x_start, precision, Functions.h, Functions.dh)
 
-plt.plot(x, y1(x))
-plt.plot(x, y2(x))
+    x_start = 0.45
+    #Builder.single_newton(a, b, x_start, precision, partial(Functions.sf, **{"shift": root}), Functions.dsf)
 
-plt.ylim(x_min, x_max)
-plt.xlim(y_min, y_max)
+    time_range = Parameters.get_time_range(100)
+    #x_start = Parameters.get_start_x()
+    x_start = 0.05
+    #b_range = Parameters.get_b_range(0.001)
+    b = Parameters.get_b()
+    a = Parameters.get_a()
+    precision = Parameters.get_precision()
 
-plt.show()
-# fig.savefig('C:\\users\\user\\desktop\\demo.png')
+    #Builder.lamerei(a, x_start, b, time_range, Parameters.lamerei_skip())
+    '''
+    params = Parameters()
+
+    Builder.bifurcation(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        True
+    )
+    Builder.bifurcation_and_down_stable(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        params.x_start,
+        params.precision,
+        Functions.h,
+        Functions.dh,
+        True
+    )
+    Builder.time_series(
+        params.get_time_range(),
+        params.x_start,
+        params.b,
+        params.a,
+        True,
+        True
+    )
+    Builder.single_newton(
+        params.a,
+        params.b,
+        params.x_start,
+        params.precision,
+        Functions.h,
+        Functions.dh
+    )
+    Builder.lamerei(
+        params.a,
+        params.x_start,
+        params.b,
+        params.get_time_range(),
+        False,
+        False
+    )

@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from core.functions import Functions
+from functions import Functions
 
 
 class Builder:
     @staticmethod
-    def bifurcation(time_range, x_start, b_range, a, next):
+    def bifurcation(time_range, x_start, b_range, a, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -43,8 +43,10 @@ class Builder:
         plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
 
         ax.grid(which='major')
+        plt.title("Bifurcation")
+        fig.canvas.manager.set_window_title('Bifurcation')
 
-        plt.show(block=not next)
+        plt.show(block=not has_next_graphic)
 
         '''
         plt.figure(200)
@@ -53,7 +55,7 @@ class Builder:
         '''
 
     @staticmethod
-    def bifurcation_and_down_stable(time_range, x_start, b_range, a, separator_x, precision, function, dfunction, next):
+    def bifurcation_and_down_stable(time_range, x_start, b_range, a, separator_x, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -98,28 +100,32 @@ class Builder:
         draw_y = []
         x = 0.1
         for b in b_range:
-            #x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
-            x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
+            #x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x.append(b)
             draw_y.append(x)
             print(f"b = {b}, x = {x}")
             #todo: plot instead scatter
         #plt.scatter(draw_x, draw_y, marker='.', color='r')
-        plt.plot(draw_x, draw_y, marker='_', color='r')
+        plt.plot(draw_x, draw_y, marker='.', color='r')
 
-        plt.show(block=not next)
+        plt.title("Bifurcation and down stable")
+        fig.canvas.manager.set_window_title('Bifurcation and down stable')
+
+        plt.show(block=not has_next_graphic)
 
     @staticmethod
-    def time_series(time_range, x_start, b, a, next):
+    def time_series(time_range, x_start, b, a, skip, has_next_graphic):
         """Построить временной ряд"""
         x_arr = dict()
 
         # x_0 возможно эта точка лишняя
         x_arr[b] = []
         x_0 = x_start
-        for t in time_range:
-            x_t = Functions.f(a, b, x_0)
-            x_0 = x_t
+        if skip:
+            for t in time_range:
+                x_t = Functions.f(a, b, x_0)
+                x_0 = x_t
         for t in time_range:
             x_t = Functions.f(a, b, x_0)
             x_0 = x_t
@@ -131,29 +137,9 @@ class Builder:
         plt.plot(time_range, x_arr[b], marker='*')
         ax.grid(which='major')
 
-        plt.show(block=not next)
-
-    '''
-    @staticmethod
-    def double_newton(a, b, precision):
-        """Найти два корня c помощью метода Ньютона"""
-        x_0 = 0.08
-        for i in range(0, 100):
-            x_n = x_0 - Functions.p(a, b, x_0) / Functions.dp(a, b, x_0)
-            if abs(x_n - x_0) < precision:
-                break
-            x_0 = x_n
-        res = x_0
-        print(res)
-
-        x_0 = 0.45
-        for i in range(0, 100):
-            x_n = x_0 - Functions.sf(a, b, x_0, res) / Functions.dsf(a, b, x_0)
-            if abs(x_n - x_0) < precision:
-                break
-            x_0 = x_n
-        print(x_0)
-    '''
+        plt.title("Time series")
+        fig.canvas.manager.set_window_title('Time series')
+        plt.show(block=not has_next_graphic)
 
     @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):
@@ -168,7 +154,7 @@ class Builder:
         return res
 
     @staticmethod
-    def lamerei(a, x_start, b, time_range, skip):
+    def lamerei(a, x_start, b, time_range, skip, has_next_graphic):
         fig, ax = plt.subplots()
         ax.grid(which='major')
 
@@ -194,4 +180,6 @@ class Builder:
         x = np.arange(0, 2, 0.00001)
         plt.plot(x, Functions.f(a, b, x))
 
-        plt.show()
+        plt.title("Lamerei")
+        fig.canvas.manager.set_window_title('Lamerei')
+        plt.show(block=not has_next_graphic)
