@@ -6,7 +6,7 @@ from functions import Functions
 
 class Builder:
     @staticmethod
-    def bifurcation(time_range, x_start, b_range, a, next):
+    def bifurcation(time_range, x_start, b_range, a, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -44,8 +44,9 @@ class Builder:
 
         ax.grid(which='major')
         plt.title("Bifurcation")
+        fig.canvas.manager.set_window_title('Bifurcation')
 
-        plt.show(block=not next)
+        plt.show(block=not has_next_graphic)
 
         '''
         plt.figure(200)
@@ -54,7 +55,7 @@ class Builder:
         '''
 
     @staticmethod
-    def bifurcation_and_down_stable(time_range, x_start, b_range, a, separator_x, precision, function, dfunction, next):
+    def bifurcation_and_down_stable(time_range, x_start, b_range, a, separator_x, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -99,8 +100,8 @@ class Builder:
         draw_y = []
         x = 0.1
         for b in b_range:
-            #x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
-            x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
+            #x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x.append(b)
             draw_y.append(x)
             print(f"b = {b}, x = {x}")
@@ -109,11 +110,12 @@ class Builder:
         plt.plot(draw_x, draw_y, marker='.', color='r')
 
         plt.title("Bifurcation and down stable")
+        fig.canvas.manager.set_window_title('Bifurcation and down stable')
 
-        plt.show(block=not next)
+        plt.show(block=not has_next_graphic)
 
     @staticmethod
-    def time_series(time_range, x_start, b, a, skip, next):
+    def time_series(time_range, x_start, b, a, skip, has_next_graphic):
         """Построить временной ряд"""
         x_arr = dict()
 
@@ -136,7 +138,8 @@ class Builder:
         ax.grid(which='major')
 
         plt.title("Time series")
-        plt.show(block=not next)
+        fig.canvas.manager.set_window_title('Time series')
+        plt.show(block=not has_next_graphic)
 
     @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):
@@ -151,7 +154,7 @@ class Builder:
         return res
 
     @staticmethod
-    def lamerei(a, x_start, b, time_range, skip, next):
+    def lamerei(a, x_start, b, time_range, skip, has_next_graphic):
         fig, ax = plt.subplots()
         ax.grid(which='major')
 
@@ -177,4 +180,6 @@ class Builder:
         x = np.arange(0, 2, 0.00001)
         plt.plot(x, Functions.f(a, b, x))
 
-        plt.show(block=not next)
+        plt.title("Lamerei")
+        fig.canvas.manager.set_window_title('Lamerei')
+        plt.show(block=not has_next_graphic)

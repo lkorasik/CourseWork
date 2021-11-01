@@ -5,7 +5,7 @@ class Parameters:
     def __init__(self):
         self.a = 1
         self.b = 0.582355932
-        self.b_start = 0.1
+        self.b_start = 0.2
         self.b_end = 0.5823
         self.b_step = 0.001
         self.precision = 0.0000001
