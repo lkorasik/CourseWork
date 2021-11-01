@@ -1,5 +1,24 @@
-\documentclass{article}
+\documentclass[12pt]{article}
+
+%Russian-specific packages
+\usepackage[russian]{babel}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
 
 \begin{document}
-    HW
+    \thispagestyle{empty}
+    
+    \vspace{6cm}
+    
+    \begin{center}
+        \Huge {\textbf{Курсовая работа}}
+    \end{center}
+    
+    \vspace*{\fill}
+    
+    \clearpage
+    
+    \tableofcontents
+
+    \include{content.tex}
 \end{document}
