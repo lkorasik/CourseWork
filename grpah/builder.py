@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from core.functions import Functions
+from functions import Functions
 
 
 class Builder:
