@@ -100,8 +100,8 @@ class Builder:
         draw_y = []
         x = 0.1
         for b in b_range:
-            x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
-            #x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            #x = Builder.single_newton(a, b, separator_x, precision, function, dfunction)
+            x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x.append(b)
             draw_y.append(x)
             print(f"b = {b}, x = {x}")
