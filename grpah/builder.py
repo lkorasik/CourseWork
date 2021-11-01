@@ -134,28 +134,6 @@ class Builder:
 
         plt.show(block=not next)
 
-    '''
-    @staticmethod
-    def double_newton(a, b, precision):
-        """Найти два корня c помощью метода Ньютона"""
-        x_0 = 0.08
-        for i in range(0, 100):
-            x_n = x_0 - Functions.p(a, b, x_0) / Functions.dp(a, b, x_0)
-            if abs(x_n - x_0) < precision:
-                break
-            x_0 = x_n
-        res = x_0
-        print(res)
-
-        x_0 = 0.45
-        for i in range(0, 100):
-            x_n = x_0 - Functions.sf(a, b, x_0, res) / Functions.dsf(a, b, x_0)
-            if abs(x_n - x_0) < precision:
-                break
-            x_0 = x_n
-        print(x_0)
-    '''
-
     @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):
         """Найти один корень с помощью метода Ньютона"""
