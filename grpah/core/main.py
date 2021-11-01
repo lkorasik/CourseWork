@@ -11,7 +11,7 @@ if __name__ == "__main__":
     a = Parameters.get_a()
 
     #Builder.bifurcation(time_range, x_start, b_range, a, True)
-    Builder.bifurcation_and_down_stable(time_range, x_start, b_range, a, x_start, Parameters.get_precision(), Functions.h, Functions.dh, False)
+    #Builder.bifurcation_and_down_stable(time_range, x_start, b_range, a, x_start, Parameters.get_precision(), Functions.h, Functions.dh, False)
 
     time_range = Parameters.get_time_range(300)
     #x_start = Parameters.get_start_x()
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     b = Parameters.get_b()
     a = Parameters.get_a()
 
-    #Builder.time_series(time_range, x_start, b, a, False)
+    #Builder.time_series(time_range, x_start, b, a, False, False)
 
     time_range = Parameters.get_time_range(300)
     #x_start = Parameters.get_start_x()

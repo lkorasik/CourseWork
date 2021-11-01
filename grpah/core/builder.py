@@ -110,16 +110,17 @@ class Builder:
         plt.show(block=not next)
 
     @staticmethod
-    def time_series(time_range, x_start, b, a, next):
+    def time_series(time_range, x_start, b, a, should_skip, next):
         """Построить временной ряд"""
         x_arr = dict()
 
         # x_0 возможно эта точка лишняя
         x_arr[b] = []
         x_0 = x_start
-        for t in time_range:
-            x_t = Functions.f(a, b, x_0)
-            x_0 = x_t
+        if should_skip:
+            for t in time_range:
+                x_t = Functions.f(a, b, x_0)
+                x_0 = x_t
         for t in time_range:
             x_t = Functions.f(a, b, x_0)
             x_0 = x_t

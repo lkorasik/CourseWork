@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import ticker
 
-from funcs import *
+from funcs_dep import *
 from setup import *
 
 x = np.arange(x_min, x_max, step)
