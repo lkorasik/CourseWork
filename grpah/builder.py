@@ -30,20 +30,6 @@ class Builder:
         utils.plot(x_arr, b_range, "Bifurcation", 'b', 'x', has_next_graphic)
 
     @staticmethod
-    def bifurcation_stables_wrap(params: Parameters, has_next):
-        Builder.bifurcation_stables(
-            params.get_time_range(),
-            params.x_start,
-            params.get_b_range(),
-            params.a,
-            params.x_start,
-            params.precision,
-            Functions.h,
-            Functions.dh,
-            has_next
-        )
-
-    @staticmethod
     def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
@@ -121,17 +107,6 @@ class Builder:
         plt.show(block=not has_next_graphic)
 
     @staticmethod
-    def time_series_wrap(params: Parameters, has_next):
-        Builder.time_series(
-            params.get_time_range(),
-            params.x_start,
-            params.b,
-            params.a,
-            params.skip,
-            has_next
-        )
-
-    @staticmethod
     def time_series(time_range, x_start, b, a, skip, has_next_graphic):
         """Построить временной ряд"""
         x_arr = dict()
@@ -159,17 +134,6 @@ class Builder:
         plt.show(block=not has_next_graphic)
 
     @staticmethod
-    def single_newton_wrap(params: Parameters):
-        Builder.single_newton(
-            params.a,
-            params.b,
-            params.x_start,
-            params.precision,
-            Functions.h,
-            Functions.dh
-        )
-
-    @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):
         """Найти один корень с помощью метода Ньютона"""
         x_0 = x_start
@@ -182,17 +146,6 @@ class Builder:
             x_0 = x_n
         res = x_0
         return res
-
-    @staticmethod
-    def lamerei_wrap(params: Parameters, has_next):
-        Builder.lamerei(
-            params.a,
-            params.x_start,
-            params.b,
-            params.get_time_range(),
-            params.skip,
-            has_next
-        )
 
     @staticmethod
     def lamerei(a, x_start, b, time_range, skip, has_next_graphic):
