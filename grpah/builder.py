@@ -76,7 +76,7 @@ class Builder:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x1.append(b)
             draw_y1.append(x)
-        plt.plot(draw_x1, draw_y1, marker='.', color='r')
+        plt.plot(draw_x1, draw_y1, marker=',', color='r')
 
         # Верхняя, т.е. \bar{x}_2
         draw_x2 = []
@@ -86,7 +86,7 @@ class Builder:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x2.append(b)
             draw_y2.append(x)
-        plt.plot(draw_x2, draw_y2, marker='.', color='r')
+        plt.plot(draw_x2, draw_y2, marker=',', color='r')
 
         # Верхняя, т.е. x_1^{-1}
         draw_x3 = []
@@ -99,7 +99,7 @@ class Builder:
             x1 = delta_y
             draw_x3.append(b)
             draw_y3.append(x)
-        plt.plot(draw_x3, draw_y3, marker='.', color='r')
+        plt.plot(draw_x3, draw_y3, marker=',', color='r')
 
         plt.title("Bifurcation and stables")
         fig.canvas.manager.set_window_title('Bifurcation and stables')
