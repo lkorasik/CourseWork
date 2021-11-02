@@ -9,8 +9,9 @@ if __name__ == "__main__":
         params.x_start,
         params.get_b_range(),
         params.a,
-        False
+        True
     )
+    Builder.bifurcation_and_down_stable_wrap(params, False)
     #Builder.bifurcation_and_down_stable_wrap(params, False)
     #Builder.time_series_wrap(params, True)
     #Builder.single_newton_wrap(params)

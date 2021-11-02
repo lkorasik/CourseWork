@@ -35,7 +35,8 @@ class Builder:
             params.x_start,
             params.get_b_range_reversed(),
             params.a,
-            0.1164711,
+            params.x_start,
+            0,
             params.precision,
             Functions.h,
             Functions.dh,
@@ -43,7 +44,7 @@ class Builder:
         )
 
     @staticmethod
-    def bifurcation_and_down_stable(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic):
+    def bifurcation_and_down_stable(time_range, x_start, b_range, a, x12, image_x1, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -81,7 +82,8 @@ class Builder:
 
         ax.grid(which='major')
 
-        # Нижняя, т.е. x1
+        '''
+        # Нижняя, т.е. \bar{x}_1
         draw_x = []
         draw_y = []
         x = x12 - (x12 / 4)
@@ -91,12 +93,30 @@ class Builder:
             draw_y.append(x)
         plt.plot(draw_x, draw_y, marker='.', color='r')
 
-        # Верхняя, т.е. x2
+        # Верхняя, т.е. \bar{x}_2
         draw_x = []
         draw_y = []
         x = x12 + (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            draw_x.append(b)
+            draw_y.append(x)
+        plt.plot(draw_x, draw_y, marker='.', color='r')
+        '''
+
+        # Верхняя, т.е. x_1^{-1}
+        draw_x = []
+        draw_y = []
+        #x = image_x1
+        x = 0.8
+        first = True
+        for b in b_range:
+            if first:
+                delta_y = Builder.single_newton(a, b, x, precision, function, dfunction)
+                first = False
+            f = lambda a, b, c: Functions.sf(a, b, c, delta_y)
+            x = Builder.single_newton(a, b, x, precision, f, Functions.dsf)
+            print(b, x)
             draw_x.append(b)
             draw_y.append(x)
         plt.plot(draw_x, draw_y, marker='.', color='r')
