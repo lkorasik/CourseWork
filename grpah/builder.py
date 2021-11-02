@@ -18,7 +18,6 @@ class Builder:
 
     @staticmethod
     def bifurcation(time_range, x_start, b_range, a, has_next_graphic):
-        """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
         for b in b_range:
@@ -121,7 +120,6 @@ class Builder:
         # Нижняя, т.е. x1
         draw_x = []
         draw_y = []
-        # x = x_start
         x = x12 - (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
@@ -132,7 +130,6 @@ class Builder:
         # Верхняя, т.е. x2
         draw_x = []
         draw_y = []
-        # x = x_start
         x = x12 + (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
