@@ -70,8 +70,9 @@ class Builder:
         Builder.bifurcation_and_down_stable(
             params.get_time_range(),
             params.x_start,
-            params.get_b_range(),
+            params.get_b_range_reversed(),
             params.a,
+            0.1164711,
             params.precision,
             Functions.h,
             Functions.dh,
@@ -79,7 +80,7 @@ class Builder:
         )
 
     @staticmethod
-    def bifurcation_and_down_stable(time_range, x_start, b_range, a, precision, function, dfunction, has_next_graphic):
+    def bifurcation_and_down_stable(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -117,9 +118,22 @@ class Builder:
 
         ax.grid(which='major')
 
+        # Нижняя, т.е. x1
         draw_x = []
         draw_y = []
-        x = x_start
+        # x = x_start
+        x = x12 - (x12 / 4)
+        for b in b_range:
+            x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            draw_x.append(b)
+            draw_y.append(x)
+        plt.plot(draw_x, draw_y, marker='.', color='r')
+
+        # Верхняя, т.е. x2
+        draw_x = []
+        draw_y = []
+        # x = x_start
+        x = x12 + (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x.append(b)
@@ -186,6 +200,8 @@ class Builder:
         x_0 = x_start
         while True:
             x_n = x_0 - function(a, b, x_0) / dfunction(a, b, x_0)
+            if np.isnan(x_n):
+                break
             if abs(x_n - x_0) < precision:
                 break
             x_0 = x_n
