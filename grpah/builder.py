@@ -7,16 +7,6 @@ from parameters import Parameters
 
 class Builder:
     @staticmethod
-    def bifurcation_wrap(params: Parameters, has_next):
-        Builder.bifurcation(
-            params.get_time_range(),
-            params.x_start,
-            params.get_b_range(),
-            params.a,
-            has_next
-        )
-
-    @staticmethod
     def bifurcation(time_range, x_start, b_range, a, has_next_graphic):
         x_arr = dict()
 

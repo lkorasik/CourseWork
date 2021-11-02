@@ -4,7 +4,13 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
-    Builder.bifurcation_wrap(params, False)
+    Builder.bifurcation(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        False
+    )
     #Builder.bifurcation_and_down_stable_wrap(params, False)
     #Builder.time_series_wrap(params, True)
     #Builder.single_newton_wrap(params)
