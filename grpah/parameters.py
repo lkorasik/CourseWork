@@ -11,7 +11,7 @@ class Parameters:
         self.b_step = 0.001
         self.precision = 0.0000001
         self.time = 1000
-        self.x_start = 0.1
+        self.x_start = 0.1164711
         self.skip = False
 
     def get_time_range(self):
