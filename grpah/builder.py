@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy
 
 import utils
 from functions import Functions
@@ -29,14 +30,13 @@ class Builder:
         utils.plot(x_arr, b_range, "Bifurcation", 'b', 'x', has_next_graphic)
 
     @staticmethod
-    def bifurcation_and_down_stable_wrap(params: Parameters, has_next):
-        Builder.bifurcation_and_down_stable(
+    def bifurcation_stables_wrap(params: Parameters, has_next):
+        Builder.bifurcation_stables(
             params.get_time_range(),
             params.x_start,
-            params.get_b_range_reversed(),
+            params.get_b_range(),
             params.a,
             params.x_start,
-            0,
             params.precision,
             Functions.h,
             Functions.dh,
@@ -44,7 +44,7 @@ class Builder:
         )
 
     @staticmethod
-    def bifurcation_and_down_stable(time_range, x_start, b_range, a, x12, image_x1, precision, function, dfunction, has_next_graphic):
+    def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -82,47 +82,41 @@ class Builder:
 
         ax.grid(which='major')
 
-        '''
         # Нижняя, т.е. \bar{x}_1
-        draw_x = []
-        draw_y = []
+        draw_x1 = []
+        draw_y1 = []
         x = x12 - (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
-            draw_x.append(b)
-            draw_y.append(x)
-        plt.plot(draw_x, draw_y, marker='.', color='r')
+            draw_x1.append(b)
+            draw_y1.append(x)
+        plt.plot(draw_x1, draw_y1, marker='.', color='r')
 
         # Верхняя, т.е. \bar{x}_2
-        draw_x = []
-        draw_y = []
+        draw_x2 = []
+        draw_y2 = []
         x = x12 + (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
-            draw_x.append(b)
-            draw_y.append(x)
-        plt.plot(draw_x, draw_y, marker='.', color='r')
-        '''
+            draw_x2.append(b)
+            draw_y2.append(x)
+        plt.plot(draw_x2, draw_y2, marker='.', color='r')
 
         # Верхняя, т.е. x_1^{-1}
-        draw_x = []
-        draw_y = []
-        #x = image_x1
-        x = 0.8
-        first = True
+        draw_x3 = []
+        draw_y3 = []
+        x1 = x12 - (x12 / 4)
         for b in b_range:
-            if first:
-                delta_y = Builder.single_newton(a, b, x, precision, function, dfunction)
-                first = False
+            delta_y = Builder.single_newton(a, b, x1, precision, function, dfunction)
             f = lambda a, b, c: Functions.sf(a, b, c, delta_y)
             x = Builder.single_newton(a, b, x, precision, f, Functions.dsf)
-            print(b, x)
-            draw_x.append(b)
-            draw_y.append(x)
-        plt.plot(draw_x, draw_y, marker='.', color='r')
+            x1 = delta_y
+            draw_x3.append(b)
+            draw_y3.append(x)
+        plt.plot(draw_x3, draw_y3, marker='.', color='r')
 
-        plt.title("Bifurcation and down stable")
-        fig.canvas.manager.set_window_title('Bifurcation and down stable')
+        plt.title("Bifurcation and stables")
+        fig.canvas.manager.set_window_title('Bifurcation and stables')
 
         plt.show(block=not has_next_graphic)
 

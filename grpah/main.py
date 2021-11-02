@@ -11,7 +11,7 @@ if __name__ == "__main__":
         params.a,
         True
     )
-    Builder.bifurcation_and_down_stable_wrap(params, False)
+    Builder.bifurcation_stables_wrap(params, False)
     #Builder.bifurcation_and_down_stable_wrap(params, False)
     #Builder.time_series_wrap(params, True)
     #Builder.single_newton_wrap(params)
