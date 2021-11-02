@@ -1,10 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy
-
-import utils
 from functions import Functions
-from parameters import Parameters
 
 
 class Builder:
@@ -27,7 +23,28 @@ class Builder:
                 x_0 = x_t
                 x_arr[b].append(x_t)
 
-        utils.plot(x_arr, b_range, "Bifurcation", 'b', 'x', has_next_graphic)
+        draw_x = []
+        draw_y = []
+
+        for b in b_range:
+            x = xb[b]
+            for x_ in x:
+                if x_ > 10:
+                    continue
+                draw_x.append(b)
+                draw_y.append(x_)
+
+        fig, ax = plt.subplots()
+        plt.xlabel('b')
+        plt.ylabel('x')
+        plt.yscale('log')
+        plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
+
+        ax.grid(which='major')
+        plt.title('Bifurcation')
+        fig.canvas.manager.set_window_title('Bifurcation')
+
+        plt.show(block=not has_next_graphic)
 
     @staticmethod
     def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic):
