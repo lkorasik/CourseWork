@@ -1,0 +1,45 @@
+name: Build release pdf
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Bump Version
+        default: v1.0.0
+        required: true
+  push:
+    branches: 
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build latex
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: latex/main.tex
+      env:
+        TEXINPUTS: ".:./latex//:"
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+          tag_name: ${{ github.ref }}${{ github.run_id }}
+          release_name: Release ${{ github.ref }}${{ github.run_id }}
+          draft: false
+          prerelease: false
+    - name: Upload release
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./main.pdf
+        asset_name: main.pdf
+        asset_content_type: application/zip
+        

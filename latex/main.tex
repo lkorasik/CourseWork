@@ -1,33 +1,17 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 
 %Russian-specific packages
 \usepackage[russian]{babel}
 \usepackage{cmap}
 \usepackage[utf8]{inputenc}
 
-%Graphics
-\usepackage{graphicx}
-\graphicspath{{pictures/}}
-\DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\usepackage{wrapfig}
-
 \begin{document}
-    \thispagestyle{empty}
-    
-    \begin{center}
-        \Large 5 семестр
-    \end{center}
-    
-    \vspace{6cm}
-    
-    \begin{center}
-        \Huge {\textbf{Курсач}}
-    \end{center}
-    
-    \vspace*{\fill}
-    
+    \title{Курсовая работа}
+    \maketitle
+
     \clearpage
     
-    \newpage
-    %\input{texfiles/lit.tex}
+    \tableofcontents
+
+    \include{content.tex}   
 \end{document}
