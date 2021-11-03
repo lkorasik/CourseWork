@@ -27,7 +27,7 @@ class Builder:
         draw_y = []
 
         for b in b_range:
-            x = xb[b]
+            x = x_arr[b]
             for x_ in x:
                 if x_ > 10:
                     continue
