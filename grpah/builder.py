@@ -1,3 +1,5 @@
+from collections import Counter
+
 import matplotlib.pyplot as plt
 import numpy as np
 from functions import Functions
@@ -66,6 +68,8 @@ class Builder:
                 x_0 = x_t
                 x_arr[b].append(x_t)
 
+        for b in b_range:
+            print(b, Counter(x_arr[b]))
         draw_x = []
         draw_y = []
 
@@ -193,4 +197,53 @@ class Builder:
 
         plt.title("Lamerei")
         fig.canvas.manager.set_window_title('Lamerei')
+        plt.show(block=not has_next_graphic)
+
+    @staticmethod
+    def stable(a, x12, b_range, precision, function, dfunction, d, has_next_graphic):
+        '''Draw graphic x: b, y: f(x)'''
+        fig, ax = plt.subplots()
+
+        # Нижняя, т.е. \bar{x}_1
+        root = []
+        draw_x1 = []
+        draw_y1 = []
+        x = x12 - (x12 / 4)
+        for b in b_range:
+            x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            root.append(x)
+            draw_x1.append(b)
+            draw_y1.append(d(a, b, x)) # Значения производной
+        plt.plot(draw_x1, draw_y1, marker=',', color='r')
+
+        # Верхняя, т.е. \bar{x}_2
+        root = []
+        draw_x2 = []
+        draw_y2 = []
+        x = x12 + (x12 / 4)
+        for b in b_range:
+            x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            root.append(x)
+            draw_x2.append(b)
+            draw_y2.append(d(a, b, x))
+        plt.plot(draw_x2, draw_y2, marker=',', color='green')
+
+        # Верхняя, т.е. x_0
+        root = []
+        draw_x3 = []
+        draw_y3 = []
+        x = 0
+        for b in b_range:
+            x = Builder.single_newton(a, b, x, precision, function, dfunction)
+            root.append(x)
+            draw_x3.append(b)
+            draw_y3.append(d(a, b, x))
+        plt.plot(draw_x3, draw_y3, marker=',', color='blue')
+
+        plt.title("Bifurcation and stables")
+        plt.xlabel('b')
+        plt.ylabel('x')
+        ax.grid(which='major')
+        fig.canvas.manager.set_window_title('Bifurcation and stables')
+
         plt.show(block=not has_next_graphic)

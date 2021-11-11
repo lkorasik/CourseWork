@@ -23,6 +23,7 @@ if __name__ == "__main__":
         Functions.dh,
         True
     )
+    '''
     Builder.time_series(
         params.get_time_range(),
         params.x_start,
@@ -37,5 +38,16 @@ if __name__ == "__main__":
         params.b,
         params.get_time_range(),
         params.skip,
+        False
+    )
+    '''
+    Builder.stable(
+        params.a,
+        params.x_start,
+        params.get_b_range(),
+        params.precision,
+        Functions.h,
+        Functions.dh,
+        Functions.df,
         False
     )
