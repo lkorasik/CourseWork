@@ -1,4 +1,6 @@
 import json
+import os
+
 from docx2pdf import convert
 from PyPDF2 import PdfFileMerger
 
@@ -24,3 +26,5 @@ if __name__ == '__main__':
 
     merger.write(config['output'])
     merger.close()
+
+    os.remove(header_pdf)
