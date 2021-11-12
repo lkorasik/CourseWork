@@ -1,5 +1,5 @@
 {
-  "header": ".\\..\\reportHeader\\ReportHeader.pdf",
+  "header": ".\\..\\reportHeader\\ReportHeader.docx",
   "body": ".\\..\\latex\\main.pdf",
   "output": ".\\..\\Report.pdf"
 }

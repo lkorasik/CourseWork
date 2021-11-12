@@ -1,7 +1,8 @@
 import json
-import sys
-
+from docx2pdf import convert
 from PyPDF2 import PdfFileMerger
+
+from converter import convert
 
 if __name__ == '__main__':
     with open('config.json', 'r') as f:
@@ -9,7 +10,14 @@ if __name__ == '__main__':
 
     merger = PdfFileMerger()
 
-    files = [config['header'], config['body']]
+    header_pdf = str(config['header'])
+    position = header_pdf.rfind(".")
+    header_pdf = header_pdf[:position] + ".pdf"
+
+    #convert(config['header'], pdf_name)
+    convert(config['header'], header_pdf)
+
+    files = [header_pdf, config['body']]
 
     for pdf in files:
         merger.append(pdf)
