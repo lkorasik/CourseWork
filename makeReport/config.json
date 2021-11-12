@@ -1,0 +1,5 @@
+{
+  "header": ".\\..\\reportHeader\\ReportHeader.docx",
+  "source": ".\\..\\latex\\main.tex",
+  "output": ".\\..\\Report.pdf"
+}

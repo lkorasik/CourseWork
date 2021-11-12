@@ -240,6 +240,20 @@ class Builder:
             draw_y3.append(d(a, b, x))
         plt.plot(draw_x3, draw_y3, marker=',', color='blue')
 
+        draw_x4 = []
+        draw_y4 = []
+        for b in b_range:
+            draw_x4.append(b)
+            draw_y4.append(1)
+        plt.plot(draw_x4, draw_y4, marker=',', color='black')
+
+        draw_x4 = []
+        draw_y4 = []
+        for b in b_range:
+            draw_x4.append(b)
+            draw_y4.append(-1)
+        plt.plot(draw_x4, draw_y4, marker=',', color='black')
+
         plt.title("Bifurcation and stables")
         plt.xlabel('b')
         plt.ylabel('x')
