@@ -4,7 +4,7 @@ import os
 from docx2pdf import convert
 from PyPDF2 import PdfFileMerger
 
-from converter import convert
+from converter import convert, generate_pdf_name
 
 if __name__ == '__main__':
     with open('config.json', 'r') as f:
@@ -17,9 +17,18 @@ if __name__ == '__main__':
     header_pdf = header_pdf[:position] + ".pdf"
 
     #convert(config['header'], pdf_name)
-    convert(config['header'], header_pdf)
+    convert(config['header'], generate_pdf_name(config['header']))
 
-    files = [header_pdf, config['body']]
+    path = str(config['source'])
+    position = path.rfind("\\")
+    folder = path[:position]
+    name = path[position + 1:]
+    os.chdir(folder)
+    os.system(f"pdflatex {name}")
+
+    #os.system("pdflatex " + config['source'])
+
+    files = [header_pdf, generate_pdf_name(config['source'])]
 
     for pdf in files:
         merger.append(pdf)
