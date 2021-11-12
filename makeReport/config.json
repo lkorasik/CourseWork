@@ -1,5 +1,5 @@
 {
-  "header": "C:\\Users\\user\\Desktop\\title.pdf",
-  "body": "C:\\Users\\user\\Desktop\\main.pdf",
-  "output": "C:\\Users\\User\\Desktop\\result.pdf"
+  "header": ".\\..\\reportHeader\\ReportHeader.pdf",
+  "body": ".\\..\\latex\\main.pdf",
+  "output": ".\\..\\Report.pdf"
 }
