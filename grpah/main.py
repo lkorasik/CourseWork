@@ -1,3 +1,4 @@
+import lyapunov
 from builder import Builder
 from functions import Functions
 from parameters import Parameters
@@ -21,7 +22,11 @@ if __name__ == "__main__":
         params.precision,
         Functions.h,
         Functions.dh,
-        True
+        True,
+        params.x1_color,
+        params.x2_color,
+        params.x_1_color,
+        params.biff_color
     )
     '''
     Builder.time_series(
@@ -49,5 +54,18 @@ if __name__ == "__main__":
         Functions.h,
         Functions.dh,
         Functions.df,
-        False
+        False,
+        params.x1_color,
+        params.x2_color,
+        params.x_1_color
     )
+
+    '''
+    lyapunov.Lyapunov.calc(
+        10e-0,
+        0.13,
+        100,
+        1,
+        0.45
+    )
+    '''
