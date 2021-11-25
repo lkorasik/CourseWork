@@ -8,28 +8,35 @@ from functions import Functions
 
 class Lyapunov:
     @staticmethod
-    def calc(epsilon, x_0, T, a, b):
-        x_0 = x_0
-        x_0w = x_0 + epsilon
+    def calc(epsilon, a, b_range, x_0, T_range, T, has_next_graphic):
+        fig, ax = plt.subplots()
+        ax.grid(which='major')
 
-        xs = []
-        xsw = []
+        x_0d = x_0 + epsilon
+
+        dxs = []
+        bs = []
+
+        for b in b_range:
+            x0 = x_0
+            x0d = x_0d
+            for t in T_range:
+                x0 = Functions.f(a, b, x0)
+                x0d = Functions.f(a, b, x0d)
+            dxs.append(abs(x0d - x0))
+            bs.append(b)
+
         lambdas = []
 
-        x_i = x_0
-        x_iw = x_0w
-        for i in range(10):
-            for t in range(T):
-                x_i = functions.Functions.f(a, b, x_i)
-                x_iw = functions.Functions.f(a, b, x_iw)
-            dx = abs(x_iw - x_i)
-            temp = dx / epsilon
-            if temp != 0:
-                lambda_ = 1/T * math.log(dx / epsilon)
-            dxt = epsilon
-            x_iw = x_i + dxt
+        for i in range(len(dxs)):
+            x = dxs[i]
+            lambdas.append(Functions.lambda_(x, T, epsilon))
 
-            xs.append(x_i)
-            xsw.append(x_iw)
-            lambdas.append(lambda_)
-            print(x_i, x_iw, lambda_)
+        for i in range(len(lambdas)):
+            print(str(dxs[i]) + " -> " + str(lambdas[i]))
+
+        plt.plot(lambdas, bs)
+
+        plt.title("Lyapunov")
+        fig.canvas.manager.set_window_title('Lyapunov')
+        plt.show(block=not has_next_graphic)

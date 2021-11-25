@@ -6,6 +6,16 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
+    lyapunov.Lyapunov.calc(
+        10e-0,
+        1,
+        params.get_b_range(),
+        params.x_start,
+        params.get_time_range(),
+        params.time,
+        True
+    )
+
     Builder.bifurcation(
         params.get_time_range(),
         params.x_start,
@@ -60,12 +70,4 @@ if __name__ == "__main__":
         params.x_1_color
     )
 
-    '''
-    lyapunov.Lyapunov.calc(
-        10e-0,
-        0.13,
-        100,
-        1,
-        0.45
-    )
-    '''
+
