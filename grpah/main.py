@@ -8,12 +8,7 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
-    r = extrema.get_cs(0, 1, 0.01, params.a, params.b)
-
-    print("c_{-1}: ", r[0])
-    print("c: ", r[1])
-    print("c_1: ", r[2])
-
+    '''
     Builder.bifurcation_with_c(
         params.get_time_range(),
         params.x_start,
@@ -21,12 +16,9 @@ if __name__ == "__main__":
         params.a,
         0,
         1,
-        params.precision * 100,
-        False
+        params.precision * 1000,
+        True
     )
-
-    exit(0)
-
     lyapunov.Lyapunov.calc(
         10e-0,
         1,
@@ -36,7 +28,6 @@ if __name__ == "__main__":
         params.time,
         True
     )
-
     Builder.bifurcation(
         params.get_time_range(),
         params.x_start,
@@ -68,10 +59,19 @@ if __name__ == "__main__":
         Functions.h,
         Functions.dh,
         Functions.df,
-        False,
+        True,
         params.x1_color,
         params.x2_color,
         params.x_1_color
+    )
+    '''
+    Builder.time_series(
+        params.get_time_range(),
+        params.x_start,
+        params.b,
+        params.a,
+        params.skip,
+        False
     )
 
     '''

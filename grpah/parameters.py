@@ -5,13 +5,15 @@ class Parameters:
     def __init__(self):
         self.a = 1
         self.b = 0.582355932
-        self.b = 0.434
+        self.b = 0.48
         self.b_start = 0.2
         self.b_end = 0.582355932
         self.b_step = 0.001
         self.precision = 0.0000001
         self.time = 1000
+        self.time = 30
         self.x_start = 0.11647
+        self.x_start = 2.1
         self.skip = False
         self.x1_color = 'red'
         self.x2_color = 'deeppink'
