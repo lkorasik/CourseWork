@@ -7,12 +7,27 @@
 
 %Graphics
 \usepackage{graphicx}
-\graphicspath{{pictures/}}
+\graphicspath{{images/}}
 \DeclareGraphicsExtensions{.pdf, .png, .jpg}
 \usepackage{wrapfig}
+
+%Color text
+%Remove for release
+\usepackage{color}
+
+\newcommand{\comment}[1]{\textcolor{red}{#1}}
 
 \begin{document}
     \tableofcontents
 
-    \include{content.tex}   
+    \include{intro.tex}
+    \newpage
+    \include{content.tex}
+    \newpage
+    \include{conclusion.tex}
+
+    rte \cite{tex}
+
+    \bibliographystyle{apalike}
+    \bibliography{main}
 \end{document}
