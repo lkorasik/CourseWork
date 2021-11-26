@@ -1,3 +1,6 @@
+import math
+
+
 class Functions:
     @staticmethod
     def f(a, b, x):
@@ -28,3 +31,9 @@ class Functions:
     @staticmethod
     def dh(a, b, x):
         return (2 * a * x * (2 * x - b))/((b + x) ** 7) + 1
+
+    @staticmethod
+    def lambda_(dx, T, epsilon):
+        if dx == 0:
+            return None
+        return math.log(dx / epsilon) / T

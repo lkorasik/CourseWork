@@ -12,6 +12,10 @@ class Parameters:
         self.time = 1000
         self.x_start = 0.11647
         self.skip = False
+        self.x1_color = 'red'
+        self.x2_color = 'deeppink'
+        self.x_1_color = 'lightcoral'
+        self.biff_color = 'steelblue'
 
     def get_time_range(self):
         return range(1, self.time + 1)

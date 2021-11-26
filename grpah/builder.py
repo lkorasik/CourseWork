@@ -49,7 +49,7 @@ class Builder:
         plt.show(block=not has_next_graphic)
 
     @staticmethod
-    def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic):
+    def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic, x1_color, x2_color, x_1_color, bif_color):
         """Построить бифуркационную диаграмму"""
         x_arr = dict()
 
@@ -68,8 +68,12 @@ class Builder:
                 x_0 = x_t
                 x_arr[b].append(x_t)
 
+        difs = dict()
         for b in b_range:
-            print(b, Counter(x_arr[b]))
+            min_ = min(x_arr[b])
+            max_ = max(x_arr[b])
+            difs[b] = max_ - min_
+
         draw_x = []
         draw_y = []
 
@@ -85,7 +89,8 @@ class Builder:
         plt.xlabel('b')
         plt.ylabel('x')
         plt.yscale('log')
-        plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
+        #plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
+        plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01, color=bif_color)
 
         ax.grid(which='major')
 
@@ -97,7 +102,7 @@ class Builder:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
             draw_x1.append(b)
             draw_y1.append(x)
-        plt.plot(draw_x1, draw_y1, marker=',', color='r')
+        plt.plot(draw_x1, draw_y1, marker=',', color=x1_color)
 
         # Верхняя, т.е. \bar{x}_2
         draw_x2 = []
@@ -105,9 +110,10 @@ class Builder:
         x = x12 + (x12 / 4)
         for b in b_range:
             x = Builder.single_newton(a, b, x, precision, function, dfunction)
-            draw_x2.append(b)
-            draw_y2.append(x)
-        plt.plot(draw_x2, draw_y2, marker=',', color='r')
+            if difs[b] > 0.001:
+                draw_x2.append(b)
+                draw_y2.append(x)
+        plt.plot(draw_x2, draw_y2, marker=',', color=x2_color)
 
         # Верхняя, т.е. x_1^{-1}
         draw_x3 = []
@@ -120,7 +126,7 @@ class Builder:
             x1 = delta_y
             draw_x3.append(b)
             draw_y3.append(x)
-        plt.plot(draw_x3, draw_y3, marker=',', color='r')
+        plt.plot(draw_x3, draw_y3, marker=',', color=x_1_color)
 
         plt.title("Bifurcation and stables")
         fig.canvas.manager.set_window_title('Bifurcation and stables')
@@ -200,7 +206,7 @@ class Builder:
         plt.show(block=not has_next_graphic)
 
     @staticmethod
-    def stable(a, x12, b_range, precision, function, dfunction, d, has_next_graphic):
+    def stable(a, x12, b_range, precision, function, dfunction, d, has_next_graphic, x1_color, x2_color, x_1_color):
         '''Draw graphic x: b, y: f(x)'''
         fig, ax = plt.subplots()
 
@@ -214,7 +220,7 @@ class Builder:
             root.append(x)
             draw_x1.append(b)
             draw_y1.append(d(a, b, x)) # Значения производной
-        plt.plot(draw_x1, draw_y1, marker=',', color='r')
+        plt.plot(draw_x1, draw_y1, marker=',', color=x1_color)
 
         # Верхняя, т.е. \bar{x}_2
         root = []
@@ -226,7 +232,7 @@ class Builder:
             root.append(x)
             draw_x2.append(b)
             draw_y2.append(d(a, b, x))
-        plt.plot(draw_x2, draw_y2, marker=',', color='green')
+        plt.plot(draw_x2, draw_y2, marker=',', color=x2_color)
 
         # Верхняя, т.е. x_0
         root = []
@@ -238,7 +244,7 @@ class Builder:
             root.append(x)
             draw_x3.append(b)
             draw_y3.append(d(a, b, x))
-        plt.plot(draw_x3, draw_y3, marker=',', color='blue')
+        plt.plot(draw_x3, draw_y3, marker=',', color=x_1_color)
 
         draw_x4 = []
         draw_y4 = []

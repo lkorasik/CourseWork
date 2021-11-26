@@ -1,9 +1,20 @@
+import lyapunov
 from builder import Builder
 from functions import Functions
 from parameters import Parameters
 
 if __name__ == "__main__":
     params = Parameters()
+
+    lyapunov.Lyapunov.calc(
+        10e-0,
+        1,
+        params.get_b_range(),
+        params.x_start,
+        params.get_time_range(),
+        params.time,
+        True
+    )
 
     Builder.bifurcation(
         params.get_time_range(),
@@ -21,7 +32,11 @@ if __name__ == "__main__":
         params.precision,
         Functions.h,
         Functions.dh,
-        True
+        True,
+        params.x1_color,
+        params.x2_color,
+        params.x_1_color,
+        params.biff_color
     )
     '''
     Builder.time_series(
@@ -49,5 +64,10 @@ if __name__ == "__main__":
         Functions.h,
         Functions.dh,
         Functions.df,
-        False
+        False,
+        params.x1_color,
+        params.x2_color,
+        params.x_1_color
     )
+
+
