@@ -5,6 +5,7 @@ class Parameters:
     def __init__(self):
         self.a = 1
         self.b = 0.582355932
+        self.b = 0.434
         self.b_start = 0.2
         self.b_end = 0.582355932
         self.b_step = 0.001
@@ -14,7 +15,7 @@ class Parameters:
         self.skip = False
         self.x1_color = 'red'
         self.x2_color = 'deeppink'
-        self.x_1_color = 'lightcoral'
+        self.x_1_color = 'green'
         self.biff_color = 'steelblue'
 
     def get_time_range(self):

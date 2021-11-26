@@ -2,6 +2,8 @@ from collections import Counter
 
 import matplotlib.pyplot as plt
 import numpy as np
+
+import extrema
 from functions import Functions
 
 
@@ -41,6 +43,66 @@ class Builder:
         plt.ylabel('x')
         plt.yscale('log')
         plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
+
+        ax.grid(which='major')
+        plt.title('Bifurcation')
+        fig.canvas.manager.set_window_title('Bifurcation')
+
+        plt.show(block=not has_next_graphic)
+
+    @staticmethod
+    def bifurcation_with_c(time_range, x_start, b_range, a, left, right, step, has_next_graphic):
+        x_arr = dict()
+
+        for b in b_range:
+            x_arr[b] = []
+            x_0 = x_start
+            for t in time_range:
+                x_t = Functions.f(a, b, x_0)
+                if abs(x_t) > 10000:
+                    break
+                x_0 = x_t
+            for t in time_range:
+                x_t = Functions.f(a, b, x_0)
+                if abs(x_t) > 10000:
+                    break
+                x_0 = x_t
+                x_arr[b].append(x_t)
+
+        draw_x = []
+        draw_y = []
+
+        for b in b_range:
+            x = x_arr[b]
+            for x_ in x:
+                if x_ > 10:
+                    continue
+                draw_x.append(b)
+                draw_y.append(x_)
+
+        fig, ax = plt.subplots()
+        plt.xlabel('b')
+        plt.ylabel('x')
+        plt.yscale('log')
+        plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
+
+        draw_x = []
+        draw_y1 = []
+        draw_y2 = []
+        for b in b_range:
+            r = extrema.get_cs(
+                left,
+                right,
+                step,
+                a,
+                b
+            )
+            draw_x.append(b)
+            draw_y1.append(r[1])
+            draw_y2.append(r[2])
+
+        plt.plot(draw_x, draw_y1, marker=',', rasterized=True, color='red')
+        plt.plot(draw_x, draw_y2, marker=',', rasterized=True, color='red')
 
         ax.grid(which='major')
         plt.title('Bifurcation')
