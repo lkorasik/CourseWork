@@ -7,6 +7,13 @@ class Functions:
         return (a * x ** 2) / ((b + x) ** 6)
 
     @staticmethod
+    def lambda_(dx,  epsilon):
+        if dx == 0:
+            print('dx=0')
+            return 0
+        return math.log(dx / epsilon)
+
+    @staticmethod
     def df(a, b, x):
         return (2 * a * x * (b - 2 * x))/((b + x) ** 7)
 
@@ -31,9 +38,3 @@ class Functions:
     @staticmethod
     def dh(a, b, x):
         return (2 * a * x * (2 * x - b))/((b + x) ** 7) + 1
-
-    @staticmethod
-    def lambda_(dx, T, epsilon):
-        if dx == 0:
-            return None
-        return math.log(dx / epsilon) / T

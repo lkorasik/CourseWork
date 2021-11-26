@@ -12,30 +12,32 @@ class Lyapunov:
         fig, ax = plt.subplots()
         ax.grid(which='major')
 
-        x_0d = x_0 + epsilon
-
         dxs = []
         bs = []
 
+        sum = 0
+
         for b in b_range:
             x0 = x_0
-            x0d = x_0d
-            for t in T_range:
+            sum = 0
+            for t in range(1, 10**6 + 1):
+                x0d = x0 + epsilon
                 x0 = Functions.f(a, b, x0)
                 x0d = Functions.f(a, b, x0d)
-            dxs.append(abs(x0d - x0))
+                sum += Functions.lambda_(abs(x0d - x0), epsilon)
+            dxs.append(sum/T)
             bs.append(b)
+        #
+        # lambdas = []
 
-        lambdas = []
+        # for i in range(len(dxs)):
+        #     x = dxs[i]
+        #     lambdas.append(Functions.lambda_(x, T, epsilon))
+        #
+        # for i in range(len(lambdas)):
+        #     print(str(dxs[i]) + " -> " + str(lambdas[i]))
 
-        for i in range(len(dxs)):
-            x = dxs[i]
-            lambdas.append(Functions.lambda_(x, T, epsilon))
-
-        for i in range(len(lambdas)):
-            print(str(dxs[i]) + " -> " + str(lambdas[i]))
-
-        plt.plot(lambdas, bs)
+        plt.plot(bs, dxs)
 
         plt.title("Lyapunov")
         fig.canvas.manager.set_window_title('Lyapunov')
