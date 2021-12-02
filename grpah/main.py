@@ -1,6 +1,9 @@
+import numpy as np
+
 import builder
 import extrema
 import lyapunov
+import regime_map
 from builder import Builder
 from functions import Functions
 from parameters import Parameters
@@ -8,6 +11,20 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
+    regime_map.build_regime_map(
+        2.1,
+        np.arange(0, 1 + 0.1, 0.1),
+        np.arange(0, 0.58 + 0.01, 0.01),
+        params.get_time_range()
+    )
+    Builder.time_series(
+        params.get_time_range(),
+        2.1,
+        0.48,
+        1,
+        params.skip,
+        False
+    )
     '''
     Builder.bifurcation_with_c(
         params.get_time_range(),
@@ -19,7 +36,6 @@ if __name__ == "__main__":
         params.precision * 1000,
         True
     )
-    '''
     Builder.bifurcation(
         params.get_time_range(),
         params.x_start,
@@ -36,7 +52,6 @@ if __name__ == "__main__":
         params.time,
         False
     )
-    '''
     Builder.lamerei(
         params.a,
         params.x_start,
@@ -81,7 +96,6 @@ if __name__ == "__main__":
         params.x2_color,
         params.x_1_color
     )
-    '''
     Builder.time_series(
         params.get_time_range(),
         params.x_start,
@@ -90,8 +104,6 @@ if __name__ == "__main__":
         params.skip,
         False
     )
-
-    '''
     lyapunov.Lyapunov.calc(
         10e-0,
         1,
