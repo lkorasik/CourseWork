@@ -20,7 +20,7 @@ class Lyapunov:
         for b in b_range:
             x0 = x_0
             sum = 0
-            for t in range(1, 10**6 + 1):
+            for t in T_range:
                 x0d = x0 + epsilon
                 x0 = Functions.f(a, b, x0)
                 x0d = Functions.f(a, b, x0d)

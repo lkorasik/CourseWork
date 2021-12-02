@@ -8,6 +8,7 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
+    '''
     Builder.bifurcation_with_c(
         params.get_time_range(),
         params.x_start,
@@ -19,6 +20,13 @@ if __name__ == "__main__":
         True
     )
     '''
+    Builder.bifurcation(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        True
+    )
     lyapunov.Lyapunov.calc(
         10 ** (-5),
         1,
@@ -28,6 +36,7 @@ if __name__ == "__main__":
         params.time,
         False
     )
+    '''
     Builder.lamerei(
         params.a,
         params.x_start,
