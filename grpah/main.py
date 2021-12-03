@@ -13,10 +13,11 @@ if __name__ == "__main__":
 
     regime_map.build_regime_map(
         2.1,
-        np.arange(0.42, 1 + 0.0001, 0.0001),
-        np.arange(0, 0.58 + 0.0001, 0.0001),
+        np.arange(0.42, 1 + 0.01, 0.01),
+        np.arange(0, 0.58 + 0.01, 0.01),
         params.get_time_range()
     )
+    '''
     Builder.time_series(
         params.get_time_range(),
         2.1,
@@ -25,7 +26,6 @@ if __name__ == "__main__":
         params.skip,
         False
     )
-    '''
     Builder.bifurcation_with_c(
         params.get_time_range(),
         params.x_start,
