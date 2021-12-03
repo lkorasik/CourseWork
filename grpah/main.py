@@ -13,8 +13,8 @@ if __name__ == "__main__":
 
     regime_map.build_regime_map(
         2.1,
-        np.arange(0, 1 + 0.1, 0.1),
-        np.arange(0, 0.58 + 0.01, 0.01),
+        np.arange(0.42, 1 + 0.0001, 0.0001),
+        np.arange(0, 0.58 + 0.0001, 0.0001),
         params.get_time_range()
     )
     Builder.time_series(

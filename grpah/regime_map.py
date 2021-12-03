@@ -46,7 +46,10 @@ def build_regime_map(x_0, a_range, b_range, T_range):
     #im = ax.imshow(draw)
     m = cleanedList = [x for x in draw_c if str(x) != 'nan']
     print(max(m))
-    im = ax.imshow(draw, cmap='viridis', extent=[min(a_range), max(a_range), min(b_range), max(b_range)], vmin=min(m), vmax=max(m))
+    #im = ax.imshow(draw, cmap='viridis', extent=[min(a_range), max(a_range), min(b_range), max(b_range)], vmin=min(m), vmax=max(m))
+
+    # Используй scatter, теплова якарта не нужна
+    im = ax.imshow(draw, cmap='plasma', extent=[min(a_range), max(a_range), min(b_range), max(b_range)], vmin=min(m), vmax=max(m))
 
     # Rotate the tick labels and set their alignment.
     #plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
