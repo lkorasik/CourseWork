@@ -18,7 +18,7 @@ Begin["Public`"];
 			TicksStyle -> Directive[FontSize -> 16],
 			Epilog -> {Red, PointSize -> Large, Point[answer]}
 		];
-		Export[filename, fig, OverwriteTarget->True];
+		Export[filename, fig, OverwriteTarget -> True];
 	)
 End[];
 EndPackage[];
