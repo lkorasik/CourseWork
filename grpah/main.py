@@ -1,6 +1,9 @@
+import numpy as np
+
 import builder
 import extrema
 import lyapunov
+import regime_map
 from builder import Builder
 from functions import Functions
 from parameters import Parameters
@@ -8,12 +11,21 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
-    r = extrema.get_cs(0, 1, 0.01, params.a, params.b)
-
-    print("c_{-1}: ", r[0])
-    print("c: ", r[1])
-    print("c_1: ", r[2])
-
+    regime_map.build_regime_map(
+        2.1,
+        np.arange(0.42, 1 + 0.01, 0.01),
+        np.arange(0, 0.58 + 0.01, 0.01),
+        params.get_time_range()
+    )
+    '''
+    Builder.time_series(
+        params.get_time_range(),
+        2.1,
+        0.48,
+        1,
+        params.skip,
+        False
+    )
     Builder.bifurcation_with_c(
         params.get_time_range(),
         params.x_start,
@@ -21,22 +33,33 @@ if __name__ == "__main__":
         params.a,
         0,
         1,
-        params.precision * 100,
-        False
+        params.precision * 1000,
+        True
     )
-
-    exit(0)
-
+    Builder.bifurcation(
+        params.get_time_range(),
+        params.x_start,
+        params.get_b_range(),
+        params.a,
+        True
+    )
     lyapunov.Lyapunov.calc(
-        10e-0,
+        10 ** (-5),
         1,
         params.get_b_range(),
         params.x_start,
         params.get_time_range(),
         params.time,
+        False
+    )
+    Builder.lamerei(
+        params.a,
+        params.x_start,
+        params.b,
+        params.get_time_range(),
+        params.skip,
         True
     )
-
     Builder.bifurcation(
         params.get_time_range(),
         params.x_start,
@@ -68,13 +91,19 @@ if __name__ == "__main__":
         Functions.h,
         Functions.dh,
         Functions.df,
-        False,
+        True,
         params.x1_color,
         params.x2_color,
         params.x_1_color
     )
-
-    '''
+    Builder.time_series(
+        params.get_time_range(),
+        params.x_start,
+        params.b,
+        params.a,
+        params.skip,
+        False
+    )
     lyapunov.Lyapunov.calc(
         10e-0,
         1,
