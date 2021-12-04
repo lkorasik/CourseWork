@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5179,        131]
-NotebookOptionsPosition[      4829,        117]
-NotebookOutlinePosition[      5226,        133]
-CellTagsIndexPosition[      5183,        130]
+NotebookDataLength[      5499,        136]
+NotebookOptionsPosition[      5150,        122]
+NotebookOutlinePosition[      5545,        138]
+CellTagsIndexPosition[      5502,        135]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -41,17 +41,19 @@ Cell[BoxData[{
     RowBox[{"0.57", ",", " ", "0.582355932", ",", " ", "0.59"}], "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<images\\\\\>\""}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
   RowBox[{
    RowBox[{"filenames", " ", "=", " ", 
     RowBox[{"{", "\[IndentingNewLine]", 
      RowBox[{
-     "\"\<C:\\\\Users\\\\user\\\\Desktop\\\\a.jpg\>\"", ",", " ", 
-      "\[IndentingNewLine]", 
-      "\"\<C:\\\\Users\\\\user\\\\Desktop\\\\b.jpg\>\"", ",", " ", 
-      "\[IndentingNewLine]", 
-      "\"\<C:\\\\Users\\\\user\\\\Desktop\\\\c.jpg\>\""}], 
-     "\[IndentingNewLine]", "}"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+     "\"\<two_intersection.jpg\>\"", ",", " ", "\[IndentingNewLine]", 
+      "\"\<one_intersection.jpg\>\"", ",", " ", "\[IndentingNewLine]", 
+      "\"\<zero_intersection.jpg\>\""}], "\[IndentingNewLine]", "}"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"For", "[", 
    RowBox[{
@@ -111,12 +113,15 @@ Cell[BoxData[{
    3.8476330001339445`*^9, {3.8476330353313446`*^9, 3.8476330498118844`*^9}, {
    3.8476331159938173`*^9, 3.847633122265102*^9}, {3.8476331901690397`*^9, 
    3.847633193618486*^9}, 3.847633255332321*^9, {3.847633465410242*^9, 
-   3.847633522219447*^9}, {3.8476335703014736`*^9, 
-   3.8476336042884955`*^9}},ExpressionUUID->"28dfea0d-7235-4dd8-a66f-\
+   3.847633522219447*^9}, {3.8476335703014736`*^9, 3.8476336042884955`*^9}, {
+   3.847633810026148*^9, 3.847633815017514*^9}, {3.84763388120148*^9, 
+   3.8476339250487986`*^9}, 3.847633957430277*^9, {3.8476340392306023`*^9, 
+   3.8476340477561216`*^9}, {3.847634099483484*^9, 
+   3.8476341243937044`*^9}},ExpressionUUID->"28dfea0d-7235-4dd8-a66f-\
 6ec04ab6108b"]
 },
-WindowSize->{960, 997},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{960, 989},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"489b6ed8-5655-4b5d-9542-69b439d49f3e"
@@ -132,7 +137,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 4267, 95, 458, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"]
+Cell[558, 20, 4588, 100, 494, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"]
 }
 ]
 *)
