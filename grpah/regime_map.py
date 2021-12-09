@@ -48,5 +48,4 @@ def build_regime_map(x_0, a_range, b_range, T_range):
 
     ax.set_title("Harvest of local farmers (in tons/year)")
     fig.tight_layout()
-    fig.colorbar(im)
     plt.show()

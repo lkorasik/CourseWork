@@ -11,11 +11,13 @@ from parameters import Parameters
 if __name__ == "__main__":
     params = Parameters()
 
-    regime_map.build_regime_map(
+    Builder.time_series(
+        params.get_time_range(),
         2.1,
-        np.arange(0.42, 1 + 0.01, 0.01),
-        np.arange(0, 0.58 + 0.01, 0.01),
-        params.get_time_range()
+        0.48,
+        1,
+        params.skip,
+        False
     )
     '''
     Builder.time_series(
