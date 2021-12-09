@@ -27,6 +27,7 @@ if __name__ == "__main__":
     plotter.show(True)
     '''
 
+    '''
     source = Builder.bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -38,8 +39,8 @@ if __name__ == "__main__":
     plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
     plotter.scatter(source[0], source[1], '.')
     plotter.show(False)
-
     '''
+
     Builder.bifurcation_with_c(
         params.get_time_range(),
         params.x_start,
@@ -48,8 +49,11 @@ if __name__ == "__main__":
         0,
         1,
         params.precision * 1000,
-        True
+        False
     )
+
+    '''
+    
     
     lyapunov.Lyapunov.calc(
         10 ** (-5),

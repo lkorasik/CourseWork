@@ -38,18 +38,6 @@ class Builder:
                 draw_x.append(b)
                 draw_y.append(x_)
 
-        # fig, ax = plt.subplots()
-        # plt.xlabel('b')
-        # plt.ylabel('x')
-        # plt.yscale('log')
-        # plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
-        #
-        # ax.grid(which='major')
-        # plt.title('Bifurcation')
-        # fig.canvas.manager.set_window_title('Bifurcation')
-        #
-        # plt.show(block=not has_next_graphic)
-
         return draw_x, draw_y
 
     @staticmethod
