@@ -211,16 +211,18 @@ class Builder:
             x_t = Functions.f(a, b, x_0)
             x_0 = x_t
             x_arr[b].append(x_t)
+        #
+        # fig, ax = plt.subplots()
+        # plt.xlabel('t')
+        # plt.ylabel('x')
+        # plt.plot(time_range, x_arr[b], marker='*')
+        # ax.grid(which='major')
+        #
+        # plt.title("Time series")
+        # fig.canvas.manager.set_window_title('Time series')
+        # plt.show(block=not has_next_graphic)
 
-        fig, ax = plt.subplots()
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.plot(time_range, x_arr[b], marker='*')
-        ax.grid(which='major')
-
-        plt.title("Time series")
-        fig.canvas.manager.set_window_title('Time series')
-        plt.show(block=not has_next_graphic)
+        return time_range, x_arr[b]
 
     @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):

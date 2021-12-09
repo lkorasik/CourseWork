@@ -7,11 +7,12 @@ import regime_map
 from builder import Builder
 from functions import Functions
 from parameters import Parameters
+from utils import Plotter
 
 if __name__ == "__main__":
     params = Parameters()
 
-    Builder.time_series(
+    source = Builder.time_series(
         time_range=range(1, 100+1),
         x_start=2.1,
         b=0.48,
@@ -19,6 +20,12 @@ if __name__ == "__main__":
         skip=False,
         has_next_graphic=False
     )
+
+    plotter = Plotter()
+    plotter.setup('t', 'x', 'major', 'Time series')
+    plotter.plot(source[0], source[1], '*')
+    plotter.show(False)
+
     '''
     Builder.time_series(
         params.get_time_range(),
