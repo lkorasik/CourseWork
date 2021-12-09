@@ -1,16 +1,4 @@
-import numpy as np
-
-import builder
-import extrema
-import lyapunov
-import regime_map
-from builder import Builder
-from functions import Functions
-from parameters import Parameters
-from utils import Plotter
-
 if __name__ == "__main__":
-    params = Parameters()
 
     '''
     source = Builder.time_series(
@@ -113,6 +101,7 @@ if __name__ == "__main__":
     plotter.show(False)
     '''
 
+    '''
     source = Builder.stable(
         a=1,
         x12=0.2,
@@ -135,27 +124,4 @@ if __name__ == "__main__":
     plotter.plot(source[3][0], source[3][1], ',', 'black')
     plotter.plot(source[4][0], source[4][1], ',', 'black')
     plotter.show(False)
-
-    '''    
-    Builder.lamerei(
-        params.a,
-        params.x_start,
-        params.b,
-        params.get_time_range(),
-        params.skip,
-        False
-    )
-    Builder.stable(
-        params.a,
-        params.x_start,
-        params.get_b_range(),
-        params.precision,
-        Functions.h,
-        Functions.dh,
-        Functions.df,
-        False,
-        params.x1_color,
-        params.x2_color,
-        params.x_1_color
-    )
     '''
