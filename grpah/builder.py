@@ -94,7 +94,7 @@ class Builder:
         return result
 
     @staticmethod
-    def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic, x1_color, x2_color, x_1_color, bif_color):
+    def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction):
         x_arr = dict()
 
         result = []
@@ -206,7 +206,7 @@ class Builder:
         return res
 
     @staticmethod
-    def lamerei(a, x_start, b, time_range, skip, has_next_graphic):
+    def lamerei(a, x_start, b, time_range, skip):
         total = []
 
         x0 = x_start
@@ -231,7 +231,7 @@ class Builder:
         return total
 
     @staticmethod
-    def stable(a, x12, b_range, precision, function, dfunction, d, has_next_graphic, x1_color, x2_color, x_1_color):
+    def stable(a, x12, b_range, precision, function, dfunction, d):
         # Нижняя, т.е. \bar{x}_1
         root = []
         draw_x1 = []
