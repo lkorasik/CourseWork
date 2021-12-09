@@ -41,8 +41,9 @@ class Builder:
         return draw_x, draw_y
 
     @staticmethod
-    def bifurcation_with_c(time_range, x_start, b_range, a, left, right, step, has_next_graphic):
+    def bifurcation_with_c(time_range, x_start, b_range, a, left, right, step):
         x_arr = dict()
+        result = []
 
         for b in b_range:
             x_arr[b] = []
@@ -70,11 +71,7 @@ class Builder:
                 draw_x.append(b)
                 draw_y.append(x_)
 
-        fig, ax = plt.subplots()
-        plt.xlabel('b')
-        plt.ylabel('x')
-        plt.yscale('log')
-        plt.scatter(draw_x, draw_y, marker='.', rasterized=True, linewidths=0.01)
+        result.append([draw_x, draw_y])
 
         draw_x = []
         draw_y1 = []
@@ -91,14 +88,10 @@ class Builder:
             draw_y1.append(r[1])
             draw_y2.append(r[2])
 
-        plt.plot(draw_x, draw_y1, marker=',', rasterized=True, color='red')
-        plt.plot(draw_x, draw_y2, marker=',', rasterized=True, color='red')
+        result.append([draw_x, draw_y1])
+        result.append([draw_x, draw_y2])
 
-        ax.grid(which='major')
-        plt.title('Bifurcation')
-        fig.canvas.manager.set_window_title('Bifurcation')
-
-        plt.show(block=not has_next_graphic)
+        return result
 
     @staticmethod
     def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction, has_next_graphic, x1_color, x2_color, x_1_color, bif_color):
