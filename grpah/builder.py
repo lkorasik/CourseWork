@@ -207,8 +207,7 @@ class Builder:
 
     @staticmethod
     def lamerei(a, x_start, b, time_range, skip, has_next_graphic):
-        fig, ax = plt.subplots()
-        ax.grid(which='major')
+        total = []
 
         x0 = x_start
         result = []
@@ -223,18 +222,13 @@ class Builder:
             result.append((x0, x1, x1, x1))
             x0 = x1
 
-        for i in result:
-            plt.plot([i[0], i[1]], [i[2], i[3]], 'red')
+        total.append(result)
 
         x = np.arange(0, 2, 0.01)
-        plt.plot(x, Functions.g(a, x))
+        total.append([x, Functions.g(a, x)])
+        total.append([x, Functions.f(a, b, x)])
 
-        x = np.arange(0, 2, 0.00001)
-        plt.plot(x, Functions.f(a, b, x))
-
-        plt.title("Lamerei")
-        fig.canvas.manager.set_window_title('Lamerei')
-        plt.show(block=not has_next_graphic)
+        return total
 
     @staticmethod
     def stable(a, x12, b_range, precision, function, dfunction, d, has_next_graphic, x1_color, x2_color, x_1_color):

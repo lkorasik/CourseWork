@@ -1,3 +1,10 @@
+import numpy as np
+
+import lyapunov
+from builder import Builder
+from functions import Functions
+from plotter import Plotter
+
 if __name__ == "__main__":
 
     '''
@@ -11,7 +18,7 @@ if __name__ == "__main__":
 
     plotter = Plotter()
     plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    plotter.plot(source[0], source[1], '*')
+    plotter.plot(source[0], source[1], '*', 'steelblue')
     plotter.show(False)
     '''
 
@@ -25,7 +32,7 @@ if __name__ == "__main__":
 
     plotter = Plotter()
     plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    plotter.scatter(source[0], source[1], '.')
+    plotter.scatter(source[0], source[1], '.', 'steelblue')
     plotter.show(False)
     '''
 
@@ -42,7 +49,7 @@ if __name__ == "__main__":
 
     plotter = Plotter()
     plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    plotter.scatter(source[0][0], source[0][1], '.')
+    plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
     plotter.plot(source[1][0], source[1][1], ',', 'red')
     plotter.plot(source[2][0], source[2][1], ',', 'red')
     plotter.show(False)
@@ -65,14 +72,25 @@ if __name__ == "__main__":
     '''
 
     '''
-    Builder.lamerei(
-        a=params.a,
-        x_start=params.x_start,
-        b=params.b,
-        time_range=params.get_time_range(),
-        skip=params.skip,
+    source = Builder.lamerei(
+        a=1,
+        x_start=0.2,
+        b=0.582355932,
+        time_range=range(1, 100 + 1),
+        skip=False,
         has_next_graphic=False
     )
+
+    plotter = Plotter()
+    plotter.setup('b', '', 'linear', 'major', 'Lamerei')
+
+    for i in source[0]:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    plotter.plot(source[1][0], source[1][1], ',', 'steelblue')
+    plotter.plot(source[2][0], source[2][1], ',', 'orange')
+
+    plotter.show(False)
     '''
 
     '''
