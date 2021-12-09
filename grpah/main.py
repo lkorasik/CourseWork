@@ -12,29 +12,34 @@ from utils import Plotter
 if __name__ == "__main__":
     params = Parameters()
 
+    '''
     source = Builder.time_series(
-        time_range=range(1, 100+1),
+        time_range=range(1, 100 + 1),
         x_start=2.1,
         b=0.48,
         a=1,
-        skip=False,
-        has_next_graphic=False
+        skip=False
     )
 
     plotter = Plotter()
-    plotter.setup('t', 'x', 'major', 'Time series')
+    plotter.setup('t', 'x', 'linear', 'major', 'Time series')
     plotter.plot(source[0], source[1], '*')
+    plotter.show(True)
+    '''
+
+    source = Builder.bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1
+    )
+
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    plotter.scatter(source[0], source[1], '.')
     plotter.show(False)
 
     '''
-    Builder.time_series(
-        params.get_time_range(),
-        2.1,
-        0.48,
-        1,
-        params.skip,
-        False
-    )
     Builder.bifurcation_with_c(
         params.get_time_range(),
         params.x_start,
@@ -45,13 +50,7 @@ if __name__ == "__main__":
         params.precision * 1000,
         True
     )
-    Builder.bifurcation(
-        params.get_time_range(),
-        params.x_start,
-        params.get_b_range(),
-        params.a,
-        True
-    )
+    
     lyapunov.Lyapunov.calc(
         10 ** (-5),
         1,
