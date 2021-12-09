@@ -12,12 +12,12 @@ if __name__ == "__main__":
     params = Parameters()
 
     Builder.time_series(
-        params.get_time_range(),
-        2.1,
-        0.48,
-        1,
-        params.skip,
-        False
+        time_range=range(1, 100+1),
+        x_start=2.1,
+        b=0.48,
+        a=1,
+        skip=False,
+        has_next_graphic=False
     )
     '''
     Builder.time_series(
