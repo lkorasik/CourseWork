@@ -60,6 +60,7 @@ if __name__ == "__main__":
     plotter.show(False)
     '''
 
+    '''
     source = lyapunov.Lyapunov.calc(
         epsilon=10 ** (-5),
         a=1,
@@ -73,108 +74,69 @@ if __name__ == "__main__":
     plotter.setup('b', '', 'linear', 'major', 'Lyapunov')
     plotter.plot(source[0], source[1], ',', 'red')
     plotter.show(False)
+    '''
 
     '''
-    lyapunov.Lyapunov.calc(
-        10 ** (-5),
-        1,
-        params.get_b_range(),
-        params.x_start,
-        params.get_time_range(),
-        params.time,
-        False
-    )
     Builder.lamerei(
-        params.a,
-        params.x_start,
-        params.b,
-        params.get_time_range(),
-        params.skip,
-        True
+        a=params.a,
+        x_start=params.x_start,
+        b=params.b,
+        time_range=params.get_time_range(),
+        skip=params.skip,
+        has_next_graphic=False
     )
-    Builder.bifurcation(
-        params.get_time_range(),
-        params.x_start,
-        params.get_b_range(),
-        params.a,
-        True
-    )
-    Builder.bifurcation_stables(
-        params.get_time_range(),
-        params.x_start,
-        params.get_b_range(),
-        params.a,
-        params.x_start,
-        params.precision,
-        Functions.h,
-        Functions.dh,
-        True,
-        params.x1_color,
-        params.x2_color,
-        params.x_1_color,
-        params.biff_color
+    '''
+
+    '''
+    source = Builder.bifurcation_stables(
+        time_range=range(1, 100 + 1),
+        x_start=0.1164711,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        x12=0.12,
+        precision=0.0000001,
+        function=Functions.h,
+        dfunction=Functions.dh,
+        has_next_graphic=False,
+        x1_color='red',
+        x2_color='deeppink',
+        x_1_color='green',
+        bif_color='steelblue'
     )
 
-    Builder.stable(
-        params.a,
-        params.x_start,
-        params.get_b_range(),
-        params.precision,
-        Functions.h,
-        Functions.dh,
-        Functions.df,
-        True,
-        params.x1_color,
-        params.x2_color,
-        params.x_1_color
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+    plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
+    plotter.plot(source[1][0], source[1][1], ',', 'red')
+    plotter.plot(source[2][0], source[2][1], ',', 'deeppink')
+    plotter.plot(source[3][0], source[3][1], ',', 'green')
+    plotter.show(False)
+    '''
+
+    source = Builder.stable(
+        a=1,
+        x12=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        precision=0.0000001,
+        function=Functions.h,
+        dfunction=Functions.dh,
+        d=Functions.df,
+        has_next_graphic=False,
+        x1_color='red',
+        x2_color='deeppink',
+        x_1_color='green'
     )
-    Builder.time_series(
-        params.get_time_range(),
-        params.x_start,
-        params.b,
-        params.a,
-        params.skip,
-        False
-    )
-    lyapunov.Lyapunov.calc(
-        10e-0,
-        1,
-        params.get_b_range(),
-        params.x_start,
-        params.get_time_range(),
-        params.time,
-        True
-    )
-    Builder.bifurcation(
-        params.get_time_range(),
-        params.x_start,
-        params.get_b_range(),
-        params.a,
-        True
-    )
-    Builder.bifurcation_stables(
-        params.get_time_range(),
-        params.x_start,
-        params.get_b_range(),
-        params.a,
-        params.x_start,
-        params.precision,
-        Functions.h,
-        Functions.dh,
-        True,
-        params.x1_color,
-        params.x2_color,
-        params.x_1_color,
-        params.biff_color
-    )
-    Builder.time_series(
-        params.get_time_range(),
-        params.x_start,
-        params.b,
-        params.a,
-        params.skip,
-        True
-    )
+
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
+    plotter.plot(source[0][0], source[0][1], ',', 'red')
+    plotter.plot(source[1][0], source[1][1], ',', 'deeppink')
+    plotter.plot(source[2][0], source[2][1], ',', 'green')
+    plotter.plot(source[3][0], source[3][1], ',', 'black')
+    plotter.plot(source[4][0], source[4][1], ',', 'black')
+    plotter.show(False)
+
+    '''    
     Builder.lamerei(
         params.a,
         params.x_start,
