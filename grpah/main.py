@@ -77,8 +77,7 @@ if __name__ == "__main__":
         x_start=0.2,
         b=0.582355932,
         time_range=range(1, 100 + 1),
-        skip=False,
-        has_next_graphic=False
+        skip=False
     )
 
     plotter = Plotter()
@@ -102,12 +101,7 @@ if __name__ == "__main__":
         x12=0.12,
         precision=0.0000001,
         function=Functions.h,
-        dfunction=Functions.dh,
-        has_next_graphic=False,
-        x1_color='red',
-        x2_color='deeppink',
-        x_1_color='green',
-        bif_color='steelblue'
+        dfunction=Functions.dh
     )
 
     plotter = Plotter()
@@ -127,11 +121,7 @@ if __name__ == "__main__":
         precision=0.0000001,
         function=Functions.h,
         dfunction=Functions.dh,
-        d=Functions.df,
-        has_next_graphic=False,
-        x1_color='red',
-        x2_color='deeppink',
-        x_1_color='green'
+        d=Functions.df
     )
 
     plotter = Plotter()
