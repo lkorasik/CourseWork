@@ -1,6 +1,9 @@
+import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.patches as mpatches
 
 import lyapunov
+import regime_map
 from builder import Builder
 from functions import Functions
 from plotter import Plotter
@@ -133,3 +136,35 @@ if __name__ == "__main__":
     plotter.plot(source[4][0], source[4][1], ',', 'black')
     plotter.show(False)
     '''
+
+    # source = Builder.time_series(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=2.1,
+    #     b=0.48,
+    #     a=1,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series')
+    # plotter.plot(source[0], source[1], '*', 'steelblue')
+    # plotter.show(True)
+
+    # source = Builder.bifurcation(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
+    # plotter.show(False)
+
+    regime_map.build_regime_map(
+        x_start=0.2,
+        a_range=np.arange(0.001, 2, 0.001),
+        b_range=np.arange(0.001, 0.6, 0.001),
+        time_range=range(1, 10000 + 1),
+        f=Functions.f)

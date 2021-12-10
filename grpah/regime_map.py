@@ -1,51 +1,70 @@
-import numpy as np
-from matplotlib import pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
+import math
+from collections import Counter
 
+from matplotlib import pyplot as plt
+import matplotlib.patches as mpatches
+
+from builder import Builder
 from functions import Functions
 
 
-def build_regime_map(x_0, a_range, b_range, T_range):
-    endless = []
-    stable = []
-
-    draw_a = []
-    draw_b = []
-    draw_c = []
-    draw = []
-
-    min_ = 10
-    max_ = -10
-    for y in range(len(a_range)):
-        draw.append([])
-        for x in range(len(b_range)):
-            draw[y].append(0)
-
-    for y in range(len(a_range)):
-        a = a_range[y]
-        for x in range(len(b_range)):
-            b = b_range[x]
-            x0 = x_0
-            for t in T_range:
-                x_t = Functions.f(a, b, x0)
-                if abs(x_t) > 10000:
-                    endless.append([a, b])
-                x0 = x_t
-            print(a, b, x0)
-            draw_a.append(a)
-            draw_b.append(b)
-            draw_c.append(x0)
-            draw[y][x] = x0
-
-            if min_ > x0:
-                min_ = x0
-            if max_ < x0:
-                max_ = x0
+def build_regime_map(x_start, a_range, b_range, time_range, f):
+    result = dict()
+    newtoon = dict()
+    for a in a_range:
+        fk = round(a, 3)
+        result[fk] = dict()
+        newtoon[fk] = dict()
+        for b in b_range:
+            sc = round(b, 3)
+            result[fk][sc] = []
+            x0 = x_start
+            for t in time_range:
+                xt = f(a, b, x0)
+                x0 = xt
+            #for t in time_range:
+            for t in range(20):
+                xt = f(a, b, x0)
+                result[fk][sc].append(xt)
+                x0 = xt
 
     fig, ax = plt.subplots()
-    m = [x for x in draw_c if str(x) != 'nan']
-    print(max(m))
 
-    ax.set_title("Harvest of local farmers (in tons/year)")
-    fig.tight_layout()
+    res = dict()
+    for j in range(1, 10 + 1):
+        res[j] = []
+        for a in a_range:
+            fk = round(a, 3)
+            for b in b_range:
+                sc = round(b, 3)
+                data = result[fk][sc]
+                for i in range(len(data)):
+                    data[i] = round(data[i], 3)
+
+                di = Counter(data)
+                #print(fk, sc, Counter(data))
+                if len(di.keys()) == j:
+                    res[j].append([fk, sc])
+                    continue
+
+    colors = {1: 'red',
+              2: 'steelblue',
+              3: 'green',
+              4: 'lime',
+              5: 'darkviolet',
+              6: 'deeppink',
+              7: 'aqua',
+              8: 'navy',
+              9: 'pink',
+              10: 'brown',
+              11: 'gold',
+              12: 'dodgerblue'}
+
+    for i in res.keys():
+        for item in res[i]:
+            plt.scatter(item[0], item[1], color=colors[i], linewidths=0.01)
+
+    patches = [mpatches.Patch(color=colors[i], label=i) for i in colors.keys()]
+    ax.legend(handles=patches, loc="center left", bbox_to_anchor=(1, 0.5))
+
     plt.show()
