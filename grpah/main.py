@@ -162,9 +162,16 @@ if __name__ == "__main__":
     # plotter.scatter(source[0], source[1], '.', 'steelblue')
     # plotter.show(False)
 
-    regime_map.build_regime_map(
-        x_start=0.2,
-        a_range=np.arange(0.001, 2, 0.001),
-        b_range=np.arange(0.001, 0.6, 0.001),
-        time_range=range(1, 10000 + 1),
-        f=Functions.f)
+    # regime_map.build_regime_map(
+    #     x_start=0.2,
+    #     a_range=np.arange(0.01, 2, 0.01),
+    #     b_range=np.arange(0.01, 0.6, 0.01),
+    #     time_range=range(1, 10000 + 1),
+    #     f=Functions.f)
+
+    regime_map.find_all_roots(
+        x_range=np.arange(0, 1.5, 0.01),
+        a_range=np.arange(0.01, 2, 0.01),
+        b_range=np.arange(0.01, 0.6, 0.01),
+        precision=0.001
+    )

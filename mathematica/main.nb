@@ -10,14 +10,16 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4869,        119]
-NotebookOptionsPosition[      4521,        105]
-NotebookOutlinePosition[      4916,        121]
-CellTagsIndexPosition[      4873,        118]
+NotebookDataLength[      5820,        143]
+NotebookOptionsPosition[      5344,        126]
+NotebookOutlinePosition[      5740,        142]
+CellTagsIndexPosition[      5697,        139]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{"<<", 
   "\"\<C:\\\\files\\\\study\\\\Coursework\\\\mathematica\\\\utils.wl\>\""}], \
@@ -70,13 +72,16 @@ Cell[BoxData[{
      RowBox[{"filename", " ", "=", " ", 
       RowBox[{"filenames", "[", 
        RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"SaveGraphic", "[", 
+     RowBox[{"PlotAndSaveGraphic", "[", 
       RowBox[{
       "f", ",", " ", "g", ",", " ", "1", ",", " ", "b", ",", " ", 
        "filename"}], "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"Clear", "[", "b", "]"}], ";", "\[IndentingNewLine]", 
      RowBox[{"Clear", "[", "filename", "]"}], ";"}]}], "\[IndentingNewLine]", 
-   "]"}], ";"}]}], "Input",
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"Style", "[", 
+   RowBox[{"\"\<Success\>\"", ",", " ", "Red"}], "]"}], "]"}]}], "Input",
  CellChangeTimes->{{3.847626527925641*^9, 3.847626576373478*^9}, {
    3.8476267841330814`*^9, 3.8476268228940353`*^9}, {3.847626881549187*^9, 
    3.847626921293838*^9}, {3.847627228893498*^9, 3.847627265925763*^9}, {
@@ -99,12 +104,28 @@ Cell[BoxData[{
    3.847633810026148*^9, 3.847633815017514*^9}, {3.84763388120148*^9, 
    3.8476339250487986`*^9}, 3.847633957430277*^9, {3.8476340392306023`*^9, 
    3.8476340477561216`*^9}, {3.847634099483484*^9, 3.8476341243937044`*^9}, {
-   3.8476344549686995`*^9, 3.8476345691736755`*^9}, 
-   3.847634715154789*^9},ExpressionUUID->"28dfea0d-7235-4dd8-a66f-\
-6ec04ab6108b"]
+   3.8476344549686995`*^9, 3.8476345691736755`*^9}, 3.847634715154789*^9, {
+   3.8486784380010223`*^9, 3.848678451673069*^9}, {3.848678647112064*^9, 
+   3.8486786674156013`*^9}, {3.848678703848719*^9, 3.8486787290633273`*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+
+Cell[BoxData[
+ StyleBox["\<\"Success\"\>",
+  StripOnInput->False,
+  LineColor->RGBColor[1, 0, 0],
+  FrontFaceColor->RGBColor[1, 0, 0],
+  BackFaceColor->RGBColor[1, 0, 0],
+  GraphicsColor->RGBColor[1, 0, 0],
+  FontColor->RGBColor[1, 0, 0]]], "Print",
+ CellChangeTimes->{{3.848678655636962*^9, 3.848678669132971*^9}, {
+  3.8486787215956554`*^9, 3.8486787307897034`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[61]:=",ExpressionUUID->"77b15875-c010-409e-91a7-ad4394e0fa12"]
+}, Open  ]]
 },
-WindowSize->{960, 989},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{958, 988},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"489b6ed8-5655-4b5d-9542-69b439d49f3e"
@@ -120,7 +141,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 3959, 83, 434, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"]
+Cell[CellGroupData[{
+Cell[580, 22, 4272, 87, 468, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+Cell[4855, 111, 473, 12, 23, "Print",ExpressionUUID->"77b15875-c010-409e-91a7-ad4394e0fa12"]
+}, Open  ]]
 }
 ]
 *)

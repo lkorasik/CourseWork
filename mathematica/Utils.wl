@@ -1,9 +1,9 @@
 (* ::Package:: *)
 
 BeginPackage["Utils`"];
-SaveGraphic::usage = "Plot graphic and save it"
+PlotAndSaveGraphic::usage = "Plot graphic and save it"
 Begin["Public`"];
-	SaveGraphic[f_, g_, a_, b_, filename_] := (
+	PlotAndSaveGraphic[f_, g_, a_, b_, filename_] := (
 		result = Solve[f[a, x]==g[b, x], x, Reals];
 		answer = {};
 		If[result=={}, answer = {}, answer = {x, f[a, x]} /. result];
