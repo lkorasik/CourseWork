@@ -10,17 +10,24 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16517,        406]
-NotebookOptionsPosition[     15356,        378]
-NotebookOutlinePosition[     15803,        395]
-CellTagsIndexPosition[     15760,        392]
+NotebookDataLength[     14971,        354]
+NotebookOptionsPosition[     14193,        335]
+NotebookOutlinePosition[     14640,        352]
+CellTagsIndexPosition[     14597,        349]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
- RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]], "Input",
- CellLabel->"In[1]:=",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:041e\:0447\:0438\:0441\:0442\:043a\:0430", " ", 
+    "\:0438\:043c\:0435\:043d"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.848713929309785*^9, 3.8487139368368835`*^9}},
+ CellLabel->
+  "In[140]:=",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
 
 Cell[BoxData[
  RowBox[{
@@ -36,8 +43,6 @@ Cell[BoxData[
   3.8486815623620067`*^9, 3.8486815789429083`*^9}, {3.8486816327933846`*^9, 
   3.8486816367823143`*^9}, {3.8487045377181225`*^9, 3.848704545365362*^9}},
  CellLabel->"In[2]:=",ExpressionUUID->"9224904f-ceac-4794-9243-3a9d4252aed8"],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -148,22 +153,6 @@ Cell[BoxData[
  CellLabel->"In[3]:=",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
 
 Cell[BoxData[
- StyleBox["\<\"Success\"\>",
-  StripOnInput->False,
-  LineColor->RGBColor[1, 0, 0],
-  FrontFaceColor->RGBColor[1, 0, 0],
-  BackFaceColor->RGBColor[1, 0, 0],
-  GraphicsColor->RGBColor[1, 0, 0],
-  FontColor->RGBColor[1, 0, 0]]], "Print",
- CellChangeTimes->{3.848708544926073*^9},
- CellLabel->
-  "During evaluation of \
-In[3]:=",ExpressionUUID->"9d9020d9-7dfd-4460-bd1d-7dd97783ba90"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{
   RowBox[{"(*", 
    RowBox[{
@@ -262,23 +251,6 @@ Cell[BoxData[
  CellLabel->"In[98]:=",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
 
 Cell[BoxData[
- StyleBox["\<\"Success\"\>",
-  StripOnInput->False,
-  LineColor->RGBColor[1, 0, 0],
-  FrontFaceColor->RGBColor[1, 0, 0],
-  BackFaceColor->RGBColor[1, 0, 0],
-  GraphicsColor->RGBColor[1, 0, 0],
-  FontColor->RGBColor[1, 0, 0]]], "Print",
- CellChangeTimes->{
-  3.848708551341242*^9, {3.8487085987669754`*^9, 3.848708633851982*^9}},
- CellLabel->
-  "During evaluation of \
-In[98]:=",ExpressionUUID->"fe3ca625-9458-4c7e-85cc-d2af3e05320a"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{
   RowBox[{"(*", 
    RowBox[{
@@ -359,22 +331,7 @@ Cell[BoxData[
    3.848706939585328*^9, 3.8487070091439466`*^9}, {3.8487072233443136`*^9, 
    3.848707230367341*^9}, 3.848708569116553*^9},
  CellLabel->
-  "In[126]:=",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
-
-Cell[BoxData[
- StyleBox["\<\"Success\"\>",
-  StripOnInput->False,
-  LineColor->RGBColor[1, 0, 0],
-  FrontFaceColor->RGBColor[1, 0, 0],
-  BackFaceColor->RGBColor[1, 0, 0],
-  GraphicsColor->RGBColor[1, 0, 0],
-  FontColor->RGBColor[1, 0, 0]]], "Print",
- CellChangeTimes->{3.8487085604765034`*^9, 3.848708674719659*^9, 
-  3.848708788713007*^9},
- CellLabel->
-  "During evaluation of \
-In[126]:=",ExpressionUUID->"9f4ce3cb-7dcb-4354-a0a1-c7f29117d19d"]
-}, Open  ]]
+  "In[126]:=",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"]
 },
 WindowSize->{958, 988},
 WindowMargins->{{-7, Automatic}, {Automatic, 0}},
@@ -394,20 +351,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 151, 2, 44, "Input",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
-Cell[712, 24, 641, 13, 50, "Input",ExpressionUUID->"9224904f-ceac-4794-9243-3a9d4252aed8"],
-Cell[CellGroupData[{
-Cell[1378, 41, 5110, 106, 468, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
-Cell[6491, 149, 395, 11, 23, "Print",ExpressionUUID->"9d9020d9-7dfd-4460-bd1d-7dd97783ba90"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6923, 165, 4316, 96, 436, "Input",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
-Cell[11242, 263, 447, 12, 23, "Print",ExpressionUUID->"fe3ca625-9458-4c7e-85cc-d2af3e05320a"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11726, 280, 3165, 81, 436, "Input",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
-Cell[14894, 363, 446, 12, 23, "Print",ExpressionUUID->"9f4ce3cb-7dcb-4354-a0a1-c7f29117d19d"]
-}, Open  ]]
+Cell[558, 20, 387, 9, 64, "Input",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
+Cell[948, 31, 641, 13, 50, "Input",ExpressionUUID->"9224904f-ceac-4794-9243-3a9d4252aed8"],
+Cell[1592, 46, 5110, 106, 468, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+Cell[6705, 154, 4316, 96, 436, "Input",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
+Cell[11024, 252, 3165, 81, 436, "Input",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"]
 }
 ]
 *)
