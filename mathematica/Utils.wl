@@ -44,9 +44,3 @@ Begin["Public`"];
 	)
 End[];
 EndPackage[];
-
-
-
-
-
-
