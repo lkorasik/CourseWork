@@ -6,38 +6,38 @@ import lyapunov
 import regime_map
 from builder import Builder
 from functions import Functions
+from new.builder.bifurcation import bifurcation
+from new.builder.time_series import time_series
 from plotter import Plotter
 
 if __name__ == "__main__":
 
-    '''
-    source = Builder.time_series(
-        time_range=range(1, 100 + 1),
-        x_start=2.1,
-        b=0.48,
-        a=1,
-        skip=False
-    )
+    # source = time_series(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=2.1,
+    #     b=0.48,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series')
+    # plotter.plot(source[0], source[1], '*', 'steelblue')
+    # plotter.show(False)
 
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    plotter.plot(source[0], source[1], '*', 'steelblue')
-    plotter.show(False)
-    '''
-
-    '''
-    source = Builder.bifurcation(
+    source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.001),
-        a=1
+        a=1,
+        f=Functions.f
     )
 
     plotter = Plotter()
     plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
     plotter.scatter(source[0], source[1], '.', 'steelblue')
     plotter.show(False)
-    '''
 
     '''
     source = Builder.bifurcation_with_c(
@@ -169,9 +169,11 @@ if __name__ == "__main__":
     #     time_range=range(1, 10000 + 1),
     #     f=Functions.f)
 
+    '''
     regime_map.find_all_roots(
         x_range=np.arange(0, 1.5, 0.01),
         a_range=np.arange(0.01, 2, 0.01),
         b_range=np.arange(0.01, 0.6, 0.01),
         precision=0.001
     )
+    '''
