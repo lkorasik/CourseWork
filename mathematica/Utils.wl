@@ -31,7 +31,7 @@ Begin["Public`"];
 			TimeSeries[xs, List[timeRangeList]], 
 			PlotRange -> {-0.1, 0.41}
 		];
-		Export[filename, fig, OverwriteTarget -> True];
+		Export[filename, fig, OverwriteTarget -> True, ImageResolution->100];
 	);
 	
 	(*\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438*)
@@ -40,7 +40,11 @@ Begin["Public`"];
 		fig = ListPlot[src, 
 			ScalingFunctions -> {"Reciprocal", "Log"}
 		];
-		Export[filename, fig, OverwriteTarget -> True];
+		(*fig = Show[fig, ImageSize -> 1000];*)
+		Export[filename, fig, OverwriteTarget -> True, ImageResolution->100];
 	)
 End[];
 EndPackage[];
+
+
+

@@ -26,20 +26,19 @@ if __name__ == "__main__":
     # plotter.plot(source[0], source[1], '*', 'steelblue')
     # plotter.show(False)
 
-    source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        a=1,
-        f=Functions.f
-    )
+    # source = bifurcation(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1,
+    #     f=Functions.f
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
+    # plotter.show(False)
 
-    plotter = Plotter()
-    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    plotter.scatter(source[0], source[1], '.', 'steelblue')
-    plotter.show(False)
-
-    '''
     source = Builder.bifurcation_with_c(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -56,7 +55,6 @@ if __name__ == "__main__":
     plotter.plot(source[1][0], source[1][1], ',', 'red')
     plotter.plot(source[2][0], source[2][1], ',', 'red')
     plotter.show(False)
-    '''
 
     '''
     source = lyapunov.Lyapunov.calc(
