@@ -1,10 +1,11 @@
 (* ::Package:: *)
 
 BeginPackage["Utils`"];
-PlotAndSaveSolutionGraphic::usage = "Plot graphic of equation solution and save it"
-PlotAndSaveTimeSeries::usage = "Plot and save time range grpahic"
-PlotAndSaveBifurcation::usage = "Plot and save bifurcation graphic"
-PlotAndSaveBifurcationWithChaos::usage = "Plot and save bifurcation graphic with chaos"
+	PlotAndSaveSolutionGraphic::usage = "Plot graphic of equation solution and save it"
+	PlotAndSaveTimeSeries::usage = "Plot and save time range grpahic"
+	PlotAndSaveBifurcation::usage = "Plot and save bifurcation graphic"
+	PlotAndSaveBifurcationWithChaos::usage = "Plot and save bifurcation graphic with chaos"
+
 Begin["Public`"];
 	(*\:0424\:0443\:043d\:043a\:0446\:0438\:044f \:0434\:043b\:044f \:043e\:0442\:0440\:0438\:0441\:043e\:0432\:043a\:0438 \:0433\:0440\:0430\:0444\:0438\:043a\:043e\:0432 \:0444\:0443\:043d\:043a\:0446\:0438\:0439 y=ax \:0438 y=(b+x)^6*)
 	PlotAndSaveSolutionGraphic[f_, g_, a_, b_, filename_] := (
