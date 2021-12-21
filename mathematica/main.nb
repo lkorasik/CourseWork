@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20314,        491]
-NotebookOptionsPosition[     19409,        470]
-NotebookOutlinePosition[     19885,        488]
-CellTagsIndexPosition[     19842,        485]
+NotebookDataLength[     20498,        498]
+NotebookOptionsPosition[     19594,        477]
+NotebookOutlinePosition[     20069,        495]
+CellTagsIndexPosition[     20026,        492]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -89,8 +89,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"SetDirectory", "[", 
      RowBox[{
-      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<images\\\\\>\""}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"filenames", " ", "=", " ", 
      RowBox[{"{", "\[IndentingNewLine]", 
@@ -154,9 +155,9 @@ Cell[BoxData[
    3.8486786674156013`*^9}, {3.848678703848719*^9, 3.8486787290633273`*^9}, {
    3.848680471611449*^9, 3.848680483300231*^9}, 3.848680516228642*^9, {
    3.8486813294524913`*^9, 3.8486813302576704`*^9}, 3.84870420700434*^9, {
-   3.848704456621952*^9, 3.848704515421767*^9}},
- CellLabel->
-  "In[384]:=",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+   3.848704456621952*^9, 3.848704515421767*^9}, {3.849064036571472*^9, 
+   3.849064040236238*^9}},ExpressionUUID->"28dfea0d-7235-4dd8-a66f-\
+6ec04ab6108b"],
 
 Cell[BoxData[
  RowBox[{
@@ -222,8 +223,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"SetDirectory", "[", 
      RowBox[{
-      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<images\\\\\>\""}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"PlotAndSaveTimeSeries", "[", 
      RowBox[{
@@ -253,9 +255,10 @@ Cell[BoxData[
    3.848682167121615*^9}, {3.8487045221131177`*^9, 3.8487045327761087`*^9}, {
    3.848707406127352*^9, 3.848707425403761*^9}, {3.8487075201832013`*^9, 
    3.8487075317745576`*^9}, {3.8487075787990427`*^9, 3.8487076280713315`*^9}, 
-   3.8487076590721807`*^9, {3.8487085916920223`*^9, 3.8487086324358034`*^9}},
- CellLabel->
-  "In[391]:=",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
+   3.8487076590721807`*^9, {3.8487085916920223`*^9, 3.8487086324358034`*^9}, {
+   3.849064050462338*^9, 
+   3.8490640512508554`*^9}},ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-\
+30e8bf4a0456"],
 
 Cell[BoxData[
  RowBox[{
@@ -318,8 +321,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"SetDirectory", "[", 
      RowBox[{
-      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<images\\\\\>\""}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"PlotAndSaveBifurcation", "[", 
      RowBox[{
@@ -336,9 +340,10 @@ Cell[BoxData[
    3.8487063446872697`*^9}, {3.8487063854990206`*^9, 3.8487063980588617`*^9}, 
    3.8487065646834755`*^9, {3.848706777943246*^9, 3.8487067943854446`*^9}, {
    3.848706939585328*^9, 3.8487070091439466`*^9}, {3.8487072233443136`*^9, 
-   3.848707230367341*^9}, 3.848708569116553*^9, 3.8487224510177135`*^9},
- CellLabel->
-  "In[405]:=",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
+   3.848707230367341*^9}, 3.848708569116553*^9, 3.8487224510177135`*^9, {
+   3.8490640551728053`*^9, 
+   3.84906405572333*^9}},ExpressionUUID->"cd2558ae-827d-48a0-a995-\
+f158392a9464"],
 
 Cell[BoxData[
  RowBox[{
@@ -445,8 +450,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"SetDirectory", "[", 
      RowBox[{
-      RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<images\\\\\>\""}], 
-     "]"}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"PlotAndSaveBifurcationWithChaos", "[", 
      RowBox[{
@@ -464,12 +470,13 @@ Cell[BoxData[
    3.8490534289707994`*^9, 3.8490534315978956`*^9}, {3.8490535116549644`*^9, 
    3.8490536727863884`*^9}, {3.849053705811504*^9, 3.849053723469525*^9}, {
    3.849053950862361*^9, 3.8490539725034614`*^9}, {3.8490540883763504`*^9, 
-   3.849054095429125*^9}, {3.8490593899627314`*^9, 3.849059391571087*^9}},
- CellLabel->
-  "In[419]:=",ExpressionUUID->"059ba108-dcfc-4f8e-b5d6-c4da92c79d12"]
+   3.849054095429125*^9}, {3.8490593899627314`*^9, 3.849059391571087*^9}, {
+   3.8490640587875376`*^9, 
+   3.849064059167264*^9}},ExpressionUUID->"059ba108-dcfc-4f8e-b5d6-\
+c4da92c79d12"]
 },
-WindowSize->{958, 988},
-WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+WindowSize->{958, 981},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TaggingRules->Association["TryRealOnly" -> False],
 Magnification:>1. Inherited,
 FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
@@ -489,10 +496,10 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 387, 9, 64, "Input",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
 Cell[948, 31, 924, 18, 50, "Input",ExpressionUUID->"9224904f-ceac-4794-9243-3a9d4252aed8"],
-Cell[1875, 51, 5115, 107, 468, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
-Cell[6993, 160, 4320, 97, 436, "Input",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
-Cell[11316, 259, 3189, 81, 436, "Input",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
-Cell[14508, 342, 4897, 126, 612, "Input",ExpressionUUID->"059ba108-dcfc-4f8e-b5d6-c4da92c79d12"]
+Cell[1875, 51, 5157, 108, 468, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+Cell[7035, 161, 4368, 99, 436, "Input",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
+Cell[11406, 262, 3236, 83, 436, "Input",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
+Cell[14645, 347, 4945, 128, 612, "Input",ExpressionUUID->"059ba108-dcfc-4f8e-b5d6-c4da92c79d12"]
 }
 ]
 *)
