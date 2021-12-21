@@ -53,7 +53,11 @@
 
     \section*{Задача}
 
-        В рамках курсовой работы я рассматриваю популяцонную модель Хасселя. Для анализа этой модели мне необходимо было построить графики функций, бифуркации и временного ряда.
+        В рамках курсовой работы я рассматриваю популяцонную модель Хасселя. Математически она записывается вот так:
+        
+        \[x_{t+1} = \frac{\alpha x_t^2}{(\beta + x_t)^6}\]
+
+        Для анализа этой модели мне необходимо было построить графики функций, бифуркации и временного ряда. Поэтому я решил использовать знания, которые получил на курсе прикладных математических пакетов.
 
     \section*{Реализация}
 
@@ -79,37 +83,37 @@
 
         Здесь представлены результаты работы данной программы:
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=\textwidth]{images/one_intersection.jpg}
             \caption{Одна точка пересечения}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=\textwidth]{images/two_intersection.jpg}
             \caption{Две точки пересечения}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=\textwidth]{images/zero_intersection.jpg}
             \caption{Нет точек пересечения}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=\textwidth]{images/time_series.jpg}
             \caption{Временной ряд}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=\textwidth]{images/bifurcation.jpg}
             \caption{График бифуркации}
         \end{figure}
 
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \includegraphics[width=\textwidth]{images/bifurcation_chaos.jpg}
             \caption{График бифуркации с границами хаоса}
