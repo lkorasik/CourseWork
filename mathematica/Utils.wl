@@ -1,10 +1,10 @@
 (* ::Package:: *)
 
 BeginPackage["Utils`"];
-	PlotAndSaveSolutionGraphic::usage = "Plot graphic of equation solution and save it"
-	PlotAndSaveTimeSeries::usage = "Plot and save time range grpahic"
-	PlotAndSaveBifurcation::usage = "Plot and save bifurcation graphic"
-	PlotAndSaveBifurcationWithChaos::usage = "Plot and save bifurcation graphic with chaos"
+	PlotAndSaveSolutionGraphic::usage = "\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0438 \:0441\:043e\:0445\:0440\:0430\:043d\:0438\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0444\:0443\:043d\:043a\:0446\:0438\:0439"
+	PlotAndSaveTimeSeries::usage = "\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0438 \:0441\:043e\:0445\:0440\:0430\:043d\:0438\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0432\:0440\:0435\:043c\:0435\:043d\:043d\:043e\:0433\:043e \:0440\:044f\:0434\:0430"
+	PlotAndSaveBifurcation::usage = "\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0438 \:0441\:043e\:0445\:0440\:0430\:043d\:0438\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438"
+	PlotAndSaveBifurcationWithChaos::usage = "\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0438 \:0441\:043e\:0445\:0440\:0430\:043d\:0438\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438 \:0441 \:0433\:0440\:0430\:043d\:0438\:0446\:0430\:043c\:0438 \:0445\:0430\:043e\:0441\:0430"
 
 Begin["Public`"];
 	(*\:0421\:043e\:0445\:0440\:0430\:043d\:0438\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0432 \:0444\:0430\:0439\:043b*)
@@ -52,7 +52,7 @@ Begin["Public`"];
 			ScalingFunctions -> {"Linear", "Log"},
 			ImageSize -> Large,
 			PlotMarkers -> {Automatic, Tiny},
-			AxesLabel -> {Style["t", 20], Style["x", 20]}
+			AxesLabel -> {Style["\[Beta]", 20], Style["x", 20]}
 		];
 		Private$SaveGraphic[filename, fig];
 	)
@@ -65,7 +65,7 @@ Begin["Public`"];
 			ScalingFunctions -> {"Linear", "Log"},
 			ImageSize -> Large,
 			PlotMarkers -> {Automatic, Tiny},
-			AxesLabel -> {Style["t", 20], Style["x", 20]}
+			AxesLabel -> {Style["\[Beta]", 20], Style["x", 20]}
 		];
 		src = Transpose[{line1X, line1Y}];
 		fig2 = ListPlot[
@@ -73,7 +73,7 @@ Begin["Public`"];
 			ScalingFunctions -> {"Linear", "Log"},
 			ImageSize -> Large,
 			PlotMarkers -> {Automatic, Tiny},
-			AxesLabel -> {Style["t", 20], Style["x", 20]},
+			AxesLabel -> {Style["\[Beta]", 20], Style["x", 20]},
 			PlotStyle->Red
 		];
 		src = Transpose[{line2X, line2Y}];
@@ -82,7 +82,7 @@ Begin["Public`"];
 			ScalingFunctions -> {"Linear", "Log"},
 			ImageSize -> Large,
 			PlotMarkers -> {Automatic, Tiny},
-			AxesLabel -> {Style["t", 20], Style["x", 20]},
+			AxesLabel -> {Style["\[Beta]", 20], Style["x", 20]},
 			PlotStyle->Red
 		];
 		fig = Show[fig1, fig2, fig3];
