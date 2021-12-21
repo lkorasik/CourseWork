@@ -7,6 +7,11 @@ BeginPackage["Utils`"];
 	PlotAndSaveBifurcationWithChaos::usage = "Plot and save bifurcation graphic with chaos"
 
 Begin["Public`"];
+	(*\:0421\:043e\:0445\:0440\:0430\:043d\:0438\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0432 \:0444\:0430\:0439\:043b*)
+	Private$SaveGraphic[filename_, figure_] := (
+		Export[filename, figure, OverwriteTarget -> True];
+	);
+	
 	(*\:0424\:0443\:043d\:043a\:0446\:0438\:044f \:0434\:043b\:044f \:043e\:0442\:0440\:0438\:0441\:043e\:0432\:043a\:0438 \:0433\:0440\:0430\:0444\:0438\:043a\:043e\:0432 \:0444\:0443\:043d\:043a\:0446\:0438\:0439 y=ax \:0438 y=(b+x)^6*)
 	PlotAndSaveSolutionGraphic[f_, g_, a_, b_, filename_] := (
 		result = Solve[f[a, x]==g[b, x], x, Reals];
@@ -23,7 +28,7 @@ Begin["Public`"];
 			TicksStyle -> Directive[FontSize -> 16],
 			Epilog -> {Red, PointSize -> Large, Point[answer]}
 		];
-		Export[filename, fig, OverwriteTarget -> True];
+		Private$SaveGraphic[filename, fig];
 	);
 	
 	(*\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0432\:0440\:0435\:043c\:0435\:043d\:043d\:043e\:0433\:043e \:0440\:044f\:0434\:0430*)
@@ -36,7 +41,7 @@ Begin["Public`"];
 			AxesLabel -> {Style["t", 20], Style["x", 20]},
 			TicksStyle -> Directive[FontSize -> 16]
 		];
-		Export[filename, fig, OverwriteTarget -> True];
+		Private$SaveGraphic[filename, fig];
 	);
 	
 	(*\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438*)
@@ -49,7 +54,7 @@ Begin["Public`"];
 			PlotMarkers -> {Automatic, Tiny},
 			AxesLabel -> {Style["t", 20], Style["x", 20]}
 		];
-		Export[filename, fig, OverwriteTarget -> True];
+		Private$SaveGraphic[filename, fig];
 	)
 	
 	(*\:041d\:0430\:0440\:0438\:0441\:043e\:0432\:0430\:0442\:044c \:0433\:0440\:0430\:0444\:0438\:043a \:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438*)
@@ -81,7 +86,7 @@ Begin["Public`"];
 			PlotStyle->Red
 		];
 		fig = Show[fig1, fig2, fig3];
-		Export[filename, fig, OverwriteTarget -> True];
+		Private$SaveGraphic[filename, fig];
 	)
 End[];
 EndPackage[];
