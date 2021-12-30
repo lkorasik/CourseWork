@@ -20,7 +20,7 @@ Begin["Public`"];
 		fig = Plot[
 			{f[a,x], g[b, x]}, 
 			{x, -1, 1}, 
-			PlotLegends -> {"\[Alpha]*x", "(\[Beta]+x)^6"},
+			PlotLegends -> {"\[Alpha]x", "(\[Beta]+x)^6"},
 			PlotRange -> {{-0.02, 0.21}, {-0.02, 0.21}},
 			PlotStyle -> {Darker[Green], Blue},
 			ImageSize -> Large,
