@@ -19,24 +19,24 @@
 
         \[\alpha x = (\beta + x)^6\]
 
-        Теперь можно построить графики функций \(y = \alpha x\) и \(y = (\beta + x)^6\). В зависимости от значений параметра \(\beta\) уравнение может иметь ноль, одну или две общие точки. На рисунках (\ref{mainTouch}), (\ref{mainIntersect}), (\ref{mainOver}) можно увидеть все возможные варианты.
-
-        \begin{figure}
-            \centering
-            \includegraphics[width=\textwidth]{images/main_touch.jpg}
-
-            \captionsetup{justification=centering}
-            \caption{Синяя линия --- \(\frac{\alpha x^2}{(\beta + x)^6}\); Зеленая линия --- \(\frac{\alpha x^2}{(\beta + x)^6}; \beta \approx 0.582355932\). Два корня}
-            \label{mainTouch}
-        \end{figure}
+        Теперь можно построить графики функций \(y = \alpha x\) и \(y = (\beta + x)^6\). В зависимости от значений параметра \(\beta\) уравнение может иметь ноль, одну или две общие точки. На рисунках (\ref{mainIntersect}), (\ref{mainTouch}), (\ref{mainOver}) можно увидеть все возможные варианты.
         
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{images/main_intersect.jpg}
 
             \captionsetup{justification=centering}
-            \caption{Синяя линия --- \(\frac{\alpha x^2}{(\beta + x)^6}\); Зеленая линия --- \(\frac{\alpha x^2}{(\beta + x)^6}; \beta < 0.582355932\). Три корня}
+            \caption{\(\beta < 0.582355932\)}
             \label{mainIntersect}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{images/main_touch.jpg}
+
+            \captionsetup{justification=centering}
+            \caption{\(\beta \approx 0.582355932\)}
+            \label{mainTouch}
         \end{figure}
 
         \begin{figure}
@@ -44,11 +44,17 @@
             \includegraphics[width=\textwidth]{images/main_over.jpg}
 
             \captionsetup{justification=centering}
-            \caption{Синяя линия --- \(\frac{\alpha x^2}{(\beta + x)^6}\); Зеленая линия --- \(\frac{\alpha x^2}{(\beta + x)^6}; \beta > 0.582355932\). Три корня}
+            \caption{\(\beta > 0.582355932\)}
             \label{mainOver}
         \end{figure}
 
+        Аналитически это уравнение не решается. Для нахождения корней я буду использовать метод Ньютона. В зависимости от конкретных значений параметра \(\beta\) данное уравнение может иметь от одного до трех корней.
+
     \subsection{Временные ряды}
+
+        Для анализа системы можно использовать временные ряды. Временной ряд позволяет наглядно показать как с течением времени изменяется численность популяции.
+
+        Например, на графике (\ref{timeSeriesX=0.02b=0.55}) мы видим, что при начальных значениях \(x = 0.02\) и \(\beta = 0.55\) временной ряд сходятся к нулю. В биологическом смысле это означает, что популяция с теченеим времени вымирает.
     
         \begin{figure}[h!]
             \centering
@@ -58,6 +64,10 @@
             \caption{\(x_0 = 0.02; \beta = 0.55\)}
             \label{timeSeriesX=0.02b=0.55}
         \end{figure}
+
+        На графике (\ref{timeSeriesX=0.05b=0.48}) видно, что при начальных условиях \(x = 0.05, \beta = 0.48\) популяция очень быстро растет до некоторого предела. После достижения данного предела начинается процесс стабилизации, т.е. значения стремятся к устойчивому равновесию \(x \approx 0.3656\). Это значит, что популяция с течением времени стабилизируется и перестанет расти или вымирать.
+
+        Аналогичную ситуацию мы можем наблюдать на графике (\ref{timeSeriesX=0.05b=0.55}).
     
         \begin{figure}[h!]
             \centering
@@ -76,32 +86,11 @@
             \caption{\(x_0 = 0.05; \beta = 0.55\)}
             \label{timeSeriesX=0.05b=0.55}
         \end{figure}
-    
-        \begin{figure}[h!]
-            \centering
-            \includegraphics[width=0.8\textwidth]{Time_series._x_2.1_b_0.48.jpeg}
 
-            \captionsetup{justification=centering}
-            \caption{\(x_0 = 2.1; \beta = 0.48\)}
-            \label{timeSeriesX=2.1b=0.48}
-        \end{figure}
+    \subsection{График бифуркации}
 
-        \par\noindent\rule{\textwidth}{1pt}
+    \subsection{Лестница Ламери}
 
-        Аналитически это уравнение не решается. Для нахождения корней будем использовать метод Ньютона.
+    \subsection{Показатели Ляпунова}
 
-        В зависимости от конкретных значений параметра \(\beta\) данное уравнение может иметь от одного до трех корней.
-    
-        *графики какие-нибудь*
-
-        Для того, чтобы найти корни с помощью метода Ньютона рассмотрим уравнение 
-    
-        \[x - \frac{\alpha x^2}{(\beta + x)^6} = 0\]
-
-        При \(\beta \approx 0.582355932\) уравнение имеет два корня: \(x_0 = 0\) и \(\bar{x}_1 \approx 0.116471186636\). При \(\beta < 0.582355932\) - три корня,а при \(\beta > 0.582355932\) - один корень \(x_0 = 0\).
-    
-        Корень == точке равновесия.
-
-        Можно построить временные ряды.
-
-        Наверное, еще какие-нибудь ряды надо вставить\dots Только что надо показать на них?
+    \subsection{Недоделанная карта режимов}

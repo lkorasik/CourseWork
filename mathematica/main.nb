@@ -10,73 +10,122 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4869,        119]
-NotebookOptionsPosition[      4521,        105]
-NotebookOutlinePosition[      4916,        121]
-CellTagsIndexPosition[      4873,        118]
+NotebookDataLength[     20581,        494]
+NotebookOptionsPosition[     19663,        473]
+NotebookOutlinePosition[     20152,        491]
+CellTagsIndexPosition[     20109,        488]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[{
- RowBox[{"<<", 
-  "\"\<C:\\\\files\\\\study\\\\Coursework\\\\mathematica\\\\utils.wl\>\""}], \
-"\[IndentingNewLine]", 
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"f", "[", 
-    RowBox[{"a_", ",", " ", "x_"}], "]"}], " ", "=", " ", 
-   RowBox[{"a", "*", "x"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"g", "[", 
-    RowBox[{"b_", ",", " ", "x_"}], "]"}], " ", "=", " ", 
+  RowBox[{"(*", 
    RowBox[{
-    RowBox[{"(", 
-     RowBox[{"b", "+", "x"}], ")"}], "^", "6"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+   "\:041e\:0447\:0438\:0441\:0442\:043a\:0430", " ", 
+    "\:0438\:043c\:0435\:043d"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}]}]], "Input",
+ CellChangeTimes->{{3.848713929309785*^9, 3.8487139368368835`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
+
+Cell[BoxData[
  RowBox[{
-  RowBox[{"bRange", " ", "=", " ", 
-   RowBox[{"{", 
-    RowBox[{"0.57", ",", " ", "0.582355932", ",", " ", "0.59"}], "}"}]}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"SetDirectory", "[", 
+  RowBox[{"(*", 
    RowBox[{
-    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<images\\\\\>\""}], 
-   "]"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
+   "\:041f\:043e\:0434\:043a\:043b\:044e\:0447\:0435\:043d\:0438\:0435", " ", 
+    "\:0441\:0430\:043c\:043e\:043f\:0438\:0441\:043d\:043e\:0439", " ", 
+    "\:0431\:0438\:0431\:043b\:0438\:043e\:0442\:0435\:043a\:0438", " ", 
+    "\:0441", " ", "\:043f\:043e\:043b\:0435\:0437\:043d\:044b\:043c\:0438", 
+    " ", "\:0444\:0443\:043d\:043a\:0446\:0438\:044f\:043c\:0438"}], "*)"}], 
+  "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"filenames", " ", "=", " ", 
-    RowBox[{"{", "\[IndentingNewLine]", 
-     RowBox[{
-     "\"\<two_intersection.jpg\>\"", ",", " ", "\[IndentingNewLine]", 
-      "\"\<one_intersection.jpg\>\"", ",", " ", "\[IndentingNewLine]", 
-      "\"\<zero_intersection.jpg\>\""}], "\[IndentingNewLine]", "}"}]}], 
-   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+  "<<", "\"\<C:\\\\files\\\\study\\\\Coursework\\\\mathematica\\\\utils.wl\>\"\
+"}]}]], "Input",
+ CellChangeTimes->{{3.848681316419547*^9, 3.84868134390422*^9}, {
+  3.8486815623620067`*^9, 3.8486815789429083`*^9}, {3.8486816327933846`*^9, 
+  3.8486816367823143`*^9}, {3.8487045377181225`*^9, 3.848704545365362*^9}, {
+  3.8487197492509756`*^9, 3.8487197643567743`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"9224904f-ceac-4794-9243-3a9d4252aed8"],
+
+Cell[BoxData[
  RowBox[{
-  RowBox[{"For", "[", 
+  RowBox[{"(*", 
    RowBox[{
-    RowBox[{"i", "=", "1"}], ",", " ", 
-    RowBox[{"i", " ", "<", " ", 
-     RowBox[{
-      RowBox[{"Length", "[", "bRange", "]"}], " ", "+", " ", "1"}]}], ",", 
-    " ", 
-    RowBox[{"i", "++"}], ",", " ", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"b", " ", "=", " ", 
-      RowBox[{"bRange", "[", 
-       RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"filename", " ", "=", " ", 
-      RowBox[{"filenames", "[", 
-       RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"SaveGraphic", "[", 
+    "\:0413\:0435\:043d\:0435\:0440\:0430\:0446\:0438\:044f", " ", 
+     "\:0433\:0440\:0430\:0444\:0438\:043a\:043e\:0432", " ", 
+     "\:0434\:043b\:044f", " ", "y"}], "=", 
+    RowBox[{
+     RowBox[{"ax", " ", "\:0438", " ", "y"}], "=", 
+     RowBox[{
       RowBox[{
-      "f", ",", " ", "g", ",", " ", "1", ",", " ", "b", ",", " ", 
-       "filename"}], "]"}], ";", "\[IndentingNewLine]", 
-     RowBox[{"Clear", "[", "b", "]"}], ";", "\[IndentingNewLine]", 
-     RowBox[{"Clear", "[", "filename", "]"}], ";"}]}], "\[IndentingNewLine]", 
-   "]"}], ";"}]}], "Input",
+       RowBox[{"(", 
+        RowBox[{"b", "+", "x"}], ")"}], "^", "6."}], " ", 
+      "\:0412\:0441\:0435", " ", "\:0442\:0440\:0438", " ", 
+      "\:0432\:043e\:0437\:043c\:043e\:0436\:043d\:044b\:0445", " ", 
+      "\:0441\:043b\:0443\:0447\:0430\:044f"}]}]}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"a_", ",", " ", "x_"}], "]"}], " ", "=", " ", 
+     RowBox[{"a", "*", "x"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"g", "[", 
+      RowBox[{"b_", ",", " ", "x_"}], "]"}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "+", "x"}], ")"}], "^", "6"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bRange", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"0.57", ",", " ", "0.582355932", ",", " ", "0.59"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filenames", " ", "=", " ", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<two_intersection.jpg\>\"", ",", " ", "\[IndentingNewLine]", 
+       "\"\<one_intersection.jpg\>\"", ",", " ", "\[IndentingNewLine]", 
+       "\"\<zero_intersection.jpg\>\""}], "\[IndentingNewLine]", "}"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", " ", 
+      RowBox[{"i", " ", "<", " ", 
+       RowBox[{
+        RowBox[{"Length", "[", "bRange", "]"}], " ", "+", " ", "1"}]}], ",", 
+      " ", 
+      RowBox[{"i", "++"}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"b", " ", "=", " ", 
+        RowBox[{"bRange", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"filename", " ", "=", " ", 
+        RowBox[{"filenames", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"PlotAndSaveSolutionGraphic", "[", 
+        RowBox[{
+        "f", ",", " ", "g", ",", " ", "1", ",", " ", "b", ",", " ", 
+         "filename"}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Clear", "[", "b", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Clear", "[", "filename", "]"}], ";"}]}], 
+     "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{"\"\<Success\>\"", ",", " ", "Red"}], "]"}], "]"}], 
+    ";"}]}]}]], "Input",
  CellChangeTimes->{{3.847626527925641*^9, 3.847626576373478*^9}, {
    3.8476267841330814`*^9, 3.8476268228940353`*^9}, {3.847626881549187*^9, 
    3.847626921293838*^9}, {3.847627228893498*^9, 3.847627265925763*^9}, {
@@ -99,12 +148,333 @@ Cell[BoxData[{
    3.847633810026148*^9, 3.847633815017514*^9}, {3.84763388120148*^9, 
    3.8476339250487986`*^9}, 3.847633957430277*^9, {3.8476340392306023`*^9, 
    3.8476340477561216`*^9}, {3.847634099483484*^9, 3.8476341243937044`*^9}, {
-   3.8476344549686995`*^9, 3.8476345691736755`*^9}, 
-   3.847634715154789*^9},ExpressionUUID->"28dfea0d-7235-4dd8-a66f-\
-6ec04ab6108b"]
+   3.8476344549686995`*^9, 3.8476345691736755`*^9}, 3.847634715154789*^9, {
+   3.8486784380010223`*^9, 3.848678451673069*^9}, {3.848678647112064*^9, 
+   3.8486786674156013`*^9}, {3.848678703848719*^9, 3.8486787290633273`*^9}, {
+   3.848680471611449*^9, 3.848680483300231*^9}, 3.848680516228642*^9, {
+   3.8486813294524913`*^9, 3.8486813302576704`*^9}, 3.84870420700434*^9, {
+   3.848704456621952*^9, 3.848704515421767*^9}, {3.849064036571472*^9, 
+   3.849064040236238*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:0413\:0435\:043d\:0435\:0440\:0430\:0446\:0438\:044f", " ", 
+    "\:0433\:0440\:0430\:0444\:0438\:043a\:0430", " ", 
+    "\:0432\:0440\:0435\:043c\:0435\:043d\:043d\:043e\:0433\:043e", " ", 
+    "\:0440\:044f\:0434\:0430"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pythonSession", " ", "=", " ", 
+     RowBox[{"StartExternalSession", "[", "\"\<Python\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<pycode\\\\builder\\\\\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filenames", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Directory", "[", "]"}], "<>", "\"\<\\\\time_series.py\>\""}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"code", " ", "=", " ", 
+     RowBox[{"ExternalEvaluate", "[", 
+      RowBox[{"pythonSession", ",", " ", 
+       RowBox[{"File", "[", "filenames", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeRange", " ", "=", " ", 
+     RowBox[{"Range", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"100", "+", "1"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xStart", " ", "=", " ", "2.1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", " ", "=", " ", "0.48"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"a", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"ap_", ",", " ", "bp_", ",", " ", "x0_"}], "]"}], "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"ap", "*", 
+        RowBox[{"x0", "^", "2"}]}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"bp", "+", "x0"}], ")"}], "^", "6"}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"skip", " ", "=", " ", "False"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xs", "=", 
+     RowBox[{"code", "[", 
+      RowBox[{
+      "timeRange", ",", " ", "xStart", ",", " ", "b", ",", " ", "a", ",", " ",
+        "f", ",", " ", "skip"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotAndSaveTimeSeries", "[", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], ",", " ", "timeRange", ",", " ", 
+      "\"\<time_series.jpg\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{"\"\<Success\>\"", ",", " ", "Red"}], "]"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.8486791023525395`*^9, 3.848679133692637*^9}, {
+   3.848679345485523*^9, 3.8486793522280164`*^9}, {3.848679401709411*^9, 
+   3.848679694812949*^9}, {3.848679725557314*^9, 3.848679765902329*^9}, {
+   3.848679839144134*^9, 3.8486798804523363`*^9}, {3.848679914604566*^9, 
+   3.848680019437167*^9}, {3.8486800629326925`*^9, 3.8486800957880993`*^9}, {
+   3.848680182011773*^9, 3.8486802277803183`*^9}, {3.848680284084427*^9, 
+   3.8486803894521317`*^9}, 3.8486805988847847`*^9, {3.8486807507943306`*^9, 
+   3.848680858770115*^9}, 3.8486809009076214`*^9, {3.848681190579304*^9, 
+   3.8486812010409794`*^9}, {3.8486812696815805`*^9, 3.848681274266642*^9}, {
+   3.8486813522425566`*^9, 3.848681384008585*^9}, 3.848681423840975*^9, {
+   3.8486814672976933`*^9, 3.848681467984847*^9}, {3.8486815182340083`*^9, 
+   3.8486815405451183`*^9}, {3.848681587377345*^9, 3.8486816017611036`*^9}, {
+   3.848681641073786*^9, 3.848681641336832*^9}, {3.848681709865632*^9, 
+   3.8486817114549675`*^9}, 3.8486818342011986`*^9, 3.848681904634544*^9, {
+   3.84868210749605*^9, 3.8486821259992332`*^9}, {3.848682158223053*^9, 
+   3.848682167121615*^9}, {3.8487045221131177`*^9, 3.8487045327761087`*^9}, {
+   3.848707406127352*^9, 3.848707425403761*^9}, {3.8487075201832013`*^9, 
+   3.8487075317745576`*^9}, {3.8487075787990427`*^9, 3.8487076280713315`*^9}, 
+   3.8487076590721807`*^9, {3.8487085916920223`*^9, 3.8487086324358034`*^9}, {
+   3.849064050462338*^9, 3.8490640512508554`*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:0413\:0435\:043d\:0435\:0440\:0430\:0446\:0438\:044f", " ", 
+    "\:0433\:0440\:0430\:0444\:0438\:043a\:0430", " ", 
+    "\:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pythonSession", " ", "=", " ", 
+     RowBox[{"StartExternalSession", "[", "\"\<Python\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<pycode\\\\builder\\\\\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filenames", " ", "=", 
+     RowBox[{
+      RowBox[{"Directory", "[", "]"}], "<>", "\"\<\\\\bifurcation.py\>\""}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"code", " ", "=", " ", 
+     RowBox[{"ExternalEvaluate", "[", 
+      RowBox[{"pythonSession", ",", " ", 
+       RowBox[{"File", "[", "filenames", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeRange", "=", 
+     RowBox[{"Range", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"100", " ", "+", " ", "1"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xStart", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bRange", " ", "=", " ", 
+     RowBox[{"Range", "[", 
+      RowBox[{"0.22", ",", " ", "0.582355932", ",", " ", "0.001"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"a", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xs", " ", "=", " ", 
+     RowBox[{"code", "[", 
+      RowBox[{
+      "timeRange", ",", " ", "xStart", ",", " ", "bRange", ",", " ", "a"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"drawX", "=", 
+     RowBox[{"xs", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"drawY", "=", 
+     RowBox[{"xs", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotAndSaveBifurcation", "[", 
+     RowBox[{
+     "drawX", ",", " ", "drawY", ",", " ", "\"\<bifurcation.jpg\>\""}], "]"}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{"\"\<Success\>\"", ",", " ", "Red"}], "]"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.8487047401195493`*^9, 3.848704850284133*^9}, {
+   3.848704905820476*^9, 3.848705117011517*^9}, 3.8487054688690042`*^9, {
+   3.848705515133543*^9, 3.8487055162838078`*^9}, {3.848706292145054*^9, 
+   3.8487063446872697`*^9}, {3.8487063854990206`*^9, 3.8487063980588617`*^9}, 
+   3.8487065646834755`*^9, {3.848706777943246*^9, 3.8487067943854446`*^9}, {
+   3.848706939585328*^9, 3.8487070091439466`*^9}, {3.8487072233443136`*^9, 
+   3.848707230367341*^9}, 3.848708569116553*^9, 3.8487224510177135`*^9, {
+   3.8490640551728053`*^9, 3.84906405572333*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "\:0413\:0435\:043d\:0435\:0440\:0430\:0446\:0438\:044f", " ", 
+     "\:0433\:0440\:0430\:0444\:0438\:043a\:0430", " ", 
+     "\:0431\:0438\:0444\:0443\:0440\:043a\:0430\:0446\:0438\:0438"}], " ", 
+    "+", " ", 
+    RowBox[{
+    "\:0433\:0440\:0430\:043d\:0438\:0446\:044b", " ", 
+     "\:0445\:0430\:043e\:0441\:0430"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pythonSession", " ", "=", " ", 
+     RowBox[{"StartExternalSession", "[", "\"\<Python\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<pycode\\\\builder\\\\\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filenames", " ", "=", 
+     RowBox[{
+      RowBox[{"Directory", "[", "]"}], "<>", 
+      "\"\<\\\\bifurcation_with_c.py\>\""}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"code", " ", "=", " ", 
+     RowBox[{"ExternalEvaluate", "[", 
+      RowBox[{"pythonSession", ",", " ", 
+       RowBox[{"File", "[", "filenames", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"generate", " ", "=", " ", 
+     RowBox[{"ExternalEvaluate", "[", 
+      RowBox[{"pythonSession", ",", " ", "\"\<bifurcation_with_c\>\""}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timeRange", "=", 
+     RowBox[{"Range", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"100", " ", "+", " ", "1"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xStart", "=", "0.2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bRange", " ", "=", " ", 
+     RowBox[{"Range", "[", 
+      RowBox[{"0.22", ",", " ", "0.582355932", ",", " ", "0.001"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"a", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"left", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"right", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"step", "=", "0.0001"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xs", " ", "=", " ", 
+     RowBox[{"generate", "[", 
+      RowBox[{
+      "timeRange", ",", " ", "xStart", ",", " ", "bRange", ",", " ", "a", ",",
+        " ", "left", ",", " ", "right", ",", " ", "step"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bifX", "=", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bifY", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"line1X", "=", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"line1Y", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"line2X", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "3", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"line2Y", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"xs", "[", 
+       RowBox[{"[", "3", "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+      "\"\<\\\\latex\\\\images\\\\\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotAndSaveBifurcationWithChaos", "[", 
+     RowBox[{
+     "bifX", ",", " ", "bifY", ",", " ", "line1X", ",", " ", "line1Y", ",", 
+      " ", "line2X", ",", " ", "line2Y", ",", " ", 
+      "\"\<bifurcation_chaos.jpg\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{"\"\<Success\>\"", ",", " ", "Red"}], "]"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.8487224686408925`*^9, 3.848722560817969*^9}, {
+   3.848722613639312*^9, 3.8487226622782125`*^9}, {3.84872294814529*^9, 
+   3.8487230079299593`*^9}, 3.8490516258289995`*^9, 3.8490516698700376`*^9, {
+   3.8490534289707994`*^9, 3.8490534315978956`*^9}, {3.8490535116549644`*^9, 
+   3.8490536727863884`*^9}, {3.849053705811504*^9, 3.849053723469525*^9}, {
+   3.849053950862361*^9, 3.8490539725034614`*^9}, {3.8490540883763504`*^9, 
+   3.849054095429125*^9}, {3.8490593899627314`*^9, 3.849059391571087*^9}, {
+   3.8490640587875376`*^9, 3.849064059167264*^9}},
+ CellLabel->
+  "In[478]:=",ExpressionUUID->"059ba108-dcfc-4f8e-b5d6-c4da92c79d12"]
 },
-WindowSize->{960, 989},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{718.5, 741.},
+WindowMargins->{{-148.5, Automatic}, {642.75, Automatic}},
+TaggingRules->Association["TryRealOnly" -> False],
+Magnification:>0.8 Inherited,
 FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (May 11, 2021)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"489b6ed8-5655-4b5d-9542-69b439d49f3e"
@@ -120,7 +490,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 3959, 83, 434, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"]
+Cell[558, 20, 382, 8, 50, "Input",ExpressionUUID->"4ccd7d65-4875-43db-ab97-b42814e2b134"],
+Cell[943, 30, 919, 17, 38, "Input",ExpressionUUID->"9224904f-ceac-4794-9243-3a9d4252aed8"],
+Cell[1865, 49, 5178, 108, 363, "Input",ExpressionUUID->"28dfea0d-7235-4dd8-a66f-6ec04ab6108b"],
+Cell[7046, 159, 4386, 98, 340, "Input",ExpressionUUID->"ee60dfc3-e84f-4db5-9ab6-30e8bf4a0456"],
+Cell[11435, 259, 3254, 82, 339, "Input",ExpressionUUID->"cd2558ae-827d-48a0-a995-f158392a9464"],
+Cell[14692, 343, 4967, 128, 475, "Input",ExpressionUUID->"059ba108-dcfc-4f8e-b5d6-c4da92c79d12"]
 }
 ]
 *)

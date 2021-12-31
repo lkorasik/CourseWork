@@ -9,91 +9,6 @@ from functions import Functions
 
 class Builder:
     @staticmethod
-    def bifurcation(time_range, x_start, b_range, a):
-        x_arr = dict()
-
-        for b in b_range:
-            x_arr[b] = []
-            x_0 = x_start
-            for t in time_range:
-                x_t = Functions.f(a, b, x_0)
-                if abs(x_t) > 10000:
-                    break
-                x_0 = x_t
-            for t in time_range:
-                x_t = Functions.f(a, b, x_0)
-                if abs(x_t) > 10000:
-                    break
-                x_0 = x_t
-                x_arr[b].append(x_t)
-
-        draw_x = []
-        draw_y = []
-
-        for b in b_range:
-            x = x_arr[b]
-            for x_ in x:
-                if x_ > 10:
-                    continue
-                draw_x.append(b)
-                draw_y.append(x_)
-
-        return draw_x, draw_y
-
-    @staticmethod
-    def bifurcation_with_c(time_range, x_start, b_range, a, left, right, step):
-        x_arr = dict()
-        result = []
-
-        for b in b_range:
-            x_arr[b] = []
-            x_0 = x_start
-            for t in time_range:
-                x_t = Functions.f(a, b, x_0)
-                if abs(x_t) > 10000:
-                    break
-                x_0 = x_t
-            for t in time_range:
-                x_t = Functions.f(a, b, x_0)
-                if abs(x_t) > 10000:
-                    break
-                x_0 = x_t
-                x_arr[b].append(x_t)
-
-        draw_x = []
-        draw_y = []
-
-        for b in b_range:
-            x = x_arr[b]
-            for x_ in x:
-                if x_ > 10:
-                    continue
-                draw_x.append(b)
-                draw_y.append(x_)
-
-        result.append([draw_x, draw_y])
-
-        draw_x = []
-        draw_y1 = []
-        draw_y2 = []
-        for b in b_range:
-            r = extrema.get_cs(
-                left,
-                right,
-                step,
-                a,
-                b
-            )
-            draw_x.append(b)
-            draw_y1.append(r[1])
-            draw_y2.append(r[2])
-
-        result.append([draw_x, draw_y1])
-        result.append([draw_x, draw_y2])
-
-        return result
-
-    @staticmethod
     def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, function, dfunction):
         x_arr = dict()
 
@@ -171,25 +86,6 @@ class Builder:
         result.append([draw_x3, draw_y3])
 
         return result
-
-    @staticmethod
-    def time_series(time_range, x_start, b, a, skip):
-        """Построить временной ряд"""
-        x_arr = dict()
-
-        # x_0 возможно эта точка лишняя
-        x_arr[b] = []
-        x_0 = x_start
-        if skip:
-            for t in time_range:
-                x_t = Functions.f(a, b, x_0)
-                x_0 = x_t
-        for t in time_range:
-            x_t = Functions.f(a, b, x_0)
-            x_0 = x_t
-            x_arr[b].append(x_t)
-
-        return time_range, x_arr[b]
 
     @staticmethod
     def single_newton(a, b, x_start, precision, function, dfunction):
