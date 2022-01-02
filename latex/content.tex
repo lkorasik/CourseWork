@@ -54,37 +54,50 @@
 
         Для анализа системы можно использовать временные ряды. Временной ряд позволяет наглядно показать как с течением времени изменяется численность популяции.
 
-        Например, на графике (\ref{timeSeriesX=0.02b=0.55}) мы видим, что при начальных значениях \(x = 0.02\) и \(\beta = 0.55\) временной ряд сходятся к нулю. В биологическом смысле это означает, что популяция с теченеим времени вымирает.
+        Далее рассмотрим подробнее все возможные ситуации. Для этого давайте зафиксируем параметры следующим образом: \(\alpha = 1, \beta = 0.56\). 
+
+        На графике (\ref{time_series_x_0_04_b_0_56}) мы видим, что временной ряд сходятся к нулю. В биологическом смысле это означает, что популяция с теченеим времени вымирает.
     
         \begin{figure}[h!]
             \centering
-            \includegraphics[width=0.8\textwidth]{Time_series._x_0.02_b_0.55.jpeg}
+            \includegraphics[width=\textwidth]{time_series_x_0_04_b_0_56.jpeg}
 
             \captionsetup{justification=centering}
-            \caption{\(x_0 = 0.02; \beta = 0.55\)}
-            \label{timeSeriesX=0.02b=0.55}
+            \caption{\(x_0 = 0.04; \beta = 0.56\)}
+            \label{time_series_x_0_04_b_0_56}
         \end{figure}
 
-        На графике (\ref{timeSeriesX=0.05b=0.48}) видно, что при начальных условиях \(x = 0.05, \beta = 0.48\) популяция очень быстро растет до некоторого предела. После достижения данного предела начинается процесс стабилизации, т.е. значения стремятся к устойчивому равновесию \(x \approx 0.3656\). Это значит, что популяция с течением времени стабилизируется и перестанет расти или вымирать.
-
-        Аналогичную ситуацию мы можем наблюдать на графике (\ref{timeSeriesX=0.05b=0.55}).
+        На графике (\ref{time_series_x_0_06_b_0_56}) видно, что при начальных условиях \(x = 0.06, \beta = 0.56\) популяция очень быстро растет до некоторого предела. После достижения данного предела рост численности популяции прекращается. Это значит, что популяция с течением времени стабилизируется.
     
         \begin{figure}[h!]
             \centering
-            \includegraphics[width=0.8\textwidth]{Time_series._x_0.05_b_0.48.jpeg}
+            \includegraphics[width=\textwidth]{time_series_x_0_06_b_0_56.jpeg}
 
             \captionsetup{justification=centering}
-            \caption{\(x_0 = 0.05; \beta = 0.48\)}
-            \label{timeSeriesX=0.05b=0.48}
+            \caption{\(x_0 = 0.06; \beta = 0.56\)}
+            \label{time_series_x_0_06_b_0_56}
         \end{figure}
+
+        Очень похожую ситуацию мы можем наблюдать на графике (\ref{time_series_x_0_3_b_0_56}). Значения тоже сходятся к устойчивому равновесию. Т.е. численность популяции снова стабилизируется.
     
         \begin{figure}[h!]
             \centering
-            \includegraphics[width=0.8\textwidth]{Time_series._x_0.05_b_0.55.jpeg}
+            \includegraphics[width=\textwidth]{time_series_x_0_3_b_0_56.jpeg}
 
             \captionsetup{justification=centering}
-            \caption{\(x_0 = 0.05; \beta = 0.55\)}
-            \label{timeSeriesX=0.05b=0.55}
+            \caption{\(x_0 = 0.3; \beta = 0.55\)}
+            \label{time_series_x_0_3_b_0_56}
+        \end{figure}
+
+        Но если начальный размер популяции слишком большой, то может произойти вымирание. Такая ситуация изображена на графике (\ref{time_series_x_1_2_b_0_56}).
+    
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=\textwidth]{time_series_x_1_2_b_0_56.jpeg}
+
+            \captionsetup{justification=centering}
+            \caption{\(x_0 = 1.2; \beta = 0.56\)}
+            \label{time_series_x_1_2_b_0_56}
         \end{figure}
 
     \subsection{График бифуркации}
@@ -93,4 +106,4 @@
 
     \subsection{Показатели Ляпунова}
 
-    \subsection{Недоделанная карта режимов}
+    \subsection{Недоделанная карта}

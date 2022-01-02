@@ -13,9 +13,9 @@ from plotter import Plotter
 if __name__ == "__main__":
 
     source = time_series(
-        time_range=range(1, 100 + 1),
-        x_start=0.05,
-        b=0.48,
+        time_range=range(1, 50 + 1),
+        x_start=0.2125,
+        b=0.56,
         a=1,
         f=Functions.f,
         skip=False
