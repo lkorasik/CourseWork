@@ -102,7 +102,7 @@ class Builder:
         return res
 
     @staticmethod
-    def lamerei(a, x_start, b, time_range, skip):
+    def lamerei(a, x_start, b, time_range, skip, xmin, xmax):
         total = []
 
         x0 = x_start
@@ -120,7 +120,7 @@ class Builder:
 
         total.append(result)
 
-        x = np.arange(0, 2, 0.01)
+        x = np.arange(xmin, xmax, 0.01)
         total.append([x, Functions.g(a, x)])
         total.append([x, Functions.f(a, b, x)])
 

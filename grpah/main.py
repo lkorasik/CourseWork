@@ -57,27 +57,28 @@ if __name__ == "__main__":
     # plotter.plot(source[2][0], source[2][1], ',', 'red')
     # plotter.show(False)
 
-    source = lyapunov.Lyapunov.calc(
-        epsilon=10 ** (-5),
-        a=1,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        x_0=0.2,
-        T_range=range(1, 100 + 1),
-        T=100
-    )
+    # source = lyapunov.Lyapunov.calc(
+    #     epsilon=10 ** (-5),
+    #     a=1,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     x_0=0.2,
+    #     T_range=range(1, 100 + 1),
+    #     T=100
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', '', 'linear', 'major', 'Lyapunov')
+    # plotter.plot(source[0], source[1], ',', 'red')
+    # plotter.show(False)
 
-    plotter = Plotter()
-    plotter.setup('b', '', 'linear', 'major', 'Lyapunov')
-    plotter.plot(source[0], source[1], ',', 'red')
-    plotter.show(False)
-
-    '''
     source = Builder.lamerei(
         a=1,
-        x_start=0.2,
-        b=0.582355932,
+        x_start=1.3,
+        b=0.56,
         time_range=range(1, 100 + 1),
-        skip=False
+        skip=False,
+        xmin=0,
+        xmax=1.35
     )
 
     plotter = Plotter()
@@ -90,7 +91,6 @@ if __name__ == "__main__":
     plotter.plot(source[2][0], source[2][1], ',', 'orange')
 
     plotter.show(False)
-    '''
 
     '''
     source = Builder.bifurcation_stables(
