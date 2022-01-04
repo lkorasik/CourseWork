@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt, a4paper]{article}
 
 %Russian-specific packages
 \usepackage[russian]{babel}
@@ -17,6 +17,9 @@
 %Setup captions for figures
 \usepackage{caption}
 
+%Math packages
+\usepackage{amsmath}
+
 \newcommand{\comment}[1]{\textcolor{red}{#1}}
 
 \begin{document}
@@ -28,7 +31,7 @@
     \newpage
     \include{conclusion.tex}
 
-    rte \cite{tex}
+    rte \cite{elementsOfNonlinearDynamic}
 
     \bibliographystyle{apalike}
     \bibliography{main}
