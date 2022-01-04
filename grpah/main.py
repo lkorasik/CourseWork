@@ -2,36 +2,37 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patches as mpatches
 
+import functions
 import lyapunov
 import regime_map
 from builder import Builder
 from functions import Functions
 from new.builder.bifurcation import bifurcation
+from new.builder.bifurcation_with_c import bifurcation_with_c
 from new.builder.time_series import time_series
 from plotter import Plotter
 
 if __name__ == "__main__":
 
-    source = time_series(
-        time_range=range(1, 50 + 1),
-        x_start=0.2125,
-        b=0.56,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    plotter.plot(source[0], source[1], '*', 'steelblue')
-    plotter.show(False)
+    # source = time_series(
+    #     time_range=range(1, 50 + 1),
+    #     x_start=0.2125,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series')
+    # plotter.plot(source[0], source[1], '*', 'steelblue')
+    # plotter.show(False)
 
     # source = bifurcation(
     #     time_range=range(1, 100 + 1),
     #     x_start=0.2,
     #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     f=Functions.f
+    #     a=1
     # )
     #
     # plotter = Plotter()
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     # plotter.scatter(source[0], source[1], '.', 'steelblue')
     # plotter.show(False)
 
-    # source = Builder.bifurcation_with_c(
+    # source = bifurcation_with_c(
     #     time_range=range(1, 100 + 1),
     #     x_start=0.2,
     #     b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -56,7 +57,6 @@ if __name__ == "__main__":
     # plotter.plot(source[2][0], source[2][1], ',', 'red')
     # plotter.show(False)
 
-    '''
     source = lyapunov.Lyapunov.calc(
         epsilon=10 ** (-5),
         a=1,
@@ -70,7 +70,6 @@ if __name__ == "__main__":
     plotter.setup('b', '', 'linear', 'major', 'Lyapunov')
     plotter.plot(source[0], source[1], ',', 'red')
     plotter.show(False)
-    '''
 
     '''
     source = Builder.lamerei(
