@@ -14,19 +14,19 @@ from plotter import Plotter
 
 if __name__ == "__main__":
 
-    # source = time_series(
-    #     time_range=range(1, 50 + 1),
-    #     x_start=0.2125,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f,
-    #     skip=False
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    # plotter.plot(source[0], source[1], '*', 'steelblue')
-    # plotter.show(False)
+    source = time_series(
+        time_range=range(1, 50 + 1),
+        x_start=1.3,
+        b=0.56,
+        a=1,
+        f=Functions.f,
+        skip=False
+    )
+
+    plotter = Plotter()
+    plotter.setup('t', 'x', 'linear', 'major', 'Time series')
+    plotter.plot(source[0], source[1], '*', 'steelblue')
+    plotter.show(False)
 
     # source = bifurcation(
     #     time_range=range(1, 100 + 1),
@@ -71,26 +71,26 @@ if __name__ == "__main__":
     # plotter.plot(source[0], source[1], ',', 'red')
     # plotter.show(False)
 
-    source = Builder.lamerei(
-        a=1,
-        x_start=1.3,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0,
-        xmax=1.35
-    )
-
-    plotter = Plotter()
-    plotter.setup('b', '', 'linear', 'major', 'Lamerei')
-
-    for i in source[0]:
-        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-
-    plotter.plot(source[1][0], source[1][1], ',', 'steelblue')
-    plotter.plot(source[2][0], source[2][1], ',', 'orange')
-
-    plotter.show(False)
+    # source = Builder.lamerei(
+    #     a=1,
+    #     x_start=1.3,
+    #     b=0.56,
+    #     time_range=range(1, 100 + 1),
+    #     skip=False,
+    #     xmin=0,
+    #     xmax=1.35
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', '', 'linear', 'major', 'Lamerei')
+    #
+    # for i in source[0]:
+    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    #
+    # plotter.plot(source[1][0], source[1][1], ',', 'steelblue')
+    # plotter.plot(source[2][0], source[2][1], ',', 'orange')
+    #
+    # plotter.show(False)
 
     '''
     source = Builder.bifurcation_stables(
