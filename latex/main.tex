@@ -20,6 +20,21 @@
 %Math packages
 \usepackage{amsmath}
 
+% Subfigures
+\usepackage{subfig}
+
+% Hyperlink
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,
+    citecolor=black,      
+    urlcolor=black,
+    pdftitle={Database},
+    pdfpagemode=FullScreen,
+}
+
 \newcommand{\comment}[1]{\textcolor{red}{#1}}
 
 \begin{document}
@@ -30,8 +45,6 @@
     \include{content.tex}
     \newpage
     \include{conclusion.tex}
-
-    rte \cite{elementsOfNonlinearDynamic}
 
     \bibliographystyle{apalike}
     \bibliography{main}
