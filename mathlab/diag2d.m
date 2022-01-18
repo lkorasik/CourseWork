@@ -22,8 +22,8 @@ hold on
 %plot(peq1(:,1),peq1(:,2),'.','Color',[193/255,222/255,198/255],'MarkerSize',2,'DisplayName','eq')
 
 %plot(pinf(:,1),pinf(:,2),'.','Color',[204/255,204/255,204/255],'MarkerSize',2,'DisplayName','inf')
-plot(c2(:,1),c2(:,2),'.','Color',[76/255,102/255,0/255],'MarkerSize',2,'DisplayName','2')
-plot(c3(:,1),c3(:,2),'.','Color',[255/255,0/255,0/255],'MarkerSize',2,'DisplayName','3')
+plot(c2(:,1),c2(:,2),'.','Color',[76/255,102/255,0/255],'MarkerSize',2,'DisplayName','2');
+a = plot(c3(:,1),c3(:,2),'.','Color',[255/255,0/255,0/255],'MarkerSize',2,'DisplayName','3');
 %plot(c12(:,1),c12(:,2),'.','Color',[168/255,2/255,168/255],'MarkerSize',2,'DisplayName','12')
 %plot(c13(:,1),c13(:,2),'.','Color',[0/255,253/255,255/255],'MarkerSize',2,'DisplayName','13')
 %plot(c14(:,1),c14(:,2),'.','Color',[254/255,255/255,0/255],'MarkerSize',2,'DisplayName','14')
@@ -37,4 +37,4 @@ plot(c9(:,1),c9(:,2),'.','Color',[127/255,0/255,128/255],'MarkerSize',2,'Display
 plot(c10(:,1),c10(:,2),'.','Color',[126/255,127/255,247/255],'MarkerSize',2,'DisplayName','10')
 %plot(c11(:,1),c11(:,2),'.','Color',[0/255,1/255,255/255],'MarkerSize',2,'DisplayName','11')
 
-legend('show','Location','southeastoutside')
+legend('show','Location','southeastoutside');
