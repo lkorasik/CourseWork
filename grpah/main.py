@@ -14,48 +14,6 @@ from plotter import Plotter
 
 if __name__ == "__main__":
 
-    # source1 = time_series(
-    source0 = time_series(
-        time_range=range(1, 100 + 1),
-        x_start=0.1,
-        b=0.4,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
-    #     time_range=range(1, 30 + 1),
-    #     x_start=0.06,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f,
-    #     skip=False
-    # )
-    # source2 = time_series(
-    #     time_range=range(1, 30 + 1),
-    #     x_start=0.3,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f,
-    #     skip=False
-    # )
-    # source3 = time_series(
-    #     time_range=range(1, 30 + 1),
-    #     x_start=1.3,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f,
-    #     skip=False
-    # )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    plotter.plot(source0[0], source0[1], '*', 'steelblue')
-    # plotter.plot(source1[0], source1[1], '*', 'lightseagreen')
-    # plotter.plot(source2[0], source2[1], '*', 'steelblue')
-    # plotter.plot(source3[0], source3[1], '*', 'slateblue')
-    #plotter.ax.legend(['$x_0 = 0.04$', '$x_0 = 0.06$', '$x_0 = 0.3$', '$x_0 = 1.3$'])
-    plotter.show(False)
-
     # source = time_series(
     #     time_range=range(1, 50 + 1),
     #     x_start=1.3,
@@ -78,26 +36,26 @@ if __name__ == "__main__":
     # )
     #
     # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    # plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
     # plotter.scatter(source[0], source[1], '.', 'steelblue')
     # plotter.show(False)
 
-    # source = bifurcation_with_c(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     left=0,
-    #     right=1,
-    #     step=0.0001
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    # plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
-    # plotter.plot(source[1][0], source[1][1], ',', 'red')
-    # plotter.plot(source[2][0], source[2][1], ',', 'red')
-    # plotter.show(False)
+    source = bifurcation_with_c(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left=0,
+        right=1,
+        step=0.0001
+    )
+
+    plotter = Plotter()
+    plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+    plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
+    plotter.plot(source[1][0], source[1][1], ',', 'red')
+    plotter.plot(source[2][0], source[2][1], ',', 'red')
+    plotter.show(False)
 
     # source = lyapunov.Lyapunov.calc(
     #     epsilon=10 ** (-5),
@@ -115,16 +73,16 @@ if __name__ == "__main__":
 
     # source = Builder.lamerei(
     #     a=1,
-    #     x_start=1.3,
+    #     x_start=1.2,
     #     b=0.56,
     #     time_range=range(1, 100 + 1),
     #     skip=False,
-    #     xmin=0,
-    #     xmax=1.35
+    #     xmin=0.0,
+    #     xmax=1.3
     # )
     #
     # plotter = Plotter()
-    # plotter.setup('b', '', 'linear', 'major', 'Lamerei')
+    # plotter.setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
     #
     # for i in source[0]:
     #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
