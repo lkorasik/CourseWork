@@ -14,45 +14,45 @@ from plotter import Plotter
 
 if __name__ == "__main__":
 
+    # source1 = time_series(
     source0 = time_series(
-        time_range=range(1, 30 + 1),
-        x_start=0.04,
-        b=0.26,
+        time_range=range(1, 100 + 1),
+        x_start=0.1,
+        b=0.4,
         a=1,
         f=Functions.f,
         skip=False
     )
-    source1 = time_series(
-        time_range=range(1, 30 + 1),
-        x_start=0.06,
-        b=0.26,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
-    source2 = time_series(
-        time_range=range(1, 30 + 1),
-        x_start=0.3,
-        b=0.26,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
-    source3 = time_series(
-        time_range=range(1, 30 + 1),
-        x_start=1.3,
-        b=0.26,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
+    #     time_range=range(1, 30 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
+    # source2 = time_series(
+    #     time_range=range(1, 30 + 1),
+    #     x_start=0.3,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
+    # source3 = time_series(
+    #     time_range=range(1, 30 + 1),
+    #     x_start=1.3,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
 
     plotter = Plotter()
     plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    plotter.plot(source0[0], source0[1], '*', 'seagreen')
-    plotter.plot(source1[0], source1[1], '*', 'lightseagreen')
-    plotter.plot(source2[0], source2[1], '*', 'steelblue')
-    plotter.plot(source3[0], source3[1], '*', 'slateblue')
+    plotter.plot(source0[0], source0[1], '*', 'steelblue')
+    # plotter.plot(source1[0], source1[1], '*', 'lightseagreen')
+    # plotter.plot(source2[0], source2[1], '*', 'steelblue')
+    # plotter.plot(source3[0], source3[1], '*', 'slateblue')
     #plotter.ax.legend(['$x_0 = 0.04$', '$x_0 = 0.06$', '$x_0 = 0.3$', '$x_0 = 1.3$'])
     plotter.show(False)
 
