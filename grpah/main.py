@@ -71,52 +71,51 @@ if __name__ == "__main__":
     # plotter.plot(source[0], source[1], ',', 'red')
     # plotter.show(False)
 
-    source0 = Builder.lamerei(
-        a=1,
-        x_start=0.03,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0.0,
-        xmax=0.34
-    )
-    source1 = Builder.lamerei(
-        a=1,
-        x_start=0.1,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0.0,
-        xmax=0.34
-    )
-    source2 = Builder.lamerei(
-        a=1,
-        x_start=0.3,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0.0,
-        xmax=0.34
-    )
+    # source0 = Builder.lamerei(
+    #     a=1,
+    #     x_start=0.03,
+    #     b=0.56,
+    #     time_range=range(1, 100 + 1),
+    #     skip=False,
+    #     xmin=0.0,
+    #     xmax=0.34
+    # )
+    # source1 = Builder.lamerei(
+    #     a=1,
+    #     x_start=0.1,
+    #     b=0.56,
+    #     time_range=range(1, 100 + 1),
+    #     skip=False,
+    #     xmin=0.0,
+    #     xmax=0.34
+    # )
+    # source2 = Builder.lamerei(
+    #     a=1,
+    #     x_start=0.3,
+    #     b=0.56,
+    #     time_range=range(1, 100 + 1),
+    #     skip=False,
+    #     xmin=0.0,
+    #     xmax=0.34
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
+    #
+    # for i in source0[0]:
+    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    #
+    # for i in source1[0]:
+    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    #
+    # for i in source2[0]:
+    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    #
+    # plotter.plot(source0[1][0], source0[1][1], ',', 'steelblue')
+    # plotter.plot(source0[2][0], source0[2][1], ',', 'orange')
+    #
+    # plotter.show(False)
 
-    plotter = Plotter()
-    plotter.setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
-
-    for i in source0[0]:
-        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-
-    for i in source1[0]:
-        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-
-    for i in source2[0]:
-        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-
-    plotter.plot(source0[1][0], source0[1][1], ',', 'steelblue')
-    plotter.plot(source0[2][0], source0[2][1], ',', 'orange')
-
-    plotter.show(False)
-
-    '''
     source = Builder.bifurcation_stables(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
@@ -129,13 +128,12 @@ if __name__ == "__main__":
     )
 
     plotter = Plotter()
-    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+    plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
     plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
     plotter.plot(source[1][0], source[1][1], ',', 'red')
     plotter.plot(source[2][0], source[2][1], ',', 'deeppink')
     plotter.plot(source[3][0], source[3][1], ',', 'green')
     plotter.show(False)
-    '''
 
     '''
     source = Builder.stable(
