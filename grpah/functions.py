@@ -1,10 +1,26 @@
 import math
+import numpy
 
 
 class Functions:
     @staticmethod
     def f(a, b, x):
         return (a * x ** 2) / ((b + x) ** 6)
+
+    @staticmethod
+    def f_pb(a, b, x, epsilon):
+        xi = numpy.random.normal(0, 1)
+        return (a * x ** 2) / ((b + (epsilon * xi) + x) ** 6)
+
+    @staticmethod
+    def f_pa(a, b, x, epsilon):
+        xi = numpy.random.normal(0, 1)
+        return ((a + (epsilon * xi)) * x ** 2) / ((b + x) ** 6)
+
+    @staticmethod
+    def f_p(a, b, x, epsilon):
+        xi = numpy.random.normal(0, 1)
+        return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
 
     @staticmethod
     def lambda_(dx,  epsilon):
