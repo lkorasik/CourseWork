@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patches as mpatches
+import numpy.random
 
 import functions
 import lyapunov
@@ -10,6 +11,7 @@ from functions import Functions
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_with_c import bifurcation_with_c
 from new.builder.time_series import time_series
+from new.builder.time_series_probability import time_series_probability
 from plotter import Plotter
 
 if __name__ == "__main__":
@@ -169,17 +171,17 @@ if __name__ == "__main__":
     # plotter.plot(source[0], source[1], '*', 'steelblue')
     # plotter.show(True)
 
-    source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        a=1
-    )
-
-    plotter = Plotter()
-    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    plotter.scatter(source[0], source[1], '.', 'steelblue')
-    plotter.show(False)
+    # source = bifurcation(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
+    # plotter.show(False)
 
     # regime_map.build_regime_map(
     #     x_start=0.2,
@@ -188,11 +190,68 @@ if __name__ == "__main__":
     #     time_range=range(1, 10000 + 1),
     #     f=Functions.f)
 
-    '''
-    regime_map.find_all_roots(
-        x_range=np.arange(0, 1.5, 0.01),
-        a_range=np.arange(0.01, 2, 0.01),
-        b_range=np.arange(0.01, 0.6, 0.01),
-        precision=0.001
-    )
-    '''
+    # regime_map.find_all_roots(
+    #     x_range=np.arange(0, 1.5, 0.01),
+    #     a_range=np.arange(0.01, 2, 0.01),
+    #     b_range=np.arange(0.01, 0.6, 0.01),
+    #     precision=0.001
+    # )
+
+    # source = time_series(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series original')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = time_series_probability(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f_pb,
+    #     epsilon=0.004,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series alpha')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = time_series_probability(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f_pa,
+    #     epsilon=0.004,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series beta')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = time_series_probability(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f_p,
+    #     epsilon=0.004,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series addition')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(False)
