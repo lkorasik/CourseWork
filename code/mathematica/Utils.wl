@@ -1,7 +1,6 @@
 (* ::Package:: *)
 
 BeginPackage["ExternalLanguages`"];
-
 	LoadFunction::usage = "Load function from julia or python code"
 	LoadFile::usage = "Load file"
 	GetPythonDirectory::usage = "Get directory where Python code placed"
