@@ -197,61 +197,61 @@ if __name__ == "__main__":
     #     precision=0.001
     # )
 
-    source = time_series(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        b=0.56,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series original')
-    plotter.plot(source[0], source[1], '.', 'steelblue')
-    plotter.show(True)
-
-    source = time_series_probability(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        b=0.56,
-        a=1,
-        f=Functions.f_pb,
-        epsilon=0.004,
-        skip=False
-    )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series alpha')
-    plotter.plot(source[0], source[1], '.', 'steelblue')
-    plotter.show(True)
-
-    source = time_series_probability(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        b=0.56,
-        a=1,
-        f=Functions.f_pa,
-        epsilon=0.004,
-        skip=False
-    )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series beta')
-    plotter.plot(source[0], source[1], '.', 'steelblue')
-    plotter.show(True)
-
-    source = time_series_probability(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        b=0.56,
-        a=1,
-        f=Functions.f_p,
-        epsilon=0.004,
-        skip=False
-    )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series addition')
-    plotter.plot(source[0], source[1], '.', 'steelblue')
-    plotter.show(False)
+    # source = time_series(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series original')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = time_series_probability(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f_pb,
+    #     epsilon=0.004,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series alpha')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = time_series_probability(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f_pa,
+    #     epsilon=0.004,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series beta')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = time_series_probability(
+    #     time_range=range(1, 250 + 1),
+    #     x_start=0.06,
+    #     b=0.56,
+    #     a=1,
+    #     f=Functions.f_p,
+    #     epsilon=0.004,
+    #     skip=False
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('t', 'x', 'linear', 'major', 'Time series addition')
+    # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(False)

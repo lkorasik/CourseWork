@@ -1,0 +1,152 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6104,        144]
+NotebookOptionsPosition[      5557,        128]
+NotebookOutlinePosition[      5963,        144]
+CellTagsIndexPosition[      5920,        141]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:041e\:0447\:0438\:0441\:0442\:043a\:0430", " ", 
+    "\:0438\:043c\:0435\:043d"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+   "<<", " ", 
+    "\"\<C:\\\\Files\\\\Study\\\\CourseWork\\\\code\\\\mathematica\\\\Utils.\
+wl\>\""}]}]}]], "Input",
+ CellChangeTimes->{
+  3.8549404067246685`*^9, {3.8549482012451515`*^9, 3.8549482045097847`*^9}, {
+   3.8549643100228777`*^9, 3.85496431174977*^9}, {3.8549643475776234`*^9, 
+   3.854964349442535*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"bbc2b24a-3e22-4566-a4f0-65013a78f431"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Python", " ", "example"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"python", " ", "=", " ", 
+     RowBox[{"StartPython", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"LoadFile", "[", 
+     RowBox[{
+      RowBox[{"GetPythonDirectory", "[", "]"}], ",", " ", 
+      "\"\<functions.py\>\"", ",", " ", "python"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", " ", "=", " ", 
+     RowBox[{"LoadFunction", "[", 
+      RowBox[{"python", ",", " ", "\"\<f\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"f", "[", "3", "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", " ", "=", " ", 
+     RowBox[{"LoadFunction", "[", 
+      RowBox[{"python", ",", " ", "\"\<g\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"g", "[", "3", "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DeleteObject", "[", "python", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.8549597495802126`*^9, {3.854959788149617*^9, 3.8549598633251915`*^9}, {
+   3.854959893629423*^9, 3.854959904215062*^9}, {3.8549599857401657`*^9, 
+   3.8549599940118484`*^9}, {3.8549601355242376`*^9, 
+   3.8549601383952303`*^9}, {3.854960234619808*^9, 3.85496023893906*^9}, {
+   3.854960591018168*^9, 3.854960620491892*^9}, {3.854960700320874*^9, 
+   3.854960744401958*^9}, {3.854960948602429*^9, 3.8549609487789335`*^9}, {
+   3.8549610111928267`*^9, 3.8549610400189915`*^9}, {3.854961366696608*^9, 
+   3.854961386625306*^9}, {3.8549614287046986`*^9, 3.854961456396822*^9}, {
+   3.8549616516392345`*^9, 3.85496166003335*^9}, {3.854961713798995*^9, 
+   3.8549617213548555`*^9}, {3.8549617922949896`*^9, 3.8549617952467566`*^9}, 
+   3.854961840104105*^9, {3.8549618963511515`*^9, 3.8549619264974174`*^9}, {
+   3.8549619602076483`*^9, 3.854961965776905*^9}, {3.8549620454317975`*^9, 
+   3.8549620684968586`*^9}, {3.8549621078102455`*^9, 3.8549621411910496`*^9}, 
+   3.8549622095589523`*^9, 3.8549622397972517`*^9, {3.8549622836468773`*^9, 
+   3.8549623509169445`*^9}, {3.854962383625779*^9, 3.8549623908725605`*^9}, {
+   3.8549624281469526`*^9, 3.8549624286396546`*^9}, {3.8549624823263426`*^9, 
+   3.8549624886487703`*^9}, {3.854962705174486*^9, 3.854962719135968*^9}, 
+   3.8549629506159554`*^9, {3.8549629915092974`*^9, 3.8549629917106185`*^9}, {
+   3.854963110772936*^9, 3.8549631206617165`*^9}, {3.8549632144295425`*^9, 
+   3.8549632555562487`*^9}, {3.8549633369808702`*^9, 3.8549633570427694`*^9}, 
+   3.854963494438142*^9, {3.854963530627882*^9, 3.8549635780226755`*^9}, {
+   3.854963766439948*^9, 3.8549637682451367`*^9}, {3.854963855396884*^9, 
+   3.8549638561005473`*^9}, {3.854963886283353*^9, 3.854963887995358*^9}, {
+   3.8549639265643096`*^9, 3.854963926949087*^9}, {3.8549639813658667`*^9, 
+   3.854964073382165*^9}, 3.85496414257213*^9, 3.85496431364399*^9},
+ CellLabel->"In[4]:=",ExpressionUUID->"cf430230-ddeb-410b-bc6b-b13d24925e3c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Julia", " ", "example"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"julia", " ", "=", " ", 
+     RowBox[{"StartJulia", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"LoadFile", "[", 
+     RowBox[{
+      RowBox[{"GetPythonDirectory", "[", "]"}], ",", " ", 
+      "\"\<functions.jl\>\"", ",", " ", "julia"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", " ", "=", " ", 
+     RowBox[{"LoadFunction", "[", 
+      RowBox[{"julia", ",", " ", "\"\<f\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"f", "[", "3", "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", " ", "=", " ", 
+     RowBox[{"LoadFunction", "[", 
+      RowBox[{"julia", ",", " ", "\"\<g\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"g", "[", "3", "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DeleteObject", "[", "julia", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.854964091571912*^9, 3.8549642163405647`*^9}, {
+  3.854964258338209*^9, 3.8549643159792304`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"182164c8-f573-470f-bcc9-ed4694f8a398"]
+},
+WindowSize->{1440., 747.75},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (December 2, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"75360421-4248-4dc5-951d-8eb8ab86d298"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 693, 18, 67, "Input",ExpressionUUID->"bbc2b24a-3e22-4566-a4f0-65013a78f431"],
+Cell[1254, 40, 3039, 54, 219, "Input",ExpressionUUID->"cf430230-ddeb-410b-bc6b-b13d24925e3c"],
+Cell[4296, 96, 1257, 30, 219, "Input",ExpressionUUID->"182164c8-f573-470f-bcc9-ed4694f8a398"]
+}
+]
+*)
+
