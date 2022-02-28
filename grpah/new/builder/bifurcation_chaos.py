@@ -1,20 +1,21 @@
-def bifurcation(time_range, x_start, b_range, a):
-    def f(a, b, x):
-        return (a * x ** 2) / ((b + x) ** 6)
-
+def bifurcation_chaos(time_range, x_start, b_range, f, a, epsilon):
     x_arr = dict()
 
     for b in b_range:
         x_arr[b] = []
         x_0 = x_start
         for t in time_range:
-            x_t = f(a, b, x_0)
+            x_t = f(a, b, x_0, epsilon)
             if abs(x_t) > 10000:
+                break
+            if abs(x_t) < 1e-5:
                 break
             x_0 = x_t
         for t in time_range:
-            x_t = f(a, b, x_0)
+            x_t = f(a, b, x_0, epsilon)
             if abs(x_t) > 10000:
+                break
+            if abs(x_t) < 1e-5:
                 break
             x_0 = x_t
             x_arr[b].append(x_t)

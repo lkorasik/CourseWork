@@ -9,9 +9,9 @@ import regime_map
 from builder import Builder
 from functions import Functions
 from new.builder.bifurcation import bifurcation
+from new.builder.bifurcation_chaos import bifurcation_chaos
 from new.builder.bifurcation_with_c import bifurcation_with_c
 from new.builder.time_series import time_series
-from new.builder.time_series_probability import time_series_probability
 from plotter import Plotter
 
 if __name__ == "__main__":
@@ -205,12 +205,11 @@ if __name__ == "__main__":
     #     f=Functions.f,
     #     skip=False
     # )
-    #
     # plotter = Plotter()
     # plotter.setup('t', 'x', 'linear', 'major', 'Time series original')
     # plotter.plot(source[0], source[1], '.', 'steelblue')
     # plotter.show(True)
-    #
+
     # source = time_series_probability(
     #     time_range=range(1, 250 + 1),
     #     x_start=0.06,
@@ -220,7 +219,6 @@ if __name__ == "__main__":
     #     epsilon=0.004,
     #     skip=False
     # )
-    #
     # plotter = Plotter()
     # plotter.setup('t', 'x', 'linear', 'major', 'Time series alpha')
     # plotter.plot(source[0], source[1], '.', 'steelblue')
@@ -235,12 +233,11 @@ if __name__ == "__main__":
     #     epsilon=0.004,
     #     skip=False
     # )
-    #
     # plotter = Plotter()
     # plotter.setup('t', 'x', 'linear', 'major', 'Time series beta')
     # plotter.plot(source[0], source[1], '.', 'steelblue')
     # plotter.show(True)
-    #
+
     # source = time_series_probability(
     #     time_range=range(1, 250 + 1),
     #     x_start=0.06,
@@ -250,8 +247,57 @@ if __name__ == "__main__":
     #     epsilon=0.004,
     #     skip=False
     # )
-    #
     # plotter = Plotter()
     # plotter.setup('t', 'x', 'linear', 'major', 'Time series addition')
     # plotter.plot(source[0], source[1], '.', 'steelblue')
+    # plotter.show(False)
+
+    # source = bifurcation(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1
+    # )
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = bifurcation_chaos(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1,
+    #     f=Functions.f_pa,
+    #     epsilon=0.01
+    # )
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = bifurcation_chaos(
+    #     time_range=range(1, 100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1,
+    #     f=Functions.f_pb,
+    #     epsilon=0.01
+    # )
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation beta')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
+    # plotter.show(True)
+    #
+    # source = bifurcation_chaos(
+    #     time_range=range(1,   100 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.001),
+    #     a=1,
+    #     f=Functions.f_p,
+    #     epsilon=0.01
+    # )
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation addition')
+    # plotter.scatter(source[0], source[1], '.', 'steelblue')
     # plotter.show(False)

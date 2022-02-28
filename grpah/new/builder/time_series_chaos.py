@@ -1,4 +1,4 @@
-def time_series_probability(time_range, x_start, b, a, f, epsilon, skip):
+def time_series_chaos(time_range, x_start, b, a, f, epsilon, skip):
     """Построить временной ряд"""
     x_arr = dict()
 
