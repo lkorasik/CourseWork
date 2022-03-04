@@ -11,7 +11,11 @@ from functions import Functions
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_chaos import bifurcation_chaos
 from new.builder.bifurcation_with_c import bifurcation_with_c
+from new.builder.cyclical_mean import cyclical_mean
+from new.builder.cyclical_variance import cyclical_variance
+from new.builder.mean import mean
 from new.builder.time_series import time_series
+from new.builder.variance import variance
 from plotter import Plotter
 
 if __name__ == "__main__":
@@ -209,7 +213,7 @@ if __name__ == "__main__":
     # plotter.setup('t', 'x', 'linear', 'major', 'Time series original')
     # plotter.plot(source[0], source[1], '.', 'steelblue')
     # plotter.show(True)
-
+    #
     # source = time_series_probability(
     #     time_range=range(1, 250 + 1),
     #     x_start=0.06,
@@ -237,7 +241,7 @@ if __name__ == "__main__":
     # plotter.setup('t', 'x', 'linear', 'major', 'Time series beta')
     # plotter.plot(source[0], source[1], '.', 'steelblue')
     # plotter.show(True)
-
+    #
     # source = time_series_probability(
     #     time_range=range(1, 250 + 1),
     #     x_start=0.06,
@@ -252,16 +256,16 @@ if __name__ == "__main__":
     # plotter.plot(source[0], source[1], '.', 'steelblue')
     # plotter.show(False)
 
-    # source = bifurcation(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1
-    # )
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
+    source = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1
+    )
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
+    plotter.scatter(source[0], source[1], '.', 'steelblue')
+    plotter.show(True)
     #
     # source = bifurcation_chaos(
     #     time_range=range(1, 100 + 1),
@@ -276,18 +280,18 @@ if __name__ == "__main__":
     # plotter.scatter(source[0], source[1], '.', 'steelblue')
     # plotter.show(True)
     #
-    # source = bifurcation_chaos(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     f=Functions.f_pb,
-    #     epsilon=0.01
-    # )
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation beta')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
+    source = bifurcation_chaos(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        f=Functions.f_pb,
+        epsilon=0.01
+    )
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation beta')
+    plotter.scatter(source[0], source[1], '.', 'steelblue')
+    plotter.show(True)
     #
     # source = bifurcation_chaos(
     #     time_range=range(1,   100 + 1),
@@ -301,3 +305,160 @@ if __name__ == "__main__":
     # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation addition')
     # plotter.scatter(source[0], source[1], '.', 'steelblue')
     # plotter.show(False)
+
+    # source0 = mean(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=Functions.f
+    # )
+    # source1 = mean(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01)
+    # )
+    # source2 = mean(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03)
+    # )
+    # source3 = mean(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04)
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'linear', 'major', 'EV')
+    # plotter.plot(source0[0], source0[1], '.', 'steelblue')
+    # plotter.plot(source1[0], source1[1], '.', 'red')
+    # plotter.plot(source2[0], source2[1], '.', 'green')
+    # plotter.plot(source3[0], source3[1], '.', 'black')
+    # plotter.show(True)
+
+    source0 = cyclical_mean(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=Functions.f,
+        count=100
+    )
+    source1 = cyclical_mean(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01),
+        count=100
+    )
+    source2 = cyclical_mean(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03),
+        count=100
+    )
+    source3 = cyclical_mean(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04),
+        count=100
+    )
+
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'linear', 'major', 'EV cyclic')
+    plotter.plot(source0[0], source0[1], '.', 'steelblue')
+    plotter.plot(source1[0], source1[1], '.', 'red')
+    plotter.plot(source2[0], source2[1], '.', 'green')
+    plotter.plot(source3[0], source3[1], '.', 'black')
+    plotter.show(True)
+
+
+    # source0 = variance(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=Functions.f
+    # )
+    # source1 = variance(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01)
+    # )
+    # source2 = variance(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03)
+    # )
+    # source3 = variance(
+    #     time_range=range(1, 1000 + 1),
+    #     x_start=0.2,
+    #     b_range=np.arange(0.22, 0.582355932, 0.01),
+    #     a=1,
+    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04)
+    # )
+    #
+    # plotter = Plotter()
+    # plotter.setup('b', 'x', 'linear', 'major', 'EV')
+    # plotter.plot(source0[0], source0[1], '.', 'steelblue')
+    # plotter.plot(source1[0], source1[1], '.', 'red')
+    # plotter.plot(source2[0], source2[1], '.', 'green')
+    # plotter.plot(source3[0], source3[1], '.', 'black')
+    # plotter.show(True)
+
+    source0 = cyclical_variance(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=Functions.f,
+        count=1000
+    )
+    source1 = cyclical_variance(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01),
+        count=1000
+    )
+    source2 = cyclical_variance(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03),
+        count=1000
+    )
+    source3 = cyclical_variance(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04),
+        count=1000
+    )
+
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'linear', 'major', 'EV cyclic')
+    plotter.plot(source0[0], source0[1], '.', 'steelblue')
+    plotter.plot(source1[0], source1[1], '.', 'red')
+    plotter.plot(source2[0], source2[1], '.', 'green')
+    plotter.plot(source3[0], source3[1], '.', 'black')
+    plotter.show(False)
