@@ -1,3 +1,5 @@
+from functools import partial
+
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patches as mpatches
@@ -19,22 +21,12 @@ from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
+from runner import run_time_series
 
 if __name__ == "__main__":
 
-    source = time_series(
-        time_range=range(1, 50 + 1),
-        x_start=1.3,
-        b=0.56,
-        a=1,
-        f=Functions.f,
-        skip=False
-    )
-
-    plotter = Plotter()
-    plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    plotter.plot(source[0], source[1], '*', 'steelblue')
-    plotter.show(False)
+    # Показать временной ряд
+    run_time_series()
 
     # source = bifurcation(
     #     time_range=range(1, 100 + 1),

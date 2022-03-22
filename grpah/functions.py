@@ -22,11 +22,11 @@ def m2(a, b, x1, x2):
     return (q(a, b, x1) * s(a, b, x2) + s(a, b, x1)) / (1 - q(a, b, x1) * q(a, b, x2))
 
 
-class Functions:
-    @staticmethod
-    def f(a, b, x):
-        return (a * x ** 2) / ((b + x) ** 6)
+def f(a, b, x):
+    return (a * x ** 2) / ((b + x) ** 6)
 
+
+class Functions:
     @staticmethod
     def f_pb(a, b, x, epsilon):
         xi = numpy.random.normal(0, 1)
