@@ -1,7 +1,7 @@
 import extrema
 
 
-def bifurcation_with_c(b_range, left, right, step, f, draw_x, draw_y):
+def bifurcation_with_absorbing_area(b_range, left, right, step, f, draw_x, draw_y):
     result = [[draw_x, draw_y]]
 
     draw_x = []

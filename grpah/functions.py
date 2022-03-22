@@ -26,6 +26,12 @@ def f(a, b, x):
     return (a * x ** 2) / ((b + x) ** 6)
 
 
+def lambda_(dx, epsilon):
+    if dx == 0:
+        return 0
+    return math.log(dx / epsilon)
+
+
 class Functions:
     @staticmethod
     def f_pb(a, b, x, epsilon):
@@ -41,13 +47,6 @@ class Functions:
     def f_p(a, b, x, epsilon):
         xi = numpy.random.normal(0, 1)
         return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
-
-    @staticmethod
-    def lambda_(dx, epsilon):
-        if dx == 0:
-            print('dx=0')
-            return 0
-        return math.log(dx / epsilon)
 
     @staticmethod
     def df(a, b, x):

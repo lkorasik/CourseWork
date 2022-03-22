@@ -6,13 +6,13 @@ import matplotlib.patches as mpatches
 import numpy.random
 
 import functions
-import lyapunov
 import regime_map
 from builder import Builder
 from functions import Functions
+from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_chaos import bifurcation_chaos
-from new.builder.bifurcation_with_c import bifurcation_with_c
+from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.builder.converter import convert_dict_to_lists
 from new.builder.cyclical_mean import cyclical_mean
@@ -22,7 +22,7 @@ from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
-from runner import run_time_series, run_bifurcation
+from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov
 
 if __name__ == "__main__":
 
@@ -32,45 +32,11 @@ if __name__ == "__main__":
     # Показать график бифуркации
     # run_bifurcation()
 
-    source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x)
-    )
+    # Показать график бифуркации с
+    # run_bifurcation_with_absorbing_area()
 
-    draw_x, draw_y = convert_dict_to_lists(source)
-
-    source = bifurcation_with_c(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        left=0,
-        right=1,
-        step=0.0001,
-        f=lambda b, x: functions.f(1, b, x),
-        draw_x=draw_x,
-        draw_y=draw_y
-    )
-
-    plotter = Plotter()
-    plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-    plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
-    plotter.plot(source[1][0], source[1][1], ',', 'red')
-    plotter.plot(source[2][0], source[2][1], ',', 'red')
-    plotter.show_last()
-
-    # source = lyapunov.Lyapunov.calc(
-    #     epsilon=10 ** (-5),
-    #     a=1,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     x_0=0.2,
-    #     T_range=range(1, 100 + 1),
-    #     T=100
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
-    # plotter.plot(source[0], source[1], ',', 'red')
-    # plotter.show(False)
+    # Показать показатель Ляпунова
+    run_lyapunov()
 
     # source0 = Builder.lamerei(
     #     a=1,
