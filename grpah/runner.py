@@ -3,6 +3,7 @@ import numpy as np
 import functions
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
+from new.builder.bifurcation_stables import bifurcation_stables
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.converter import convert_dict_to_lists
 from new.builder.lamerei import lamerei
@@ -120,7 +121,7 @@ def run_lamerei():
         g=functions.g
     )
 
-    plotter = Plotter()\
+    plotter = Plotter() \
         .setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
 
     for i in source0[0]:
@@ -132,7 +133,36 @@ def run_lamerei():
     for i in source2[0]:
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
-    plotter\
-        .plot(source0[1][0], source0[1][1], ',', 'steelblue')\
-        .plot(source0[2][0], source0[2][1], ',', 'orange')\
+    plotter \
+        .plot(source0[1][0], source0[1][1], ',', 'steelblue') \
+        .plot(source0[2][0], source0[2][1], ',', 'orange') \
+        .show_last()
+
+
+def run_bifurcation_stables():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.1164711,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+
+    source = bifurcation_stables(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: functions.f(1, b, x),
+        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: functions.dsf(1, b, x),
+        bifurcation=values
+    )
+
+    Plotter()\
+        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')\
+        .scatter(source[0][0], source[0][1], '.', 'steelblue')\
+        .plot(source[1][0], source[1][1], ',', 'red')\
+        .plot(source[2][0], source[2][1], ',', 'deeppink')\
+        .plot(source[3][0], source[3][1], ',', 'green')\
         .show_last()

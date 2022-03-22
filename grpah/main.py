@@ -23,7 +23,8 @@ from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
-from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei
+from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
+    run_bifurcation_stables
 
 if __name__ == "__main__":
 
@@ -42,32 +43,8 @@ if __name__ == "__main__":
     # Показать лестницу Ламерея
     # run_lamerei()
 
-    values = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.1164711,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
-    )
-
-    source = bifurcation_stables(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        x12=0.12,
-        precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.dsf(1, b, x),
-        bifurcation=values
-    )
-
-    plotter = Plotter()
-    plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-    plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
-    plotter.plot(source[1][0], source[1][1], ',', 'red')
-    plotter.plot(source[2][0], source[2][1], ',', 'deeppink')
-    plotter.plot(source[3][0], source[3][1], ',', 'green')
-    plotter.show_last()
+    # Показать график бифуркации и корни
+    run_bifurcation_stables()
 
     '''
     source = Builder.stable(
