@@ -11,7 +11,7 @@ from builder import Builder
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_chaos import bifurcation_chaos
-from new.builder.bifurcation_stables import bifurcation_stables
+from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.builder.converter import convert_dict_to_lists
@@ -23,8 +23,7 @@ from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
-from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
-    run_bifurcation_stables
+from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, run_bifurcation_with_equilibrium
 
 if __name__ == "__main__":
 
@@ -44,7 +43,7 @@ if __name__ == "__main__":
     # run_lamerei()
 
     # Показать график бифуркации и корни
-    run_bifurcation_stables()
+    # run_bifurcation_with_equilibrium()
 
     '''
     source = Builder.stable(

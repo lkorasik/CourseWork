@@ -2,7 +2,7 @@ from new.builder.converter import convert_dict_to_lists
 from new.builder.single_newton import single_newton
 
 
-def bifurcation_stables(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation):
+def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation):
     result = []
 
     diffs = dict()

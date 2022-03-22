@@ -3,7 +3,7 @@ import numpy as np
 import functions
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
-from new.builder.bifurcation_stables import bifurcation_stables
+from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.converter import convert_dict_to_lists
 from new.builder.lamerei import lamerei
@@ -139,7 +139,7 @@ def run_lamerei():
         .show_last()
 
 
-def run_bifurcation_stables():
+def run_bifurcation_with_equilibrium():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
@@ -147,7 +147,7 @@ def run_bifurcation_stables():
         f=lambda b, x: functions.f(1, b, x),
     )
 
-    source = bifurcation_stables(
+    source = bifurcation_with_equilibrium(
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
         precision=0.0000001,
