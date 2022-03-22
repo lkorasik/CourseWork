@@ -40,6 +40,52 @@ def run_time_series_2():
         .show_last()
 
 
+def run_time_series_3():
+    source = time_series(
+        time_range=range(1, 250 + 1),
+        x_start=0.06,
+        f=lambda x: functions.f(1, 0.56, x),
+        skip=False
+    )
+    Plotter()\
+        .setup('t', 'x', 'linear', 'major', 'Time series original')\
+        .plot(source[0], source[1], '.', 'steelblue')\
+        .show()
+
+    source = time_series(
+        time_range=range(1, 250 + 1),
+        x_start=0.06,
+        f=lambda x: functions.f_pb(1, 0.56, x, 0.004),
+        skip=False
+    )
+    Plotter()\
+        .setup('t', 'x', 'linear', 'major', 'Time series alpha')\
+        .plot(source[0], source[1], '.', 'steelblue')\
+        .show()
+
+    source = time_series(
+        time_range=range(1, 250 + 1),
+        x_start=0.06,
+        f=lambda x: functions.f_pa(1, 0.56, x, 0.004),
+        skip=False
+    )
+    Plotter()\
+        .setup('t', 'x', 'linear', 'major', 'Time series beta')\
+        .plot(source[0], source[1], '.', 'steelblue')\
+        .show()
+
+    source = time_series(
+        time_range=range(1, 250 + 1),
+        x_start=0.06,
+        f=lambda x: functions.f_pa(1, 0.56, x, 0.004),
+        skip=False
+    )
+    Plotter()\
+        .setup('t', 'x', 'linear', 'major', 'Time series addition')\
+        .plot(source[0], source[1], '.', 'steelblue')\
+        .show_last()
+
+
 def run_bifurcation():
     source = bifurcation(
         time_range=range(1, 100 + 1),
@@ -53,6 +99,60 @@ def run_bifurcation():
     Plotter() \
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation') \
         .scatter(source[0], source[1], '.', 'steelblue') \
+        .show_last()
+
+
+def run_bifurcation_2():
+    source = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x)
+    )
+    source = convert_dict_to_lists(source)
+
+    Plotter()\
+        .setup('b', 'x', 'log', 'major', 'Bifurcation')\
+        .scatter(source[0], source[1], '.', 'steelblue')\
+        .show()
+
+    source = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f_pa(1, b, x, 0.01)
+    )
+    source = convert_dict_to_lists(source)
+
+    Plotter()\
+        .setup('b', 'x', 'log', 'major', 'Bifurcation alpha')\
+        .scatter(source[0], source[1], '.', 'steelblue')\
+        .show()
+
+    source = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.03)
+    )
+    source = convert_dict_to_lists(source)
+
+    Plotter()\
+        .setup('b', 'x', 'log', 'major', 'Bifurcation beta')\
+        .scatter(source[0], source[1], '.', 'steelblue')\
+        .show()
+
+    source = bifurcation(
+        time_range=range(1,   100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f_p(1, b, x, 0.01)
+    )
+    source = convert_dict_to_lists(source)
+
+    Plotter()\
+        .setup('b', 'x', 'log', 'major', 'Bifurcation addition')\
+        .scatter(source[0], source[1], '.', 'steelblue')\
         .show_last()
 
 

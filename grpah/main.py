@@ -8,7 +8,6 @@ import numpy.random
 import functions
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
-from new.builder.bifurcation_chaos import bifurcation_chaos
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
@@ -25,7 +24,7 @@ from new.builder.variance import variance
 from plotter import Plotter
 from regime_map import regime_map
 from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
-    run_bifurcation_with_equilibrium, run_equilibrium, run_time_series_2
+    run_bifurcation_with_equilibrium, run_equilibrium, run_time_series_2, run_time_series_3, run_bifurcation_2
 
 if __name__ == "__main__":
 
@@ -65,147 +64,48 @@ if __name__ == "__main__":
     #     precision=0.001
     # )
 
-    # source = time_series(
-    #     time_range=range(1, 250 + 1),
-    #     x_start=0.06,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f,
-    #     skip=False
-    # )
-    # plotter = Plotter()
-    # plotter.setup('t', 'x', 'linear', 'major', 'Time series original')
-    # plotter.plot(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
-    #
-    # source = time_series_probability(
-    #     time_range=range(1, 250 + 1),
-    #     x_start=0.06,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f_pb,
-    #     epsilon=0.004,
-    #     skip=False
-    # )
-    # plotter = Plotter()
-    # plotter.setup('t', 'x', 'linear', 'major', 'Time series alpha')
-    # plotter.plot(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
-    #
-    # source = time_series_probability(
-    #     time_range=range(1, 250 + 1),
-    #     x_start=0.06,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f_pa,
-    #     epsilon=0.004,
-    #     skip=False
-    # )
-    # plotter = Plotter()
-    # plotter.setup('t', 'x', 'linear', 'major', 'Time series beta')
-    # plotter.plot(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
-    #
-    # source = time_series_probability(
-    #     time_range=range(1, 250 + 1),
-    #     x_start=0.06,
-    #     b=0.56,
-    #     a=1,
-    #     f=Functions.f_p,
-    #     epsilon=0.004,
-    #     skip=False
-    # )
-    # plotter = Plotter()
-    # plotter.setup('t', 'x', 'linear', 'major', 'Time series addition')
-    # plotter.plot(source[0], source[1], '.', 'steelblue')
-    # plotter.show(False)
+    # Показать графики временных рядов с разными шумами
+    # run_time_series_3()
 
-    # source = bifurcation(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1
-    # )
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
-    #
-    # source = bifurcation_chaos(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     f=Functions.f_pa,
-    #     epsilon=0.01
-    # )
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
-    #
-    # source = bifurcation_chaos(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     f=Functions.f_pb,
-    #     epsilon=0.03
-    # )
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation beta')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(True)
-    #
-    # source = bifurcation_chaos(
-    #     time_range=range(1,   100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     f=Functions.f_p,
-    #     epsilon=0.01
-    # )
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'log', 'major', 'Bifurcation addition')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(False)
+    # Показать графики бифуркации с разными шумами
+    # run_bifurcation_2()
 
-    # source0 = mean(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=Functions.f
-    # )
-    # source1 = mean(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01)
-    # )
-    # source2 = mean(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03)
-    # )
-    # source3 = mean(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04)
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'linear', 'major', 'EV')
-    # plotter.plot(source0[0], source0[1], '.', 'steelblue')
-    # plotter.plot(source1[0], source1[1], '.', 'red')
-    # plotter.plot(source2[0], source2[1], '.', 'green')
-    # plotter.plot(source3[0], source3[1], '.', 'black')
-    # plotter.show(True)
+    source0 = mean(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=Functions.f
+    )
+    source1 = mean(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01)
+    )
+    source2 = mean(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03)
+    )
+    source3 = mean(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        a=1,
+        f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04)
+    )
+
+    plotter = Plotter()
+    plotter.setup('b', 'x', 'linear', 'major', 'EV')
+    plotter.plot(source0[0], source0[1], '.', 'steelblue')
+    plotter.plot(source1[0], source1[1], '.', 'red')
+    plotter.plot(source2[0], source2[1], '.', 'green')
+    plotter.plot(source3[0], source3[1], '.', 'black')
+    plotter.show(True)
 
     # source0 = cyclical_mean(
     #     time_range=range(1, 100 + 1),
