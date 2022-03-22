@@ -7,7 +7,6 @@ import numpy.random
 
 import functions
 import regime_map
-from builder import Builder
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_chaos import bifurcation_chaos
@@ -20,10 +19,12 @@ from new.builder.cyclical_variance import cyclical_variance
 from new.builder.lamerei import lamerei
 from new.builder.m_b import m_b
 from new.builder.mean import mean
+from new.builder.equilibrium import equilibrium
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
-from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, run_bifurcation_with_equilibrium
+from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
+    run_bifurcation_with_equilibrium, run_equilibrium
 
 if __name__ == "__main__":
 
@@ -45,26 +46,8 @@ if __name__ == "__main__":
     # Показать график бифуркации и корни
     # run_bifurcation_with_equilibrium()
 
-    '''
-    source = Builder.stable(
-        a=1,
-        x12=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        precision=0.0000001,
-        function=Functions.h,
-        dfunction=Functions.dh,
-        d=Functions.df
-    )
-
-    plotter = Plotter()
-    plotter.setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
-    plotter.plot(source[0][0], source[0][1], ',', 'red')
-    plotter.plot(source[1][0], source[1][1], ',', 'deeppink')
-    plotter.plot(source[2][0], source[2][1], ',', 'green')
-    plotter.plot(source[3][0], source[3][1], ',', 'black')
-    plotter.plot(source[4][0], source[4][1], ',', 'black')
-    plotter.show(False)
-    '''
+    # Показать графики равновесий
+    # run_equilibrium()
 
     # source = Builder.time_series(
     #     time_range=range(1, 100 + 1),

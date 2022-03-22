@@ -6,6 +6,7 @@ from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.converter import convert_dict_to_lists
+from new.builder.equilibrium import equilibrium
 from new.builder.lamerei import lamerei
 from new.builder.time_series import time_series
 from plotter import Plotter
@@ -159,10 +160,30 @@ def run_bifurcation_with_equilibrium():
         bifurcation=values
     )
 
+    Plotter() \
+        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium') \
+        .scatter(source[0][0], source[0][1], '.', 'steelblue') \
+        .plot(source[1][0], source[1][1], ',', 'red') \
+        .plot(source[2][0], source[2][1], ',', 'deeppink') \
+        .plot(source[3][0], source[3][1], ',', 'green') \
+        .show_last()
+
+
+def run_equilibrium():
+    source = equilibrium(
+        x12=0.12,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        precision=0.0000001,
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        d=lambda b, x: functions.df(1, b, x)
+    )
+
     Plotter()\
-        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')\
-        .scatter(source[0][0], source[0][1], '.', 'steelblue')\
-        .plot(source[1][0], source[1][1], ',', 'red')\
-        .plot(source[2][0], source[2][1], ',', 'deeppink')\
-        .plot(source[3][0], source[3][1], ',', 'green')\
+        .setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')\
+        .plot(source[0][0], source[0][1], ',', 'red')\
+        .plot(source[1][0], source[1][1], ',', 'deeppink')\
+        .plot(source[2][0], source[2][1], ',', 'green')\
+        .plot(source[3][0], source[3][1], ',', 'black')\
+        .plot(source[4][0], source[4][1], ',', 'black')\
         .show_last()
