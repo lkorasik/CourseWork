@@ -26,6 +26,20 @@ def run_time_series():
         .show_last()
 
 
+def run_time_series_2():
+    source = time_series(
+        time_range=range(1, 50 + 1),
+        x_start=2.1,
+        f=lambda x: functions.f(1, 0.48, x),
+        skip=False
+    )
+
+    Plotter() \
+        .setup('t', 'x', 'linear', 'major', 'Time series') \
+        .plot(source[0], source[1], '*', 'steelblue') \
+        .show_last()
+
+
 def run_bifurcation():
     source = bifurcation(
         time_range=range(1, 100 + 1),
@@ -179,11 +193,11 @@ def run_equilibrium():
         d=lambda b, x: functions.df(1, b, x)
     )
 
-    Plotter()\
-        .setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')\
-        .plot(source[0][0], source[0][1], ',', 'red')\
-        .plot(source[1][0], source[1][1], ',', 'deeppink')\
-        .plot(source[2][0], source[2][1], ',', 'green')\
-        .plot(source[3][0], source[3][1], ',', 'black')\
-        .plot(source[4][0], source[4][1], ',', 'black')\
+    Plotter() \
+        .setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium') \
+        .plot(source[0][0], source[0][1], ',', 'red') \
+        .plot(source[1][0], source[1][1], ',', 'deeppink') \
+        .plot(source[2][0], source[2][1], ',', 'green') \
+        .plot(source[3][0], source[3][1], ',', 'black') \
+        .plot(source[4][0], source[4][1], ',', 'black') \
         .show_last()

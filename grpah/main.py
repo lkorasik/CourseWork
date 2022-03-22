@@ -24,12 +24,13 @@ from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
 from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
-    run_bifurcation_with_equilibrium, run_equilibrium
+    run_bifurcation_with_equilibrium, run_equilibrium, run_time_series_2
 
 if __name__ == "__main__":
 
     # Показать график временного ряда
     # run_time_series()
+    run_time_series_2()
 
     # Показать график бифуркации
     # run_bifurcation()
@@ -48,19 +49,6 @@ if __name__ == "__main__":
 
     # Показать графики равновесий
     # run_equilibrium()
-
-    # source = Builder.time_series(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=2.1,
-    #     b=0.48,
-    #     a=1,
-    #     skip=False
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('t', 'x', 'linear', 'major', 'Time series')
-    # plotter.plot(source[0], source[1], '*', 'steelblue')
-    # plotter.show(True)
 
     # source = bifurcation(
     #     time_range=range(1, 100 + 1),
