@@ -46,7 +46,7 @@ def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, functio
     draw_y1 = []
     x = x12 - (x12 / 4)
     for b in b_range:
-        x = single_newton(b, x, precision, lambda b, x: function(1, b, x), lambda b, x: dfunction(1, b, x))
+        x = single_newton(x, precision, lambda x: function(1, b, x), lambda x: dfunction(1, b, x))
         draw_x1.append(b)
         draw_y1.append(x)
 
@@ -57,7 +57,7 @@ def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, functio
     draw_y2 = []
     x = x12 + (x12 / 4)
     for b in b_range:
-        x = single_newton(b, x, precision, lambda b, x: function(1, b, x), lambda b, x: dfunction(1, b, x))
+        x = single_newton(x, precision, lambda x: function(1, b, x), lambda x: dfunction(1, b, x))
         if difs[b] > 0.001:
             draw_x2.append(b)
             draw_y2.append(x)
@@ -69,9 +69,9 @@ def bifurcation_stables(time_range, x_start, b_range, a, x12, precision, functio
     draw_y3 = []
     x1 = x12 - (x12 / 4)
     for b in b_range:
-        delta_y = single_newton(b, x1, precision, lambda b, x: function(1, b, x), lambda b, x: dfunction(1, b, x))
+        delta_y = single_newton(x1, precision, lambda x: function(1, b, x), lambda x: dfunction(1, b, x))
         f = lambda a, b, c: functions.sf(a, b, c, delta_y)
-        x = single_newton(b, x, precision, lambda b, x: f(1, b, x), lambda b, x: functions.dsf(1, b, x))
+        x = single_newton(x, precision, lambda x: f(1, b, x), lambda x: functions.dsf(1, b, x))
         x1 = delta_y
         draw_x3.append(b)
         draw_y3.append(x)
