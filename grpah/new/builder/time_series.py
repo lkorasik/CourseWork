@@ -9,7 +9,7 @@ def time_series(time_range, x_start, f, skip):
 
     return [x, ...], [y, ...]
     """
-    draw_ord = []
+    x = []
 
     x_0 = x_start
     if skip:
@@ -17,12 +17,12 @@ def time_series(time_range, x_start, f, skip):
             x_0 = f(x_0)
     for _ in time_range:
         x_0 = f(x_0)
-        draw_ord.append(x_0)
+        x.append(x_0)
 
-    draw_abs = list(time_range)
+    t = list(time_range)
 
     # Вставляем в результаты начальную точку
-    draw_ord.insert(0, x_start)
-    draw_abs.insert(0, 0)
+    x.insert(0, x_start)
+    t.insert(0, 0)
 
-    return draw_abs, draw_ord
+    return t, x

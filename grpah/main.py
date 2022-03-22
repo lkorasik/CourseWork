@@ -26,10 +26,10 @@ from runner import run_time_series, run_bifurcation
 if __name__ == "__main__":
 
     # Показать график временного ряда
-    # run_time_series()
+    run_time_series()
 
     # Показать график бифуркации
-    run_bifurcation()
+    # run_bifurcation()
 
     # source = bifurcation_with_c(
     #     time_range=range(1, 100 + 1),
