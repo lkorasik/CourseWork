@@ -12,17 +12,19 @@ from functions import Functions
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_chaos import bifurcation_chaos
+from new.builder.bifurcation_stables import bifurcation_stables
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.builder.converter import convert_dict_to_lists
 from new.builder.cyclical_mean import cyclical_mean
 from new.builder.cyclical_variance import cyclical_variance
+from new.builder.lamerei import lamerei
 from new.builder.m_b import m_b
 from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
-from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov
+from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei
 
 if __name__ == "__main__":
 
@@ -36,71 +38,30 @@ if __name__ == "__main__":
     # run_bifurcation_with_absorbing_area()
 
     # Показать показатель Ляпунова
-    run_lyapunov()
+    # run_lyapunov()
 
-    # source0 = Builder.lamerei(
-    #     a=1,
-    #     x_start=0.03,
-    #     b=0.56,
-    #     time_range=range(1, 100 + 1),
-    #     skip=False,
-    #     xmin=0.0,
-    #     xmax=0.34
-    # )
-    # source1 = Builder.lamerei(
-    #     a=1,
-    #     x_start=0.1,
-    #     b=0.56,
-    #     time_range=range(1, 100 + 1),
-    #     skip=False,
-    #     xmin=0.0,
-    #     xmax=0.34
-    # )
-    # source2 = Builder.lamerei(
-    #     a=1,
-    #     x_start=0.3,
-    #     b=0.56,
-    #     time_range=range(1, 100 + 1),
-    #     skip=False,
-    #     xmin=0.0,
-    #     xmax=0.34
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
-    #
-    # for i in source0[0]:
-    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-    #
-    # for i in source1[0]:
-    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-    #
-    # for i in source2[0]:
-    #     plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
-    #
-    # plotter.plot(source0[1][0], source0[1][1], ',', 'steelblue')
-    # plotter.plot(source0[2][0], source0[2][1], ',', 'orange')
-    #
-    # plotter.show(False)
+    # Показать лестницу Ламерея
+    # run_lamerei()
 
-    # source = Builder.bifurcation_stables(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.1164711,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1,
-    #     x12=0.12,
-    #     precision=0.0000001,
-    #     function=Functions.h,
-    #     dfunction=Functions.dh
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-    # plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
-    # plotter.plot(source[1][0], source[1][1], ',', 'red')
-    # plotter.plot(source[2][0], source[2][1], ',', 'deeppink')
-    # plotter.plot(source[3][0], source[3][1], ',', 'green')
-    # plotter.show(False)
+    source = bifurcation_stables(
+        time_range=range(1, 100 + 1),
+        x_start=0.1164711,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        x12=0.12,
+        a=1,
+        precision=0.0000001,
+        function=Functions.h,
+        dfunction=Functions.dh,
+        f=functions.f
+    )
+
+    plotter = Plotter()
+    plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+    plotter.scatter(source[0][0], source[0][1], '.', 'steelblue')
+    plotter.plot(source[1][0], source[1][1], ',', 'red')
+    plotter.plot(source[2][0], source[2][1], ',', 'deeppink')
+    plotter.plot(source[3][0], source[3][1], ',', 'green')
+    plotter.show_last()
 
     '''
     source = Builder.stable(

@@ -5,6 +5,7 @@ from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.converter import convert_dict_to_lists
+from new.builder.lamerei import lamerei
 from new.builder.time_series import time_series
 from plotter import Plotter
 
@@ -78,7 +79,60 @@ def run_lyapunov():
         lambda_=functions.lambda_
     )
 
-    Plotter()\
-        .setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')\
-        .plot(source[0], source[1], ',', 'red')\
+    Plotter() \
+        .setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov') \
+        .plot(source[0], source[1], ',', 'red') \
+        .show_last()
+
+
+def run_lamerei():
+    source0 = lamerei(
+        a=1,
+        x_start=0.03,
+        b=0.56,
+        time_range=range(1, 100 + 1),
+        skip=False,
+        xmin=0.0,
+        xmax=0.34,
+        f=functions.f,
+        g=functions.g
+    )
+    source1 = lamerei(
+        a=1,
+        x_start=0.1,
+        b=0.56,
+        time_range=range(1, 100 + 1),
+        skip=False,
+        xmin=0.0,
+        xmax=0.34,
+        f=functions.f,
+        g=functions.g
+    )
+    source2 = lamerei(
+        a=1,
+        x_start=0.3,
+        b=0.56,
+        time_range=range(1, 100 + 1),
+        skip=False,
+        xmin=0.0,
+        xmax=0.34,
+        f=functions.f,
+        g=functions.g
+    )
+
+    plotter = Plotter()\
+        .setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
+
+    for i in source0[0]:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    for i in source1[0]:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    for i in source2[0]:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    plotter\
+        .plot(source0[1][0], source0[1][1], ',', 'steelblue')\
+        .plot(source0[2][0], source0[2][1], ',', 'orange')\
         .show_last()

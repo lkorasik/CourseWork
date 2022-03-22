@@ -3,7 +3,8 @@ import numpy
 
 
 def m(a, b, x):
-    return (36 * (a ** 4) * (x ** 4)) / (((b + x) ** 14) * (1 - ((4 * (a ** 2) * ((b - 2 * x) ** 2) * (x ** 2)) / ((b + x) ** 14))))
+    return (36 * (a ** 4) * (x ** 4)) / (
+            ((b + x) ** 14) * (1 - ((4 * (a ** 2) * ((b - 2 * x) ** 2) * (x ** 2)) / ((b + x) ** 14))))
 
 
 def q(a, b, x):
@@ -32,6 +33,20 @@ def lambda_(dx, epsilon):
     return math.log(dx / epsilon)
 
 
+def g(a, x):
+    return a * x
+
+
+def sf(a, b, x, shift):
+    """Сдвиг функции f"""
+    return (a * x ** 2) / ((b + x) ** 6) - shift
+
+
+def dsf(a, b, x):
+    """Производная сдвига функции f"""
+    return (2 * x * (b - 2 * x)) / ((b + x) ** 7)
+
+
 class Functions:
     @staticmethod
     def f_pb(a, b, x, epsilon):
@@ -53,19 +68,6 @@ class Functions:
         return (2 * a * x * (b - 2 * x)) / ((b + x) ** 7)
 
     @staticmethod
-    def sf(a, b, x, shift):
-        """Сдвиг функции f"""
-        return (a * x ** 2) / ((b + x) ** 6) - shift
-
-    @staticmethod
-    def dsf(a, b, x):
-        """Производная сдвига функции f"""
-        return (2 * x * (b - 2 * x)) / ((b + x) ** 7)
-
-    @staticmethod
-    def g(a, x):
-        return a * x
-
     @staticmethod
     def h(a, b, x):
         return x - (a * x ** 2) / ((b + x) ** 6)
