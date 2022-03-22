@@ -21,24 +21,15 @@ from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
-from runner import run_time_series
+from runner import run_time_series, run_bifurcation
 
 if __name__ == "__main__":
 
-    # Показать временной ряд
-    run_time_series()
+    # Показать график временного ряда
+    # run_time_series()
 
-    # source = bifurcation(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.001),
-    #     a=1
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-    # plotter.scatter(source[0], source[1], '.', 'steelblue')
-    # plotter.show(False)
+    # Показать график бифуркации
+    run_bifurcation()
 
     # source = bifurcation_with_c(
     #     time_range=range(1, 100 + 1),

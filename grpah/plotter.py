@@ -22,7 +22,10 @@ class Plotter:
         plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0.01, color=color)
         return self
 
-    def show(self, has_next_graphic):
-        plt.show(block=not has_next_graphic)
+    def show(self):
+        plt.show(block=False)
 
         return self
+
+    def show_last(self):
+        plt.show(block=True)
