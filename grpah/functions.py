@@ -47,31 +47,28 @@ def dsf(a, b, x):
     return (2 * x * (b - 2 * x)) / ((b + x) ** 7)
 
 
-class Functions:
-    @staticmethod
-    def f_pb(a, b, x, epsilon):
-        xi = numpy.random.normal(0, 1)
-        return (a * x ** 2) / ((b + (epsilon * xi) + x) ** 6)
+def h(a, b, x):
+    return x - (a * x ** 2) / ((b + x) ** 6)
 
-    @staticmethod
-    def f_pa(a, b, x, epsilon):
-        xi = numpy.random.normal(0, 1)
-        return ((a + (epsilon * xi)) * x ** 2) / ((b + x) ** 6)
 
-    @staticmethod
-    def f_p(a, b, x, epsilon):
-        xi = numpy.random.normal(0, 1)
-        return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
+def dh(a, b, x):
+    return (2 * a * x * (2 * x - b)) / ((b + x) ** 7) + 1
 
-    @staticmethod
-    def df(a, b, x):
-        return (2 * a * x * (b - 2 * x)) / ((b + x) ** 7)
 
-    @staticmethod
-    @staticmethod
-    def h(a, b, x):
-        return x - (a * x ** 2) / ((b + x) ** 6)
+def f_pb(a, b, x, epsilon):
+    xi = numpy.random.normal(0, 1)
+    return (a * x ** 2) / ((b + (epsilon * xi) + x) ** 6)
 
-    @staticmethod
-    def dh(a, b, x):
-        return (2 * a * x * (2 * x - b)) / ((b + x) ** 7) + 1
+
+def f_pa(a, b, x, epsilon):
+    xi = numpy.random.normal(0, 1)
+    return ((a + (epsilon * xi)) * x ** 2) / ((b + x) ** 6)
+
+
+def f_p(a, b, x, epsilon):
+    xi = numpy.random.normal(0, 1)
+    return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
+
+
+def df(a, b, x):
+    return (2 * a * x * (b - 2 * x)) / ((b + x) ** 7)

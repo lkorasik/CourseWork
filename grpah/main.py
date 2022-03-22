@@ -8,7 +8,6 @@ import numpy.random
 import functions
 import regime_map
 from builder import Builder
-from functions import Functions
 from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_chaos import bifurcation_chaos
@@ -43,16 +42,23 @@ if __name__ == "__main__":
     # Показать лестницу Ламерея
     # run_lamerei()
 
-    source = bifurcation_stables(
+    values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
         b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+
+    source = bifurcation_stables(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
-        a=1,
         precision=0.0000001,
-        function=Functions.h,
-        dfunction=Functions.dh,
-        f=functions.f
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: functions.f(1, b, x),
+        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: functions.dsf(1, b, x),
+        bifurcation=values
     )
 
     plotter = Plotter()
