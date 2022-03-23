@@ -19,15 +19,15 @@ def bifurcation(time_range, x_start, b_range, f):
             x_t = f(b, x_0)
             if abs(x_t) > 10000:
                 break
-            # if abs(x_t) < 1e-5:
-            #     break
+            if abs(x_t) < 1e-5:
+                break
             x_0 = x_t
         for _ in time_range:
             x_t = f(b, x_0)
             if abs(x_t) > 10000:
                 break
-            # if abs(x_t) < 1e-5:
-            #     break
+            if abs(x_t) < 1e-5:
+                break
             x_0 = x_t
             values[b].append(x_t)
 
