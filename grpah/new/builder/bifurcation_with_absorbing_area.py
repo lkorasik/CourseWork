@@ -1,4 +1,4 @@
-import extrema
+from new.builder import extrema
 
 
 def bifurcation_with_absorbing_area(b_range, left, right, step, f, draw_x, draw_y):
