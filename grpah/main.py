@@ -83,9 +83,14 @@ if __name__ == "__main__":
     # Циклическая дисперсия
     # run_cyclic_variance()
 
-    source = bifurcation_with_ssf(
+    values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
+        b_range=np.arange(0.37, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
         b_range=np.arange(0.37, 0.582355932, 0.001),
         a=1,
         left1=0.44,
@@ -96,7 +101,6 @@ if __name__ == "__main__":
         m1=functions.m1,
         m2=functions.m2,
         epsilon=0.001,
-        f=functions.f
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
