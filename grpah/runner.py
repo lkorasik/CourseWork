@@ -5,11 +5,13 @@ from lyapunov import lyapunov
 from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
+from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.builder.converter import convert_dict_to_lists
 from new.builder.cyclical_mean import cyclical_mean
 from new.builder.cyclical_variance import cyclical_variance
 from new.builder.equilibrium import equilibrium
 from new.builder.lamerei import lamerei
+from new.builder.m_b import m_b
 from new.builder.mean import mean
 from new.builder.time_series import time_series
 from new.builder.variance import variance
@@ -490,4 +492,68 @@ def run_cyclic_variance():
         .plot(source1[0], source1[1], '.', 'red') \
         .plot(source2[0], source2[1], '.', 'green') \
         .plot(source3[0], source3[1], '.', 'black') \
+        .show_last()
+
+
+def run_stochastoc_sensetivity():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.37, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=np.arange(0.37, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.43,
+        m=functions.m,
+        m1=functions.m1,
+        m2=functions.m2,
+        epsilon=0.001,
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.001),
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    Plotter()\
+        .setup('b', 'x', 'log', 'major', 'Bifurcation')\
+        .scatter(chaos[0], chaos[1], '.', 'steelblue')\
+        .scatter(source[0], source[1], '.', 'red')\
+        .show_last()
+
+
+def run_m_b():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.37, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.37, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.43,
+        m=functions.m,
+        m1=functions.m1,
+        m2=functions.m2,
+        values=values
+    )
+
+    Plotter()\
+        .setup('b', 'M', 'linear', 'major', 'Stochastic sensetivity')\
+        .scatter(source[0], source[1], '.', 'red')\
+        .scatter(source[2], source[3], '.', 'red')\
+        .scatter(source[4], source[5], '.', 'red')\
+        .scatter(source[6], source[7], '.', 'red')\
         .show_last()

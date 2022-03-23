@@ -1,33 +1,10 @@
-def m_b(time_range, x_start, b_range, a, left1, right1, left2, right2, m, m1, m2, epsilon, f):
-    x_arr = dict()
-
-    for b in b_range:
-        x_arr[b] = []
-        x_0 = x_start
-        for t in time_range:
-            x_t = f(a, b, x_0)
-            if abs(x_t) > 10000:
-                break
-            if abs(x_t) < 1e-5:
-                break
-            x_0 = x_t
-        for t in time_range:
-            x_t = f(a, b, x_0)
-            if abs(x_t) > 10000:
-                break
-            if abs(x_t) < 1e-5:
-                break
-            x_0 = x_t
-            x_arr[b].append(x_t)
-
+def m_b(b_range, a, left1, right1, left2, right2, m, m1, m2, values):
     draw_x = []
     draw_y = []
 
     for b in b_range:
-        x = x_arr[b]
+        x = values[b]
         for x_ in x:
-            if x_ > 10:
-                continue
             draw_x.append(b)
             draw_y.append(x_)
 
@@ -39,7 +16,7 @@ def m_b(time_range, x_start, b_range, a, left1, right1, left2, right2, m, m1, m2
         if b < left1 or b > right1:
             continue
 
-        x = x_arr[b]
+        x = values[b]
         for x_ in x:
             if x_ > 10:
                 continue
@@ -53,7 +30,7 @@ def m_b(time_range, x_start, b_range, a, left1, right1, left2, right2, m, m1, m2
         if b < left1 or b > right1:
             continue
 
-        x = x_arr[b]
+        x = values[b]
         for x_ in x:
             if x_ > 10:
                 continue
@@ -65,10 +42,10 @@ def m_b(time_range, x_start, b_range, a, left1, right1, left2, right2, m, m1, m2
     down_x2 = []
     down_y2 = []
     for b in b_range:
-        if b < left2 or b > right1:
+        if b < left2 or b > right2:
             continue
 
-        x = x_arr[b]
+        x = values[b]
         x0 = []
         x1 = []
         for i in range(len(x)):
@@ -87,10 +64,10 @@ def m_b(time_range, x_start, b_range, a, left1, right1, left2, right2, m, m1, m2
     up_x2 = []
     up_y2 = []
     for b in b_range:
-        if b < left2 or b > right1:
+        if b < left2 or b > right2:
             continue
 
-        x = x_arr[b]
+        x = values[b]
         x0 = []
         x1 = []
         for i in range(len(x)):

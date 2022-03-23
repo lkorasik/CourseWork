@@ -25,7 +25,7 @@ from plotter import Plotter
 from regime_map import regime_map
 from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
     run_bifurcation_with_equilibrium, run_equilibrium, run_time_series_2, run_time_series_3, run_bifurcation_2, \
-    run_mean, run_cyclic_mean, run_variance, run_cyclic_variance
+    run_mean, run_cyclic_mean, run_variance, run_cyclic_variance, run_stochastoc_sensetivity, run_m_b
 
 if __name__ == "__main__":
 
@@ -83,70 +83,8 @@ if __name__ == "__main__":
     # Циклическая дисперсия
     # run_cyclic_variance()
 
-    values = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        b_range=np.arange(0.37, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
-    )
-    source = bifurcation_with_ssf(
-        values=values,
-        b_range=np.arange(0.37, 0.582355932, 0.001),
-        a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.43,
-        m=functions.m,
-        m1=functions.m1,
-        m2=functions.m2,
-        epsilon=0.001,
-    )
-    chaos = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.001),
-    )
-    chaos = convert_dict_to_lists(chaos)
+    # Функция стохастической чувствительности
+    # run_stochastoc_sensetivity()
 
-    plotter = Plotter()
-    plotter.setup('b', 'x', 'log', 'major', 'Bifurcation')
-    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
-    plotter.scatter(source[0], source[1], '.', 'red')
-    plotter.scatter(source[2], source[3], '.', 'red')
-    plotter.scatter(source[4], source[5], '.', 'red')
-    plotter.scatter(source[6], source[7], '.', 'red')
-    plotter.show_last()
-
-    # source = m_b(
-    #     time_range=range(1, 100 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.37, 0.582355932, 0.001),
-    #     a=1,
-    #     left1=0.44,
-    #     right1=0.582355932,
-    #     left2=0.379,
-    #     right2=0.43,
-    #     m=functions.m,
-    #     m1=functions.m1,
-    #     m2=functions.m2,
-    #     epsilon=0.01,
-    #     f=Functions.f
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('b', 'M', 'linear', 'major', 'Stochastic sensetivity')
-    # plotter.scatter(source[0], source[1], '.', 'red')
-    # plotter.scatter(source[2], source[3], '.', 'red')
-    # plotter.scatter(source[4], source[5], '.', 'red')
-    # plotter.scatter(source[6], source[7], '.', 'red')
-    # plotter.show(False)
-
-    # plotter = Plotter()
-    # plotter.setup('b', 'M', 'linear', 'major', 'Stochastic sensetivity')
-    # plotter.scatter(source[0], source[1], '.', 'red')
-    # plotter.scatter(source[2], source[3], '.', 'red')
-    # plotter.scatter(source[4], source[5], '.', 'red')
-    # plotter.scatter(source[6], source[7], '.', 'red')
-    # plotter.show(False)
+    # График стохастической чувствительности
+    run_m_b()
