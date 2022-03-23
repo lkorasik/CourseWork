@@ -1,29 +1,12 @@
 import statistics
 
 
-def variance(time_range, x_start, b_range, a, f):
-    x_arr = dict()
-
-    for b in b_range:
-        x_arr[b] = []
-        x_0 = x_start
-        for t in time_range:
-            x_t = f(a, b, x_0)
-            if abs(x_t) > 10000:
-                break
-            x_0 = x_t
-        for t in time_range:
-            x_t = f(a, b, x_0)
-            if abs(x_t) > 10000:
-                break
-            x_0 = x_t
-            x_arr[b].append(x_t)
-
+def variance(b_range, values):
     draw_x = []
     draw_y = []
     for b in b_range:
-        variance = statistics.variance(x_arr[b])
+        variance_ = statistics.variance(values[b])
         draw_x.append(b)
-        draw_y.append(variance)
+        draw_y.append(variance_)
 
     return draw_x, draw_y

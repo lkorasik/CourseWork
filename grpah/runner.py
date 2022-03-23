@@ -6,10 +6,12 @@ from new.builder.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.converter import convert_dict_to_lists
+from new.builder.cyclical_mean import cyclical_mean
 from new.builder.equilibrium import equilibrium
 from new.builder.lamerei import lamerei
 from new.builder.mean import mean
 from new.builder.time_series import time_series
+from new.builder.variance import variance
 from plotter import Plotter
 
 
@@ -48,9 +50,9 @@ def run_time_series_3():
         f=lambda x: functions.f(1, 0.56, x),
         skip=False
     )
-    Plotter()\
-        .setup('t', 'x', 'linear', 'major', 'Time series original')\
-        .plot(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('t', 'x', 'linear', 'major', 'Time series original') \
+        .plot(source[0], source[1], '.', 'steelblue') \
         .show()
 
     source = time_series(
@@ -59,9 +61,9 @@ def run_time_series_3():
         f=lambda x: functions.f_pb(1, 0.56, x, 0.004),
         skip=False
     )
-    Plotter()\
-        .setup('t', 'x', 'linear', 'major', 'Time series alpha')\
-        .plot(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('t', 'x', 'linear', 'major', 'Time series alpha') \
+        .plot(source[0], source[1], '.', 'steelblue') \
         .show()
 
     source = time_series(
@@ -70,9 +72,9 @@ def run_time_series_3():
         f=lambda x: functions.f_pa(1, 0.56, x, 0.004),
         skip=False
     )
-    Plotter()\
-        .setup('t', 'x', 'linear', 'major', 'Time series beta')\
-        .plot(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('t', 'x', 'linear', 'major', 'Time series beta') \
+        .plot(source[0], source[1], '.', 'steelblue') \
         .show()
 
     source = time_series(
@@ -81,9 +83,9 @@ def run_time_series_3():
         f=lambda x: functions.f_pa(1, 0.56, x, 0.004),
         skip=False
     )
-    Plotter()\
-        .setup('t', 'x', 'linear', 'major', 'Time series addition')\
-        .plot(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('t', 'x', 'linear', 'major', 'Time series addition') \
+        .plot(source[0], source[1], '.', 'steelblue') \
         .show_last()
 
 
@@ -112,9 +114,9 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter()\
-        .setup('b', 'x', 'log', 'major', 'Bifurcation')\
-        .scatter(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('b', 'x', 'log', 'major', 'Bifurcation') \
+        .scatter(source[0], source[1], '.', 'steelblue') \
         .show()
 
     source = bifurcation(
@@ -125,9 +127,9 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter()\
-        .setup('b', 'x', 'log', 'major', 'Bifurcation alpha')\
-        .scatter(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('b', 'x', 'log', 'major', 'Bifurcation alpha') \
+        .scatter(source[0], source[1], '.', 'steelblue') \
         .show()
 
     source = bifurcation(
@@ -138,22 +140,22 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter()\
-        .setup('b', 'x', 'log', 'major', 'Bifurcation beta')\
-        .scatter(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('b', 'x', 'log', 'major', 'Bifurcation beta') \
+        .scatter(source[0], source[1], '.', 'steelblue') \
         .show()
 
     source = bifurcation(
-        time_range=range(1,   100 + 1),
+        time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f_p(1, b, x, 0.01)
     )
     source = convert_dict_to_lists(source)
 
-    Plotter()\
-        .setup('b', 'x', 'log', 'major', 'Bifurcation addition')\
-        .scatter(source[0], source[1], '.', 'steelblue')\
+    Plotter() \
+        .setup('b', 'x', 'log', 'major', 'Bifurcation addition') \
+        .scatter(source[0], source[1], '.', 'steelblue') \
         .show_last()
 
 
@@ -357,6 +359,7 @@ def run_mean():
         .plot(source3[0], source3[1], '.', 'black') \
         .show_last()
 
+
 def run_cyclic_mean():
     source0 = cyclical_mean(
         time_range=range(1, 100 + 1),
@@ -391,8 +394,62 @@ def run_cyclic_mean():
         count=100
     )
 
-    plotter = Plotter() \
+    Plotter() \
         .setup('b', 'x', 'linear', 'major', 'EV cyclic') \
+        .plot(source0[0], source0[1], '.', 'steelblue') \
+        .plot(source1[0], source1[1], '.', 'red') \
+        .plot(source2[0], source2[1], '.', 'green') \
+        .plot(source3[0], source3[1], '.', 'black') \
+        .show_last()
+
+
+def run_variance():
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f(1, b, x)
+    )
+    source0 = variance(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.01)
+    )
+    source1 = variance(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.03)
+    )
+    source2 = variance(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.04)
+    )
+    source3 = variance(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    Plotter() \
+        .setup('b', 'x', 'linear', 'major', 'Variance') \
         .plot(source0[0], source0[1], '.', 'steelblue') \
         .plot(source1[0], source1[1], '.', 'red') \
         .plot(source2[0], source2[1], '.', 'green') \

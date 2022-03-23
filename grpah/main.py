@@ -25,7 +25,7 @@ from plotter import Plotter
 from regime_map import regime_map
 from runner import run_time_series, run_bifurcation, run_bifurcation_with_absorbing_area, run_lyapunov, run_lamerei, \
     run_bifurcation_with_equilibrium, run_equilibrium, run_time_series_2, run_time_series_3, run_bifurcation_2, \
-    run_mean, run_cyclic_mean
+    run_mean, run_cyclic_mean, run_variance
 
 if __name__ == "__main__":
 
@@ -77,42 +77,8 @@ if __name__ == "__main__":
     # Усредненное матожидание
     # run_cyclic_mean()
 
-    # source0 = variance(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=Functions.f
-    # )
-    # source1 = variance(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.01)
-    # )
-    # source2 = variance(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.03)
-    # )
-    # source3 = variance(
-    #     time_range=range(1, 1000 + 1),
-    #     x_start=0.2,
-    #     b_range=np.arange(0.22, 0.582355932, 0.01),
-    #     a=1,
-    #     f=lambda a, b, x: Functions.f_pb(a, b, x, 0.04)
-    # )
-    #
-    # plotter = Plotter()
-    # plotter.setup('b', 'x', 'linear', 'major', 'Variance')
-    # plotter.plot(source0[0], source0[1], '.', 'steelblue')
-    # plotter.plot(source1[0], source1[1], '.', 'red')
-    # plotter.plot(source2[0], source2[1], '.', 'green')
-    # plotter.plot(source3[0], source3[1], '.', 'black')
-    # plotter.show(False)
+    # Дисперсия
+    # run_variance()
 
     # source0 = cyclical_variance(
     #     time_range=range(1, 100 + 1),
