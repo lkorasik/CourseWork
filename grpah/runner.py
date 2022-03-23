@@ -13,7 +13,7 @@ from new.builder.equilibrium import equilibrium
 from new.builder.lamerei import lamerei
 from new.builder.m_b import m_b
 from new.builder.mean import mean
-from new.builder.time_series import time_series
+from new.algorithms.time_series import time_series
 from new.builder.variance import variance
 from plotter import Plotter
 
@@ -26,7 +26,7 @@ def run_time_series():
         skip=False
     )
 
-    Plotter() \
+    Plotter()\
         .setup('t', 'x', 'linear', 'major', 'Time series') \
         .plot(source[0], source[1], '*', 'steelblue') \
         .show_last()

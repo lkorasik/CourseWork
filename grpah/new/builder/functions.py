@@ -2,6 +2,10 @@ import math
 import numpy
 
 
+def f(a, b, x):
+    return (a * x ** 2) / ((b + x) ** 6)
+
+
 def m(a, b, x):
     return (36 * (a ** 4) * (x ** 4)) / (
             ((b + x) ** 14) * (1 - ((4 * (a ** 2) * ((b - 2 * x) ** 2) * (x ** 2)) / ((b + x) ** 14))))
@@ -21,10 +25,6 @@ def m1(a, b, x1, x2):
 
 def m2(a, b, x1, x2):
     return (q(a, b, x1) * s(a, b, x2) + s(a, b, x1)) / (1 - q(a, b, x1) * q(a, b, x2))
-
-
-def f(a, b, x):
-    return (a * x ** 2) / ((b + x) ** 6)
 
 
 def lambda_(dx, epsilon):

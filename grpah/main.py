@@ -1,9 +1,9 @@
-from runner import run_m_b
+from runner import *
 
 if __name__ == "__main__":
 
     # Показать график временного ряда
-    # run_time_series()
+    run_time_series()
     # run_time_series_2()
 
     # Показать график бифуркации
@@ -60,4 +60,4 @@ if __name__ == "__main__":
     # run_stochastoc_sensetivity()
 
     # График стохастической чувствительности
-    run_m_b()
+    # run_m_b()
