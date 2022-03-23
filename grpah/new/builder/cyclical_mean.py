@@ -1,5 +1,6 @@
 import statistics
 
+from new.builder.bifurcation import bifurcation
 from new.builder.mean import mean
 
 
@@ -10,7 +11,8 @@ def cyclical_mean(time_range, x_start, b_range, a, f, count):
 
     data = []
     for i in range(count):
-        draw_y = mean(time_range, x_start, b_range, a, f)[1]
+        values = bifurcation(time_range, x_start, b_range, lambda b, x: f(1, b, x))
+        draw_y = mean(b_range, values)[1]
         data.append(draw_y)
 
     length = len(data[0])
