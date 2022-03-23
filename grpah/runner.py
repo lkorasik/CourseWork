@@ -365,32 +365,28 @@ def run_cyclic_mean():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        a=1,
-        f=functions.f,
+        f=lambda b, x: functions.f(1, b, x),
         count=100
     )
     source1 = cyclical_mean(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        a=1,
-        f=lambda a, b, x: functions.f_pb(a, b, x, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         count=100
     )
     source2 = cyclical_mean(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        a=1,
-        f=lambda a, b, x: functions.f_pb(a, b, x, 0.03),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         count=100
     )
     source3 = cyclical_mean(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        a=1,
-        f=lambda a, b, x: functions.f_pb(a, b, x, 0.04),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         count=100
     )
 
