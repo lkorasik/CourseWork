@@ -1,6 +1,6 @@
 import statistics
 
-from new.builder.bifurcation import bifurcation
+from new.algorithms.bifurcation import bifurcation
 from new.builder.variance import variance
 
 

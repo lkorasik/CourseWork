@@ -2,7 +2,7 @@ import numpy as np
 
 from new.builder import functions
 from new.builder.lyapunov import lyapunov
-from new.builder.bifurcation import bifurcation
+from new.algorithms.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
