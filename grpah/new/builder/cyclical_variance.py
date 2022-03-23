@@ -1,16 +1,18 @@
 import statistics
 
+from new.builder.bifurcation import bifurcation
 from new.builder.variance import variance
 
 
-def cyclical_variance(time_range, x_start, b_range, a, f, count):
+def cyclical_variance(time_range, x_start, b_range, f, count):
     draw_x = []
     for b in b_range:
         draw_x.append(b)
 
     data = []
     for i in range(count):
-        draw_y = variance(time_range, x_start, b_range, a, f)[1]
+        values = bifurcation(time_range, x_start, b_range, f)
+        draw_y = variance(b_range, values)[1]
         data.append(draw_y)
 
     length = len(data[0])
