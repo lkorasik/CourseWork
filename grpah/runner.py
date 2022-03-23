@@ -8,6 +8,7 @@ from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbi
 from new.builder.converter import convert_dict_to_lists
 from new.builder.equilibrium import equilibrium
 from new.builder.lamerei import lamerei
+from new.builder.mean import mean
 from new.builder.time_series import time_series
 from plotter import Plotter
 
@@ -300,4 +301,58 @@ def run_equilibrium():
         .plot(source[2][0], source[2][1], ',', 'green') \
         .plot(source[3][0], source[3][1], ',', 'black') \
         .plot(source[4][0], source[4][1], ',', 'black') \
+        .show_last()
+
+
+def run_mean():
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f(1, b, x)
+    )
+    source0 = mean(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.01)
+    )
+    source1 = mean(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.03)
+    )
+    source2 = mean(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    values = bifurcation(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.04)
+    )
+    source3 = mean(
+        b_range=np.arange(0.22, 0.582355932, 0.01),
+        values=values
+    )
+
+    Plotter() \
+        .setup('b', 'x', 'linear', 'major', 'EV') \
+        .plot(source0[0], source0[1], '.', 'steelblue') \
+        .plot(source1[0], source1[1], '.', 'red') \
+        .plot(source2[0], source2[1], '.', 'green') \
+        .plot(source3[0], source3[1], '.', 'black') \
         .show_last()
