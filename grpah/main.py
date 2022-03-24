@@ -4,7 +4,7 @@ from runner import *
 if __name__ == "__main__":
 
     # Показать график временного ряда
-    run_time_series()
+    # run_time_series()
     # run_time_series_2()
 
     # Показать график бифуркации
@@ -25,14 +25,14 @@ if __name__ == "__main__":
     # Показать графики равновесий
     # run_equilibrium()
 
-    regime_map(
-        x_start=0.2,
-        a_range=np.arange(0.01, 2, 0.01),
-        b_range=np.arange(0.01, 0.6, 0.01),
-        time_range=range(1, 10000 + 1),
-        f=functions.f,
-        file_path="C:\\Users\\lkora\\Desktop\\data\\"
-    )
+    # regime_map(
+    #     x_start=0.2,
+    #     a_range=np.arange(0.01, 2, 0.01),
+    #     b_range=np.arange(0.01, 0.6, 0.01),
+    #     time_range=range(1, 10000 + 1),
+    #     f=functions.f,
+    #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
+    # )
 
     # find_all_roots(
     #     x_range=np.arange(0, 1.5, 0.01),
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    # run_stochastoc_sensetivity()
+    run_stochastoc_sensetivity()
 
     # График стохастической чувствительности
     # run_m_b()
