@@ -4,7 +4,7 @@ def bifurcation(time_range, x_start, p_range, f):
 
     time_range - итератор по времени. Должен начинаться с единицы
     x_start - начальное значение
-    b_range - итератор по значениям параметра p
+    p_range - итератор по значениям параметра p
     f - исследуемая функция
 
     return dict

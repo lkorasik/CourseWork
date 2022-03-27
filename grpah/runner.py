@@ -4,7 +4,7 @@ from new.builder import functions
 from new.builder.lyapunov import lyapunov
 from new.algorithms.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from new.builder.bifurcation_with_absorbing_area import bifurcation_with_absorbing_area
+from new.algorithms.bifurcation_with_absorbing_area import absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.builder.converter import convert_dict_to_lists
 from new.builder.cyclical_mean import cyclical_mean
@@ -172,8 +172,8 @@ def run_bifurcation_with_absorbing_area():
 
     draw_x, draw_y = convert_dict_to_lists(source)
 
-    source = bifurcation_with_absorbing_area(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+    source = absorbing_area(
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         left=0,
         right=1,
         step=0.0001,
