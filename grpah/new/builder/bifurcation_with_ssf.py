@@ -1,6 +1,7 @@
 import numpy as np
 
-from new.builder.extrema import find_local_max, get_absorbing_area
+from new.algorithms.find_local_max import find_local_max
+from new.algorithms.get_absorbing_area import get_absorbing_area
 
 
 def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, m, m1, m2, epsilon, values, f, dfx, s):

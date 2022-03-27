@@ -1,7 +1,5 @@
-from regime_map import regime_map
-from runner import *
-
 if __name__ == "__main__":
+    print("Run")
 
     # Показать график временного ряда
     # run_time_series()
@@ -60,7 +58,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastoc_sensetivity()
+    # run_stochastoc_sensetivity()
 
     # График стохастической чувствительности
     # run_m_b()
