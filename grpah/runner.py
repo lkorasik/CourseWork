@@ -4,7 +4,7 @@ from new.builder import functions
 from new.builder.lyapunov import lyapunov
 from new.algorithms.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from new.algorithms.bifurcation_with_absorbing_area import absorbing_area
+from new.algorithms.absorbing_area import absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.builder.converter import convert_dict_to_lists
 from new.builder.cyclical_mean import cyclical_mean
