@@ -14,23 +14,27 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             bifurcation_y.append(x_)
 
     # Доверительный интервал у одного равновесия
-    x_arr = []
-    y_arr = []
+    draw_x1 = []
+    draw_y1_1 = []
+    draw_y1_2 = []
     for b in b_range:
         if b < left1 or b > right1:
             continue
 
         x = values[b]
         for x_ in x:
-            # Под равновесием
-            x_arr.append(b)
-            y_arr.append(x_ - 3 * epsilon * np.sqrt(m(a, b, x_)))
+            draw_x1.append(b)
 
-            # Над равновесием
-            x_arr.append(b)
-            y_arr.append(x_ + 3 * epsilon * np.sqrt(m(a, b, x_)))
+            # Под и над равновесием
+            draw_y1_1.append(x_ - 3 * epsilon * np.sqrt(m(a, b, x_)))
+            draw_y1_2.append(x_ + 3 * epsilon * np.sqrt(m(a, b, x_)))
 
     # Доверительный интервал для 2-цикла
+    draw_x2 = []
+    draw_y2_1 = []
+    draw_y2_2 = []
+    draw_y2_3 = []
+    draw_y2_4 = []
     for b in b_range:
         if b < left2 or b > right2:
             continue
@@ -45,18 +49,18 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
                 x1.append(x[i])
 
         for i in range(len(x0)):
-            # Под равновесием
-            x_arr.append(b)
-            x_arr.append(b)
-            y_arr.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
-            y_arr.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
+            draw_x2.append(b)
 
-            # Над равновесием
-            x_arr.append(b)
-            x_arr.append(b)
-            y_arr.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
-            y_arr.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
+            # Под и над равновесием
+            draw_y2_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
+            draw_y2_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
+            draw_y2_3.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
+            draw_y2_4.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
 
+    # Хаос
+    draw_x3 = []
+    draw_y3_1 = []
+    draw_y3_2 = []
     for b in b_range:
         if b < left3 or b > right3:
             continue
@@ -73,9 +77,8 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
 
         print(b, m1, m2)
 
-        x_arr.append(b)
-        x_arr.append(b)
-        y_arr.append(m1)
-        y_arr.append(m2)
+        draw_x3.append(b)
+        draw_y3_1.append(m1)
+        draw_y3_2.append(m2)
 
-    return x_arr, y_arr
+    return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4,  draw_x3, draw_y3_1, draw_y3_2
