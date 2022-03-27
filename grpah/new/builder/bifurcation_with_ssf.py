@@ -4,15 +4,6 @@ from new.builder.extrema import find_local_max, get_absorbing_area
 
 
 def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, m, m1, m2, epsilon, values, f, dfx, s):
-    bifurcation_x = []
-    bifurcation_y = []
-
-    for b in b_range:
-        x = values[b]
-        for x_ in x:
-            bifurcation_x.append(b)
-            bifurcation_y.append(x_)
-
     # Доверительный интервал у одного равновесия
     draw_x1 = []
     draw_y1_1 = []
