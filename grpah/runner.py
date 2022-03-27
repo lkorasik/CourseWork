@@ -96,7 +96,7 @@ def run_bifurcation():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
     )
 
@@ -112,7 +112,7 @@ def run_bifurcation_2():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x)
     )
     source = convert_dict_to_lists(source)
@@ -125,7 +125,7 @@ def run_bifurcation_2():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f_pa(1, b, x, 0.01)
     )
     source = convert_dict_to_lists(source)
@@ -138,7 +138,7 @@ def run_bifurcation_2():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f_pb(1, b, x, 0.03)
     )
     source = convert_dict_to_lists(source)
@@ -151,7 +151,7 @@ def run_bifurcation_2():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f_p(1, b, x, 0.01)
     )
     source = convert_dict_to_lists(source)
@@ -166,7 +166,7 @@ def run_bifurcation_with_absorbing_area():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x)
     )
 
@@ -264,7 +264,7 @@ def run_bifurcation_with_equilibrium():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
     )
 
@@ -313,7 +313,7 @@ def run_mean():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f(1, b, x)
     )
     source0 = mean(
@@ -324,7 +324,7 @@ def run_mean():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f_pb(1, b, x, 0.01)
     )
     source1 = mean(
@@ -335,7 +335,7 @@ def run_mean():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f_pb(1, b, x, 0.03)
     )
     source2 = mean(
@@ -346,7 +346,7 @@ def run_mean():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f_pb(1, b, x, 0.04)
     )
     source3 = mean(
@@ -406,7 +406,7 @@ def run_variance():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f(1, b, x)
     )
     source0 = variance(
@@ -417,7 +417,7 @@ def run_variance():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f_pb(1, b, x, 0.01)
     )
     source1 = variance(
@@ -428,7 +428,7 @@ def run_variance():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f_pb(1, b, x, 0.03)
     )
     source2 = variance(
@@ -439,7 +439,7 @@ def run_variance():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions.f_pb(1, b, x, 0.04)
     )
     source3 = variance(
@@ -499,7 +499,7 @@ def run_stochastoc_sensetivity():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
     )
     source = bifurcation_with_ssf(
@@ -523,7 +523,7 @@ def run_stochastoc_sensetivity():
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f_pb(1, b, x, 0.001),
     )
     chaos = convert_dict_to_lists(chaos)
@@ -546,7 +546,7 @@ def run_m_b():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.37, 0.582355932, 0.001),
+        p_range=np.arange(0.37, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
     )
     source = m_b(
