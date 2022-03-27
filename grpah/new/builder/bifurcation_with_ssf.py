@@ -69,8 +69,6 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         area_bounds = get_absorbing_area(max_, lambda x: f(b, x))
 
         c_1 = area_bounds[0]
-        c = area_bounds[1]
-        c1 = area_bounds[2]
 
         m1 = (dfx(b, c_1) ** 2) * s(b, c_1) + s(b, f(b, c_1))
         m2 = s(b, c_1)
