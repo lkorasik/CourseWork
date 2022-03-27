@@ -1,7 +1,9 @@
 import numpy as np
 
+from new.builder.extrema import find_local_max, get_absorbing_area
 
-def bifurcation_with_ssf(b_range, a, left1, right1, right2, left2, m, m1, m2, epsilon, values):
+
+def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, m, m1, m2, epsilon, values, f, dfx, s):
     bifurcation_x = []
     bifurcation_y = []
 
@@ -54,5 +56,26 @@ def bifurcation_with_ssf(b_range, a, left1, right1, right2, left2, m, m1, m2, ep
             x_arr.append(b)
             y_arr.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
             y_arr.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
+
+    for b in b_range:
+        if b < left3 or b > right3:
+            continue
+
+        max_ = find_local_max(left3, right3, 0.001, lambda x: f(b, x))
+        area_bounds = get_absorbing_area(max_, lambda x: f(b, x))
+
+        c_1 = area_bounds[0]
+        c = area_bounds[1]
+        c1 = area_bounds[2]
+
+        m1 = (dfx(b, c_1) ** 2) * s(b, c_1) + s(b, f(b, c_1))
+        m2 = s(b, c_1)
+
+        print(b, m1, m2)
+
+        x_arr.append(b)
+        x_arr.append(b)
+        y_arr.append(m1)
+        y_arr.append(m2)
 
     return x_arr, y_arr

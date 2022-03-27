@@ -499,21 +499,26 @@ def run_stochastoc_sensetivity():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        b_range=np.arange(0.37, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
-        b_range=np.arange(0.37, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
         left1=0.44,
         right1=0.582355932,
         left2=0.379,
         right2=0.43,
+        left3=0.22,
+        right3=0.33,
         m=functions.m,
         m1=functions.m1,
         m2=functions.m2,
         epsilon=0.001,
+        f=lambda b, x: functions.f(1, b, x),
+        dfx=lambda b, x: functions.dfx2(1, b, x),
+        s=lambda b, x: functions.s(1, b, x),
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
