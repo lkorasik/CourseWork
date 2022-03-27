@@ -178,16 +178,14 @@ def run_bifurcation_with_absorbing_area():
         right=1,
         step=0.0001,
         f=lambda b, x: functions.f(1, b, x),
-        draw_x=draw_x,
-        draw_y=draw_y
     )
 
-    Plotter() \
-        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation') \
-        .scatter(source[0][0], source[0][1], '.', 'steelblue') \
-        .plot(source[1][0], source[1][1], ',', 'red') \
-        .plot(source[2][0], source[2][1], ',', 'red') \
-        .show_last()
+    (Plotter()
+        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+        .scatter(draw_x, draw_y, '.', 'steelblue')
+        .plot(source[0], source[1], ',', 'red')
+        .plot(source[0], source[2], ',', 'red')
+        .show_last())
 
 
 def run_lyapunov():

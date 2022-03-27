@@ -1,3 +1,5 @@
+from runner import run_bifurcation_with_absorbing_area
+
 if __name__ == "__main__":
     print("Run")
 
@@ -9,7 +11,7 @@ if __name__ == "__main__":
     # run_bifurcation()
 
     # Показать график бифуркации с
-    # run_bifurcation_with_absorbing_area()
+    run_bifurcation_with_absorbing_area()
 
     # Показать показатель Ляпунова
     # run_lyapunov()
