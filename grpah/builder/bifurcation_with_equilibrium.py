@@ -1,4 +1,4 @@
-from new.builder.single_newton import single_newton
+from builder.single_newton import single_newton
 
 
 def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation):

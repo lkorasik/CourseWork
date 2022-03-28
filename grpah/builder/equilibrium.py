@@ -1,4 +1,4 @@
-from new.builder.single_newton import single_newton
+from builder.single_newton import single_newton
 
 
 def equilibrium(x12, b_range, precision, function, d_function, d):
