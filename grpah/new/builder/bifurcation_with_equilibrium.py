@@ -1,4 +1,4 @@
-from new.builder.converter import convert_dict_to_lists
+from new.algorithms.converter import convert_dict_to_lists
 from new.builder.single_newton import single_newton
 
 

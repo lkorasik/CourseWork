@@ -6,7 +6,7 @@ from new.algorithms.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from new.algorithms.absorbing_area import absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
-from new.builder.converter import convert_dict_to_lists
+from new.algorithms.converter import convert_dict_to_lists
 from new.builder.cyclical_mean import cyclical_mean
 from new.builder.cyclical_variance import cyclical_variance
 from new.builder.equilibrium import equilibrium
