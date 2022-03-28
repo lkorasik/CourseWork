@@ -416,7 +416,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f(1, b, x)
+        f=lambda b, x: functions.f(1, b, x),
+        down_border=None
     )
     source0 = variance(
         b_range=np.arange(0.22, 0.582355932, 0.01),
@@ -427,7 +428,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01)
+        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        down_border=None
     )
     source1 = variance(
         b_range=np.arange(0.22, 0.582355932, 0.01),
@@ -438,7 +440,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03)
+        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        down_border=None
     )
     source2 = variance(
         b_range=np.arange(0.22, 0.582355932, 0.01),
@@ -449,20 +452,21 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04)
+        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        down_border=None
     )
     source3 = variance(
         b_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
-    Plotter() \
-        .setup('b', 'x', 'linear', 'major', 'Variance') \
-        .plot(source0[0], source0[1], '.', 'steelblue') \
-        .plot(source1[0], source1[1], '.', 'red') \
-        .plot(source2[0], source2[1], '.', 'green') \
-        .plot(source3[0], source3[1], '.', 'black') \
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'linear', 'major', 'Variance')
+        .plot(source0[0], source0[1], '.', 'steelblue')
+        .plot(source1[0], source1[1], '.', 'red')
+        .plot(source2[0], source2[1], '.', 'green')
+        .plot(source3[0], source3[1], '.', 'black')
+        .show_last())
 
 
 def run_cyclic_variance():
@@ -495,16 +499,16 @@ def run_cyclic_variance():
         count=100
     )
 
-    Plotter() \
-        .setup('b', 'x', 'linear', 'major', 'Variance cyclic') \
-        .plot(source0[0], source0[1], '.', 'steelblue') \
-        .plot(source1[0], source1[1], '.', 'red') \
-        .plot(source2[0], source2[1], '.', 'green') \
-        .plot(source3[0], source3[1], '.', 'black') \
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'linear', 'major', 'Variance cyclic')
+        .plot(source0[0], source0[1], '.', 'steelblue')
+        .plot(source1[0], source1[1], '.', 'red')
+        .plot(source2[0], source2[1], '.', 'green')
+        .plot(source3[0], source3[1], '.', 'black')
+        .show_last())
 
 
-def run_stochastoc_sensetivity():
+def run_stochastic_sensitivity():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -537,18 +541,18 @@ def run_stochastoc_sensetivity():
     )
     chaos = convert_dict_to_lists(chaos)
 
-    Plotter()\
-        .setup('b', 'x', 'log', 'major', 'Bifurcation')\
-        .scatter(chaos[0], chaos[1], '.', 'steelblue')\
-        .plot(source[0], source[1], ',', 'red')\
-        .plot(source[0], source[2], ',', 'red')\
-        .plot(source[3], source[4], ',', 'red')\
-        .plot(source[3], source[5], ',', 'red')\
-        .plot(source[3], source[6], ',', 'red')\
-        .plot(source[3], source[7], ',', 'red')\
-        .plot(source[8], source[9], ',', 'red')\
-        .plot(source[8], source[10], ',', 'red')\
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation')
+        .scatter(chaos[0], chaos[1], '.', 'steelblue')
+        .plot(source[0], source[1], ',', 'red')
+        .plot(source[0], source[2], ',', 'red')
+        .plot(source[3], source[4], ',', 'red')
+        .plot(source[3], source[5], ',', 'red')
+        .plot(source[3], source[6], ',', 'red')
+        .plot(source[3], source[7], ',', 'red')
+        .plot(source[8], source[9], ',', 'red')
+        .plot(source[8], source[10], ',', 'red')
+        .show_last())
 
 
 def run_m_b():
