@@ -1,6 +1,6 @@
 from runner import run_bifurcation_with_absorbing_area, run_mean, run_bifurcation, \
     run_compare_chaos_bifurcation, run_lyapunov, run_lamerei, run_bifurcation_with_equilibrium, run_equilibrium, \
-    run_cyclic_mean, run_variance, run_cyclic_variance, run_stochastic_sensitivity
+    run_cyclic_mean, run_variance, run_cyclic_variance, run_stochastic_sensitivity, run_m_b
 
 if __name__ == "__main__":
     print("Run")
@@ -62,9 +62,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastic_sensitivity()
+    # run_stochastic_sensitivity()
 
     # График стохастической чувствительности
     # run_m_b()
-
-
