@@ -98,8 +98,6 @@ def run_bifurcation():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
-        enable_up_border=True,
-        enable_down_border=True
     )
 
     source = convert_dict_to_lists(source)

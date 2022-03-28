@@ -1,4 +1,4 @@
-def bifurcation(time_range, x_start, p_range, f, up_border, down_border):
+def bifurcation(time_range, x_start, p_range, f, up_border=10_000, down_border=1e-5):
     """
     Вычисление точек для построения графика бифуркации. Точки для графика x(p)
 

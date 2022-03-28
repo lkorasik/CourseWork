@@ -8,7 +8,7 @@ if __name__ == "__main__":
     # run_time_series_2()
 
     # Показать график бифуркации
-    # run_bifurcation()
+    run_bifurcation()
 
     # Показать график бифуркации с
     # run_bifurcation_with_absorbing_area()
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # run_bifurcation_2()
 
     # Матожидание
-    run_mean()
+    # run_mean()
 
     # Усредненное матожидание
     # run_cyclic_mean()
