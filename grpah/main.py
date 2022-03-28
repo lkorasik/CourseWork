@@ -1,5 +1,5 @@
 from runner import run_bifurcation_with_absorbing_area, run_stochastoc_sensetivity, run_mean, run_bifurcation, \
-    run_compare_chaos_bifurcation
+    run_compare_chaos_bifurcation, run_lyapunov, run_lamerei, run_bifurcation_with_equilibrium
 
 if __name__ == "__main__":
     print("Run")
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     # run_bifurcation()
 
     # Показать графики бифуркации с разными шумами
-    run_compare_chaos_bifurcation()
+    # run_compare_chaos_bifurcation()
 
     # Показать график бифуркации с
     # run_bifurcation_with_absorbing_area()
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     # run_lamerei()
 
     # Показать график бифуркации и корни
-    # run_bifurcation_with_equilibrium()
+    run_bifurcation_with_equilibrium()
 
     # Показать графики равновесий
     # run_equilibrium()

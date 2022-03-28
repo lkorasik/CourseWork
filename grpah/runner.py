@@ -264,6 +264,7 @@ def run_bifurcation_with_equilibrium():
         x_start=0.1164711,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
+        down_border=None
     )
 
     source = bifurcation_with_equilibrium(
@@ -278,13 +279,15 @@ def run_bifurcation_with_equilibrium():
         bifurcation=values
     )
 
-    Plotter() \
-        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium') \
-        .scatter(source[0][0], source[0][1], '.', 'steelblue') \
-        .plot(source[1][0], source[1][1], ',', 'red') \
-        .plot(source[2][0], source[2][1], ',', 'deeppink') \
-        .plot(source[3][0], source[3][1], ',', 'green') \
-        .show_last()
+    values = convert_dict_to_lists(values)
+
+    (Plotter()
+        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+        .scatter(values[0], values[1], '.', 'steelblue')
+        .plot(source[0], source[1], ',', 'red')
+        .plot(source[2], source[3], ',', 'deeppink')
+        .plot(source[4], source[5], ',', 'green')
+        .show_last())
 
 
 def run_equilibrium():
