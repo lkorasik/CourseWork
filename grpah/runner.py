@@ -7,14 +7,14 @@ from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibriu
 from new.algorithms.absorbing_area import absorbing_area
 from new.builder.bifurcation_with_ssf import bifurcation_with_ssf
 from new.algorithms.converter import convert_dict_to_lists
-from new.builder.cyclical_mean import cyclical_mean
-from new.builder.cyclical_variance import cyclical_variance
+from new.algorithms.cyclical_mean import cyclical_mean
+from new.algorithms.cyclical_variance import cyclical_variance
 from new.builder.equilibrium import equilibrium
 from new.builder.lamerei import lamerei
 from new.builder.m_b import m_b
-from new.builder.mean import mean
+from new.algorithms.mean import mean
 from new.builder.time_series import time_series
-from new.builder.variance import variance
+from new.algorithms.variance import variance
 from plotter import Plotter
 
 

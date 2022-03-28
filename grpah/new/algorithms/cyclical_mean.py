@@ -1,10 +1,10 @@
 import statistics
 
 from new.algorithms.bifurcation import bifurcation
-from new.builder.variance import variance
+from new.algorithms.mean import mean
 
 
-def cyclical_variance(time_range, x_start, b_range, f, count):
+def cyclical_mean(time_range, x_start, b_range, f, count):
     draw_x = []
     for b in b_range:
         draw_x.append(b)
@@ -13,7 +13,7 @@ def cyclical_variance(time_range, x_start, b_range, f, count):
     for i in range(count):
         values = bifurcation(time_range, x_start, b_range, f,
                              down_border=None)
-        draw_y = variance(b_range, values)[1]
+        draw_y = mean(b_range, values)[1]
         data.append(draw_y)
 
     length = len(data[0])
@@ -22,6 +22,6 @@ def cyclical_variance(time_range, x_start, b_range, f, count):
         arr = []
         for item in data:
             arr.append(item[i])
-        result.append(statistics.variance(arr))
+        result.append(statistics.mean(arr))
 
     return draw_x, result
