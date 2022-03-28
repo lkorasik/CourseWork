@@ -529,14 +529,14 @@ def run_stochastoc_sensetivity():
     Plotter()\
         .setup('b', 'x', 'log', 'major', 'Bifurcation')\
         .scatter(chaos[0], chaos[1], '.', 'steelblue')\
-        .plot(source[0], source[1], '.', 'red')\
-        .plot(source[0], source[2], '.', 'red')\
-        .plot(source[3], source[4], '.', 'red')\
-        .plot(source[3], source[5], '.', 'red')\
-        .plot(source[3], source[6], '.', 'red')\
-        .plot(source[3], source[7], '.', 'red')\
-        .plot(source[8], source[9], '.', 'red')\
-        .plot(source[8], source[10], '.', 'red')\
+        .plot(source[0], source[1], ',', 'red')\
+        .plot(source[0], source[2], ',', 'red')\
+        .plot(source[3], source[4], ',', 'red')\
+        .plot(source[3], source[5], ',', 'red')\
+        .plot(source[3], source[6], ',', 'red')\
+        .plot(source[3], source[7], ',', 'red')\
+        .plot(source[8], source[9], ',', 'red')\
+        .plot(source[8], source[10], ',', 'red')\
         .show_last()
 
 
