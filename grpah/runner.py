@@ -300,14 +300,14 @@ def run_equilibrium():
         d=lambda b, x: functions.df(1, b, x)
     )
 
-    Plotter() \
-        .setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium') \
-        .plot(source[0][0], source[0][1], ',', 'red') \
-        .plot(source[1][0], source[1][1], ',', 'deeppink') \
-        .plot(source[2][0], source[2][1], ',', 'green') \
-        .plot(source[3][0], source[3][1], ',', 'black') \
-        .plot(source[4][0], source[4][1], ',', 'black') \
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
+        .plot(source[0], source[1], ',', 'red')
+        .plot(source[2], source[3], ',', 'deeppink')
+        .plot(source[4], source[5], ',', 'green')
+        .plot(source[6], source[7], ',', 'black')
+        .plot(source[8], source[9], ',', 'black')
+        .show_last())
 
 
 def run_mean():

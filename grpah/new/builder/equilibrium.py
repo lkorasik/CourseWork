@@ -13,7 +13,7 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
         draw_x1.append(b)
         draw_y1.append(d(b, x))  # Значения производной
 
-    result = [[draw_x1, draw_y1]]
+    result = [draw_x1, draw_y1]
 
     # Верхняя, т.е. \bar{x}_2
     root = []
@@ -26,7 +26,8 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
         draw_x2.append(b)
         draw_y2.append(d(b, x))
 
-    result.append([draw_x2, draw_y2])
+    result.append(draw_x2)
+    result.append(draw_y2)
 
     # Верхняя, т.е. x_0
     root = []
@@ -39,7 +40,8 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
         draw_x3.append(b)
         draw_y3.append(d(b, x))
 
-    result.append([draw_x3, draw_y3])
+    result.append(draw_x3)
+    result.append(draw_y3)
 
     draw_x4 = []
     draw_y4 = []
@@ -47,7 +49,8 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
         draw_x4.append(b)
         draw_y4.append(1)
 
-    result.append([draw_x4, draw_y4])
+    result.append(draw_x4)
+    result.append(draw_y4)
 
     draw_x4 = []
     draw_y4 = []
@@ -55,6 +58,7 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
         draw_x4.append(b)
         draw_y4.append(-1)
 
-    result.append([draw_x4, draw_y4])
+    result.append(draw_x4)
+    result.append(draw_y4)
 
     return result
