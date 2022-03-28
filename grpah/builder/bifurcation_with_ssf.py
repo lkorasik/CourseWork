@@ -1,5 +1,3 @@
-import math
-
 import numpy as np
 
 from algorithms.find_local_max import find_local_max
