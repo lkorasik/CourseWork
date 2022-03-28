@@ -1,6 +1,6 @@
 import numpy as np
 
-from new.builder import functions
+import functions
 from new.builder.lyapunov import lyapunov
 from new.algorithms.bifurcation import bifurcation
 from new.builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium

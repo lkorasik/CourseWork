@@ -1,6 +1,6 @@
 from collections import Counter
 
-from new.builder import functions
+import functions
 from new.builder.single_newton_iteration import single_newton_iteration
 
 
