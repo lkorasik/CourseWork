@@ -524,9 +524,9 @@ def run_stochastic_sensitivity():
         left2=0.379,
         right2=0.435,
         left3=0.22,
-        right3=0.33,
+        right3=0.34,
         left4=0.36,
-        right4=0.375,
+        right4=0.37,
         m=functions.m,
         m1=functions.m1,
         m2=functions.m2,
@@ -554,14 +554,6 @@ def run_stochastic_sensitivity():
         .plot(source[3], source[7], ',', 'red')
         .plot(source[8], source[9], ',', 'red')
         .plot(source[8], source[10], ',', 'red')
-        .plot(source[11], source[12], ',', 'red')
-        .plot(source[11], source[13], ',', 'red')
-        .plot(source[11], source[14], ',', 'red')
-        .plot(source[11], source[15], ',', 'red')
-        .plot(source[11], source[16], ',', 'red')
-        .plot(source[11], source[17], ',', 'red')
-        .plot(source[11], source[18], ',', 'red')
-        .plot(source[11], source[19], ',', 'red')
         .show_last())
 
 
