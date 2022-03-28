@@ -1,4 +1,5 @@
-from runner import run_bifurcation_with_absorbing_area, run_stochastoc_sensetivity, run_mean, run_bifurcation
+from runner import run_bifurcation_with_absorbing_area, run_stochastoc_sensetivity, run_mean, run_bifurcation, \
+    run_compare_chaos_bifurcation
 
 if __name__ == "__main__":
     print("Run")
@@ -8,7 +9,10 @@ if __name__ == "__main__":
     # run_time_series_2()
 
     # Показать график бифуркации
-    run_bifurcation()
+    # run_bifurcation()
+
+    # Показать графики бифуркации с разными шумами
+    run_compare_chaos_bifurcation()
 
     # Показать график бифуркации с
     # run_bifurcation_with_absorbing_area()
@@ -43,9 +47,6 @@ if __name__ == "__main__":
 
     # Показать графики временных рядов с разными шумами
     # run_time_series_3()
-
-    # Показать графики бифуркации с разными шумами
-    # run_bifurcation_2()
 
     # Матожидание
     # run_mean()

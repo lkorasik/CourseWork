@@ -108,7 +108,7 @@ def run_bifurcation():
         .show_last()
 
 
-def run_bifurcation_2():
+def run_compare_chaos_bifurcation():
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -117,10 +117,10 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter() \
-        .setup('b', 'x', 'log', 'major', 'Bifurcation') \
-        .scatter(source[0], source[1], '.', 'steelblue') \
-        .show()
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation')
+        .scatter(source[0], source[1], '.', 'steelblue')
+        .show())
 
     source = bifurcation(
         time_range=range(1, 100 + 1),
@@ -130,10 +130,10 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter() \
-        .setup('b', 'x', 'log', 'major', 'Bifurcation alpha') \
-        .scatter(source[0], source[1], '.', 'steelblue') \
-        .show()
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
+        .scatter(source[0], source[1], '.', 'steelblue')
+        .show())
 
     source = bifurcation(
         time_range=range(1, 100 + 1),
@@ -143,10 +143,10 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter() \
-        .setup('b', 'x', 'log', 'major', 'Bifurcation beta') \
-        .scatter(source[0], source[1], '.', 'steelblue') \
-        .show()
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation beta')
+        .scatter(source[0], source[1], '.', 'steelblue')
+        .show())
 
     source = bifurcation(
         time_range=range(1, 100 + 1),
@@ -156,10 +156,10 @@ def run_bifurcation_2():
     )
     source = convert_dict_to_lists(source)
 
-    Plotter() \
-        .setup('b', 'x', 'log', 'major', 'Bifurcation addition') \
-        .scatter(source[0], source[1], '.', 'steelblue') \
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation addition')
+        .scatter(source[0], source[1], '.', 'steelblue')
+        .show_last())
 
 
 def run_bifurcation_with_absorbing_area():
