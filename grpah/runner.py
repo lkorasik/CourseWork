@@ -363,13 +363,13 @@ def run_mean():
         values=values
     )
 
-    Plotter() \
-        .setup('b', 'x', 'linear', 'major', 'EV') \
-        .plot(source0[0], source0[1], '.', 'steelblue') \
-        .plot(source1[0], source1[1], '.', 'red') \
-        .plot(source2[0], source2[1], '.', 'green') \
-        .plot(source3[0], source3[1], '.', 'black') \
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'linear', 'major', 'EV')
+        .plot(source0[0], source0[1], '.', 'steelblue')
+        .plot(source1[0], source1[1], '.', 'red')
+        .plot(source2[0], source2[1], '.', 'green')
+        .plot(source3[0], source3[1], '.', 'black')
+        .show_last())
 
 
 def run_cyclic_mean():
@@ -402,13 +402,13 @@ def run_cyclic_mean():
         count=100
     )
 
-    Plotter() \
-        .setup('b', 'x', 'linear', 'major', 'EV cyclic') \
-        .plot(source0[0], source0[1], '.', 'steelblue') \
-        .plot(source1[0], source1[1], '.', 'red') \
-        .plot(source2[0], source2[1], '.', 'green') \
-        .plot(source3[0], source3[1], '.', 'black') \
-        .show_last()
+    (Plotter()
+        .setup('b', 'x', 'linear', 'major', 'EV cyclic')
+        .plot(source0[0], source0[1], '.', 'steelblue')
+        .plot(source1[0], source1[1], '.', 'red')
+        .plot(source2[0], source2[1], '.', 'green')
+        .plot(source3[0], source3[1], '.', 'black')
+        .show_last())
 
 
 def run_variance():

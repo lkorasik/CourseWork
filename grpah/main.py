@@ -1,5 +1,6 @@
 from runner import run_bifurcation_with_absorbing_area, run_stochastoc_sensetivity, run_mean, run_bifurcation, \
-    run_compare_chaos_bifurcation, run_lyapunov, run_lamerei, run_bifurcation_with_equilibrium, run_equilibrium
+    run_compare_chaos_bifurcation, run_lyapunov, run_lamerei, run_bifurcation_with_equilibrium, run_equilibrium, \
+    run_cyclic_mean
 
 if __name__ == "__main__":
     print("Run")
@@ -27,7 +28,7 @@ if __name__ == "__main__":
     # run_bifurcation_with_equilibrium()
 
     # Показать графики равновесий
-    run_equilibrium()
+    # run_equilibrium()
 
     # regime_map(
     #     x_start=0.2,
@@ -52,7 +53,7 @@ if __name__ == "__main__":
     # run_mean()
 
     # Усредненное матожидание
-    # run_cyclic_mean()
+    run_cyclic_mean()
 
     # Дисперсия
     # run_variance()
