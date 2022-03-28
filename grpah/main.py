@@ -1,4 +1,4 @@
-from runner import run_bifurcation_with_absorbing_area, run_stochastoc_sensetivity
+from runner import run_bifurcation_with_absorbing_area, run_stochastoc_sensetivity, run_mean, run_bifurcation
 
 if __name__ == "__main__":
     print("Run")
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # run_bifurcation_2()
 
     # Матожидание
-    # run_mean()
+    run_mean()
 
     # Усредненное матожидание
     # run_cyclic_mean()
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastoc_sensetivity()
+    # run_stochastoc_sensetivity()
 
     # График стохастической чувствительности
     # run_m_b()

@@ -98,6 +98,8 @@ def run_bifurcation():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
+        enable_up_border=True,
+        enable_down_border=True
     )
 
     source = convert_dict_to_lists(source)
@@ -312,7 +314,9 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f(1, b, x)
+        f=lambda b, x: functions.f(1, b, x),
+        up_border=10_000,
+        down_border=None
     )
     source0 = mean(
         b_range=np.arange(0.22, 0.582355932, 0.01),
@@ -323,7 +327,9 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01)
+        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        up_border=10_000,
+        down_border=None
     )
     source1 = mean(
         b_range=np.arange(0.22, 0.582355932, 0.01),
@@ -334,7 +340,9 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03)
+        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        up_border=10_000,
+        down_border=None
     )
     source2 = mean(
         b_range=np.arange(0.22, 0.582355932, 0.01),
@@ -345,7 +353,9 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04)
+        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        up_border=10_000,
+        down_border=None
     )
     source3 = mean(
         b_range=np.arange(0.22, 0.582355932, 0.01),
