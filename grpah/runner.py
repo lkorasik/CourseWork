@@ -525,13 +525,15 @@ def run_stochastic_sensitivity():
         right2=0.435,
         left3=0.22,
         right3=0.33,
+        left4=0.36,
+        right4=0.375,
         m=functions.m,
         m1=functions.m1,
         m2=functions.m2,
         epsilon=0.001,
         f=lambda b, x: functions.f(1, b, x),
         dfx=lambda b, x: functions.dfx2(1, b, x),
-        s=lambda b, x: functions.s(1, b, x),
+        s=lambda b, x: functions.s(1, b, x)
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -552,6 +554,14 @@ def run_stochastic_sensitivity():
         .plot(source[3], source[7], ',', 'red')
         .plot(source[8], source[9], ',', 'red')
         .plot(source[8], source[10], ',', 'red')
+        .plot(source[11], source[12], ',', 'red')
+        .plot(source[11], source[13], ',', 'red')
+        .plot(source[11], source[14], ',', 'red')
+        .plot(source[11], source[15], ',', 'red')
+        .plot(source[11], source[16], ',', 'red')
+        .plot(source[11], source[17], ',', 'red')
+        .plot(source[11], source[18], ',', 'red')
+        .plot(source[11], source[19], ',', 'red')
         .show_last())
 
 
