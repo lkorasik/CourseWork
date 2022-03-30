@@ -532,8 +532,8 @@ def run_stochastic_sensitivity():
         m2=functions.m2,
         epsilon=0.001,
         f=lambda b, x: functions.f(1, b, x),
-        dfx=lambda b, x: functions.dfx2(1, b, x),
-        s=lambda b, x: functions.s(1, b, x)
+        s=lambda b, x: functions.s(1, b, x),
+        q=lambda b, x: functions.q(1, b, x)
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),

@@ -41,11 +41,6 @@ def sf(a, b, x, shift):
     return (a * x ** 2) / ((b + x) ** 6) - shift
 
 
-def dsf(a, b, x):
-    """Производная сдвига функции f"""
-    return (2 * x * (b - 2 * x)) / ((b + x) ** 7)
-
-
 def h(a, b, x):
     return x - (a * x ** 2) / ((b + x) ** 6)
 

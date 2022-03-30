@@ -4,7 +4,7 @@ from algorithms.find_local_max import find_local_max
 from algorithms.get_absorbing_area import get_absorbing_area
 
 
-def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, m1, m2, epsilon, values, f, dfx, s):
+def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, m1, m2, epsilon, values, f, s, q):
     # Доверительный интервал у одного равновесия
     draw_x1 = []
     draw_y1_1 = []
@@ -58,17 +58,21 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             continue
 
         max_ = find_local_max(left3, right3, 0.001, lambda x: f(b, x))
-        area_bounds = get_absorbing_area(max_, lambda x: f(b, x))
+        area_bounds = get_absorbing_area(max_, b/2, lambda x: f(b, x))
 
         c_1 = area_bounds[0]
         c = area_bounds[1]
         c1 = area_bounds[2]
 
-        m1 = dfx(b, c_1) * s(b, c_1) + s(b, f(b, c_1))
         m2 = s(b, c_1)
+
+        m1 = q(b, c) * s(b, c_1) + s(b, c)
+
+        # m1 = M(1, b, c, c_1, c1)
 
         draw_x3.append(b)
         # draw_y3_1.append(m1)
+        print(b, c1 - 3 * epsilon * np.sqrt(m1))
         draw_y3_1.append(c1 - 3 * epsilon * np.sqrt(m1))
         # draw_y3_2.append(m2)
         draw_y3_2.append(c + 3 * epsilon * np.sqrt(m2))

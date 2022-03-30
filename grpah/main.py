@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # run_time_series_2()
 
     # Показать график бифуркации
-    run_bifurcation()
+    # run_bifurcation()
 
     # Показать графики бифуркации с разными шумами
     # run_compare_chaos_bifurcation()
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    # run_stochastic_sensitivity()
+    run_stochastic_sensitivity()
 
     # График стохастической чувствительности
     # run_m_b()
