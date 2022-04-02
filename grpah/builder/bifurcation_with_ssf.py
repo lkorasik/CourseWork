@@ -64,17 +64,11 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         c = area_bounds[1]
         c1 = area_bounds[2]
 
+        m1 = q(b, c) * s(b, c_1) + s(b, c)
         m2 = s(b, c_1)
 
-        m1 = q(b, c) * s(b, c_1) + s(b, c)
-
-        # m1 = M(1, b, c, c_1, c1)
-
         draw_x3.append(b)
-        # draw_y3_1.append(m1)
-        print(b, c1 - 3 * epsilon * np.sqrt(m1))
         draw_y3_1.append(c1 - 3 * epsilon * np.sqrt(m1))
-        # draw_y3_2.append(m2)
         draw_y3_2.append(c + 3 * epsilon * np.sqrt(m2))
 
     return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, draw_y3_2
