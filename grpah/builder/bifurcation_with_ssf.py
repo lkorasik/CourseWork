@@ -60,8 +60,8 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         if b < left3 or b > right3:
             continue
 
-        max_ = find_local_max(left3, right3, 0.001, lambda x: f(b, x))
-        area_bounds = get_absorbing_area(max_, b/2, lambda x: f(b, x))
+        # max_ = find_local_max(left3, right3, 0.001, lambda x: f(b, x))
+        area_bounds = get_absorbing_area(b/2, lambda x: f(b, x))
 
         c_1 = area_bounds[0]
         c = area_bounds[1]
