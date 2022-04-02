@@ -508,7 +508,7 @@ def run_cyclic_variance():
         .show_last())
 
 
-def run_stochastic_sensitivity():
+def run_stochastic_sensitivity_b_noise():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,

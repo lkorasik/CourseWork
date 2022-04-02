@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastic_sensitivity()
+    run_stochastic_sensitivity_b_noise()
     #TODO: defaultdict
 
     # График стохастической чувствительности

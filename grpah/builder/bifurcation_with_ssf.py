@@ -43,11 +43,14 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         for i in range(len(x0)):
             draw_x2.append(b)
 
+            m1_ = m1(a, b, x0[i], x1[i])
+            m2_ = m2(a, b, x0[i], x1[i])
+
             # Под и над равновесием
-            draw_y2_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
-            draw_y2_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
-            draw_y2_3.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1(a, b, x0[i], x1[i]))))
-            draw_y2_4.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2(a, b, x0[i], x1[i]))))
+            draw_y2_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
+            draw_y2_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
+            draw_y2_3.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
+            draw_y2_4.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
 
     # Хаос
     draw_x3 = []
