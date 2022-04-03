@@ -15,6 +15,7 @@ from builder.m_b import m_b
 from algorithms.mean import mean
 from builder.time_series import time_series
 from algorithms.variance import variance
+from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
 from plotter import Plotter
 
 
@@ -527,13 +528,13 @@ def run_stochastic_sensitivity_b_noise():
         right3=0.34,
         left4=0.36,
         right4=0.37,
-        m=functions.m,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
         m1=functions.m1,
         m2=functions.m2,
         epsilon=0.001,
-        f=lambda b, x: functions.f(1, b, x),
-        s=lambda b, x: functions.s(1, b, x),
-        q=lambda b, x: functions.q(1, b, x)
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001)
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -544,7 +545,107 @@ def run_stochastic_sensitivity_b_noise():
     chaos = convert_dict_to_lists(chaos)
 
     (Plotter()
-        .setup('b', 'x', 'log', 'major', 'Bifurcation')
+        .setup('b', 'x', 'log', 'major', 'Bifurcation, beta-noise')
+        .scatter(chaos[0], chaos[1], '.', 'steelblue')
+        .plot(source[0], source[1], ',', 'red')
+        .plot(source[0], source[2], ',', 'red')
+        .plot(source[3], source[4], ',', 'red')
+        .plot(source[3], source[5], ',', 'red')
+        .plot(source[3], source[6], ',', 'red')
+        .plot(source[3], source[7], ',', 'red')
+        .plot(source[8], source[9], ',', 'red')
+        .plot(source[8], source[10], ',', 'red')
+     .show())
+        # .show_last())
+
+
+def run_stochastic_sensitivity_a_noise():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0.001),
+        m1=functions.m1,
+        m2=functions.m2,
+        epsilon=0.001,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001)
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f_pa(1, b, x, 0.001),
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation, alpha-noise')
+        .scatter(chaos[0], chaos[1], '.', 'steelblue')
+        .plot(source[0], source[1], ',', 'red')
+        .plot(source[0], source[2], ',', 'red')
+        .plot(source[3], source[4], ',', 'red')
+        .plot(source[3], source[5], ',', 'red')
+        .plot(source[3], source[6], ',', 'red')
+        .plot(source[3], source[7], ',', 'red')
+        .plot(source[8], source[9], ',', 'red')
+        .plot(source[8], source[10], ',', 'red')
+     .show())
+        # .show_last())
+
+
+def run_stochastic_sensitivity_additive_noise():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0.001),
+        m1=functions.m1,
+        m2=functions.m2,
+        epsilon=0.001,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001)
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f_p(1, b, x, 0.001),
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    (Plotter()
+        .setup('b', 'x', 'log', 'major', 'Bifurcation, additive noise')
         .scatter(chaos[0], chaos[1], '.', 'steelblue')
         .plot(source[0], source[1], ',', 'red')
         .plot(source[0], source[2], ',', 'red')

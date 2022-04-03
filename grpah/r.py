@@ -1,12 +1,6 @@
-from sympy import *
-
-x = Symbol('x')
-y = Symbol('y')
-f = 2*x + 2*y
-g = diff(f, x)
-
+from functions_pkg import base_functions
 
 if __name__ == "__main__":
-    print(f.subs(x, 3).subs(y, 3))
-    print(g.subs(x, 3).subs(y, 3))
-    print(f)
+    print(new_functions._q_cb)
+    print(new_functions.q_chaos_b(1, 0.56, 1, 1))
+    print(type(new_functions.q_chaos_b(1, 0.56, 1, 1)))

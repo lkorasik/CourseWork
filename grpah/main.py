@@ -34,7 +34,7 @@ if __name__ == "__main__":
     #     a_range=np.arange(0.01, 2, 0.01),
     #     b_range=np.arange(0.01, 0.6, 0.01),
     #     time_range=range(1, 10000 + 1),
-    #     f=functions.f,
+    #     f=functions_pkg.f,
     #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
     # )
 
@@ -62,6 +62,8 @@ if __name__ == "__main__":
 
     # Функция стохастической чувствительности
     run_stochastic_sensitivity_b_noise()
+    run_stochastic_sensitivity_a_noise()
+    run_stochastic_sensitivity_additive_noise()
     #TODO: defaultdict
 
     # График стохастической чувствительности
