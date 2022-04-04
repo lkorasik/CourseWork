@@ -62,8 +62,8 @@ if __name__ == "__main__":
 
     # Функция стохастической чувствительности
     run_stochastic_sensitivity_b_noise()
-    run_stochastic_sensitivity_a_noise()
-    run_stochastic_sensitivity_additive_noise()
+    # run_stochastic_sensitivity_a_noise()
+    # run_stochastic_sensitivity_additive_noise()
     #TODO: defaultdict
 
     # График стохастической чувствительности

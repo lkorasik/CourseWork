@@ -102,6 +102,28 @@ def subs_dict(formula, subs_f):
     return formula
 
 
+def get_m(k):
+    x_ = generator_xi(k)
+    q_ = generator_qi(k, x_)
+    s_ = generator_si(k, x_)
+
+    q_ = to_dict("q", q_)
+    s_ = to_dict("s", s_)
+
+    r_ = generator_r(k + 1)
+
+    Q_ = generator_Q(k)
+
+    formulas = []
+    for i in range(k):
+        result = generate_M(r_, Q_, k)[i]
+        result = subs_dict(result, q_)
+        result = subs_dict(result, s_)
+        formulas.append(result)
+
+    return formulas
+
+
 if __name__ == "__main__":
     k = 2
 

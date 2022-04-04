@@ -1,6 +1,8 @@
 import numpy as np
+from sympy import Symbol
 
 from algorithms.get_absorbing_area import get_absorbing_area
+from r import get_m
 
 
 def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, m1, m2, epsilon, values, f, s, q):
@@ -42,8 +44,14 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         for i in range(len(x0)):
             draw_x2.append(b)
 
-            m1_ = m1(a, b, x0[i], x1[i])
-            m2_ = m2(a, b, x0[i], x1[i])
+            # m1_ = m1(a, b, x0[i], x1[i])
+            # m2_ = m2(a, b, x0[i], x1[i])
+
+            r = get_m(2)
+            m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
+            m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
+            m1_ = float(m1_)
+            m2_ = float(m2_)
 
             # Под и над равновесием
             draw_y2_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
@@ -51,10 +59,65 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             draw_y2_3.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
             draw_y2_4.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
 
-    # Хаос
+    # Доверительный интервал для 4-цикла
     draw_x3 = []
     draw_y3_1 = []
     draw_y3_2 = []
+    draw_y3_3 = []
+    draw_y3_4 = []
+    draw_y3_5 = []
+    draw_y3_6 = []
+    draw_y3_7 = []
+    draw_y3_8 = []
+    for b in b_range:
+        if b < left4 or b > right4:
+            continue
+
+        x = values[b]
+        x0 = []
+        x1 = []
+        x2 = []
+        x3 = []
+        for i in range(len(x)):
+            if i % 4 == 0:
+                x0.append(x[i])
+            elif i % 4 == 1:
+                x1.append(x[i])
+            elif i % 4 == 2:
+                x2.append(x[i])
+            else:
+                x3.append(x[i])
+
+        for i in range(len(x0)):
+            draw_x3.append(b)
+
+            # m1_ = m1(a, b, x0[i], x1[i])
+            # m2_ = m2(a, b, x0[i], x1[i])
+
+            r = get_m(4)
+            m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m3_ = r[2].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m4_ = r[3].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m1_ = float(m1_)
+            m2_ = float(m2_)
+            m3_ = float(m3_)
+            m4_ = float(m4_)
+
+            # Под и над равновесием
+            draw_y3_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
+            draw_y3_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
+            draw_y3_3.append(x2[i] - 3 * epsilon * np.sqrt(np.abs(m3_)))
+            draw_y3_4.append(x3[i] - 3 * epsilon * np.sqrt(np.abs(m4_)))
+            draw_y3_5.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
+            draw_y3_6.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
+            draw_y3_7.append(x2[i] + 3 * epsilon * np.sqrt(np.abs(m3_)))
+            draw_y3_8.append(x3[i] + 3 * epsilon * np.sqrt(np.abs(m4_)))
+
+    # Хаос
+    draw_x4 = []
+    draw_y4_1 = []
+    draw_y4_2 = []
     for b in b_range:
         if b < left3 or b > right3:
             continue
@@ -69,8 +132,8 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         m1 = q(b, c) * s(b, c_1) + s(b, c)
         m2 = s(b, c_1)
 
-        draw_x3.append(b)
-        draw_y3_1.append(c1 - 3 * epsilon * np.sqrt(m1))
-        draw_y3_2.append(c + 3 * epsilon * np.sqrt(m2))
+        draw_x4.append(b)
+        draw_y4_1.append(c1 - 3 * epsilon * np.sqrt(m1))
+        draw_y4_2.append(c + 3 * epsilon * np.sqrt(m2))
 
-    return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, draw_y3_2
+    return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, draw_y3_2, draw_y3_3, draw_y3_4, draw_y3_5, draw_y3_6, draw_y3_7, draw_y3_8
