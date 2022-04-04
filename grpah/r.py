@@ -7,17 +7,6 @@ b = Symbol('b')
 q = (4 * (a ** 2) * (x ** 2) * ((b - 2 * x) ** 2)) / ((x + b) ** 14)
 s = (36 * (a ** 2) * (x ** 4)) / ((x + b) ** 14)
 
-# count = 2
-# x_ = [Symbol(f'x{i}') for i in range(1, count + 1)]
-# q_ = [q.subs(x, x_[i]) for i in range(count)]
-# s_ = [s.subs(x, x_[i]) for i in range(count)]
-#
-# r = Function('r')
-# t = Symbol('t')
-#
-# q_.insert(0, 0)
-# s_.insert(0, 0)
-
 
 def generator_r(t):
     delta = Symbol("\\Delta")
@@ -139,10 +128,4 @@ if __name__ == "__main__":
         result = generate_M(r_, Q_, k)[i]
         result = subs_dict(result, q_)
         result = subs_dict(result, s_)
-        print(latex(result))
-
-    # result = generate_M(r_, Q_, k)[0]
-    # for k, v in q_.items():
-    #     # qi = Symbol(f"q{i + 1}")
-    #     result = result.subs(k, v)
-    # print(result)
+        print(result)
