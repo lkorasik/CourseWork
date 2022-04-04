@@ -1,5 +1,4 @@
-from sympy import Symbol, latex, SeqFormula, Function
-from sympy.series.sequences import RecursiveSeq
+from sympy import Symbol, latex
 
 a = Symbol('a')
 x = Symbol('x')
@@ -140,7 +139,7 @@ if __name__ == "__main__":
         result = generate_M(r_, Q_, k)[i]
         result = subs_dict(result, q_)
         result = subs_dict(result, s_)
-        print(result.simplify())
+        print(latex(result))
 
     # result = generate_M(r_, Q_, k)[0]
     # for k, v in q_.items():
