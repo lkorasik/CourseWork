@@ -5,7 +5,7 @@ if __name__ == "__main__":
     print("Run")
 
     # Показать график временного ряда
-    run_time_series()
+    # run_time_series()
     # run_time_series_2()
     # run_time_series_3()
 

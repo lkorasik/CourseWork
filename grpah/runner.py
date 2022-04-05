@@ -48,11 +48,19 @@ def run_time_series_2():
 
 
 def run_time_series_3():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.004
+
     source = time_series(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        f=lambda x: functions.f(1, 0.56, x),
-        skip=False
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions.f(a, b, x),
+        skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series original')
@@ -60,10 +68,10 @@ def run_time_series_3():
         .show())
 
     source = time_series(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        f=lambda x: functions.f_pb(1, 0.56, x, 0.004),
-        skip=False
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with beta noise')
@@ -71,10 +79,10 @@ def run_time_series_3():
         .show())
 
     source = time_series(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        f=lambda x: functions.f_pa(1, 0.56, x, 0.004),
-        skip=False
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with alpha noise')
@@ -82,10 +90,10 @@ def run_time_series_3():
         .show())
 
     source = time_series(
-        time_range=range(1, 250 + 1),
-        x_start=0.06,
-        f=lambda x: functions.f_p(1, 0.56, x, 0.004),
-        skip=False
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions.f_p(a, b, x, epsilon),
+        skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
