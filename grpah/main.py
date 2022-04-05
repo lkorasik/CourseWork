@@ -8,6 +8,7 @@ if __name__ == "__main__":
     # run_time_series()
     # run_time_series_2()
     # run_time_series_3()
+    run_time_series_4()
 
     # Показать график бифуркации
     # run_bifurcation()
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     # run_lamerei()
 
     # Показать график бифуркации и корни
-    run_bifurcation_with_equilibrium()
+    # run_bifurcation_with_equilibrium()
 
     # Показать графики равновесий
     # run_equilibrium()

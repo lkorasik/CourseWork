@@ -101,6 +101,148 @@ def run_time_series_3():
         .show_last())
 
 
+def run_time_series_4():
+    time_range = range(1, 30 + 1)
+    x_start0 = 0.04
+    x_start1 = 0.06
+    x_start2 = 0.3
+    x_start3 = 1.3
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.01
+
+    source0 = time_series(
+        time_range=time_range,
+        x_start=x_start0,
+        f=lambda x: functions.f(a, b, x),
+        skip=skip
+    )
+    source1 = time_series(
+        time_range=time_range,
+        x_start=x_start1,
+        f=lambda x: functions.f(a, b, x),
+        skip=skip
+    )
+    source2 = time_series(
+        time_range=time_range,
+        x_start=x_start2,
+        f=lambda x: functions.f(a, b, x),
+        skip=skip
+    )
+    source3 = time_series(
+        time_range=time_range,
+        x_start=x_start3,
+        f=lambda x: functions.f(a, b, x),
+        skip=skip
+    )
+    (Plotter()
+        .setup('t', 'x', 'linear', 'major', 'Time series original')
+        .plot(source0[0], source0[1], '.', 'lightcoral')
+        .plot(source1[0], source1[1], '.', 'darkolivegreen')
+        .plot(source2[0], source2[1], '.', 'olive')
+        .plot(source3[0], source3[1], '.', 'teal')
+        .show())
+    # .show_last())
+
+    source0 = time_series(
+        time_range=time_range,
+        x_start=x_start0,
+        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        skip=skip
+    )
+    source1 = time_series(
+        time_range=time_range,
+        x_start=x_start1,
+        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        skip=skip
+    )
+    source2 = time_series(
+        time_range=time_range,
+        x_start=x_start2,
+        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        skip=skip
+    )
+    source3 = time_series(
+        time_range=time_range,
+        x_start=x_start3,
+        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .setup('t', 'x', 'linear', 'major', 'Time series with beta noise')
+        .plot(source0[0], source0[1], '.', 'lightcoral')
+        .plot(source1[0], source1[1], '.', 'darkolivegreen')
+        .plot(source2[0], source2[1], '.', 'olive')
+        .plot(source3[0], source3[1], '.', 'teal')
+        .show())
+
+    source0 = time_series(
+        time_range=time_range,
+        x_start=x_start0,
+        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        skip=skip
+    )
+    source1 = time_series(
+        time_range=time_range,
+        x_start=x_start1,
+        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        skip=skip
+    )
+    source2 = time_series(
+        time_range=time_range,
+        x_start=x_start2,
+        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        skip=skip
+    )
+    source3 = time_series(
+        time_range=time_range,
+        x_start=x_start3,
+        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .setup('t', 'x', 'linear', 'major', 'Time series with alpha noise')
+        .plot(source0[0], source0[1], '.', 'lightcoral')
+        .plot(source1[0], source1[1], '.', 'darkolivegreen')
+        .plot(source2[0], source2[1], '.', 'olive')
+        .plot(source3[0], source3[1], '.', 'teal')
+        .show())
+
+    source0 = time_series(
+        time_range=time_range,
+        x_start=x_start0,
+        f=lambda x: functions.f_p(a, b, x, epsilon),
+        skip=skip
+    )
+    source1 = time_series(
+        time_range=time_range,
+        x_start=x_start1,
+        f=lambda x: functions.f_p(a, b, x, epsilon),
+        skip=skip
+    )
+    source2 = time_series(
+        time_range=time_range,
+        x_start=x_start2,
+        f=lambda x: functions.f_p(a, b, x, epsilon),
+        skip=skip
+    )
+    source3 = time_series(
+        time_range=time_range,
+        x_start=x_start3,
+        f=lambda x: functions.f_p(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
+        .plot(source0[0], source0[1], '.', 'lightcoral')
+        .plot(source1[0], source1[1], '.', 'darkolivegreen')
+        .plot(source2[0], source2[1], '.', 'olive')
+        .plot(source3[0], source3[1], '.', 'teal')
+        # .show())
+    .show_last())
+
 def run_bifurcation():
     source = bifurcation(
         time_range=range(1, 100 + 1),
