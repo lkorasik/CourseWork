@@ -2,7 +2,7 @@ import numpy as np
 
 import functions
 from old.absorbing_area import absorbing_area
-from old.bifurcation import bifurcation
+from algorithms.bifurcation import bifurcation
 from old.converter import convert_dict_to_lists
 from old.cyclical_mean import cyclical_mean
 from old.cyclical_variance import cyclical_variance

@@ -18,7 +18,7 @@ def bifurcation(time_range, x_start, p_range, f, up_border=10_000, down_border=1
 
     for p in p_range:
         values[p] = []
-        
+
         x_0 = x_start
         for _ in time_range:
             x_t = f(p, x_0)

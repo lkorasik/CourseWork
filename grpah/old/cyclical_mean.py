@@ -1,6 +1,6 @@
 import statistics
 
-from old.bifurcation import bifurcation
+from algorithms.bifurcation import bifurcation
 from old.mean import mean
 
 
