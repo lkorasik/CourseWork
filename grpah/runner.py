@@ -23,7 +23,7 @@ def run_time_series():
     source = time_series(
         time_range=range(1, 50 + 1),
         x_start=1.3,
-        f=lambda x: base_functions.f(1, 0.56, x),
+        f=lambda x: functions.f(1, 0.56, x),
         skip=False
     )
 
@@ -37,7 +37,7 @@ def run_time_series_2():
     source = time_series(
         time_range=range(1, 50 + 1),
         x_start=2.1,
-        f=lambda x: base_functions.f(1, 0.48, x),
+        f=lambda x: functions.f(1, 0.48, x),
         skip=False
     )
 
@@ -51,7 +51,7 @@ def run_time_series_3():
     source = time_series(
         time_range=range(1, 250 + 1),
         x_start=0.06,
-        f=lambda x: base_functions.f(1, 0.56, x),
+        f=lambda x: functions.f(1, 0.56, x),
         skip=False
     )
     (Plotter()
@@ -62,7 +62,7 @@ def run_time_series_3():
     source = time_series(
         time_range=range(1, 250 + 1),
         x_start=0.06,
-        f=lambda x: functions_b_noise.f_chaos_b(1, 0.56, x, 0.004),
+        f=lambda x: functions.f_pb(1, 0.56, x, 0.004),
         skip=False
     )
     (Plotter()
@@ -73,7 +73,7 @@ def run_time_series_3():
     source = time_series(
         time_range=range(1, 250 + 1),
         x_start=0.06,
-        f=lambda x: functions_a_noise.f_chaos_a(1, 0.56, x, 0.004),
+        f=lambda x: functions.f_pa(1, 0.56, x, 0.004),
         skip=False
     )
     (Plotter()
@@ -84,7 +84,7 @@ def run_time_series_3():
     source = time_series(
         time_range=range(1, 250 + 1),
         x_start=0.06,
-        f=lambda x: functions_additive_noise.f_chaos(1, 0.56, x, 0.004),
+        f=lambda x: functions.f_p(1, 0.56, x, 0.004),
         skip=False
     )
     (Plotter()
