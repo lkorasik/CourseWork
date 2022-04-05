@@ -540,7 +540,7 @@ def run_stochastic_sensitivity_b_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.001),
+        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
