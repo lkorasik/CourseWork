@@ -111,18 +111,25 @@ def run_bifurcation():
 
     source = convert_dict_to_lists(source)
 
-    Plotter() \
-        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation') \
-        .scatter(source[0], source[1], '.', 'steelblue') \
-        .show_last()
+    (Plotter()
+        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+        .scatter(source[0], source[1], '.', 'steelblue')
+        .show_last())
 
 
 def run_compare_chaos_bifurcation():
+    time_range = range(1, 100 + 1)
+    x_start = 0.2
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+
+    a = 1
+    epsilon = 0.01
+
     source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x)
+        time_range=time_range,
+        x_start=x_start,
+        p_range=p_range,
+        f=lambda b, x: functions.f(a, b, x)
     )
     source = convert_dict_to_lists(source)
 
@@ -132,10 +139,10 @@ def run_compare_chaos_bifurcation():
         .show())
 
     source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_pa(1, b, x, 0.01)
+        time_range=time_range,
+        x_start=x_start,
+        p_range=p_range,
+        f=lambda b, x: functions.f_pa(a, b, x, epsilon)
     )
     source = convert_dict_to_lists(source)
 
@@ -145,10 +152,10 @@ def run_compare_chaos_bifurcation():
         .show())
 
     source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03)
+        time_range=time_range,
+        x_start=x_start,
+        p_range=p_range,
+        f=lambda b, x: functions.f_pb(a, b, x, epsilon)
     )
     source = convert_dict_to_lists(source)
 
@@ -158,10 +165,10 @@ def run_compare_chaos_bifurcation():
         .show())
 
     source = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_p(1, b, x, 0.01)
+        time_range=time_range,
+        x_start=x_start,
+        p_range=p_range,
+        f=lambda b, x: functions.f_p(a, b, x, epsilon)
     )
     source = convert_dict_to_lists(source)
 
