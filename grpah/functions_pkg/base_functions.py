@@ -1,4 +1,3 @@
-import numpy
 from sympy import Symbol
 
 a = Symbol('\\alpha')
