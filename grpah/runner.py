@@ -1,7 +1,7 @@
 import numpy as np
 
 import functions
-from old.absorbing_area import absorbing_area
+from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
 from old.converter import convert_dict_to_lists
 from old.cyclical_mean import cyclical_mean
@@ -12,7 +12,7 @@ from old.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from old.bifurcation_with_ssf import bifurcation_with_ssf
 from old.equilibrium import equilibrium
 from old.lamerei import lamerei
-from old.lyapunov import lyapunov
+from algorithms.lyapunov import lyapunov
 from old.m_b import m_b
 from algorithms.time_series import time_series
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
@@ -211,56 +211,62 @@ def run_lyapunov():
     source = lyapunov(
         epsilon=10 ** (-5),
         b_range=np.arange(0.22, 0.582355932, 0.001),
-        x_0=0.2,
+        x_start=0.2,
         time_range=range(1, 100 + 1),
         T=100,
         f=lambda b, x: functions.f(1, b, x),
         lambda_=functions.lambda_
     )
 
-    Plotter() \
-        .setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov') \
-        .plot(source[0], source[1], ',', 'red') \
-        .show_last()
+    (Plotter()
+        .setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
+        .plot(source[0], source[1], ',', 'red')
+        .show_last())
 
 
 def run_lamerei():
+    a = 1
+    b = 0.56
+    time_range = range(1, 100 + 1)
+    skip = False
+    x_min = 0
+    x_max = 0.34
+
     source0 = lamerei(
-        a=1,
+        a=a,
         x_start=0.03,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0.0,
-        xmax=0.34,
+        b=b,
+        time_range=time_range,
+        skip=skip,
+        xmin=x_min,
+        xmax=x_max,
         f=functions.f,
         g=functions.g
     )
     source1 = lamerei(
-        a=1,
+        a=a,
         x_start=0.1,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0.0,
-        xmax=0.34,
+        b=b,
+        time_range=time_range,
+        skip=skip,
+        xmin=x_min,
+        xmax=x_max,
         f=functions.f,
         g=functions.g
     )
     source2 = lamerei(
-        a=1,
+        a=a,
         x_start=0.3,
-        b=0.56,
-        time_range=range(1, 100 + 1),
-        skip=False,
-        xmin=0.0,
-        xmax=0.34,
+        b=b,
+        time_range=time_range,
+        skip=skip,
+        xmin=x_min,
+        xmax=x_max,
         f=functions.f,
         g=functions.g
     )
 
-    plotter = Plotter() \
-        .setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
+    plotter = Plotter().setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
 
     for i in source0[0]:
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
@@ -271,10 +277,10 @@ def run_lamerei():
     for i in source2[0]:
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
-    plotter \
-        .plot(source0[1][0], source0[1][1], ',', 'steelblue') \
-        .plot(source0[2][0], source0[2][1], ',', 'orange') \
-        .show_last()
+    (plotter
+        .plot(source0[1][0], source0[1][1], ',', 'steelblue')
+        .plot(source0[2][0], source0[2][1], ',', 'orange')
+        .show_last())
 
 
 def run_bifurcation_with_equilibrium():

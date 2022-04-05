@@ -16,7 +16,7 @@ if __name__ == "__main__":
     # run_compare_chaos_bifurcation()
 
     # Показать график бифуркации с absorbing area
-    run_bifurcation_with_absorbing_area()
+    # run_bifurcation_with_absorbing_area()
 
     # Показать показатель Ляпунова
     # run_lyapunov()
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # run_lamerei()
 
     # Показать график бифуркации и корни
-    # run_bifurcation_with_equilibrium()
+    run_bifurcation_with_equilibrium()
 
     # Показать графики равновесий
     # run_equilibrium()
