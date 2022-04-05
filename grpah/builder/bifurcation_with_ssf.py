@@ -39,9 +39,6 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         for i in range(len(x0)):
             draw_x2.append(b)
 
-            # m1_ = m1(a, b, x0[i], x1[i])
-            # m2_ = m2(a, b, x0[i], x1[i])
-
             r = get_m(2)
             m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
             m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
