@@ -1,25 +1,19 @@
 import numpy as np
 
 
-def lamerei(a, x_start, b, time_range, skip, xmin, xmax, f, g):
-    total = []
-
+def lamerei(x_start, time_range, skip, xmin, xmax, f, g):
     x0 = x_start
     result = []
     if skip:
-        for i in time_range:
-            x1 = f(a, b, x0)
+        for _ in time_range:
+            x1 = f(x0)
             x0 = x1
-    for i in time_range:
-        x1 = f(a, b, x0)
+    for _ in time_range:
+        x1 = f(x0)
         result.append((x0, x0, x0, x1))
         result.append((x0, x1, x1, x1))
         x0 = x1
 
-    total.append(result)
+    draw_x = np.arange(xmin, xmax, 0.01)
 
-    x = np.arange(xmin, xmax, 0.01)
-    total.append([x, g(a, x)])
-    total.append([x, f(a, b, x)])
-
-    return total
+    return result, draw_x, g(draw_x), f(draw_x)

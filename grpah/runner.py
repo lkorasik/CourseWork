@@ -232,54 +232,48 @@ def run_lamerei():
     x_min = 0
     x_max = 0.34
 
-    source0 = lamerei(
-        a=a,
+    source0, draw_x, draw_g, draw_f = lamerei(
         x_start=0.03,
-        b=b,
         time_range=time_range,
         skip=skip,
         xmin=x_min,
         xmax=x_max,
-        f=functions.f,
-        g=functions.g
+        f=lambda x: functions.f(a, b, x),
+        g=lambda x: functions.g(a, x)
     )
-    source1 = lamerei(
-        a=a,
+    source1, draw_x, draw_g, draw_f = lamerei(
         x_start=0.1,
-        b=b,
         time_range=time_range,
         skip=skip,
         xmin=x_min,
         xmax=x_max,
-        f=functions.f,
-        g=functions.g
+        f=lambda x: functions.f(a, b, x),
+        g=lambda x: functions.g(a, x)
     )
-    source2 = lamerei(
-        a=a,
+    source2, draw_x, draw_g, draw_f = lamerei(
         x_start=0.3,
-        b=b,
         time_range=time_range,
         skip=skip,
         xmin=x_min,
         xmax=x_max,
-        f=functions.f,
-        g=functions.g
+        f=lambda x: functions.f(a, b, x),
+        g=lambda x: functions.g(a, x)
     )
 
     plotter = Plotter().setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
 
-    for i in source0[0]:
+    for i in source0:
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
-    for i in source1[0]:
+    for i in source1:
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
-    for i in source2[0]:
+    for i in source2:
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
     (plotter
-        .plot(source0[1][0], source0[1][1], ',', 'steelblue')
-        .plot(source0[2][0], source0[2][1], ',', 'orange')
+        .plot(draw_x, draw_g, ',', 'steelblue')
+        .plot(draw_x, draw_f, ',', 'orange')
         .show_last())
 
 
