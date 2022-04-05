@@ -179,21 +179,24 @@ def run_compare_chaos_bifurcation():
 
 
 def run_bifurcation_with_absorbing_area():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+
+    a = 1
+
     source = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x)
+        p_range=p_range,
+        f=lambda b, x: functions.f(a, b, x)
     )
-
     draw_x, draw_y = convert_dict_to_lists(source)
 
     source = absorbing_area(
-        p_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=p_range,
         left=0,
         right=1,
         step=0.0001,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: functions.f(a, b, x),
     )
 
     (Plotter()
