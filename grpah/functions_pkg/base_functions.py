@@ -1,8 +1,5 @@
-from sympy import Symbol, lambdify
-
-a = Symbol('\\alpha')
-b = Symbol('\\beta')
-x = Symbol('x')
+from sympy import lambdify
+from functions_pkg.symbols import a, b, x, eta
 
 _f = (a * x ** 2) / ((b + x) ** 6)
 

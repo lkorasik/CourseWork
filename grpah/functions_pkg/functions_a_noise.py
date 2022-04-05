@@ -1,10 +1,6 @@
 import numpy
-from sympy import Symbol, latex
-
-a = Symbol('\\alpha')
-b = Symbol('\\beta')
-x = Symbol('x')
-eta = Symbol('\\eta')
+from sympy import Symbol
+from functions_pkg.symbols import a, b, x, eta
 
 _f_ca = ((a + eta) * (x ** 2)) / ((b + x) ** 6)
 

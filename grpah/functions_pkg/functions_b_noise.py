@@ -1,10 +1,6 @@
 import numpy
 from sympy import Symbol
-
-a = Symbol('\\alpha')
-b = Symbol('\\beta')
-x = Symbol('x')
-eta = Symbol('\\eta')
+from functions_pkg.symbols import a, b, x, eta
 
 _f_bn = (a * x ** 2) / ((b + x + eta) ** 6)
 
