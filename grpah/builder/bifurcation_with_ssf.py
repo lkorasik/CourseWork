@@ -2,6 +2,7 @@ import numpy as np
 from sympy import Symbol
 
 from algorithms.get_absorbing_area import get_absorbing_area
+from algorithms.list_spliter import split
 from r import get_m
 
 
@@ -33,13 +34,7 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             continue
 
         x = values[b]
-        x0 = []
-        x1 = []
-        for i in range(len(x)):
-            if i % 2 == 0:
-                x0.append(x[i])
-            else:
-                x1.append(x[i])
+        x0, x1 = split(x, 2)
 
         for i in range(len(x0)):
             draw_x2.append(b)
@@ -74,25 +69,10 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             continue
 
         x = values[b]
-        x0 = []
-        x1 = []
-        x2 = []
-        x3 = []
-        for i in range(len(x)):
-            if i % 4 == 0:
-                x0.append(x[i])
-            elif i % 4 == 1:
-                x1.append(x[i])
-            elif i % 4 == 2:
-                x2.append(x[i])
-            else:
-                x3.append(x[i])
+        x0, x1, x2, x3 = split(x, 4)
 
         for i in range(len(x0)):
             draw_x3.append(b)
-
-            # m1_ = m1(a, b, x0[i], x1[i])
-            # m2_ = m2(a, b, x0[i], x1[i])
 
             r = get_m(4)
             m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])

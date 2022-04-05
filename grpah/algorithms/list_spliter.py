@@ -1,4 +1,4 @@
-def separate(data, k):
+def split(data, k):
     """
     Split list for k lists
     """
