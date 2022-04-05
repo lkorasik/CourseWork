@@ -14,7 +14,7 @@ from old.equilibrium import equilibrium
 from old.lamerei import lamerei
 from old.lyapunov import lyapunov
 from old.m_b import m_b
-from old.time_series import time_series
+from algorithms.time_series import time_series
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
 from plotter import Plotter
 

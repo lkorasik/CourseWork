@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # run_time_series_3()
 
     # Показать график бифуркации
-    # run_bifurcation()
+    run_bifurcation()
 
     # Показать графики бифуркации с разными шумами
     # run_compare_chaos_bifurcation()
