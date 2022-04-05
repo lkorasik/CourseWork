@@ -1,12 +1,14 @@
-from sympy import Symbol
+from sympy import Symbol, lambdify
 
-s_a = Symbol('\\alpha')
-s_b = Symbol('\\beta')
-s_x = Symbol('x')
-s_eta = Symbol('\\eta')
+a = Symbol('\\alpha')
+b = Symbol('\\beta')
+x = Symbol('x')
 
-_f = (s_a * s_x ** 2) / ((s_b + s_x) ** 6)
+_f = (a * x ** 2) / ((b + x) ** 6)
 
 
-def f(a, b, x):
-    return float(_f.subs(s_a, a).subs(s_b, b).subs(s_x, x))
+def f_subs(a_, b_, x_):
+    return float(_f.subs(a, a_).subs(b, b_).subs(x, x_))
+
+
+f = lambdify([a, b, x], _f)

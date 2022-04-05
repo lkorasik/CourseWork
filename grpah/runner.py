@@ -1,4 +1,5 @@
 import numpy as np
+from sympy import lambdify
 
 import functions
 from builder.lyapunov import lyapunov
@@ -98,7 +99,7 @@ def run_bifurcation():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: base_functions.f(1, b, x)
     )
 
     source = convert_dict_to_lists(source)
