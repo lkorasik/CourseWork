@@ -1,21 +1,20 @@
 import numpy as np
-from sympy import lambdify
 
 import functions
-from builder.lyapunov import lyapunov
-from algorithms.bifurcation import bifurcation
-from builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.absorbing_area import absorbing_area
-from builder.bifurcation_with_ssf import bifurcation_with_ssf
+from algorithms.bifurcation import bifurcation
 from algorithms.converter import convert_dict_to_lists
 from algorithms.cyclical_mean import cyclical_mean
 from algorithms.cyclical_variance import cyclical_variance
+from algorithms.mean import mean
+from algorithms.variance import variance
+from builder.bifurcation_with_equilibrium import bifurcation_with_equilibrium
+from builder.bifurcation_with_ssf import bifurcation_with_ssf
 from builder.equilibrium import equilibrium
 from builder.lamerei import lamerei
+from builder.lyapunov import lyapunov
 from builder.m_b import m_b
-from algorithms.mean import mean
 from builder.time_series import time_series
-from algorithms.variance import variance
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
 from plotter import Plotter
 
