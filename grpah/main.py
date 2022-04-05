@@ -8,7 +8,7 @@ if __name__ == "__main__":
     # run_time_series()
     # run_time_series_2()
     # run_time_series_3()
-    run_time_series_4()
+    run_time_series_compare_noise()
 
     # Показать график бифуркации
     # run_bifurcation()

@@ -101,7 +101,7 @@ def run_time_series_3():
         .show_last())
 
 
-def run_time_series_4():
+def run_time_series_compare_noise():
     time_range = range(1, 30 + 1)
     x_start0 = 0.04
     x_start1 = 0.06
