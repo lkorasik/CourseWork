@@ -1,7 +1,7 @@
 from collections import Counter
 
 import functions
-from builder.single_newton_iteration import single_newton_iteration
+from old.single_newton_iteration import single_newton_iteration
 
 
 def find_all_roots(x_range, a_range, b_range, precision):

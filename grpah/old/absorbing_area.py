@@ -1,5 +1,5 @@
-from algorithms.find_local_max import find_local_max
-from algorithms.get_absorbing_area import get_absorbing_area
+from old.find_local_max import find_local_max
+from old.get_absorbing_area import get_absorbing_area
 
 
 def absorbing_area(p_range, left, right, step, f):

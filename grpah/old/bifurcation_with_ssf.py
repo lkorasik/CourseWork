@@ -1,8 +1,8 @@
 import numpy as np
 from sympy import Symbol
 
-from algorithms.get_absorbing_area import get_absorbing_area
-from algorithms.list_spliter import split
+from old.get_absorbing_area import get_absorbing_area
+from old.list_spliter import split
 from r import get_m
 
 
