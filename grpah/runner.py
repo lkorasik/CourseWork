@@ -279,14 +279,14 @@ def run_bifurcation_with_equilibrium():
         d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: functions.f(1, b, x),
         sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.dsf(1, b, x),
+        dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
     values = convert_dict_to_lists(values)
 
     (Plotter()
-        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+        .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
         .scatter(values[0], values[1], '.', 'steelblue')
         .plot(source[0], source[1], ',', 'red')
         .plot(source[2], source[3], ',', 'deeppink')
