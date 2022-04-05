@@ -229,35 +229,28 @@ def run_lamerei():
     b = 0.56
     time_range = range(1, 100 + 1)
     skip = False
-    x_min = 0
-    x_max = 0.34
+    x_range = np.arange(0, 0.34, 0.01)
 
-    source0, draw_x, draw_g, draw_f = lamerei(
+    source0, draw_x, draw_f = lamerei(
         x_start=0.03,
         time_range=time_range,
         skip=skip,
-        xmin=x_min,
-        xmax=x_max,
-        f=lambda x: functions.f(a, b, x),
-        g=lambda x: functions.g(a, x)
+        x_range=x_range,
+        f=lambda x: functions.f(a, b, x)
     )
-    source1, draw_x, draw_g, draw_f = lamerei(
+    source1, draw_x, draw_f = lamerei(
         x_start=0.1,
         time_range=time_range,
         skip=skip,
-        xmin=x_min,
-        xmax=x_max,
+        x_range=x_range,
         f=lambda x: functions.f(a, b, x),
-        g=lambda x: functions.g(a, x)
     )
-    source2, draw_x, draw_g, draw_f = lamerei(
+    source2, draw_x, draw_f = lamerei(
         x_start=0.3,
         time_range=time_range,
         skip=skip,
-        xmin=x_min,
-        xmax=x_max,
+        x_range=x_range,
         f=lambda x: functions.f(a, b, x),
-        g=lambda x: functions.g(a, x)
     )
 
     plotter = Plotter().setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
@@ -272,7 +265,7 @@ def run_lamerei():
         plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
     (plotter
-        .plot(draw_x, draw_g, ',', 'steelblue')
+        .plot(draw_x, functions.g(a, draw_x), ',', 'steelblue')
         .plot(draw_x, draw_f, ',', 'orange')
         .show_last())
 

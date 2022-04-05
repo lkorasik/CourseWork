@@ -1,7 +1,4 @@
-import numpy as np
-
-
-def lamerei(x_start, time_range, skip, xmin, xmax, f, g):
+def lamerei(x_start, time_range, skip, x_range, f):
     x0 = x_start
     result = []
     if skip:
@@ -14,6 +11,4 @@ def lamerei(x_start, time_range, skip, xmin, xmax, f, g):
         result.append((x0, x1, x1, x1))
         x0 = x1
 
-    draw_x = np.arange(xmin, xmax, 0.01)
-
-    return result, draw_x, g(draw_x), f(draw_x)
+    return result, x_range, f(x_range)
