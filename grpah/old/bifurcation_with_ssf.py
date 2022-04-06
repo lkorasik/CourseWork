@@ -3,7 +3,7 @@ from sympy import Symbol
 
 from old.get_absorbing_area import get_absorbing_area
 from old.list_spliter import split
-from r import get_m
+import r as Alg
 
 
 def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, m1, m2, epsilon, values, f, s, q):
@@ -39,7 +39,7 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         for i in range(len(x0)):
             draw_x2.append(b)
 
-            r = get_m(2)
+            r = Alg.get_m(2)
             m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
             m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
             m1_ = float(m1_)
@@ -71,7 +71,7 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         for i in range(len(x0)):
             draw_x3.append(b)
 
-            r = get_m(4)
+            r = Alg.get_m(4)
             m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
             m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
             m3_ = r[2].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
