@@ -171,7 +171,7 @@ def run_time_series_compare_noise():
         skip=skip
     )
     (Plotter()
-        .setup('t', 'x', 'linear', 'major', 'Time series with beta noise')
+        .setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
         .plot(source0[0], source0[1], '.', 'lightcoral')
         .plot(source1[0], source1[1], '.', 'darkolivegreen')
         .plot(source2[0], source2[1], '.', 'olive')
@@ -203,7 +203,7 @@ def run_time_series_compare_noise():
         skip=skip
     )
     (Plotter()
-        .setup('t', 'x', 'linear', 'major', 'Time series with alpha noise')
+        .setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
         .plot(source0[0], source0[1], '.', 'lightcoral')
         .plot(source1[0], source1[1], '.', 'darkolivegreen')
         .plot(source2[0], source2[1], '.', 'olive')
@@ -242,6 +242,7 @@ def run_time_series_compare_noise():
         .plot(source3[0], source3[1], '.', 'teal')
         # .show())
     .show_last())
+
 
 def run_bifurcation():
     source = bifurcation(
