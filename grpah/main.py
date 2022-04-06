@@ -8,7 +8,7 @@ if __name__ == "__main__":
     # run_time_series()
     # run_time_series_2()
     # run_time_series_3()
-    run_time_series_compare_noise()
+    # run_time_series_compare_noise()
 
     # Показать график бифуркации
     # run_bifurcation()
@@ -63,9 +63,9 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    # run_stochastic_sensitivity_b_noise()
-    # run_stochastic_sensitivity_a_noise()
-    # run_stochastic_sensitivity_additive_noise()
+    run_stochastic_sensitivity_b_noise()
+    run_stochastic_sensitivity_a_noise()
+    run_stochastic_sensitivity_additive_noise()
 
     # График стохастической чувствительности
     # run_m_b()

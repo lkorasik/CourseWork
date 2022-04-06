@@ -8,6 +8,11 @@ q = (4 * (a ** 2) * (x ** 2) * ((b - 2 * x) ** 2)) / ((x + b) ** 14)
 s = (36 * (a ** 2) * (x ** 4)) / ((x + b) ** 14)
 
 
+def setup(q_, s_):
+    q = q_
+    s = s_
+
+
 def generator_r(t):
     delta = Symbol("\\Delta")
 

@@ -680,7 +680,9 @@ def run_stochastic_sensitivity_b_noise():
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001)
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -707,8 +709,8 @@ def run_stochastic_sensitivity_b_noise():
         .plot(source[8], source[14], ',', 'red')
         .plot(source[8], source[15], ',', 'red')
         .plot(source[8], source[16], ',', 'red')
-     # .show())
-        .show_last())
+     .show())
+        # .show_last())
 
 
 def run_stochastic_sensitivity_a_noise():
@@ -736,7 +738,9 @@ def run_stochastic_sensitivity_a_noise():
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001)
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        q_=functions_a_noise._q_ca,
+        s_=functions_a_noise._s_ca
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -757,6 +761,12 @@ def run_stochastic_sensitivity_a_noise():
         .plot(source[3], source[7], ',', 'red')
         .plot(source[8], source[9], ',', 'red')
         .plot(source[8], source[10], ',', 'red')
+        .plot(source[8], source[11], ',', 'red')
+        .plot(source[8], source[12], ',', 'red')
+        .plot(source[8], source[13], ',', 'red')
+        .plot(source[8], source[14], ',', 'red')
+        .plot(source[8], source[15], ',', 'red')
+        .plot(source[8], source[16], ',', 'red')
      .show())
         # .show_last())
 
@@ -786,7 +796,9 @@ def run_stochastic_sensitivity_additive_noise():
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
-        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001)
+        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        q_=functions_additive_noise._q_c,
+        s_=functions_additive_noise._s_c
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -807,7 +819,15 @@ def run_stochastic_sensitivity_additive_noise():
         .plot(source[3], source[7], ',', 'red')
         .plot(source[8], source[9], ',', 'red')
         .plot(source[8], source[10], ',', 'red')
+        .plot(source[8], source[11], ',', 'red')
+        .plot(source[8], source[12], ',', 'red')
+        .plot(source[8], source[13], ',', 'red')
+        .plot(source[8], source[14], ',', 'red')
+        .plot(source[8], source[15], ',', 'red')
+        .plot(source[8], source[16], ',', 'red')
+     # .show())
         .show_last())
+
 
 
 def run_m_b():
