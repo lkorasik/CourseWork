@@ -1,5 +1,5 @@
 import numpy
-from sympy import Symbol
+from sympy import Symbol, lambdify
 from functions_pkg.symbols import a, b, x, eta
 
 _f_ca = ((a + eta) * (x ** 2)) / ((b + x) ** 6)

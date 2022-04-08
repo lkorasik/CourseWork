@@ -87,7 +87,7 @@ def run_time_series_different_noises():
 
     a = 1
     b = 0.56
-    epsilon = 0.004
+    epsilon = 0.04
 
     source = time_series(
         time_range=time_range,
@@ -107,7 +107,7 @@ def run_time_series_different_noises():
         skip=skip
     )
     (Plotter()
-        .setup('t', 'x', 'linear', 'major', 'Time series with beta noise')
+        .setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
         .plot(source[0], source[1], '.', 'steelblue')
         .show())
 
@@ -118,7 +118,7 @@ def run_time_series_different_noises():
         skip=skip
     )
     (Plotter()
-        .setup('t', 'x', 'linear', 'major', 'Time series with alpha noise')
+        .setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
         .plot(source[0], source[1], '.', 'steelblue')
         .show())
 

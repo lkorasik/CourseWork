@@ -31,4 +31,29 @@
 		"body": "\\[$1\\]$0",
 		"description": "Inline math"
 	},
+	"Equation": {
+		"scope": "latex",
+		"prefix": "eq",
+		"body": [
+			"\\begin{equation}",
+			"    $1",
+			"\\end{equation}"
+		],
+		"description": "Include equation"
+	},
+	"Image": {
+		"scope": "latex",
+		"prefix": "img",
+		"body": [
+			"\\begin{figure}",
+			"    \\centering",
+			"    \\includegraphics[width=\\textwidth]{$1}",
+			"", 
+			"    \\captionsetup{justification=centering}",
+			"    \\caption{$2}",
+			"    \\label{$3}",
+			"\\end{figure}"
+		],
+		"description": "Include image"
+	},
 }
