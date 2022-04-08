@@ -64,8 +64,8 @@ if __name__ == "__main__":
 
     # Функция стохастической чувствительности
     run_stochastic_sensitivity_b_noise()
-    run_stochastic_sensitivity_a_noise()
-    run_stochastic_sensitivity_additive_noise()
+    # run_stochastic_sensitivity_a_noise()
+    # run_stochastic_sensitivity_additive_noise()
 
     # График стохастической чувствительности
     # run_m_b()
