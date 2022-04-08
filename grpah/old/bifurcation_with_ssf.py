@@ -7,7 +7,7 @@ from old.list_spliter import split
 import r as Alg
 
 
-def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, m1, m2, epsilon, values, f, s, q, s_, q_):
+def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, epsilon, values, f, s, q, s_, q_):
     result = []
 
     # Доверительный интервал у одного равновесия
@@ -134,7 +134,7 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         draw_x4.append(b)
         draw_y4_1.append(c1 - 3 * epsilon * np.sqrt(m1))
         draw_y4_2.append(c + 3 * epsilon * np.sqrt(m2))
-        
+
     result.append(Line(draw_x4, draw_y4_1))
     result.append(Line(draw_x4, draw_y4_2))
 
