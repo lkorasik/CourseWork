@@ -19,7 +19,7 @@ from functions_pkg import functions_b_noise, base_functions, functions_a_noise, 
 from plotter import Plotter
 
 
-def run_time_series():
+def run_time_series_without_chaos_1():
     source = time_series(
         time_range=range(1, 50 + 1),
         x_start=1.3,
@@ -33,21 +33,54 @@ def run_time_series():
         .show_last())
 
 
-def run_time_series_2():
+def run_time_series_without_chaos_composition():
+    time_range = range(1, 30 + 1)
+    a = 1
+    b = 0.56
+
     source = time_series(
-        time_range=range(1, 50 + 1),
-        x_start=2.1,
-        f=lambda x: functions.f(1, 0.48, x),
+        time_range=time_range,
+        x_start=1.3,
+        f=lambda x: functions.f(a, b, x),
         skip=False
     )
 
-    (Plotter()
-        .setup('t', 'x', 'linear', 'major', 'Time series')
-        .plot(source[0], source[1], '*', 'steelblue')
-        .show_last())
+    plotter = (Plotter()
+               .setup('t', 'x', 'linear', 'major', 'Time series')
+               .plot(source[0], source[1], '*', 'darkviolet', '1.3'))
+
+    source = time_series(
+        time_range=time_range,
+        x_start=0.3,
+        f=lambda x: functions.f(a, b, x),
+        skip=False
+    )
+
+    plotter.plot(source[0], source[1], '*', 'darkslateblue', '0.3')
+
+    source = time_series(
+        time_range=time_range,
+        x_start=0.06,
+        f=lambda x: functions.f(a, b, x),
+        skip=False
+    )
+
+    plotter.plot(source[0], source[1], '*', 'blue', '0.06')
+
+    source = time_series(
+        time_range=time_range,
+        x_start=0.04,
+        f=lambda x: functions.f(a, b, x),
+        skip=False
+    )
+
+    (plotter
+     .plot(source[0], source[1], '*', 'royalblue', '0.04')
+     .legend()
+     .show_last())
 
 
-def run_time_series_3():
+def run_time_series_different_noises():
     time_range = range(1, 250 + 1)
     x_start = 0.06
     skip = False
@@ -256,7 +289,8 @@ def run_bifurcation():
 
     (Plotter()
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', 'steelblue', 'aa')
+        .legend()
         .show_last())
 
 
