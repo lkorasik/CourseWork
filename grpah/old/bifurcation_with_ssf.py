@@ -115,4 +115,5 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         draw_y4_1.append(c1 - 3 * epsilon * np.sqrt(m1))
         draw_y4_2.append(c + 3 * epsilon * np.sqrt(m2))
 
-    return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, draw_y3_2, draw_y3_3, draw_y3_4, draw_y3_5, draw_y3_6, draw_y3_7, draw_y3_8
+    return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, \
+           draw_y3_2, draw_y3_3, draw_y3_4, draw_y3_5, draw_y3_6, draw_y3_7, draw_y3_8, draw_x4, draw_y4_1, draw_y4_2

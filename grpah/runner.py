@@ -709,6 +709,8 @@ def run_stochastic_sensitivity_b_noise():
         .plot(source[8], source[14], ',', 'red')
         .plot(source[8], source[15], ',', 'red')
         .plot(source[8], source[16], ',', 'red')
+        .plot(source[17], source[18], ',', 'red')
+        .plot(source[17], source[19], ',', 'red')
      .show())
         # .show_last())
 
@@ -767,6 +769,8 @@ def run_stochastic_sensitivity_a_noise():
         .plot(source[8], source[14], ',', 'red')
         .plot(source[8], source[15], ',', 'red')
         .plot(source[8], source[16], ',', 'red')
+        .plot(source[17], source[18], ',', 'red')
+        .plot(source[17], source[19], ',', 'red')
      .show())
         # .show_last())
 
@@ -825,6 +829,8 @@ def run_stochastic_sensitivity_additive_noise():
         .plot(source[8], source[14], ',', 'red')
         .plot(source[8], source[15], ',', 'red')
         .plot(source[8], source[16], ',', 'red')
+        .plot(source[17], source[18], ',', 'red')
+        .plot(source[17], source[19], ',', 'red')
      # .show())
         .show_last())
 
