@@ -692,27 +692,14 @@ def run_stochastic_sensitivity_b_noise():
     )
     chaos = convert_dict_to_lists(chaos)
 
-    (Plotter()
-        .setup('b', 'x', 'log', 'major', 'Bifurcation, beta-noise')
-        .scatter(chaos[0], chaos[1], '.', 'steelblue')
-        .plot(source[0], source[1], ',', 'red')
-        .plot(source[0], source[2], ',', 'red')
-        .plot(source[3], source[4], ',', 'red')
-        .plot(source[3], source[5], ',', 'red')
-        .plot(source[3], source[6], ',', 'red')
-        .plot(source[3], source[7], ',', 'red')
-        .plot(source[8], source[9], ',', 'red')
-        .plot(source[8], source[10], ',', 'red')
-        .plot(source[8], source[11], ',', 'red')
-        .plot(source[8], source[12], ',', 'red')
-        .plot(source[8], source[13], ',', 'red')
-        .plot(source[8], source[14], ',', 'red')
-        .plot(source[8], source[15], ',', 'red')
-        .plot(source[8], source[16], ',', 'red')
-        .plot(source[17], source[18], ',', 'red')
-        .plot(source[17], source[19], ',', 'red')
-     .show())
-        # .show_last())
+    plotter = (Plotter()
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
 
 
 def run_stochastic_sensitivity_a_noise():
@@ -752,27 +739,14 @@ def run_stochastic_sensitivity_a_noise():
     )
     chaos = convert_dict_to_lists(chaos)
 
-    (Plotter()
-        .setup('b', 'x', 'log', 'major', 'Bifurcation, alpha-noise')
-        .scatter(chaos[0], chaos[1], '.', 'steelblue')
-        .plot(source[0], source[1], ',', 'red')
-        .plot(source[0], source[2], ',', 'red')
-        .plot(source[3], source[4], ',', 'red')
-        .plot(source[3], source[5], ',', 'red')
-        .plot(source[3], source[6], ',', 'red')
-        .plot(source[3], source[7], ',', 'red')
-        .plot(source[8], source[9], ',', 'red')
-        .plot(source[8], source[10], ',', 'red')
-        .plot(source[8], source[11], ',', 'red')
-        .plot(source[8], source[12], ',', 'red')
-        .plot(source[8], source[13], ',', 'red')
-        .plot(source[8], source[14], ',', 'red')
-        .plot(source[8], source[15], ',', 'red')
-        .plot(source[8], source[16], ',', 'red')
-        .plot(source[17], source[18], ',', 'red')
-        .plot(source[17], source[19], ',', 'red')
-     .show())
-        # .show_last())
+    plotter = (Plotter()
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
 
 
 def run_stochastic_sensitivity_additive_noise():
@@ -812,27 +786,14 @@ def run_stochastic_sensitivity_additive_noise():
     )
     chaos = convert_dict_to_lists(chaos)
 
-    (Plotter()
-        .setup('b', 'x', 'log', 'major', 'Bifurcation, additive noise')
-        .scatter(chaos[0], chaos[1], '.', 'steelblue')
-        .plot(source[0], source[1], ',', 'red')
-        .plot(source[0], source[2], ',', 'red')
-        .plot(source[3], source[4], ',', 'red')
-        .plot(source[3], source[5], ',', 'red')
-        .plot(source[3], source[6], ',', 'red')
-        .plot(source[3], source[7], ',', 'red')
-        .plot(source[8], source[9], ',', 'red')
-        .plot(source[8], source[10], ',', 'red')
-        .plot(source[8], source[11], ',', 'red')
-        .plot(source[8], source[12], ',', 'red')
-        .plot(source[8], source[13], ',', 'red')
-        .plot(source[8], source[14], ',', 'red')
-        .plot(source[8], source[15], ',', 'red')
-        .plot(source[8], source[16], ',', 'red')
-        .plot(source[17], source[18], ',', 'red')
-        .plot(source[17], source[19], ',', 'red')
-     # .show())
-        .show_last())
+    plotter = (Plotter()
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
 
 
 

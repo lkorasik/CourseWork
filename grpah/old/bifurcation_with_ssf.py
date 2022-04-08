@@ -1,12 +1,15 @@
 import numpy as np
 from sympy import Symbol
 
+from line import Line
 from old.get_absorbing_area import get_absorbing_area
 from old.list_spliter import split
 import r as Alg
 
 
 def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, m, m1, m2, epsilon, values, f, s, q, s_, q_):
+    result = []
+
     # Доверительный интервал у одного равновесия
     draw_x1 = []
     draw_y1_1 = []
@@ -22,6 +25,9 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             # Под и над равновесием
             draw_y1_1.append(x_ - 3 * epsilon * np.sqrt(m(a, b, x_)))
             draw_y1_2.append(x_ + 3 * epsilon * np.sqrt(m(a, b, x_)))
+
+    result.append(Line(draw_x1, draw_y1_1))
+    result.append(Line(draw_x1, draw_y1_2))
 
     Alg.setup(q_, s_)
 
@@ -52,6 +58,11 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             draw_y2_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
             draw_y2_3.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
             draw_y2_4.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
+
+    result.append(Line(draw_x2, draw_y2_1))
+    result.append(Line(draw_x2, draw_y2_2))
+    result.append(Line(draw_x2, draw_y2_3))
+    result.append(Line(draw_x2, draw_y2_4))
 
     # Доверительный интервал для 4-цикла
     draw_x3 = []
@@ -93,6 +104,15 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             draw_y3_7.append(x2[i] + 3 * epsilon * np.sqrt(np.abs(m3_)))
             draw_y3_8.append(x3[i] + 3 * epsilon * np.sqrt(np.abs(m4_)))
 
+    result.append(Line(draw_x3, draw_y3_1))
+    result.append(Line(draw_x3, draw_y3_2))
+    result.append(Line(draw_x3, draw_y3_3))
+    result.append(Line(draw_x3, draw_y3_4))
+    result.append(Line(draw_x3, draw_y3_5))
+    result.append(Line(draw_x3, draw_y3_6))
+    result.append(Line(draw_x3, draw_y3_7))
+    result.append(Line(draw_x3, draw_y3_8))
+
     # Хаос
     draw_x4 = []
     draw_y4_1 = []
@@ -114,6 +134,11 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         draw_x4.append(b)
         draw_y4_1.append(c1 - 3 * epsilon * np.sqrt(m1))
         draw_y4_2.append(c + 3 * epsilon * np.sqrt(m2))
+        
+    result.append(Line(draw_x4, draw_y4_1))
+    result.append(Line(draw_x4, draw_y4_2))
 
-    return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, \
-           draw_y3_2, draw_y3_3, draw_y3_4, draw_y3_5, draw_y3_6, draw_y3_7, draw_y3_8, draw_x4, draw_y4_1, draw_y4_2
+    return result
+
+    # return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, \
+    #        draw_y3_2, draw_y3_3, draw_y3_4, draw_y3_5, draw_y3_6, draw_y3_7, draw_y3_8, draw_x4, draw_y4_1, draw_y4_2
