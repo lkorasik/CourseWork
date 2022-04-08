@@ -4,7 +4,7 @@
 
         Пришло время провести стохастический анализ. В модели появляется слагаемое, которое отвечает за шум. Это слагаемое имеет следующий вид: \(\varepsilon \xi\), где \(\varepsilon\) --- интенсивность шума, а \(\xi\) --- нормальная случайная величина.
 
-        \comment{Надо написать что такое шум в биологическом смысле}
+        \comment{Надо написать что такое шум в биологическом смысле. Причем для разных шумов будет разный смысл (исходя из того, зачем нам нужен конкретный параметр)}
 
         В данную модель шум можно внести тремя способами.
 
@@ -98,3 +98,81 @@
         "Одно рисовое зернышко может склонить чашу весов" (с) какой-то мультик.
 
         \comment{рассматривать как в том семестре все возможные варианты поведения системы в зависимости от начальной точки думаю не надо}
+
+    \subsection{Бифуркация}
+
+        \comment{напиши что-нибдь про бифуркацю}
+
+    \subsection{Матожидание}
+
+        \comment{напиши что-нибдь про матожидание и циклическое матожидание}
+
+    \subsection{Дисперсия}
+
+        \comment{напиши что-нибдь про дисперсию и циклическую дисперсию}
+
+    \subsection{ФСЧ}
+    
+        Чтож, а на десерт у нас функция стохастический чувствительности.
+
+        Функция стохастический чувствительности это инструмент, который показывает... Если интересны математические подробности --- иди в статью Crises, noise, and tipping in the Hassell population model.
+
+        Итак, давайте наконец займемся фсч. 
+
+        Давайте посмотрим на график (\ref{bifurcation_x_0_2_a_1_beta_chaos_fss}). Красными линиями нарисована функция стохастический чувствительности. \comment{сформулируй зачем она тут вообще нужна}. 
+
+        У нас есть участок равновесия от \(\beta_i = ...\) до \(\beta_j = ...\) \comment{посмотри выше, там где-то было}. Рассмотрим поближе участок от \(\beta = 0.45\) до \(\beta = 0.48\) на рисунке (\ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable}). На нем мы видим, что зачения графика бифуркации почти всегда находятся в коридоре ограниченном значенями ФСЧ. Значения высчитваются как \(\pm 3 \sigma\), такой подход по правилу трех сигм гарантирует, что почти все значения будут находится в этом интервале, собственно это мы и наблюдаем.
+
+        На участках с k-циклами и хаосом (\ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}), (\ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}) и (\ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up]}) будет наблюдаться аналогичная ситуация. 
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{График бифуркации с \(\beta\)-шумом.}
+            \label{bifurcation_x_0_2_a_1_beta_chaos_fss}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{}
+            \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{}
+            \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{}
+            \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{}
+            \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}
+        \end{figure}
+
+        \comment{напиши что-нибдь про ФСЧ}
+
+    \subsection{График ФСЧ}
+
+        \comment{напиши что-нибдь про график фсч}
+        
