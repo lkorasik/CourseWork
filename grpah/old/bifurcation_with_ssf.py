@@ -11,32 +11,32 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
     result = []
 
     # Доверительный интервал у одного равновесия
-    draw_x1 = []
-    draw_y1_1 = []
-    draw_y1_2 = []
+    line1 = Line()
+    line2 = Line()
+    result.append(line1)
+    result.append(line2)
     for b in b_range:
         if b < left1 or b > right1:
             continue
 
         x = values[b]
         for x_ in x:
-            draw_x1.append(b)
-
-            # Под и над равновесием
-            draw_y1_1.append(x_ - 3 * epsilon * np.sqrt(m(a, b, x_)))
-            draw_y1_2.append(x_ + 3 * epsilon * np.sqrt(m(a, b, x_)))
-
-    result.append(Line(draw_x1, draw_y1_1))
-    result.append(Line(draw_x1, draw_y1_2))
+            line1.add_x(b)
+            line2.add_x(b)
+            line1.add_y(x_ - 3 * epsilon * np.sqrt(m(a, b, x_)))
+            line2.add_y(x_ + 3 * epsilon * np.sqrt(m(a, b, x_)))
 
     Alg.setup(q_, s_)
 
     # Доверительный интервал для 2-цикла
-    draw_x2 = []
-    draw_y2_1 = []
-    draw_y2_2 = []
-    draw_y2_3 = []
-    draw_y2_4 = []
+    line1 = Line()
+    line2 = Line()
+    line3 = Line()
+    line4 = Line()
+    result.append(line1)
+    result.append(line2)
+    result.append(line3)
+    result.append(line4)
     for b in b_range:
         if b < left2 or b > right2:
             continue
@@ -45,35 +45,38 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         x0, x1 = split(x, 2)
 
         for i in range(len(x0)):
-            draw_x2.append(b)
-
             r = Alg.get_m(2)
             m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
             m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
             m1_ = float(m1_)
             m2_ = float(m2_)
 
-            # Под и над равновесием
-            draw_y2_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
-            draw_y2_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
-            draw_y2_3.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
-            draw_y2_4.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
-
-    result.append(Line(draw_x2, draw_y2_1))
-    result.append(Line(draw_x2, draw_y2_2))
-    result.append(Line(draw_x2, draw_y2_3))
-    result.append(Line(draw_x2, draw_y2_4))
+            line1.add_x(b)
+            line2.add_x(b)
+            line3.add_x(b)
+            line4.add_x(b)
+            line1.add_y(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
+            line2.add_y(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
+            line3.add_y(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
+            line4.add_y(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
 
     # Доверительный интервал для 4-цикла
-    draw_x3 = []
-    draw_y3_1 = []
-    draw_y3_2 = []
-    draw_y3_3 = []
-    draw_y3_4 = []
-    draw_y3_5 = []
-    draw_y3_6 = []
-    draw_y3_7 = []
-    draw_y3_8 = []
+    line1 = Line()
+    line2 = Line()
+    line3 = Line()
+    line4 = Line()
+    line5 = Line()
+    line6 = Line()
+    line7 = Line()
+    line8 = Line()
+    result.append(line1)
+    result.append(line2)
+    result.append(line3)
+    result.append(line4)
+    result.append(line5)
+    result.append(line6)
+    result.append(line7)
+    result.append(line8)
     for b in b_range:
         if b < left4 or b > right4:
             continue
@@ -82,8 +85,6 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         x0, x1, x2, x3 = split(x, 4)
 
         for i in range(len(x0)):
-            draw_x3.append(b)
-
             r = Alg.get_m(4)
             m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
             m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
@@ -94,34 +95,33 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
             m3_ = float(m3_)
             m4_ = float(m4_)
 
-            # Под и над равновесием
-            draw_y3_1.append(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
-            draw_y3_2.append(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
-            draw_y3_3.append(x2[i] - 3 * epsilon * np.sqrt(np.abs(m3_)))
-            draw_y3_4.append(x3[i] - 3 * epsilon * np.sqrt(np.abs(m4_)))
-            draw_y3_5.append(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
-            draw_y3_6.append(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
-            draw_y3_7.append(x2[i] + 3 * epsilon * np.sqrt(np.abs(m3_)))
-            draw_y3_8.append(x3[i] + 3 * epsilon * np.sqrt(np.abs(m4_)))
+            line1.add_x(b)
+            line2.add_x(b)
+            line3.add_x(b)
+            line4.add_x(b)
+            line5.add_x(b)
+            line6.add_x(b)
+            line7.add_x(b)
+            line8.add_x(b)
 
-    result.append(Line(draw_x3, draw_y3_1))
-    result.append(Line(draw_x3, draw_y3_2))
-    result.append(Line(draw_x3, draw_y3_3))
-    result.append(Line(draw_x3, draw_y3_4))
-    result.append(Line(draw_x3, draw_y3_5))
-    result.append(Line(draw_x3, draw_y3_6))
-    result.append(Line(draw_x3, draw_y3_7))
-    result.append(Line(draw_x3, draw_y3_8))
+            line1.add_y(x0[i] - 3 * epsilon * np.sqrt(np.abs(m1_)))
+            line2.add_y(x1[i] - 3 * epsilon * np.sqrt(np.abs(m2_)))
+            line3.add_y(x2[i] - 3 * epsilon * np.sqrt(np.abs(m3_)))
+            line4.add_y(x3[i] - 3 * epsilon * np.sqrt(np.abs(m4_)))
+            line5.add_y(x0[i] + 3 * epsilon * np.sqrt(np.abs(m1_)))
+            line6.add_y(x1[i] + 3 * epsilon * np.sqrt(np.abs(m2_)))
+            line7.add_y(x2[i] + 3 * epsilon * np.sqrt(np.abs(m3_)))
+            line8.add_y(x3[i] + 3 * epsilon * np.sqrt(np.abs(m4_)))
 
     # Хаос
-    draw_x4 = []
-    draw_y4_1 = []
-    draw_y4_2 = []
+    line1 = Line()
+    line2 = Line()
+    result.append(line1)
+    result.append(line2)
     for b in b_range:
         if b < left3 or b > right3:
             continue
 
-        # max_ = find_local_max(left3, right3, 0.001, lambda x: f(b, x))
         area_bounds = get_absorbing_area(b/2, lambda x: f(b, x))
 
         c_1 = area_bounds[0]
@@ -131,14 +131,9 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
         m1 = q(b, c) * s(b, c_1) + s(b, c)
         m2 = s(b, c_1)
 
-        draw_x4.append(b)
-        draw_y4_1.append(c1 - 3 * epsilon * np.sqrt(m1))
-        draw_y4_2.append(c + 3 * epsilon * np.sqrt(m2))
-
-    result.append(Line(draw_x4, draw_y4_1))
-    result.append(Line(draw_x4, draw_y4_2))
+        line1.add_x(b)
+        line2.add_x(b)
+        line1.add_y(c1 - 3 * epsilon * np.sqrt(m1))
+        line2.add_y(c + 3 * epsilon * np.sqrt(m2))
 
     return result
-
-    # return draw_x1, draw_y1_1, draw_y1_2, draw_x2, draw_y2_1, draw_y2_2, draw_y2_3, draw_y2_4, draw_x3, draw_y3_1, \
-    #        draw_y3_2, draw_y3_3, draw_y3_4, draw_y3_5, draw_y3_6, draw_y3_7, draw_y3_8, draw_x4, draw_y4_1, draw_y4_2
