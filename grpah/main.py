@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # run_bifurcation()
 
     # Показать графики бифуркации с разными шумами
-    # run_compare_chaos_bifurcation()
+    run_compare_chaos_bifurcation()
 
     # Показать график бифуркации с absorbing area
     # run_bifurcation_with_absorbing_area()
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastic_sensitivity_b_noise()
+    # run_stochastic_sensitivity_b_noise()
     # run_stochastic_sensitivity_a_noise()
     # run_stochastic_sensitivity_additive_noise()
 

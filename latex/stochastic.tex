@@ -6,6 +6,8 @@
 
         \comment{Надо написать что такое шум в биологическом смысле. Причем для разных шумов будет разный смысл (исходя из того, зачем нам нужен конкретный параметр)}
 
+        \comment{Ну с \(\beta\)-шумом все ясно, меняется численность популяции, \(\alpha\)-шумом меняется enviroment capacity, а аддитивный какой может иметь смысл?}
+
         В данную модель шум можно внести тремя способами.
 
         \(\alpha\)-шум: 
@@ -101,6 +103,44 @@
 
     \subsection{Бифуркация}
 
+        Рассмотрим графики бифуркации с разными видами шумов.
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_compare_no_noise.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{График бифуркации без шума}
+            \label{bifurcation_x_0_2_a_1_compare_no_noise}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_compare_beta_noise.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{График бифуркации с \(\beta\)-шумом, \(\varepsilon = 0.01\)}
+            \label{bifurcation_x_0_2_a_1_compare_beta_noise}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_compare_alpha_noise.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{График бифуркации с \(\alpha\)-шумом, \(\varepsilon = 0.01\)}
+            \label{bifurcation_x_0_2_a_1_compare_alpha_noise}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_compare_additional_noise.jpg}
+        
+            \captionsetup{justification=centering}
+            \caption{График бифуркации с аддитивным шумом, \(\varepsilon - 0.01\)}
+            \label{bifurcation_x_0_2_a_1_compare_additional_noise}
+        \end{figure}
+
         \comment{напиши что-нибдь про бифуркацю}
 
     \subsection{Матожидание}
@@ -127,7 +167,7 @@
 
         \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss.jpg}
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_noise_fss.jpg}
         
             \captionsetup{justification=centering}
             \caption{График бифуркации с \(\beta\)-шумом.}
@@ -136,7 +176,7 @@
 
         \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable.jpg}
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_noise_fss_segment_stable.jpg}
         
             \captionsetup{justification=centering}
             \caption{}
@@ -145,7 +185,7 @@
 
         \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up.jpg}
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_noise_fss_segment_chaos_up.jpg}
         
             \captionsetup{justification=centering}
             \caption{}
@@ -154,7 +194,7 @@
 
         \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down.jpg}
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_noise_fss_segment_chaos_down.jpg}
         
             \captionsetup{justification=centering}
             \caption{}
@@ -163,7 +203,7 @@
 
         \begin{figure}
             \centering
-            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle.jpg}
+            \includegraphics[width=\textwidth]{stochastic/bifurcation_x_0_2_a_1_beta_noise_fss_segment_2_cycle.jpg}
         
             \captionsetup{justification=centering}
             \caption{}
