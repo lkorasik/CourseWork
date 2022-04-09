@@ -38,7 +38,5 @@ class Plotter:
         for k in self._legend:
             lines.append(k)
             names.append(self._legend[k])
-        # plt.legend(lines, names)
-        # plt.legend()
         self.ax.legend(lines, names)
         return self

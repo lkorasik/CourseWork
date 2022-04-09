@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # run_bifurcation()
 
     # Показать графики бифуркации с разными шумами
-    run_compare_chaos_bifurcation()
+    # run_compare_chaos_bifurcation()
 
     # Показать график бифуркации с absorbing area
     # run_bifurcation_with_absorbing_area()

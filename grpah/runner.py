@@ -731,7 +731,8 @@ def run_stochastic_sensitivity_b_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    plotter.show_last()
+    # plotter.show_last()
+    plotter.show()
 
 
 def run_stochastic_sensitivity_a_noise():
@@ -770,13 +771,14 @@ def run_stochastic_sensitivity_a_noise():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\alpha$-noise')
                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    plotter.show_last()
+    # plotter.show_last()
+    plotter.show()
 
 
 def run_stochastic_sensitivity_additive_noise():
@@ -815,7 +817,7 @@ def run_stochastic_sensitivity_additive_noise():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with additive noise')
                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
