@@ -693,12 +693,12 @@ def run_stochastic_sensitivity_b_noise():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.0001),
         f=lambda b, x: functions.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, 0.0001),
         a=1,
         left1=0.44,
         right1=0.582355932,
@@ -731,8 +731,8 @@ def run_stochastic_sensitivity_b_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_stochastic_sensitivity_a_noise():
