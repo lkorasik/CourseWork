@@ -690,15 +690,17 @@ def run_cyclic_variance():
 
 
 def run_stochastic_sensitivity_b_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=p_range,
         f=lambda b, x: functions.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        b_range=p_range,
         a=1,
         left1=0.44,
         right1=0.582355932,
@@ -719,7 +721,151 @@ def run_stochastic_sensitivity_b_noise():
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        p_range=np.arange(0.22, 0.582355932, 0.001),
+        p_range=p_range,
+        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    plotter = (Plotter()
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
+    # plotter.show()
+
+
+def run_stochastic_sensitivity_b_noise_1():
+    p_range = np.arange(0.35, 0.385, 0.0001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
+        epsilon=0.001,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    plotter = (Plotter()
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
+    # plotter.show()
+
+
+def run_stochastic_sensitivity_b_noise_2():
+    p_range = np.arange(0.4, 0.6, 0.0001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
+        epsilon=0.001,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    plotter = (Plotter()
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
+    # plotter.show()
+
+
+def run_stochastic_sensitivity_b_noise_3():
+    p_range = np.arange(0.22, 0.3, 0.0001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
+        epsilon=0.001,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
         f=lambda b, x: functions.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
