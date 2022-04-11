@@ -9,6 +9,8 @@ s = (36 * (a ** 2) * (x ** 4)) / ((x + b) ** 14)
 
 
 def setup(q_, s_):
+    global q
+    global s
     q = q_
     s = s_
 
