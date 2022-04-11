@@ -129,32 +129,3 @@ def get_m(k):
         formulas.append(result)
 
     return formulas
-
-
-if __name__ == "__main__":
-    k = 2
-
-    x_ = generator_xi(k)
-    q_ = generator_qi(k, x_)
-    s_ = generator_si(k, x_)
-
-    print(x_)
-
-    q_ = to_dict("q", q_)
-    s_ = to_dict("s", s_)
-    print(q_)
-    print(s_)
-
-    r_ = generator_r(k + 1)
-    print(r_)
-
-    Q_ = generator_Q(k)
-    print(latex(Q_))
-
-    print(generate_M(r_, Q_, k))
-
-    for i in range(k):
-        result = generate_M(r_, Q_, k)[i]
-        result = subs_dict(result, q_)
-        result = subs_dict(result, s_)
-        print(result)
