@@ -1,7 +1,7 @@
 import numpy as np
 from sympy import Symbol
 
-from line import Line
+from visual.line import Line
 from old.get_absorbing_area import get_absorbing_area
 from old.list_spliter import split
 import r as Alg

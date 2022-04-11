@@ -16,7 +16,7 @@ from algorithms.lyapunov import lyapunov
 from old.m_b import m_b
 from algorithms.time_series import time_series
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
-from plotter import Plotter
+from visual.plotter import Plotter
 
 
 def run_time_series_without_chaos_1():
