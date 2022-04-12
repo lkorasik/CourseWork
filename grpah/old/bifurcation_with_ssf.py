@@ -1,6 +1,7 @@
 import numpy as np
 from sympy import Symbol
 
+from functions_pkg import symbols
 from visual.line import Line
 from old.get_absorbing_area import get_absorbing_area
 from old.list_spliter import split
@@ -46,8 +47,10 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
 
         for i in range(len(x0)):
             r = Alg.get_m(2)
-            m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
-            m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
+            m1_ = r[0].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
+            m2_ = r[1].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
+            # m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
+            # m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i])
             m1_ = float(m1_)
             m2_ = float(m2_)
 
@@ -86,10 +89,10 @@ def bifurcation_with_ssf(b_range, a, left1, right1, left2, right2, left3, right3
 
         for i in range(len(x0)):
             r = Alg.get_m(4)
-            m1_ = r[0].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
-            m2_ = r[1].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
-            m3_ = r[2].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
-            m4_ = r[3].subs(Symbol("a"), a).subs(Symbol("b"), b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m1_ = r[0].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m2_ = r[1].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m3_ = r[2].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
+            m4_ = r[3].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i])
             m1_ = float(m1_)
             m2_ = float(m2_)
             m3_ = float(m3_)

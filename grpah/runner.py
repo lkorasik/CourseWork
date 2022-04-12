@@ -733,8 +733,8 @@ def run_stochastic_sensitivity_b_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    plotter.show_last()
-    # plotter.show()
+    # plotter.show_last()
+    plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_1():
@@ -781,8 +781,8 @@ def run_stochastic_sensitivity_b_noise_1():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    plotter.show_last()
-    # plotter.show()
+    # plotter.show_last()
+    plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_2():
