@@ -63,9 +63,9 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    # run_stochastic_sensitivity_b_noise()
-    # run_stochastic_sensitivity_a_noise()
-    # run_stochastic_sensitivity_additive_noise()
+    run_stochastic_sensitivity_b_noise()
+    run_stochastic_sensitivity_a_noise()
+    run_stochastic_sensitivity_additive_noise()
 
     # run_stochastic_sensitivity_b_noise_1()
     # run_stochastic_sensitivity_b_noise_2()
