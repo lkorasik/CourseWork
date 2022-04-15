@@ -9,17 +9,6 @@ _s_c = ((_f_c.diff(eta).subs(eta, 0)) ** 2).simplify()
 
 _m_c = (_s_c / (1 - _q_c)).simplify()
 
-x1 = Symbol('x1')
-x2 = Symbol('x2')
-
-_q1_c = _q_c.subs(x, x1).simplify()
-_q2_c = _q_c.subs(x, x2).simplify()
-_s1_c = _s_c.subs(x, x1).simplify()
-_s2_c = _s_c.subs(x, x2).simplify()
-
-_m1_c = (_q2_c * _s1_c + _s2_c) / (1 - _q1_c * _q2_c)
-_m2_c = (_q1_c * _s2_c + _s1_c) / (1 - _q1_c * _q2_c)
-
 
 def q_chaos(val_a, val_b, val_x, val_epsilon):
     val_eta = numpy.random.normal(0, 1) * val_epsilon

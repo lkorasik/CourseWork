@@ -9,17 +9,6 @@ _s_bn = ((_f_bn.diff(eta).subs(eta, 0)) ** 2).simplify()
 
 _m_bn = (_s_bn / (1 - _q_bn)).simplify()
 
-x1 = Symbol('x1')
-x2 = Symbol('x2')
-
-_q1_bn = _q_bn.subs(x, x1).simplify()
-_q2_bn = _q_bn.subs(x, x2).simplify()
-_s1_bn = _s_bn.subs(x, x1).simplify()
-_s2_bn = _s_bn.subs(x, x2).simplify()
-
-_m1_bn = (_q2_bn * _s1_bn + _s2_bn) / (1 - _q1_bn * _q2_bn)
-_m2_bn = (_q1_bn * _s2_bn + _s1_bn) / (1 - _q1_bn * _q2_bn)
-
 
 def f_chaos_b(val_a, val_b, val_x, val_epsilon):
     val_eta = numpy.random.normal(0, 1) * val_epsilon
