@@ -44,14 +44,3 @@ def m_chaos_b(val_a, val_b, val_x, val_epsilon):
     value = _m_bn.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)
     return float(value)
 
-
-def m1_chaos_b(val_a, val_b, val_x1, val_x2, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _m1_bn.subs(a, val_a).subs(b, val_b).subs(x1, val_x1).subs(x2, val_x2).subs(eta, val_eta)
-    return float(value)
-
-
-def m2_chaos_b(val_a, val_b, val_x1, val_x2, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _m2_bn.subs(a, val_a).subs(b, val_b).subs(x1, val_x1).subs(x2, val_x2).subs(eta, val_eta)
-    return float(value)

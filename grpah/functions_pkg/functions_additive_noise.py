@@ -21,12 +21,6 @@ _m1_c = (_q2_c * _s1_c + _s2_c) / (1 - _q1_c * _q2_c)
 _m2_c = (_q1_c * _s2_c + _s1_c) / (1 - _q1_c * _q2_c)
 
 
-def f_chaos(val_a, val_b, val_x, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _f_c.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)
-    return float(value)
-
-
 def q_chaos(val_a, val_b, val_x, val_epsilon):
     val_eta = numpy.random.normal(0, 1) * val_epsilon
     value = _q_c.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)
@@ -44,14 +38,3 @@ def m_chaos(val_a, val_b, val_x, val_epsilon):
     value = _m_c.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)
     return float(value)
 
-
-def m1_chaos_b(val_a, val_b, val_x1, val_x2, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _m1_c.subs(a, val_a).subs(b, val_b).subs(x1, val_x1).subs(x2, val_x2).subs(eta, val_eta)
-    return float(value)
-
-
-def m2_chaos_b(val_a, val_b, val_x1, val_x2, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _m2_c.subs(a, val_a).subs(b, val_b).subs(x1, val_x1).subs(x2, val_x2).subs(eta, val_eta)
-    return float(value)
