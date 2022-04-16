@@ -972,7 +972,6 @@ def run_stochastic_sensitivity_additive_noise():
     plotter.show_last()
 
 
-
 def run_m_b():
     values = bifurcation(
         time_range=range(1, 100 + 1),
