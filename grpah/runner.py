@@ -291,7 +291,8 @@ def run_bifurcation():
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
         .scatter(source[0], source[1], '.', 'steelblue', 'aa')
         .legend()
-        .show_last())
+     .show())
+        # .show_last())
 
 
 def run_compare_chaos_bifurcation():
@@ -986,16 +987,16 @@ def run_m_b():
         right1=0.582355932,
         left2=0.379,
         right2=0.435,
-        m=functions.m,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        # m=functions.m,
         m1=functions.m1,
         m2=functions.m2,
-        values=values
+        values=values,
+        q=0,s=0,q_=0,s_=0
     )
 
     Plotter()\
         .setup('b', 'M', 'linear', 'major', 'Stochastic sensetivity')\
         .scatter(source[0], source[1], '.', 'red')\
         .scatter(source[2], source[3], '.', 'red')\
-        .scatter(source[4], source[5], '.', 'red')\
-        .scatter(source[6], source[7], '.', 'red')\
         .show_last()
