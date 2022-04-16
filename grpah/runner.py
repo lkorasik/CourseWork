@@ -3,6 +3,7 @@ import numpy as np
 import functions
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
+from old.collect import collect
 from old.converter import convert_dict_to_lists
 from old.cyclical_mean import cyclical_mean
 from old.cyclical_variance import cyclical_variance
@@ -16,6 +17,7 @@ from algorithms.lyapunov import lyapunov
 from old.m_b import m_b
 from algorithms.time_series import time_series
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
+from visual.line import Line
 from visual.plotter import Plotter
 
 
@@ -693,6 +695,8 @@ def run_cyclic_variance():
 def run_stochastic_sensitivity_b_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
+    epsilon = 0.001
+
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -711,11 +715,11 @@ def run_stochastic_sensitivity_b_noise():
         right3=0.34,
         left4=0.36,
         right4=0.37,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
-        epsilon=0.001,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
+        epsilon=epsilon,
         f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
         q_=functions_b_noise._q_bn,
         s_=functions_b_noise._s_bn
     )
@@ -723,7 +727,7 @@ def run_stochastic_sensitivity_b_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        f=lambda b, x: functions.f_pb(1, b, x, epsilon)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -734,8 +738,8 @@ def run_stochastic_sensitivity_b_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_1():
@@ -782,8 +786,8 @@ def run_stochastic_sensitivity_b_noise_1():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_2():
@@ -1079,3 +1083,241 @@ def run_m_b_additive_noise():
 
     plotter.show_last()
 
+
+def epsilon_beta_beta_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+    epsilon = 0.001
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f(1, b, x)
+    )
+
+    source1 = bifurcation_with_equilibrium(
+        b_range=p_range,
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: functions.f(1, b, x),
+        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values
+    )
+
+    source2 = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
+        epsilon=epsilon,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f_pb(1, b, x, epsilon)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
+
+    plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium $\\beta$-noise')
+
+    (plotter
+        .plot(source1[0], source1[1], ',', 'red')
+        .plot(source1[2], source1[3], ',', 'deeppink')
+        .plot(source1[4], source1[5], ',', 'green'))
+
+    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
+
+    for line in source2:
+        plotter.plot(line.x, line.y, ',', 'olive')
+
+    plotter.plot(source2[0].x, source2[0].y, ',', 'darkorange')
+    plotter.plot(source2[3].x, source2[3].y, ',', 'darkorange')
+    plotter.plot(source2[7].x, source2[7].y, ',', 'darkorange')
+    plotter.plot(source2[14].x, source2[14].y, ',', 'darkorange')
+    plotter.plot(source1[0], source1[1], ',', 'darkorange')
+
+    plotter.show()
+
+    (Plotter()
+        .setup('$\\beta$', 'x', 'linear', 'major', 'Bifurcation with equilibrium $\\beta$-noise')
+        .plot(r[0], r[1], '.', 'red')
+        .show_last())
+
+
+def epsilon_beta_alpha_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+    epsilon = 0.001
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f(1, b, x)
+    )
+
+    source1 = bifurcation_with_equilibrium(
+        b_range=p_range,
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: functions.f(1, b, x),
+        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values
+    )
+
+    source2 = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, epsilon),
+        epsilon=epsilon,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon),
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon),
+        q_=functions_a_noise._q_ca,
+        s_=functions_a_noise._s_ca
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f_pa(1, b, x, epsilon)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
+
+    plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium $\\alpha$-noise')
+
+    (plotter
+        .plot(source1[0], source1[1], ',', 'red')
+        .plot(source1[2], source1[3], ',', 'deeppink')
+        .plot(source1[4], source1[5], ',', 'green'))
+
+    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
+
+    for line in source2:
+        plotter.plot(line.x, line.y, ',', 'olive')
+
+    plotter.plot(source2[0].x, source2[0].y, ',', 'darkorange')
+    plotter.plot(source2[3].x, source2[3].y, ',', 'darkorange')
+    plotter.plot(source2[7].x, source2[7].y, ',', 'darkorange')
+    plotter.plot(source2[14].x, source2[14].y, ',', 'darkorange')
+    plotter.plot(source1[0], source1[1], ',', 'darkorange')
+
+    plotter.show()
+
+    (Plotter()
+        .setup('$\\beta$', 'x', 'linear', 'major', 'Bifurcation with equilibrium $\\alpha$-noise')
+        .plot(r[0], r[1], '.', 'red')
+        .show_last())
+
+
+def epsilon_beta_additive_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+    epsilon = 0.001
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f(1, b, x)
+    )
+
+    source1 = bifurcation_with_equilibrium(
+        b_range=p_range,
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: functions.f(1, b, x),
+        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values
+    )
+
+    source2 = bifurcation_with_ssf(
+        values=values,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0.001),
+        epsilon=0.001,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        q_=functions_additive_noise._q_c,
+        s_=functions_additive_noise._s_c
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions.f_p(1, b, x, epsilon)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    # collect([source2[0], source2[3], source2[7], source2[14]],  Line(source1[0], source1[1]))
+    r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
+
+    plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium additive-noise')
+
+    (plotter
+        .plot(source1[0], source1[1], ',', 'red')
+        .plot(source1[2], source1[3], ',', 'deeppink')
+        .plot(source1[4], source1[5], ',', 'green'))
+
+    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
+
+    for line in source2:
+        plotter.plot(line.x, line.y, ',', 'olive')
+
+    plotter.plot(source2[0].x, source2[0].y, ',', 'darkorange')
+    plotter.plot(source2[3].x, source2[3].y, ',', 'darkorange')
+    plotter.plot(source2[7].x, source2[7].y, ',', 'darkorange')
+    plotter.plot(source2[14].x, source2[14].y, ',', 'darkorange')
+    plotter.plot(source1[0], source1[1], ',', 'darkorange')
+
+    # plotter.show_last()
+    plotter.show()
+
+    (Plotter()
+        .setup('$\\beta$', 'x', 'linear', 'major', 'Bifurcation with equilibrium additvie-noise')
+        .plot(r[0], r[1], '.', 'red')
+        .show_last())
