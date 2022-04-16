@@ -973,30 +973,109 @@ def run_stochastic_sensitivity_additive_noise():
     plotter.show_last()
 
 
-def run_m_b():
+def run_m_b_beta_noise():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
-        p_range=np.arange(0.37, 0.582355932, 0.001),
+        p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions.f(1, b, x),
     )
     source = m_b(
-        b_range=np.arange(0.37, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
         left1=0.44,
         right1=0.582355932,
         left2=0.379,
         right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
         m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
-        # m=functions.m,
-        m1=functions.m1,
-        m2=functions.m2,
         values=values,
-        q=0,s=0,q_=0,s_=0
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn,
+        f=lambda b, x: base_functions.f(1, b, x)
     )
 
-    Plotter()\
-        .setup('b', 'M', 'linear', 'major', 'Stochastic sensetivity')\
-        .scatter(source[0], source[1], '.', 'red')\
-        .scatter(source[2], source[3], '.', 'red')\
-        .show_last()
+    plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity $\\beta$-noise'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    # plotter.show_last()
+    plotter.show()
+
+
+def run_m_b_alpha_noise():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        q_=functions_a_noise._q_ca,
+        s_=functions_a_noise._s_ca,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity $\\alpha$-noise'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    # plotter.show_last()
+    plotter.show()
+
+
+def run_m_b_additive_noise():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        q_=functions_additive_noise._q_c,
+        s_=functions_additive_noise._s_c,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity additive-noise'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
+

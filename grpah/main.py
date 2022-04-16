@@ -11,7 +11,7 @@ if __name__ == "__main__":
     # run_time_series_without_chaos_composition()
 
     # Показать график бифуркации
-    run_bifurcation()
+    # run_bifurcation()
 
     # Показать графики бифуркации с разными шумами
     # run_compare_chaos_bifurcation()
@@ -72,4 +72,6 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_b_noise_3()
 
     # График стохастической чувствительности
-    run_m_b()
+    # run_m_b_beta_noise()
+    # run_m_b_alpha_noise()
+    # run_m_b_additive_noise()
