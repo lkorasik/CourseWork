@@ -76,6 +76,6 @@ if __name__ == "__main__":
     # run_m_b_alpha_noise()
     # run_m_b_additive_noise()
 
-    # epsilon_beta_beta_noise()
-    # epsilon_beta_alpha_noise()
-    epsilon_beta_additive_noise()
+    erunda_beta_noise()
+    erunda_alpha_noise()
+    ernuda_additive_noise()

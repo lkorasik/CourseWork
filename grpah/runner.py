@@ -1084,7 +1084,7 @@ def run_m_b_additive_noise():
     plotter.show_last()
 
 
-def epsilon_beta_beta_noise():
+def erunda_beta_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
     epsilon = 0.001
 
@@ -1163,7 +1163,7 @@ def epsilon_beta_beta_noise():
         .show_last())
 
 
-def epsilon_beta_alpha_noise():
+def erunda_alpha_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
     epsilon = 0.001
 
@@ -1242,7 +1242,7 @@ def epsilon_beta_alpha_noise():
         .show_last())
 
 
-def epsilon_beta_additive_noise():
+def ernuda_additive_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
     epsilon = 0.001
 
