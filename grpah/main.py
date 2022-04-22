@@ -51,7 +51,7 @@ if __name__ == "__main__":
     # run_time_series_3()
 
     # Матожидание
-    # run_mean()
+    run_mean()
 
     # Усредненное матожидание
     # run_cyclic_mean()
@@ -72,9 +72,9 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_b_noise_3()
 
     # График стохастической чувствительности
-    run_m_b_beta_noise()
-    run_m_b_alpha_noise()
-    run_m_b_additive_noise()
+    # run_m_b_beta_noise()
+    # run_m_b_alpha_noise()
+    # run_m_b_additive_noise()
 
     # erunda_beta_noise()
     # erunda_alpha_noise()

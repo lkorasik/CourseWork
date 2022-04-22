@@ -1,7 +1,8 @@
-from old.converter import line_to_dict, convert_dict_to_lists
-
-
 # Возможно, это лишнее
+from algorithms.convert_dict_to_lists import convert_dict_to_lists
+from algorithms.line_to_dict import line_to_dict
+
+
 def collect(fss, border):
     # border - fss
     result = dict()

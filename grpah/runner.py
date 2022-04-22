@@ -505,7 +505,7 @@ def run_mean():
         down_border=None
     )
     source0 = mean(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
@@ -518,7 +518,7 @@ def run_mean():
         down_border=None
     )
     source1 = mean(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
@@ -531,7 +531,7 @@ def run_mean():
         down_border=None
     )
     source2 = mean(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
@@ -544,16 +544,16 @@ def run_mean():
         down_border=None
     )
     source3 = mean(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV')
-        .plot(source0[0], source0[1], '.', 'steelblue')
-        .plot(source1[0], source1[1], '.', 'red')
-        .plot(source2[0], source2[1], '.', 'green')
-        .plot(source3[0], source3[1], '.', 'black')
+        .plot(source0.x, source0.y, '.', 'steelblue')
+        .plot(source1.x, source1.y, '.', 'red')
+        .plot(source2.x, source2.y, '.', 'green')
+        .plot(source3.x, source3.y, '.', 'black')
         .show_last())
 
 

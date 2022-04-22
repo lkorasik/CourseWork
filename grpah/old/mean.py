@@ -1,12 +1,13 @@
-import statistics
+import numpy
+
+from visual.line import Line
 
 
-def mean(b_range, values):
-    draw_x = []
-    draw_y = []
-    for b in b_range:
-        mean_ = statistics.mean(values[b])
-        draw_x.append(b)
-        draw_y.append(mean_)
+def mean(p_range, values):
+    line = Line()
+    for p in p_range:
+        mean_ = numpy.mean(values[p])
+        line.add_x(p)
+        line.add_y(mean_)
 
-    return draw_x, draw_y
+    return line
