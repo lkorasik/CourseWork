@@ -1,5 +1,7 @@
 from matplotlib import pyplot as plt
 
+from visual.line import Line
+
 
 class Plotter:
     def __init__(self):
@@ -17,6 +19,11 @@ class Plotter:
 
     def plot(self, draw_x, draw_y, marker, color, name=""):
         line = plt.plot(draw_x, draw_y, marker=marker, color=color)
+        self._legend[line[0]] = name
+        return self
+
+    def plot_line(self, line_: Line, marker, color, name=""):
+        line = plt.plot(line_.x, line_.y, marker=marker, color=color)
         self._legend[line[0]] = name
         return self
 

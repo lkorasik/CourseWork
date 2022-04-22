@@ -9,7 +9,7 @@ from old.collect import collect
 from old.cyclical_mean import cyclical_mean
 from old.cyclical_variance import cyclical_variance
 from algorithms.mean import mean
-from old.variance import variance
+from algorithms.variance import variance
 from old.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from old.bifurcation_with_ssf import bifurcation_with_ssf
 from old.equilibrium import equilibrium
@@ -605,7 +605,7 @@ def run_variance():
         down_border=None
     )
     source0 = variance(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
@@ -617,7 +617,7 @@ def run_variance():
         down_border=None
     )
     source1 = variance(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
@@ -629,7 +629,7 @@ def run_variance():
         down_border=None
     )
     source2 = variance(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
@@ -641,16 +641,16 @@ def run_variance():
         down_border=None
     )
     source3 = variance(
-        b_range=np.arange(0.22, 0.582355932, 0.01),
+        p_range=np.arange(0.22, 0.582355932, 0.01),
         values=values
     )
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance')
-        .plot(source0[0], source0[1], '.', 'steelblue')
-        .plot(source1[0], source1[1], '.', 'red')
-        .plot(source2[0], source2[1], '.', 'green')
-        .plot(source3[0], source3[1], '.', 'black')
+        .plot_line(source0, '.', 'steelblue')
+        .plot(source1.x, source1.y, '.', 'red')
+        .plot(source2.x, source2.y, '.', 'green')
+        .plot(source3.x, source3.y, '.', 'black')
         .show_last())
 
 

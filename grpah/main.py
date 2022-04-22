@@ -51,13 +51,13 @@ if __name__ == "__main__":
     # run_time_series_3()
 
     # Матожидание
-    run_mean()
+    # run_mean()
 
     # Усредненное матожидание
     # run_cyclic_mean()
 
     # Дисперсия
-    # run_variance()
+    run_variance()
 
     # Циклическая дисперсия
     # run_cyclic_variance()

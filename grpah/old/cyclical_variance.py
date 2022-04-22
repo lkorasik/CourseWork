@@ -1,7 +1,7 @@
 import statistics
 
 from algorithms.bifurcation import bifurcation
-from old.variance import variance
+from algorithms.variance import variance
 
 
 def cyclical_variance(time_range, x_start, b_range, f, count):
