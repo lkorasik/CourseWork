@@ -6,7 +6,7 @@ from algorithms.bifurcation import bifurcation
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from algorithms.line_intersection import line_intersection
 from old.collect import collect
-from old.cyclical_mean import cyclical_mean
+from algorithms.cyclical_mean import cyclical_mean
 from old.cyclical_variance import cyclical_variance
 from algorithms.mean import mean
 from algorithms.variance import variance
@@ -589,10 +589,10 @@ def run_cyclic_mean():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot(source0[0], source0[1], '.', 'steelblue')
-        .plot(source1[0], source1[1], '.', 'red')
-        .plot(source2[0], source2[1], '.', 'green')
-        .plot(source3[0], source3[1], '.', 'black')
+        .plot_line(source0, '.', 'steelblue')
+        .plot_line(source1, '.', 'red')
+        .plot_line(source2, '.', 'green')
+        .plot_line(source3, '.', 'black')
         .show_last())
 
 
