@@ -1,4 +1,5 @@
 from old.single_newton import single_newton
+from visual.line import Line
 
 
 def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation):
@@ -11,43 +12,31 @@ def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, 
         diffs[b] = max_ - min_
 
     # Нижняя, т.е. \bar{x}_1
-    draw_x1 = []
-    draw_y1 = []
+    line = Line()
+    result.append(line)
     x = x12 - (x12 / 4)
     for b in b_range:
         x = single_newton(x, precision, lambda x_: function(b, x_), lambda x_: d_function(b, x_))
-        draw_x1.append(b)
-        draw_y1.append(x)
-
-    result.append(draw_x1)
-    result.append(draw_y1)
+        line.add_x(b).add_y(x)
 
     # Верхняя, т.е. \bar{x}_2
-    draw_x2 = []
-    draw_y2 = []
+    line = Line()
+    result.append(line)
     x = x12 + (x12 / 4)
     for b in b_range:
         x = single_newton(x, precision, lambda x_: function(b, x_), lambda x_: d_function(b, x_))
         if diffs[b] > 0.001:
-            draw_x2.append(b)
-            draw_y2.append(x)
-
-    result.append(draw_x2)
-    result.append(draw_y2)
+            line.add_x(b).add_y(x)
 
     # Верхняя, т.е. x_1^{-1}
-    draw_x3 = []
-    draw_y3 = []
+    line = Line()
+    result.append(line)
     x1 = x12 - (x12 / 4)
     for b in b_range:
         delta_y = single_newton(x1, precision, lambda x_: function(b, x_), lambda x_: d_function(b, x_))
         f = lambda b, c: sf(b, c, delta_y)
         x = single_newton(x, precision, lambda x_: f(b, x_), lambda x_: dsf(b, x_))
         x1 = delta_y
-        draw_x3.append(b)
-        draw_y3.append(x)
-
-    result.append(draw_x3)
-    result.append(draw_y3)
+        line.add_x(b).add_y(x)
 
     return result

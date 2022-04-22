@@ -10,6 +10,8 @@ class Line:
 
     def add_x(self, x):
         self.x.append(x)
+        return self
 
     def add_y(self, y):
         self.y.append(y)
+        return self
