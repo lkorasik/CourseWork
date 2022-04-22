@@ -1,7 +1,7 @@
 from old.converter import line_to_dict, convert_dict_to_lists
-from visual.line import Line
 
 
+# Возможно, это лишнее
 def collect(fss, border):
     # border - fss
     result = dict()
@@ -21,14 +21,5 @@ def collect(fss, border):
             y1 = line_[x]
             y2 = border[x]
             result[x] = [y1 - y2]
-
-    # for x in result.keys():
-    #     for line_ in fss:
-    #         if x in line_.keys():
-    #             y1 = line_[x]
-    #         else:
-    #             y1 = 0
-    #         y2 = border[x]
-    #         result[x] = [y1 - y2]
 
     return convert_dict_to_lists(result)

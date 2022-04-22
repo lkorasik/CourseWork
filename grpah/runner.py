@@ -1294,7 +1294,6 @@ def ernuda_additive_noise():
     )
     chaos = convert_dict_to_lists(chaos)
 
-    # collect([source2[0], source2[3], source2[7], source2[14]],  Line(source1[0], source1[1]))
     r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
 
     plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium additive-noise')
