@@ -686,10 +686,10 @@ def run_cyclic_variance():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance cyclic')
-        .plot(source0[0], source0[1], '.', 'steelblue')
-        .plot(source1[0], source1[1], '.', 'red')
-        .plot(source2[0], source2[1], '.', 'green')
-        .plot(source3[0], source3[1], '.', 'black')
+        .plot_line(source0, '.', 'steelblue')
+        .plot_line(source1, '.', 'red')
+        .plot_line(source2, '.', 'green')
+        .plot_line(source3, '.', 'black')
         .show_last())
 
 
