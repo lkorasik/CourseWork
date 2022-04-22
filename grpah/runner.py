@@ -7,7 +7,7 @@ from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from algorithms.line_intersection import line_intersection
 from old.collect import collect
 from algorithms.cyclical_mean import cyclical_mean
-from old.cyclical_variance import cyclical_variance
+from algorithms.cyclical_variance import cyclical_variance
 from algorithms.mean import mean
 from algorithms.variance import variance
 from old.bifurcation_with_equilibrium import bifurcation_with_equilibrium
