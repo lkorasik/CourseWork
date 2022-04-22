@@ -3,9 +3,9 @@ import numpy as np
 import functions
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
+from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from algorithms.line_intersection import line_intersection
 from old.collect import collect
-from old.converter import convert_dict_to_lists
 from old.cyclical_mean import cyclical_mean
 from old.cyclical_variance import cyclical_variance
 from old.mean import mean
