@@ -3,7 +3,7 @@ from sympy import Symbol
 import r as alg
 from functions_pkg import symbols
 from algorithms.get_absorbing_area import get_absorbing_area
-from old.list_spliter import split
+from algorithms.list_spliter import split
 from visual.line import Line
 
 

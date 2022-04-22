@@ -4,7 +4,7 @@ from sympy import Symbol
 from functions_pkg import symbols
 from visual.line import Line
 from algorithms.get_absorbing_area import get_absorbing_area
-from old.list_spliter import split
+from algorithms.list_spliter import split
 import r as Alg
 
 
