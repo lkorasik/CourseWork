@@ -1336,6 +1336,19 @@ def critical_intensity():
         p_range=p_range,
         f=lambda b, x: functions.f(1, b, x),
     )
+
+    source1 = bifurcation_with_equilibrium(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: functions.h(1, b, x),
+        d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: functions.f(1, b, x),
+        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values
+    )
+
     source0 = bifurcation_with_ssf(
         values=values,
         b_range=p_range,
@@ -1357,27 +1370,17 @@ def critical_intensity():
         s_=functions_b_noise._s_bn
     )
 
-    source1 = bifurcation_with_equilibrium(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
-        x12=0.12,
-        precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
-        bifurcation=values
-    )
+
 
     values = convert_dict_to_lists(values)
 
-    # (Plotter()
-    #  .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-    #  .scatter(values[0], values[1], '.', 'steelblue')
-    #  .plot(source[0], source[1], ',', 'red')
-    #  .plot(source[2], source[3], ',', 'deeppink')
-    #  .plot(source[4], source[5], ',', 'green')
-    #  .show_last())
+    (Plotter()
+        .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+        .scatter(values[0], values[1], '.', 'steelblue')
+        .plot_line(source1[0], ',', 'red')
+        .plot_line(source1[1], ',', 'deeppink')
+        .plot_line(source1[2], ',', 'green')
+        .show_last())
 
     # plotter = (Plotter()
     #            .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise'))
