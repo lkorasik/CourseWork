@@ -1,7 +1,7 @@
 import statistics
 
 from algorithms.bifurcation import bifurcation
-from old.mean import mean
+from algorithms.mean import mean
 
 
 def cyclical_mean(time_range, x_start, b_range, f, count):

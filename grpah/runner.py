@@ -8,7 +8,7 @@ from algorithms.line_intersection import line_intersection
 from old.collect import collect
 from old.cyclical_mean import cyclical_mean
 from old.cyclical_variance import cyclical_variance
-from old.mean import mean
+from algorithms.mean import mean
 from old.variance import variance
 from old.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from old.bifurcation_with_ssf import bifurcation_with_ssf
