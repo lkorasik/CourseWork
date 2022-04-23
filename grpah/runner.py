@@ -1370,8 +1370,6 @@ def critical_intensity():
         s_=functions_b_noise._s_bn
     )
 
-
-
     values = convert_dict_to_lists(values)
 
     (Plotter()
