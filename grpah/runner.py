@@ -4,6 +4,7 @@ import functions
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
+from algorithms.convert_line_to_dict import convert_line_to_dict
 from algorithms.line_intersection import line_intersection
 from old.collect import collect
 from algorithms.cyclical_mean import cyclical_mean
@@ -1328,7 +1329,8 @@ def critical_intensity():
     # Найти пересечение
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
-    epsilon = 0.001
+    # epsilon = 0.001
+    # epsilon = 0.0425
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1349,36 +1351,85 @@ def critical_intensity():
         bifurcation=values
     )
 
-    source0 = bifurcation_with_ssf(
-        values=values,
-        b_range=p_range,
-        a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
-        epsilon=epsilon,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
-    )
+    R = []
+    for epsilon in np.arange(0.001, 0.0425, 0.001):
+        print("S", epsilon)
+        source0 = bifurcation_with_ssf(
+            values=values,
+            b_range=p_range,
+            a=1,
+            left1=0.44,
+            right1=0.582355932,
+            left2=0.379,
+            right2=0.435,
+            left3=0.22,
+            right3=0.34,
+            left4=0.36,
+            right4=0.37,
+            m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
+            epsilon=epsilon,
+            f=lambda b, x: base_functions.f(1, b, x),
+            s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
+            q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
+            q_=functions_b_noise._q_bn,
+            s_=functions_b_noise._s_bn
+        )
+
+        equilibrium_ = []
+        for line in source1:
+            equilibrium_.append(convert_line_to_dict(line))
+
+        fss_ = []
+        for line in source0:
+            fss_.append(convert_line_to_dict(line))
+
+        is_upper = []
+
+        eq = equilibrium_[0]
+        fss = fss_[0]
+        for key in eq.keys():
+            eq_v = eq[key]
+            fss_v = None
+            if key in fss.keys():
+                fss_v = fss[key]
+
+            if fss_v is None:
+                continue
+
+            is_upper.append([fss_v > eq_v, key, epsilon])
+
+        for i in range(len(is_upper) - 1):
+            if is_upper[i][0] != is_upper[i + 1][0]:
+                R.append(is_upper[i])
+
+        # if any(is_upper):
+        #     epsilon += 0.1
+        # else:
+        #     break
 
     values = convert_dict_to_lists(values)
 
+    # [bool, x, y]
+
+    x = list(map(lambda x: x[1], R))
+    y = list(map(lambda x: x[2], R))
+
     (Plotter()
+        .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon')
+        .scatter(x, y, ',', 'red')
+        .show())
+
+    plotter = (Plotter()
         .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
         .scatter(values[0], values[1], '.', 'steelblue')
         .plot_line(source1[0], ',', 'red')
         .plot_line(source1[1], ',', 'deeppink')
-        .plot_line(source1[2], ',', 'green')
-        .show_last())
+        .plot_line(source1[2], ',', 'green'))
+    #
+    # for line in source0:
+    #     plotter.plot_line(line, ',', 'orange')
+
+    plotter.show_last()
 
     # plotter = (Plotter()
     #            .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise'))
