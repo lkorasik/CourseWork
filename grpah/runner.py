@@ -740,8 +740,13 @@ def run_stochastic_sensitivity_b_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    plotter.show_last()
-    # plotter.show()
+    plotter.plot_line(source[0], ',', 'orange')
+    plotter.plot_line(source[3], ',', 'orange')
+    plotter.plot_line(source[7], ',', 'orange')
+    plotter.plot_line(source[14], ',', 'orange')
+
+    # plotter.show_last()
+    plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_1():
@@ -1339,6 +1344,8 @@ def critical_intensity():
         f=lambda b, x: functions.f(1, b, x),
     )
 
+    epsilon_ = 0.005
+
     source1 = bifurcation_with_equilibrium(
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
@@ -1351,8 +1358,29 @@ def critical_intensity():
         bifurcation=values
     )
 
+    source2 = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.22,
+        right3=0.34,
+        left4=0.36,
+        right4=0.37,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon_),
+        epsilon=epsilon_,
+        f=lambda b, x: base_functions.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon_),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon_),
+        q_=functions_b_noise._q_bn,
+        s_=functions_b_noise._s_bn
+    )
+
     R = []
-    for epsilon in np.arange(0.001, 0.0425, 0.001):
+    for epsilon in np.arange(0.001, 0.05, 0.001):
         print("S", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
@@ -1383,51 +1411,78 @@ def critical_intensity():
         for line in source0:
             fss_.append(convert_line_to_dict(line))
 
-        is_upper = []
+        is_upper0 = []
+        is_upper1 = []
+        is_upper2 = []
+        is_upper3 = []
 
         eq = equilibrium_[0]
-        fss = fss_[0]
+        fss0 = fss_[0]
+        fss1 = fss_[3]
+        fss2 = fss_[7]
+        fss3 = fss_[14]
         for key in eq.keys():
             eq_v = eq[key]
-            fss_v = None
-            if key in fss.keys():
-                fss_v = fss[key]
+            fss0_v = None
+            if key in fss0.keys():
+                fss0_v = fss0[key]
+            fss1_v = None
+            if key in fss1.keys():
+                fss1_v = fss1[key]
+            fss2_v = None
+            if key in fss2.keys():
+                fss2_v = fss2[key]
+            fss3_v = None
+            if key in fss3.keys():
+                fss3_v = fss3[key]
 
-            if fss_v is None:
+            if fss0_v is None and fss1_v is None and fss2_v is None and fss3_v is None:
                 continue
 
-            is_upper.append([fss_v > eq_v, key, epsilon])
+            if fss0_v is not None:
+                is_upper0.append([fss0_v > eq_v, key, epsilon])
+            if fss1_v is not None:
+                is_upper1.append([fss1_v > eq_v, key, epsilon])
+            if fss2_v is not None:
+                is_upper2.append([fss2_v > eq_v, key, epsilon])
+            if fss3_v is not None:
+                is_upper3.append([fss3_v > eq_v, key, epsilon])
 
-        for i in range(len(is_upper) - 1):
-            if is_upper[i][0] != is_upper[i + 1][0]:
-                R.append(is_upper[i])
+        for i in range(len(is_upper0) - 1):
+            if is_upper0[i][0] != is_upper0[i + 1][0]:
+                R.append(is_upper0[i])
 
-        # if any(is_upper):
-        #     epsilon += 0.1
-        # else:
-        #     break
+        for i in range(len(is_upper1) - 1):
+            if is_upper1[i][0] != is_upper1[i + 1][0]:
+                R.append(is_upper1[i])
+
+        for i in range(len(is_upper2) - 1):
+            if is_upper2[i][0] != is_upper2[i + 1][0]:
+                R.append(is_upper2[i])
+
+        for i in range(len(is_upper3) - 1):
+            if is_upper3[i][0] != is_upper3[i + 1][0]:
+                R.append(is_upper3[i])
 
     values = convert_dict_to_lists(values)
-
-    # [bool, x, y]
 
     x = list(map(lambda x: x[1], R))
     y = list(map(lambda x: x[2], R))
 
     (Plotter()
         .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon')
-        .scatter(x, y, ',', 'red')
+        .scatter(x, y, '.', 'red')
         .show())
 
     plotter = (Plotter()
-        .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-        .scatter(values[0], values[1], '.', 'steelblue')
-        .plot_line(source1[0], ',', 'red')
-        .plot_line(source1[1], ',', 'deeppink')
-        .plot_line(source1[2], ',', 'green'))
-    #
-    # for line in source0:
-    #     plotter.plot_line(line, ',', 'orange')
+               .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+               .scatter(values[0], values[1], '.', 'steelblue')
+               .plot_line(source1[0], ',', 'red')
+               .plot_line(source1[1], ',', 'deeppink')
+               .plot_line(source1[2], ',', 'green'))
+
+    for line in source2:
+        plotter.plot_line(line, ',', 'orange')
 
     plotter.show_last()
 
