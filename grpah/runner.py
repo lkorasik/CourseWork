@@ -1330,12 +1330,7 @@ def ernuda_additive_noise():
 
 
 def critical_intensity():
-    # Просчитать равновесия
-    # Найти пересечение
     p_range = np.arange(0.22, 0.582355932, 0.001)
-
-    # epsilon = 0.001
-    # epsilon = 0.0425
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1485,12 +1480,3 @@ def critical_intensity():
         plotter.plot_line(line, ',', 'orange')
 
     plotter.show_last()
-
-    # plotter = (Plotter()
-    #            .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise'))
-    #
-    # for line in source:
-    #     plotter.plot(line.x, line.y, ',', 'red')
-    #
-    # plotter.show_last()
-    # plotter.show()
