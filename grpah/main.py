@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # run_lyapunov()
 
     # Показать лестницу Ламерея
-    run_lamerei()
+    # run_lamerei()
 
     # Показать график бифуркации и корни
     # run_bifurcation_with_equilibrium()
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_b_noise_3()
 
     # График стохастической чувствительности
-    # run_m_b_beta_noise()
+    run_m_b_beta_noise()
     # run_m_b_alpha_noise()
     # run_m_b_additive_noise()
 

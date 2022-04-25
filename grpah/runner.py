@@ -5,7 +5,7 @@ from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from algorithms.convert_line_to_dict import convert_line_to_dict
-from old.collect import collect
+from algorithms.collect import collect
 from algorithms.cyclical_mean import cyclical_mean
 from algorithms.cyclical_variance import cyclical_variance
 from algorithms.mean import mean
@@ -1014,9 +1014,9 @@ def run_m_b_beta_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    # plotter.show_last()
-    plotter.show()
-
+    plotter.show_last()
+    # plotter.show()
+    
 
 def run_m_b_alpha_noise():
     values = bifurcation(

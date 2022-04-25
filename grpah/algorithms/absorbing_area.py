@@ -1,4 +1,4 @@
-from old.find_local_max import find_local_max
+from algorithms.find_local_max import find_local_max
 from algorithms.get_absorbing_area import get_absorbing_area
 
 
