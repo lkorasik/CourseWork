@@ -12,7 +12,7 @@ from algorithms.mean import mean
 from algorithms.variance import variance
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
-from old.equilibrium import equilibrium
+from algorithms.equilibrium import equilibrium
 from old.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
 from old.m_b import m_b
@@ -486,14 +486,14 @@ def run_equilibrium():
         d=lambda b, x: functions.df(1, b, x)
     )
 
-    (Plotter()
-        .setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
-        .plot(source[0], source[1], ',', 'red')
-        .plot(source[2], source[3], ',', 'deeppink')
-        .plot(source[4], source[5], ',', 'green')
-        .plot(source[6], source[7], ',', 'black')
-        .plot(source[8], source[9], ',', 'black')
-        .show_last())
+    plotter = Plotter().setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
+
+    colors = ['red', 'deeppink', 'green', 'black', 'black']
+
+    for i in range(len(source)):
+        plotter.plot_line(source[i], ',', colors[i])
+
+    plotter.show_last()
 
 
 def run_mean():

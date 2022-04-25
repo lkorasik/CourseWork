@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # run_bifurcation_with_equilibrium()
 
     # Показать графики равновесий
-    # run_equilibrium()
+    run_equilibrium()
 
     # regime_map(
     #     x_start=0.2,
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastic_sensitivity_b_noise()
+    # run_stochastic_sensitivity_b_noise()
     # run_stochastic_sensitivity_a_noise()
     # run_stochastic_sensitivity_additive_noise()
 
