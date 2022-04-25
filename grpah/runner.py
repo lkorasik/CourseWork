@@ -15,7 +15,7 @@ from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from algorithms.equilibrium import equilibrium
 from algorithms.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
-from old.m_b import m_b
+from algorithms.m_b import m_b
 from algorithms.time_series import time_series
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
 from visual.line import Line
@@ -1016,7 +1016,7 @@ def run_m_b_beta_noise():
 
     plotter.show_last()
     # plotter.show()
-    
+
 
 def run_m_b_alpha_noise():
     values = bifurcation(
