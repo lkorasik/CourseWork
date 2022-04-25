@@ -11,7 +11,7 @@ from algorithms.cyclical_variance import cyclical_variance
 from algorithms.mean import mean
 from algorithms.variance import variance
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from old.bifurcation_with_ssf import bifurcation_with_ssf
+from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from old.equilibrium import equilibrium
 from old.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
