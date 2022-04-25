@@ -698,7 +698,6 @@ def run_stochastic_sensitivity_b_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
     epsilon = 0.001
-    # epsilon = 0.01
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -710,14 +709,7 @@ def run_stochastic_sensitivity_b_noise():
         values=values,
         b_range=p_range,
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
         epsilon=epsilon,
         f=lambda b, x: base_functions.f(1, b, x),
@@ -741,14 +733,14 @@ def run_stochastic_sensitivity_b_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    plotter.plot_line(source[0], ',', 'orange')
-    plotter.plot_line(source[3], ',', 'orange')
-    plotter.plot_line(source[7], ',', 'orange')
-    plotter.plot_line(source[14], ',', 'orange')
+    # plotter.plot_line(source[0], ',', 'orange')
+    # plotter.plot_line(source[3], ',', 'orange')
+    # plotter.plot_line(source[7], ',', 'orange')
+    # plotter.plot_line(source[14], ',', 'orange')
 
     # plotter.plot_line(source[1], ',', 'navy')
     # plotter.plot_line(source[4], ',', 'navy')
-    plotter.plot_line(source[10], ',', 'navy')
+    # plotter.plot_line(source[10], ',', 'navy')
     # plotter.plot_line(source[15], ',', 'navy')
 
     plotter.show_last()
