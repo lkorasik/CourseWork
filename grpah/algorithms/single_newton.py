@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def single_newton(x_start, precision, function, d_function):
+def single_newton_unlimited(x_start, precision, function, d_function):
     """Найти один корень с помощью метода Ньютона"""
     x_0 = x_start
     while True:
