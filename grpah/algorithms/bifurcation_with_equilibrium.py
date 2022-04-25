@@ -7,9 +7,7 @@ def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, 
 
     diffs = dict()
     for b in b_range:
-        min_ = min(bifurcation[b])
-        max_ = max(bifurcation[b])
-        diffs[b] = max_ - min_
+        diffs[b] = max(bifurcation[b]) - min(bifurcation[b])
 
     # Нижняя, т.е. \bar{x}_1
     line = Line()
@@ -25,6 +23,7 @@ def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, 
     x = x12 + (x12 / 4)
     for b in b_range:
         x = single_newton(x, precision, lambda x_: function(b, x_), lambda x_: d_function(b, x_))
+        # Находимся в области устойчивого равновесия
         if diffs[b] > 0.001:
             line.add_x(b).add_y(x)
 

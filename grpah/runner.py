@@ -5,13 +5,12 @@ from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from algorithms.convert_line_to_dict import convert_line_to_dict
-from algorithms.line_intersection import line_intersection
 from old.collect import collect
 from algorithms.cyclical_mean import cyclical_mean
 from algorithms.cyclical_variance import cyclical_variance
 from algorithms.mean import mean
 from algorithms.variance import variance
-from old.bifurcation_with_equilibrium import bifurcation_with_equilibrium
+from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from old.bifurcation_with_ssf import bifurcation_with_ssf
 from old.equilibrium import equilibrium
 from old.lamerei import lamerei
