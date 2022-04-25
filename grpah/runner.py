@@ -473,7 +473,8 @@ def run_bifurcation_with_equilibrium():
         .plot_line(source[0], ',', 'red')
         .plot_line(source[1], ',', 'deeppink')
         .plot_line(source[2], ',', 'green')
-        .show_last())
+     .show())
+        # .show_last())
 
 
 def run_equilibrium():
@@ -698,6 +699,7 @@ def run_stochastic_sensitivity_b_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
     epsilon = 0.001
+    # epsilon = 0.01
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -745,8 +747,13 @@ def run_stochastic_sensitivity_b_noise():
     plotter.plot_line(source[7], ',', 'orange')
     plotter.plot_line(source[14], ',', 'orange')
 
-    # plotter.show_last()
-    plotter.show()
+    # plotter.plot_line(source[1], ',', 'navy')
+    # plotter.plot_line(source[4], ',', 'navy')
+    plotter.plot_line(source[10], ',', 'navy')
+    # plotter.plot_line(source[15], ',', 'navy')
+
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_1():
@@ -1375,7 +1382,8 @@ def critical_intensity():
     )
 
     R = []
-    for epsilon in np.arange(0.001, 0.05, 0.001):
+    S = []
+    for epsilon in np.arange(0.001, 0.3, 0.001):
         print("S", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
@@ -1411,11 +1419,24 @@ def critical_intensity():
         is_upper2 = []
         is_upper3 = []
 
+        is_under0 = []
+        is_under1 = []
+        is_under2 = []
+        is_under3 = []
+
         eq = equilibrium_[0]
+        proto = equilibrium_[2]
+
         fss0 = fss_[0]
         fss1 = fss_[3]
         fss2 = fss_[7]
         fss3 = fss_[14]
+
+        fss4 = fss_[1]
+        fss5 = fss_[4]
+        fss6 = fss_[10]
+        fss7 = fss_[15]
+
         for key in eq.keys():
             eq_v = eq[key]
             fss0_v = None
@@ -1443,6 +1464,33 @@ def critical_intensity():
             if fss3_v is not None:
                 is_upper3.append([fss3_v > eq_v, key, epsilon])
 
+        for key in proto.keys():
+            proto_v = proto[key]
+            fss4_v = None
+            if key in fss4.keys():
+                fss4_v = fss4[key]
+            fss5_v = None
+            if key in fss5.keys():
+                fss5_v = fss5[key]
+            fss6_v = None
+            if key in fss6.keys():
+                fss6_v = fss6[key]
+            fss7_v = None
+            if key in fss7.keys():
+                fss7_v = fss7[key]
+
+            if fss4_v is None and fss5_v is None and fss6_v is None and fss7_v is None:
+                continue
+
+            if fss4_v is not None:
+                is_under0.append([fss4_v < proto_v, key, epsilon])
+            if fss5_v is not None:
+                is_under1.append([fss5_v < proto_v, key, epsilon])
+            if fss6_v is not None:
+                is_under2.append([fss6_v < proto_v, key, epsilon])
+            if fss7_v is not None:
+                is_under3.append([fss7_v < proto_v, key, epsilon])
+
         for i in range(len(is_upper0) - 1):
             if is_upper0[i][0] != is_upper0[i + 1][0]:
                 R.append(is_upper0[i])
@@ -1459,14 +1507,33 @@ def critical_intensity():
             if is_upper3[i][0] != is_upper3[i + 1][0]:
                 R.append(is_upper3[i])
 
+        for i in range(len(is_under0) - 1):
+            if is_under0[i][0] != is_under0[i + 1][0]:
+                S.append(is_under0[i])
+
+        for i in range(len(is_under1) - 1):
+            if is_under1[i][0] != is_under1[i + 1][0]:
+                S.append(is_under1[i])
+
+        for i in range(len(is_under2) - 1):
+            if is_under2[i][0] != is_under2[i + 1][0]:
+                S.append(is_under2[i])
+
+        for i in range(len(is_under3) - 1):
+            if is_under3[i][0] != is_under3[i + 1][0]:
+                S.append(is_under3[i])
+
     values = convert_dict_to_lists(values)
 
-    x = list(map(lambda x: x[1], R))
-    y = list(map(lambda x: x[2], R))
+    xR = list(map(lambda x: x[1], R))
+    yR = list(map(lambda x: x[2], R))
+    xS = list(map(lambda x: x[1], S))
+    yS = list(map(lambda x: x[2], S))
 
     (Plotter()
         .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon')
-        .scatter(x, y, '.', 'red')
+        .scatter(xR, yR, '.', 'red')
+        .scatter(xS, yS, '.', 'navy')
         .show())
 
     plotter = (Plotter()
