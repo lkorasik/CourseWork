@@ -11,5 +11,5 @@ def single_newton(x_start, precision, function, d_function):
         if abs(x_n - x_0) < precision:
             break
         x_0 = x_n
-    res = x_0
-    return res
+
+    return x_0

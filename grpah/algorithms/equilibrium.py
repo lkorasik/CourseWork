@@ -1,4 +1,4 @@
-from old.single_newton import single_newton
+from algorithms.single_newton import single_newton
 from visual.line import Line
 
 

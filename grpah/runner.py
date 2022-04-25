@@ -13,7 +13,7 @@ from algorithms.variance import variance
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from algorithms.equilibrium import equilibrium
-from old.lamerei import lamerei
+from algorithms.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
 from old.m_b import m_b
 from algorithms.time_series import time_series
