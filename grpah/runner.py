@@ -294,8 +294,8 @@ def run_bifurcation():
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
         .scatter(source[0], source[1], '.', 'steelblue', 'aa')
         .legend()
-     .show())
-        # .show_last())
+     # .show())
+        .show_last())
 
 
 def run_compare_chaos_bifurcation():
