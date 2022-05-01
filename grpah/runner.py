@@ -1367,7 +1367,7 @@ def critical_intensity_beta_noise():
 
     R = []
     S = []
-    for epsilon in np.arange(0.001, 0.3, 0.001):
+    for epsilon in np.arange(0.001, 0.21, 0.001):
         print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,

@@ -80,6 +80,6 @@ if __name__ == "__main__":
     # erunda_alpha_noise()
     # ernuda_additive_noise()
 
-    critical_intensity_beta_noise()
-    # critical_intensity_alpha_noise()
+    # critical_intensity_beta_noise()
+    critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()
