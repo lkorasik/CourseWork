@@ -1368,7 +1368,7 @@ def critical_intensity_beta_noise():
     R = []
     S = []
     for epsilon in np.arange(0.001, 0.3, 0.001):
-        print("S", epsilon)
+        print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
             b_range=p_range,
@@ -1515,7 +1515,7 @@ def critical_intensity_beta_noise():
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-               .scatter(values[0], values[1], '.', 'steelblue')
+               .scatter(values[0], values[1], ',', 'steelblue')
                .plot_line(source1[0], ',', 'red')
                .plot_line(source1[1], ',', 'deeppink')
                .plot_line(source1[2], ',', 'green'))
@@ -1566,8 +1566,8 @@ def critical_intensity_alpha_noise():
 
     R = []
     S = []
-    for epsilon in np.arange(0.001, 0.3, 0.01):
-        print("S", epsilon)
+    for epsilon in np.arange(0.001, 1.5, 0.001):
+        print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
             b_range=p_range,
@@ -1708,13 +1708,13 @@ def critical_intensity_alpha_noise():
 
     (Plotter()
         .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\alpha$-noise')
-        .scatter(xR, yR, '.', 'red')
-        .scatter(xS, yS, '.', 'navy')
+        .scatter(xR, yR, ',', 'red')
+        .scatter(xS, yS, ',', 'navy')
         .show())
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-               .scatter(values[0], values[1], '.', 'steelblue')
+               .scatter(values[0], values[1], ',', 'steelblue')
                .plot_line(source1[0], ',', 'red')
                .plot_line(source1[1], ',', 'deeppink')
                .plot_line(source1[2], ',', 'green'))
@@ -1765,8 +1765,8 @@ def critical_intensity_additive_noise():
 
     R = []
     S = []
-    for epsilon in np.arange(0.001, 0.3, 0.01):
-        print("S", epsilon)
+    for epsilon in np.arange(0.001, 1, 0.001):
+        print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
             b_range=p_range,
@@ -1907,13 +1907,13 @@ def critical_intensity_additive_noise():
 
     (Plotter()
         .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for additive noise')
-        .scatter(xR, yR, '.', 'red')
-        .scatter(xS, yS, '.', 'navy')
+        .scatter(xR, yR, ',', 'red')
+        .scatter(xS, yS, ',', 'navy')
         .show())
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-               .scatter(values[0], values[1], '.', 'steelblue')
+               .scatter(values[0], values[1], ',', 'steelblue')
                .plot_line(source1[0], ',', 'red')
                .plot_line(source1[1], ',', 'deeppink')
                .plot_line(source1[2], ',', 'green'))
