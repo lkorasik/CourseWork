@@ -1555,11 +1555,11 @@ def critical_intensity_alpha_noise():
         b_range=p_range,
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, epsilon_),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon_),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon_),
+        s=lambda b, x: functions_a_noise.s(1, b, x, epsilon_),
+        q=lambda b, x: functions_a_noise.q(1, b, x, epsilon_),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s
     )
@@ -1573,11 +1573,11 @@ def critical_intensity_alpha_noise():
             b_range=p_range,
             a=1,
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-            m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, epsilon),
+            m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
             f=lambda b, x: base_functions.f(1, b, x),
-            s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon),
-            q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon),
+            s=lambda b, x: functions_a_noise.s(1, b, x, epsilon),
+            q=lambda b, x: functions_a_noise.q(1, b, x, epsilon),
             q_=functions_a_noise._q,
             s_=functions_a_noise._s
         )
