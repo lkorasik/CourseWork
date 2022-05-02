@@ -715,8 +715,8 @@ def run_stochastic_sensitivity_b_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -773,8 +773,8 @@ def run_stochastic_sensitivity_b_noise_1():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -821,8 +821,8 @@ def run_stochastic_sensitivity_b_noise_2():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -869,8 +869,8 @@ def run_stochastic_sensitivity_b_noise_3():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -961,8 +961,8 @@ def run_stochastic_sensitivity_additive_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
         q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
-        q_=functions_additive_noise._q_c,
-        s_=functions_additive_noise._s_c
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1004,8 +1004,8 @@ def run_m_b_beta_noise():
         values=values,
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn,
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s,
         f=lambda b, x: base_functions.f(1, b, x)
     )
 
@@ -1076,8 +1076,8 @@ def run_m_b_additive_noise():
         values=values,
         s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
         q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
-        q_=functions_additive_noise._q_c,
-        s_=functions_additive_noise._s_c,
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s,
         f=lambda b, x: base_functions.f(1, b, x)
     )
 
@@ -1129,8 +1129,8 @@ def erunda_beta_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1287,8 +1287,8 @@ def ernuda_additive_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
         q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
-        q_=functions_additive_noise._q_c,
-        s_=functions_additive_noise._s_c
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1361,8 +1361,8 @@ def critical_intensity_beta_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon_),
         q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon_),
-        q_=functions_b_noise._q_bn,
-        s_=functions_b_noise._s_bn
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
     )
 
     R = []
@@ -1379,8 +1379,8 @@ def critical_intensity_beta_noise():
             f=lambda b, x: base_functions.f(1, b, x),
             s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
             q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
-            q_=functions_b_noise._q_bn,
-            s_=functions_b_noise._s_bn
+            q_=functions_b_noise._q,
+            s_=functions_b_noise._s
         )
 
         equilibrium_ = []
@@ -1759,8 +1759,8 @@ def critical_intensity_additive_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, epsilon_),
         q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, epsilon_),
-        q_=functions_additive_noise._q_c,
-        s_=functions_additive_noise._s_c
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s
     )
 
     R = []
@@ -1777,8 +1777,8 @@ def critical_intensity_additive_noise():
             f=lambda b, x: base_functions.f(1, b, x),
             s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, epsilon),
             q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, epsilon),
-            q_=functions_additive_noise._q_c,
-            s_=functions_additive_noise._s_c
+            q_=functions_additive_noise._q,
+            s_=functions_additive_noise._s
         )
 
         equilibrium_ = []
