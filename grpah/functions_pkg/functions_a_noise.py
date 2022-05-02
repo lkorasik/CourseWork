@@ -3,7 +3,6 @@ from functions_pkg.symbols import a, b, x, eta
 from sympy.utilities.lambdify import lambdify
 
 _f = ((a + eta) * (x ** 2)) / ((b + x) ** 6)
-_f_ = lambdify([a, b, x, eta], _f)
 
 _q = ((_f.diff(x).subs(eta, 0)) ** 2).simplify()
 _s = ((_f.diff(eta).subs(eta, 0)) ** 2).simplify()

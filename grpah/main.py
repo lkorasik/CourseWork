@@ -82,4 +82,4 @@ if __name__ == "__main__":
 
     # critical_intensity_beta_noise()
     critical_intensity_alpha_noise()
-    # critical_intensity_additive_noise()
+    critical_intensity_additive_noise()

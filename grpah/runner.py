@@ -1722,7 +1722,8 @@ def critical_intensity_alpha_noise():
     for line in source2:
         plotter.plot_line(line, ',', 'orange')
 
-    plotter.show_last()
+    plotter.show()
+    # plotter.show_last()
 
 
 def critical_intensity_additive_noise():
