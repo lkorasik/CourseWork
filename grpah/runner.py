@@ -915,8 +915,8 @@ def run_stochastic_sensitivity_a_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
         q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
-        q_=functions_a_noise._q_ca,
-        s_=functions_a_noise._s_ca
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1040,8 +1040,8 @@ def run_m_b_alpha_noise():
         values=values,
         s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
         q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
-        q_=functions_a_noise._q_ca,
-        s_=functions_a_noise._s_ca,
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s,
         f=lambda b, x: base_functions.f(1, b, x)
     )
 
@@ -1208,8 +1208,8 @@ def erunda_alpha_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon),
         q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon),
-        q_=functions_a_noise._q_ca,
-        s_=functions_a_noise._s_ca
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s
     )
     chaos = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1560,8 +1560,8 @@ def critical_intensity_alpha_noise():
         f=lambda b, x: base_functions.f(1, b, x),
         s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon_),
         q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon_),
-        q_=functions_a_noise._q_ca,
-        s_=functions_a_noise._s_ca
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s
     )
 
     R = []
@@ -1578,8 +1578,8 @@ def critical_intensity_alpha_noise():
             f=lambda b, x: base_functions.f(1, b, x),
             s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon),
             q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon),
-            q_=functions_a_noise._q_ca,
-            s_=functions_a_noise._s_ca
+            q_=functions_a_noise._q,
+            s_=functions_a_noise._s
         )
 
         equilibrium_ = []
@@ -1708,8 +1708,8 @@ def critical_intensity_alpha_noise():
 
     (Plotter()
         .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\alpha$-noise')
-        .scatter(xR, yR, ',', 'red')
-        .scatter(xS, yS, ',', 'navy')
+        .scatter(xR, yR, '.', 'red')
+        .scatter(xS, yS, '.', 'navy')
         .show())
 
     plotter = (Plotter()
@@ -1907,8 +1907,8 @@ def critical_intensity_additive_noise():
 
     (Plotter()
         .setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for additive noise')
-        .scatter(xR, yR, ',', 'red')
-        .scatter(xS, yS, ',', 'navy')
+        .scatter(xR, yR, '.', 'red')
+        .scatter(xS, yS, '.', 'navy')
         .show())
 
     plotter = (Plotter()
