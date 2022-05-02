@@ -1359,8 +1359,8 @@ def critical_intensity_beta_noise():
         m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon_),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon_),
+        s=lambda b, x: functions_b_noise.s(1, b, x, epsilon_),
+        q=lambda b, x: functions_b_noise.q(1, b, x, epsilon_),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s
     )
@@ -1374,11 +1374,11 @@ def critical_intensity_beta_noise():
             b_range=p_range,
             a=1,
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-            m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
+            m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
             f=lambda b, x: base_functions.f(1, b, x),
-            s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
-            q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
+            s=lambda b, x: functions_b_noise.s(1, b, x, epsilon),
+            q=lambda b, x: functions_b_noise.q(1, b, x, epsilon),
             q_=functions_b_noise._q,
             s_=functions_b_noise._s
         )
