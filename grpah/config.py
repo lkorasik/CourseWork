@@ -7,3 +7,4 @@ class Config:
         config.read('config.properties')
 
         self.core_count = config["DEFAULT"]["core.count"]
+        self.core_logging = config["DEFAULT"]["core.logging"]
