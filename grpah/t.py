@@ -16,12 +16,24 @@ def h(x, y, result: Queue):
     result.put(lam_f(x, y))
 
 
+def job(input: Queue, output: Queue, n):
+    while not input.empty():
+        value = input.get()
+        print(n, value)
+        output.put(value)
+
+
 if __name__ == "__main__":
     print(lam_f(3, 2))
 
-    result = Queue()
-    f = Process(target=h, args=(1, 2, result))
-    f.start()
-    f.join()
+    input = Queue()
+    for i in range(1000):
+        input.put(i)
+    output = Queue()
 
-    print(result.get())
+    f1 = Process(target=job, args=(input, output, 1))
+    f2 = Process(target=job, args=(input, output, 2))
+    f1.start()
+    f2.start()
+    f1.join()
+    f2.join()
