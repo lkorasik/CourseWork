@@ -1,16 +1,22 @@
-from regime_map import regime_map
 from runner import *
 
+
 if __name__ == "__main__":
+    print("Run")
 
     # Показать график временного ряда
-    # run_time_series()
-    # run_time_series_2()
+    # run_time_series_without_chaos_1()
+    # run_time_series_different_noises()
+    # run_time_series_compare_noise()
+    # run_time_series_without_chaos_composition()
 
     # Показать график бифуркации
     # run_bifurcation()
 
-    # Показать график бифуркации с
+    # Показать графики бифуркации с разными шумами
+    # run_compare_chaos_bifurcation()
+
+    # Показать график бифуркации с absorbing area
     # run_bifurcation_with_absorbing_area()
 
     # Показать показатель Ляпунова
@@ -30,7 +36,7 @@ if __name__ == "__main__":
     #     a_range=np.arange(0.01, 2, 0.01),
     #     b_range=np.arange(0.01, 0.6, 0.01),
     #     time_range=range(1, 10000 + 1),
-    #     f=functions.f,
+    #     f=functions_pkg.f,
     #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
     # )
 
@@ -43,9 +49,6 @@ if __name__ == "__main__":
 
     # Показать графики временных рядов с разными шумами
     # run_time_series_3()
-
-    # Показать графики бифуркации с разными шумами
-    # run_bifurcation_2()
 
     # Матожидание
     # run_mean()
@@ -60,7 +63,23 @@ if __name__ == "__main__":
     # run_cyclic_variance()
 
     # Функция стохастической чувствительности
-    run_stochastoc_sensetivity()
+    # run_stochastic_sensitivity_b_noise()
+    # run_stochastic_sensitivity_a_noise()
+    # run_stochastic_sensitivity_additive_noise()
+
+    # run_stochastic_sensitivity_b_noise_1()
+    # run_stochastic_sensitivity_b_noise_2()
+    # run_stochastic_sensitivity_b_noise_3()
 
     # График стохастической чувствительности
-    # run_m_b()
+    # run_m_b_beta_noise()
+    # run_m_b_alpha_noise()
+    # run_m_b_additive_noise()
+
+    # erunda_beta_noise()
+    # erunda_alpha_noise()
+    # ernuda_additive_noise()
+
+    # critical_intensity_beta_noise()
+    critical_intensity_alpha_noise()
+    critical_intensity_additive_noise()
