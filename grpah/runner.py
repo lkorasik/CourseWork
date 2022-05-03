@@ -3,20 +3,20 @@ import numpy as np
 import functions
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
-from algorithms.convert_dict_to_lists import convert_dict_to_lists
-from algorithms.convert_line_to_dict import convert_line_to_dict
-from algorithms.collect import collect
-from algorithms.cyclical_mean import cyclical_mean
-from algorithms.cyclical_variance import cyclical_variance
-from algorithms.mean import mean
-from algorithms.variance import variance
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
+from algorithms.collect import collect
+from algorithms.convert_dict_to_lists import convert_dict_to_lists
+from algorithms.convert_line_to_dict import convert_line_to_dict
+from algorithms.cyclical_mean import cyclical_mean
+from algorithms.cyclical_variance import cyclical_variance
 from algorithms.equilibrium import equilibrium
 from algorithms.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
 from algorithms.m_b import m_b
+from algorithms.mean import mean
 from algorithms.time_series import time_series
+from algorithms.variance import variance
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
 from visual.line import Line
 from visual.plotter import Plotter
@@ -902,14 +902,7 @@ def run_stochastic_sensitivity_a_noise():
         values=values,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
@@ -948,14 +941,7 @@ def run_stochastic_sensitivity_additive_noise():
         values=values,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
@@ -1089,9 +1075,8 @@ def run_m_b_additive_noise():
     plotter.show_last()
 
 
-def erunda_beta_noise():
+def run_machalanobis_beta_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
-    epsilon = 0.001
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1100,7 +1085,7 @@ def erunda_beta_noise():
         f=lambda b, x: functions.f(1, b, x)
     )
 
-    source1 = bifurcation_with_equilibrium(
+    equilibrium = bifurcation_with_equilibrium(
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
@@ -1109,68 +1094,92 @@ def erunda_beta_noise():
         f=lambda b, x: functions.f(1, b, x),
         sf=lambda b, x, shift: functions.sf(1, b, x, shift),
         dsf=lambda b, x: functions.df(1, b, x),
-        bifurcation=values
+        bifurcation=values,
+        save_all=True
     )
 
-    source2 = bifurcation_with_ssf(
-        values=values,
+    m_beta = m_b(
         b_range=p_range,
         a=1,
         left1=0.44,
         right1=0.582355932,
         left2=0.379,
         right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
-        epsilon=epsilon,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
         q_=functions_b_noise._q,
-        s_=functions_b_noise._s
+        s_=functions_b_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
     )
-    chaos = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=p_range,
-        f=lambda b, x: functions.f_pb(1, b, x, epsilon)
-    )
-    chaos = convert_dict_to_lists(chaos)
 
-    r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
+    stable_equilibrium = equilibrium[1]
+    unstable_equilibrium = equilibrium[0]
+    prototype_equilibrium = equilibrium[2]
 
-    plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium $\\beta$-noise')
+    stable_equilibrium = convert_line_to_dict(stable_equilibrium)
+    unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
+    prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
 
-    (plotter
-        .plot(source1[0], source1[1], ',', 'red')
-        .plot(source1[2], source1[3], ',', 'deeppink')
-        .plot(source1[4], source1[5], ',', 'green'))
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[2])
+    line2 = convert_line_to_dict(m_beta[4])
+    line3 = convert_line_to_dict(m_beta[7])
+    lines = [line0, line1, line2, line3]
 
-    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
 
-    for line in source2:
-        plotter.plot(line.x, line.y, ',', 'olive')
+    mahalanobis0 = Line()
+    mahalanobis1 = Line()
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
 
-    plotter.plot(source2[0].x, source2[0].y, ',', 'darkorange')
-    plotter.plot(source2[3].x, source2[3].y, ',', 'darkorange')
-    plotter.plot(source2[7].x, source2[7].y, ',', 'darkorange')
-    plotter.plot(source2[14].x, source2[14].y, ',', 'darkorange')
-    plotter.plot(source1[0], source1[1], ',', 'darkorange')
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
 
-    plotter.show()
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
 
-    (Plotter()
-        .setup('$\\beta$', 'x', 'linear', 'major', 'Bifurcation with equilibrium $\\beta$-noise')
-        .plot(r[0], r[1], '.', 'red')
-        .show_last())
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
+
+    plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+
+    plotter.plot_line(mahalanobis0, '.', 'red')
+    plotter.plot_line(mahalanobis1, '.', 'blue')
+
+    plotter.show_last()
 
 
-def erunda_alpha_noise():
+def run_machalanobis_alpha_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
-    epsilon = 0.001
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1179,7 +1188,7 @@ def erunda_alpha_noise():
         f=lambda b, x: functions.f(1, b, x)
     )
 
-    source1 = bifurcation_with_equilibrium(
+    equilibrium = bifurcation_with_equilibrium(
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
@@ -1188,68 +1197,92 @@ def erunda_alpha_noise():
         f=lambda b, x: functions.f(1, b, x),
         sf=lambda b, x, shift: functions.sf(1, b, x, shift),
         dsf=lambda b, x: functions.df(1, b, x),
-        bifurcation=values
+        bifurcation=values,
+        save_all=True
     )
 
-    source2 = bifurcation_with_ssf(
-        values=values,
+    m_beta = m_b(
         b_range=p_range,
         a=1,
         left1=0.44,
         right1=0.582355932,
         left2=0.379,
         right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, epsilon),
-        epsilon=epsilon,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, epsilon),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, epsilon),
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
         q_=functions_a_noise._q,
-        s_=functions_a_noise._s
+        s_=functions_a_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
     )
-    chaos = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=p_range,
-        f=lambda b, x: functions.f_pa(1, b, x, epsilon)
-    )
-    chaos = convert_dict_to_lists(chaos)
 
-    r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
+    stable_equilibrium = equilibrium[1]
+    unstable_equilibrium = equilibrium[0]
+    prototype_equilibrium = equilibrium[2]
 
-    plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium $\\alpha$-noise')
+    stable_equilibrium = convert_line_to_dict(stable_equilibrium)
+    unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
+    prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
 
-    (plotter
-        .plot(source1[0], source1[1], ',', 'red')
-        .plot(source1[2], source1[3], ',', 'deeppink')
-        .plot(source1[4], source1[5], ',', 'green'))
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[2])
+    line2 = convert_line_to_dict(m_beta[4])
+    line3 = convert_line_to_dict(m_beta[7])
+    lines = [line0, line1, line2, line3]
 
-    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
 
-    for line in source2:
-        plotter.plot(line.x, line.y, ',', 'olive')
+    mahalanobis0 = Line()
+    mahalanobis1 = Line()
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
 
-    plotter.plot(source2[0].x, source2[0].y, ',', 'darkorange')
-    plotter.plot(source2[3].x, source2[3].y, ',', 'darkorange')
-    plotter.plot(source2[7].x, source2[7].y, ',', 'darkorange')
-    plotter.plot(source2[14].x, source2[14].y, ',', 'darkorange')
-    plotter.plot(source1[0], source1[1], ',', 'darkorange')
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
 
-    plotter.show()
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
 
-    (Plotter()
-        .setup('$\\beta$', 'x', 'linear', 'major', 'Bifurcation with equilibrium $\\alpha$-noise')
-        .plot(r[0], r[1], '.', 'red')
-        .show_last())
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
+
+    plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+
+    plotter.plot_line(mahalanobis0, '.', 'red')
+    plotter.plot_line(mahalanobis1, '.', 'blue')
+
+    plotter.show_last()
 
 
-def ernuda_additive_noise():
+def run_machalanobis_additive_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
-    epsilon = 0.001
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1258,7 +1291,7 @@ def ernuda_additive_noise():
         f=lambda b, x: functions.f(1, b, x)
     )
 
-    source1 = bifurcation_with_equilibrium(
+    equilibrium = bifurcation_with_equilibrium(
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
@@ -1267,64 +1300,88 @@ def ernuda_additive_noise():
         f=lambda b, x: functions.f(1, b, x),
         sf=lambda b, x, shift: functions.sf(1, b, x, shift),
         dsf=lambda b, x: functions.df(1, b, x),
-        bifurcation=values
+        bifurcation=values,
+        save_all=True
     )
 
-    source2 = bifurcation_with_ssf(
-        values=values,
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+    m_beta = m_b(
+        b_range=p_range,
         a=1,
         left1=0.44,
         right1=0.582355932,
         left2=0.379,
         right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0.001),
-        epsilon=0.001,
-        f=lambda b, x: base_functions.f(1, b, x),
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        values=values,
         s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
         q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
         q_=functions_additive_noise._q,
-        s_=functions_additive_noise._s
+        s_=functions_additive_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
     )
-    chaos = bifurcation(
-        time_range=range(1, 100 + 1),
-        x_start=0.2,
-        p_range=p_range,
-        f=lambda b, x: functions.f_p(1, b, x, epsilon)
-    )
-    chaos = convert_dict_to_lists(chaos)
 
-    r = collect([source2[0], source2[3], source2[7], source2[14]], Line(source1[0], source1[1]))
+    stable_equilibrium = equilibrium[1]
+    unstable_equilibrium = equilibrium[0]
+    prototype_equilibrium = equilibrium[2]
 
-    plotter = Plotter().setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium additive-noise')
+    stable_equilibrium = convert_line_to_dict(stable_equilibrium)
+    unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
+    prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
 
-    (plotter
-        .plot(source1[0], source1[1], ',', 'red')
-        .plot(source1[2], source1[3], ',', 'deeppink')
-        .plot(source1[4], source1[5], ',', 'green'))
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[2])
+    line2 = convert_line_to_dict(m_beta[4])
+    line3 = convert_line_to_dict(m_beta[7])
+    lines = [line0, line1, line2, line3]
 
-    plotter.scatter(chaos[0], chaos[1], '.', 'steelblue')
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
 
-    for line in source2:
-        plotter.plot(line.x, line.y, ',', 'olive')
+    mahalanobis0 = Line()
+    mahalanobis1 = Line()
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
 
-    plotter.plot(source2[0].x, source2[0].y, ',', 'darkorange')
-    plotter.plot(source2[3].x, source2[3].y, ',', 'darkorange')
-    plotter.plot(source2[7].x, source2[7].y, ',', 'darkorange')
-    plotter.plot(source2[14].x, source2[14].y, ',', 'darkorange')
-    plotter.plot(source1[0], source1[1], ',', 'darkorange')
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
 
-    # plotter.show_last()
-    plotter.show()
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
 
-    (Plotter()
-        .setup('$\\beta$', 'x', 'linear', 'major', 'Bifurcation with equilibrium additvie-noise')
-        .plot(r[0], r[1], '.', 'red')
-        .show_last())
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
+
+    plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+
+    plotter.plot_line(mahalanobis0, '.', 'red')
+    plotter.plot_line(mahalanobis1, '.', 'blue')
+
+    plotter.show_last()
 
 
 def critical_intensity_beta_noise():
@@ -1923,3 +1980,138 @@ def critical_intensity_additive_noise():
         plotter.plot_line(line, ',', 'orange')
 
     plotter.show_last()
+
+
+def run_stochastic_sensitivity_b_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\b_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
+
+
+def run_stochastic_sensitivity_a_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\a_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
+
+
+def run_stochastic_sensitivity_additive_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\additive_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)

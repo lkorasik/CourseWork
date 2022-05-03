@@ -2,7 +2,7 @@ from algorithms.single_newton import single_newton_unlimited
 from visual.line import Line
 
 
-def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation):
+def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation, save_all=False):
     result = []
 
     diffs = dict()
@@ -24,7 +24,9 @@ def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, 
     for b in b_range:
         x = single_newton_unlimited(x, precision, lambda x_: function(b, x_), lambda x_: d_function(b, x_))
         # Находимся в области устойчивого равновесия
-        if diffs[b] > 0.001:
+        if save_all:
+            line.add_x(b).add_y(x)
+        elif diffs[b] > 0.001:
             line.add_x(b).add_y(x)
 
     # Верхняя, т.е. x_1^{-1}
