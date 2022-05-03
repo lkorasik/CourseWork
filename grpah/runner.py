@@ -3,20 +3,20 @@ import numpy as np
 import functions
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
-from algorithms.convert_dict_to_lists import convert_dict_to_lists
-from algorithms.convert_line_to_dict import convert_line_to_dict
-from algorithms.collect import collect
-from algorithms.cyclical_mean import cyclical_mean
-from algorithms.cyclical_variance import cyclical_variance
-from algorithms.mean import mean
-from algorithms.variance import variance
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
+from algorithms.collect import collect
+from algorithms.convert_dict_to_lists import convert_dict_to_lists
+from algorithms.convert_line_to_dict import convert_line_to_dict
+from algorithms.cyclical_mean import cyclical_mean
+from algorithms.cyclical_variance import cyclical_variance
 from algorithms.equilibrium import equilibrium
 from algorithms.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
 from algorithms.m_b import m_b
+from algorithms.mean import mean
 from algorithms.time_series import time_series
+from algorithms.variance import variance
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
 from visual.line import Line
 from visual.plotter import Plotter
@@ -902,14 +902,7 @@ def run_stochastic_sensitivity_a_noise():
         values=values,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
@@ -948,14 +941,7 @@ def run_stochastic_sensitivity_additive_noise():
         values=values,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
@@ -1923,3 +1909,138 @@ def critical_intensity_additive_noise():
         plotter.plot_line(line, ',', 'orange')
 
     plotter.show_last()
+
+
+def run_stochastic_sensitivity_b_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\b_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
+
+
+def run_stochastic_sensitivity_a_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\a_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
+
+
+def run_stochastic_sensitivity_additive_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\additive_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: functions.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.37,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s,
+        f=lambda b, x: base_functions.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
