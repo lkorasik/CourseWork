@@ -1230,6 +1230,8 @@ def run_machalanobis_alpha_noise():
     unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
     prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
 
+    # Что-то намудрил с m
+
     line0 = convert_line_to_dict(m_beta[0])
     line1 = convert_line_to_dict(m_beta[2])
     line2 = convert_line_to_dict(m_beta[4])
