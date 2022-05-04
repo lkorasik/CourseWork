@@ -1,7 +1,7 @@
 import time
 from multiprocessing import Manager
 
-from multi_processing.Dispatcher import Dispatcher
+from multi_processing.dispatcher import Dispatcher
 from multi_processing.task import Task
 
 
