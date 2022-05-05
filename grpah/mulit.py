@@ -1,7 +1,7 @@
 import time
 from multiprocessing import Manager
 
-from multi_processing.Dispatcher import Dispatcher
+from multi_processing.dispatcher import Dispatcher
 from multi_processing.task import Task
 
 
@@ -18,7 +18,7 @@ if __name__ == "__main__":
         task = Task(i, output, f, [i])
         tasks.put(task)
 
-    dispatcher = Dispatcher(6, tasks)
+    dispatcher = Dispatcher(6, tasks, True)
     start = time.time()
     dispatcher.run()
     dispatcher.wait()

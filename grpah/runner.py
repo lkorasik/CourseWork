@@ -551,10 +551,11 @@ def run_mean():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV')
-        .plot(source0.x, source0.y, '.', 'steelblue')
-        .plot(source1.x, source1.y, '.', 'red')
-        .plot(source2.x, source2.y, '.', 'green')
-        .plot(source3.x, source3.y, '.', 'black')
+        .plot_line(source0, '.', 'steelblue', 'original')
+        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .legend()
         .show_last())
 
 
@@ -590,10 +591,10 @@ def run_cyclic_mean():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot_line(source0, '.', 'steelblue')
-        .plot_line(source1, '.', 'red')
-        .plot_line(source2, '.', 'green')
-        .plot_line(source3, '.', 'black')
+        .plot_line(source0, '.', 'steelblue', 'Original')
+        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
         .show_last())
 
 
@@ -687,10 +688,10 @@ def run_cyclic_variance():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance cyclic')
-        .plot_line(source0, '.', 'steelblue')
-        .plot_line(source1, '.', 'red')
-        .plot_line(source2, '.', 'green')
-        .plot_line(source3, '.', 'black')
+        .plot_line(source0, '.', 'steelblue', 'original')
+        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
         .show_last())
 
 
@@ -1228,6 +1229,8 @@ def run_machalanobis_alpha_noise():
     stable_equilibrium = convert_line_to_dict(stable_equilibrium)
     unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
     prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
+
+    # Что-то намудрил с m
 
     line0 = convert_line_to_dict(m_beta[0])
     line1 = convert_line_to_dict(m_beta[2])

@@ -72,7 +72,7 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_b_noise_3()
 
     # График стохастической чувствительности
-    # run_m_b_beta_noise()
+    run_m_b_beta_noise()
     # run_m_b_alpha_noise()
     # run_m_b_additive_noise()
 
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_additive_noise_to_file()
 
     # run_machalanobis_beta_noise()
-    # run_machalanobis_alpha_noise()
+    run_machalanobis_alpha_noise()
     # run_machalanobis_additive_noise()
 
     # critical_intensity_beta_noise()
