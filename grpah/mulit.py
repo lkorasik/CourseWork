@@ -18,7 +18,7 @@ if __name__ == "__main__":
         task = Task(i, output, f, [i])
         tasks.put(task)
 
-    dispatcher = Dispatcher(6, tasks)
+    dispatcher = Dispatcher(6, tasks, True)
     start = time.time()
     dispatcher.run()
     dispatcher.wait()
