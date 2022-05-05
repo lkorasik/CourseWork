@@ -64,14 +64,14 @@ plot(bNoise_line7(:, 1), bNoise_line7(:, 2), '.', 'Color', [160/255, 060/255, 00
 plot(bNoise_line8(:, 1), bNoise_line8(:, 2), '.', 'Color', [180/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 8');
 
 plot(additiveNoise_line0(:, 1), additiveNoise_line0(:, 2), '.', 'Color', [000/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line1(:, 1), additiveNoise_line1(:, 2), '.', 'Color', [020/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line2(:, 1), additiveNoise_line2(:, 2), '.', 'Color', [040/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line3(:, 1), additiveNoise_line3(:, 2), '.', 'Color', [060/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line4(:, 1), additiveNoise_line4(:, 2), '.', 'Color', [080/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line5(:, 1), additiveNoise_line5(:, 2), '.', 'Color', [100/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line6(:, 1), additiveNoise_line6(:, 2), '.', 'Color', [120/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line7(:, 1), additiveNoise_line7(:, 2), '.', 'Color', [140/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line8(:, 1), additiveNoise_line8(:, 2), '.', 'Color', [160/255, 0/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
+plot(additiveNoise_line1(:, 1), additiveNoise_line1(:, 2), '.', 'Color', [020/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 1');
+plot(additiveNoise_line2(:, 1), additiveNoise_line2(:, 2), '.', 'Color', [040/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 2');
+plot(additiveNoise_line3(:, 1), additiveNoise_line3(:, 2), '.', 'Color', [060/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 3');
+plot(additiveNoise_line4(:, 1), additiveNoise_line4(:, 2), '.', 'Color', [080/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 4');
+plot(additiveNoise_line5(:, 1), additiveNoise_line5(:, 2), '.', 'Color', [100/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 5');
+plot(additiveNoise_line6(:, 1), additiveNoise_line6(:, 2), '.', 'Color', [120/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 6');
+plot(additiveNoise_line7(:, 1), additiveNoise_line7(:, 2), '.', 'Color', [140/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 7');
+plot(additiveNoise_line8(:, 1), additiveNoise_line8(:, 2), '.', 'Color', [160/255, 0/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 8');
 hold off
 
 legend('show','Location','southeastoutside');
