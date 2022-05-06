@@ -37,18 +37,6 @@ def m(val_a, val_b, val_x, val_epsilon):
     return float(_lam_m(val_a, val_b, val_x, val_eta))
 
 
-def f_chaos_a(val_a, val_b, val_x, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _f.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)
-    return float(value)
-
-
-def q_chaos_a(val_a, val_b, val_x, val_epsilon):
-    val_eta = numpy.random.normal(0, 1) * val_epsilon
-    value = _q.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)
-    return float(value)
-
-
 def s_chaos_a(val_a, val_b, val_x, val_epsilon):
     val_eta = numpy.random.normal(0, 1) * val_epsilon
     value = _s.subs(a, val_a).subs(b, val_b).subs(x, val_x).subs(eta, val_eta)

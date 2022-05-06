@@ -905,11 +905,11 @@ def run_stochastic_sensitivity_a_noise():
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0.001),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s
     )
@@ -1029,10 +1029,10 @@ def run_m_b_alpha_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
         f=lambda b, x: base_functions.f(1, b, x)
@@ -1043,8 +1043,8 @@ def run_m_b_alpha_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_m_b_additive_noise():
@@ -1223,10 +1223,10 @@ def run_machalanobis_alpha_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
         f=lambda b, x: base_functions.f(1, b, x)
@@ -2060,10 +2060,10 @@ def run_stochastic_sensitivity_a_noise_to_file():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
         f=lambda b, x: base_functions.f(1, b, x)
