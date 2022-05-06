@@ -185,25 +185,25 @@ def run_time_series_compare_noise():
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
@@ -217,25 +217,25 @@ def run_time_series_compare_noise():
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
@@ -249,25 +249,25 @@ def run_time_series_compare_noise():
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
