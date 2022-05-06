@@ -18,6 +18,7 @@ from algorithms.mean import mean
 from algorithms.time_series import time_series
 from algorithms.variance import variance
 from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
+from visual import colors
 from visual.line import Line
 from visual.plotter import Plotter
 
@@ -32,7 +33,7 @@ def run_time_series_without_chaos_1():
 
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series')
-        .plot(source[0], source[1], '*', 'steelblue')
+        .plot(source[0], source[1], '*', colors.steel_blue)
         .show_last())
 
 
@@ -50,7 +51,7 @@ def run_time_series_without_chaos_composition():
 
     plotter = (Plotter()
                .setup('t', 'x', 'linear', 'major', 'Time series')
-               .plot(source[0], source[1], '*', 'darkviolet', '1.3'))
+               .plot(source[0], source[1], '*', colors.dark_violet, '1.3'))
 
     source = time_series(
         time_range=time_range,
@@ -59,7 +60,7 @@ def run_time_series_without_chaos_composition():
         skip=False
     )
 
-    plotter.plot(source[0], source[1], '*', 'darkslateblue', '0.3')
+    plotter.plot(source[0], source[1], '*', colors.dark_slate_blue, '0.3')
 
     source = time_series(
         time_range=time_range,
@@ -68,7 +69,7 @@ def run_time_series_without_chaos_composition():
         skip=False
     )
 
-    plotter.plot(source[0], source[1], '*', 'blue', '0.06')
+    plotter.plot(source[0], source[1], '*', colors.blue, '0.06')
 
     source = time_series(
         time_range=time_range,
@@ -78,7 +79,7 @@ def run_time_series_without_chaos_composition():
     )
 
     (plotter
-     .plot(source[0], source[1], '*', 'royalblue', '0.04')
+     .plot(source[0], source[1], '*', colors.royal_blue, '0.04')
      .legend()
      .show_last())
 
@@ -100,7 +101,7 @@ def run_time_series_different_noises():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = time_series(
@@ -111,7 +112,7 @@ def run_time_series_different_noises():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = time_series(
@@ -122,7 +123,7 @@ def run_time_series_different_noises():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = time_series(
@@ -133,7 +134,7 @@ def run_time_series_different_noises():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show_last())
 
 
@@ -175,10 +176,10 @@ def run_time_series_compare_noise():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         .show())
     # .show_last())
 
@@ -208,10 +209,10 @@ def run_time_series_compare_noise():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         .show())
 
     source0 = time_series(
@@ -240,10 +241,10 @@ def run_time_series_compare_noise():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         .show())
 
     source0 = time_series(
@@ -272,12 +273,12 @@ def run_time_series_compare_noise():
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         # .show())
-    .show_last())
+        .show_last())
 
 
 def run_bifurcation():
@@ -292,7 +293,7 @@ def run_bifurcation():
 
     (Plotter()
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', 'steelblue', 'aa')
+        .scatter(source[0], source[1], '.', colors.steel_blue, 'aa')
         .legend()
      # .show())
         .show_last())
@@ -316,7 +317,7 @@ def run_compare_chaos_bifurcation():
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = bifurcation(
@@ -329,7 +330,7 @@ def run_compare_chaos_bifurcation():
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = bifurcation(
@@ -342,7 +343,7 @@ def run_compare_chaos_bifurcation():
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation beta')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = bifurcation(
@@ -355,7 +356,7 @@ def run_compare_chaos_bifurcation():
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation addition')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show_last())
 
 
@@ -382,9 +383,9 @@ def run_bifurcation_with_absorbing_area():
 
     (Plotter()
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(draw_x, draw_y, '.', 'steelblue')
-        .plot(source[0], source[1], ',', 'red')
-        .plot(source[0], source[2], ',', 'red')
+        .scatter(draw_x, draw_y, '.', colors.steel_blue)
+        .plot(source[0], source[1], ',', colors.red)
+        .plot(source[0], source[2], ',', colors.red)
         .show_last())
 
 
@@ -401,7 +402,7 @@ def run_lyapunov():
 
     (Plotter()
         .setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
-        .plot(source[0], source[1], ',', 'red')
+        .plot(source[0], source[1], ',', colors.red)
         .show_last())
 
 
@@ -438,8 +439,8 @@ def run_lamerei():
             plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
     (plotter
-        .plot(x_range, functions.g(a, x_range), ',', 'steelblue')
-        .plot(x_range, functions.f(a, b, x_range), ',', 'orange')
+        .plot(x_range, functions.g(a, x_range), ',', colors.steel_blue)
+        .plot(x_range, functions.f(a, b, x_range), ',', colors.orange)
         .show_last())
 
 
@@ -468,12 +469,12 @@ def run_bifurcation_with_equilibrium():
 
     (Plotter()
         .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-        .scatter(values[0], values[1], '.', 'steelblue')
-        .plot_line(source[0], ',', 'red')
-        .plot_line(source[1], ',', 'deeppink')
-        .plot_line(source[2], ',', 'green')
-     .show())
-        # .show_last())
+        .scatter(values[0], values[1], '.', colors.steel_blue)
+        .plot_line(source[0], ',', colors.red)
+        .plot_line(source[1], ',', colors.deep_pink)
+        .plot_line(source[2], ',', colors.green)
+     # .show())
+        .show_last())
 
 
 def run_equilibrium():
@@ -488,10 +489,10 @@ def run_equilibrium():
 
     plotter = Plotter().setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
 
-    colors = ['red', 'deeppink', 'green', 'black', 'black']
+    colors_ = [colors.red, colors.deep_pink, colors.green, colors.black, colors.black]
 
     for i in range(len(source)):
-        plotter.plot_line(source[i], ',', colors[i])
+        plotter.plot_line(source[i], ',', colors_[i])
 
     plotter.show_last()
 
@@ -551,10 +552,10 @@ def run_mean():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV')
-        .plot_line(source0, '.', 'steelblue', 'original')
-        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .plot_line(source0, '.', colors.steel_blue, 'original')
+        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
         .legend()
         .show_last())
 
@@ -591,10 +592,10 @@ def run_cyclic_mean():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot_line(source0, '.', 'steelblue', 'Original')
-        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .plot_line(source0, '.', colors.steel_blue, 'Original')
+        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
         .show_last())
 
 
@@ -649,10 +650,10 @@ def run_variance():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance')
-        .plot_line(source0, '.', 'steelblue')
-        .plot(source1.x, source1.y, '.', 'red')
-        .plot(source2.x, source2.y, '.', 'green')
-        .plot(source3.x, source3.y, '.', 'black')
+        .plot_line(source0, '.', colors.steel_blue)
+        .plot(source1.x, source1.y, '.', colors.red)
+        .plot(source2.x, source2.y, '.', colors.green)
+        .plot(source3.x, source3.y, '.', colors.black)
         .show_last())
 
 
@@ -688,10 +689,10 @@ def run_cyclic_variance():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance cyclic')
-        .plot_line(source0, '.', 'steelblue', 'original')
-        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .plot_line(source0, '.', colors.steel_blue, 'original')
+        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
         .show_last())
 
 
@@ -729,10 +730,10 @@ def run_stochastic_sensitivity_b_noise():
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
-        plotter.plot(line.x, line.y, ',', 'red')
+        plotter.plot(line.x, line.y, ',', colors.red)
 
     # plotter.plot_line(source[0], ',', 'orange')
     # plotter.plot_line(source[3], ',', 'orange')
@@ -922,10 +923,10 @@ def run_stochastic_sensitivity_a_noise():
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\alpha$-noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
-        plotter.plot(line.x, line.y, ',', 'red')
+        plotter.plot(line.x, line.y, ',', colors.red)
 
     # plotter.show_last()
     plotter.show()
@@ -961,10 +962,10 @@ def run_stochastic_sensitivity_additive_noise():
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with additive noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
-        plotter.plot(line.x, line.y, ',', 'red')
+        plotter.plot(line.x, line.y, ',', colors.red)
 
     plotter.show_last()
 
