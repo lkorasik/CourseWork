@@ -78,9 +78,9 @@ def run_time_series_without_chaos_composition():
     )
 
     (plotter
-     .plot(source[0], source[1], '*', colors.royal_blue, '0.04')
-     .legend()
-     .show_last())
+        .plot(source[0], source[1], '*', colors.royal_blue, '0.04')
+        .legend()
+        .show_last())
 
 
 def run_time_series_different_noises():
@@ -107,7 +107,6 @@ def run_time_series_different_noises():
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
-        # f=lambda x: functions.f_pb(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
@@ -118,7 +117,7 @@ def run_time_series_different_noises():
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
@@ -129,7 +128,7 @@ def run_time_series_different_noises():
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
