@@ -17,7 +17,7 @@ from algorithms.m_b import m_b
 from algorithms.mean import mean
 from algorithms.time_series import time_series
 from algorithms.variance import variance
-from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
+from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
 from visual import colors
 from visual.line import Line
 from visual.plotter import Plotter

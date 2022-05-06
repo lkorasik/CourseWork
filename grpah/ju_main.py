@@ -2,7 +2,7 @@ import numpy as np
 from julia import Main
 
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
-from functions_pkg import base_functions 
+from functions_pkg import function
 from visual.plotter import Plotter
 
 
