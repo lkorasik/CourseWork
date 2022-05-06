@@ -292,7 +292,7 @@ def run_bifurcation():
 
     (Plotter()
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', colors.steel_blue, 'aa')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .legend()
      # .show())
         .show_last())
