@@ -1001,6 +1001,11 @@ def run_m_b_beta_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
+    plotter.plot(source[0].x, source[0].y, ',', 'orange')
+    plotter.plot(source[1].x, source[1].y, ',', 'orange')
+    plotter.plot(source[5].x, source[5].y, ',', 'orange')
+    plotter.plot(source[8].x, source[8].y, ',', 'orange')
+
     plotter.show_last()
     # plotter.show()
 
@@ -1133,43 +1138,47 @@ def run_machalanobis_beta_noise():
     line3 = convert_line_to_dict(m_beta[7])
     lines = [line0, line1, line2, line3]
 
-    result = dict()
-    for b in stable_equilibrium.keys():
-        result[b] = 0
-
     mahalanobis0 = Line()
-    mahalanobis1 = Line()
-    for b in result.keys():
-        y_s = None
-        if b in stable_equilibrium.keys():
-            y_s = stable_equilibrium[b]
-
-        y_n = None
-        if b in unstable_equilibrium.keys():
-            y_n = unstable_equilibrium[b]
-
-        y_p = None
-        if b in prototype_equilibrium.keys():
-            y_p = prototype_equilibrium[b]
+    for b in stable_equilibrium.keys():
+        y_s = stable_equilibrium[b]
+        y_n = unstable_equilibrium[b]
 
         for line in lines:
             m = None
             if b in line.keys():
                 m = line[b]
 
-            metrics0 = None
-            if y_s is not None and y_n is not None and m is not None:
-                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+            metrics = None
+            if m is not None:
+                # metrics = abs(y_s - y_n) / np.sqrt(m)
+                metrics = abs(y_s - y_n)
 
-            metrics1 = None
-            if y_s is not None and y_p is not None and m is not None:
-                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+            if metrics is not None:
+                mahalanobis0.add_x(b).add_y(metrics)
 
-            if metrics0 is not None:
-                mahalanobis0.add_x(b).add_y(metrics0)
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[1])
+    line2 = convert_line_to_dict(m_beta[5])
+    line3 = convert_line_to_dict(m_beta[8])
+    lines = [line0, line1, line2, line3]
 
-            if metrics1 is not None:
-                mahalanobis1.add_x(b).add_y(metrics1)
+    mahalanobis1 = Line()
+    for b in stable_equilibrium.keys():
+        y_s = stable_equilibrium[b]
+        y_p = prototype_equilibrium[b]
+
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics = None
+            if m is not None:
+                # metrics = abs(y_s - y_p) / np.sqrt(m)
+                metrics = abs(y_s - y_p)
+
+            if metrics is not None:
+                mahalanobis1.add_x(b).add_y(metrics)
 
     plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
 
