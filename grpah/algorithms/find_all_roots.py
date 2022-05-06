@@ -2,6 +2,7 @@ from collections import Counter
 
 import functions
 from algorithms.single_newton_iteration import single_newton_iteration
+from functions_pkg import others
 
 
 def find_all_roots(x_range, a_range, b_range, precision):
@@ -20,8 +21,10 @@ def find_all_roots(x_range, a_range, b_range, precision):
                     b=b,
                     x_start=x,
                     precision=precision,
-                    function=functions.h,
-                    dfunction=functions.dh)
+                    function=others.h,
+                    # function=functions.h,
+                    dfunction=others.h_dx)
+                    # dfunction=functions.dh)
                 result[a][b].append(res)
 
     for a in a_range:

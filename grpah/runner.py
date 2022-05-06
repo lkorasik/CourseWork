@@ -5,7 +5,6 @@ from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
-from algorithms.collect import collect
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from algorithms.convert_line_to_dict import convert_line_to_dict
 from algorithms.cyclical_mean import cyclical_mean
@@ -17,7 +16,8 @@ from algorithms.m_b import m_b
 from algorithms.mean import mean
 from algorithms.time_series import time_series
 from algorithms.variance import variance
-from functions_pkg import functions_b_noise, base_functions, functions_a_noise, functions_additive_noise
+from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
+from visual import colors
 from visual.line import Line
 from visual.plotter import Plotter
 
@@ -26,13 +26,13 @@ def run_time_series_without_chaos_1():
     source = time_series(
         time_range=range(1, 50 + 1),
         x_start=1.3,
-        f=lambda x: functions.f(1, 0.56, x),
+        f=lambda x: function.f(1, 0.56, x),
         skip=False
     )
 
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series')
-        .plot(source[0], source[1], '*', 'steelblue')
+        .plot(source[0], source[1], '*', colors.steel_blue)
         .show_last())
 
 
@@ -44,43 +44,43 @@ def run_time_series_without_chaos_composition():
     source = time_series(
         time_range=time_range,
         x_start=1.3,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=False
     )
 
     plotter = (Plotter()
                .setup('t', 'x', 'linear', 'major', 'Time series')
-               .plot(source[0], source[1], '*', 'darkviolet', '1.3'))
+               .plot(source[0], source[1], '*', colors.dark_violet, '1.3'))
 
     source = time_series(
         time_range=time_range,
         x_start=0.3,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=False
     )
 
-    plotter.plot(source[0], source[1], '*', 'darkslateblue', '0.3')
+    plotter.plot(source[0], source[1], '*', colors.dark_slate_blue, '0.3')
 
     source = time_series(
         time_range=time_range,
         x_start=0.06,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=False
     )
 
-    plotter.plot(source[0], source[1], '*', 'blue', '0.06')
+    plotter.plot(source[0], source[1], '*', colors.blue, '0.06')
 
     source = time_series(
         time_range=time_range,
         x_start=0.04,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=False
     )
 
     (plotter
-     .plot(source[0], source[1], '*', 'royalblue', '0.04')
-     .legend()
-     .show_last())
+        .plot(source[0], source[1], '*', colors.royal_blue, '0.04')
+        .legend()
+        .show_last())
 
 
 def run_time_series_different_noises():
@@ -95,45 +95,45 @@ def run_time_series_different_noises():
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source[0], source[1], '.', 'steelblue')
+        .plot(source[0], source[1], '.', colors.steel_blue)
         .show_last())
 
 
@@ -152,132 +152,132 @@ def run_time_series_compare_noise():
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         .show())
     # .show_last())
 
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         .show())
 
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f_pa(a, b, x, epsilon),
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         .show())
 
     source0 = time_series(
         time_range=time_range,
         x_start=x_start0,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
         time_range=time_range,
         x_start=x_start1,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
         time_range=time_range,
         x_start=x_start2,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
         time_range=time_range,
         x_start=x_start3,
-        f=lambda x: functions.f_p(a, b, x, epsilon),
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
         .setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source0[0], source0[1], '.', 'lightcoral')
-        .plot(source1[0], source1[1], '.', 'darkolivegreen')
-        .plot(source2[0], source2[1], '.', 'olive')
-        .plot(source3[0], source3[1], '.', 'teal')
+        .plot(source0[0], source0[1], '.', colors.light_coral)
+        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
+        .plot(source2[0], source2[1], '.', colors.olive)
+        .plot(source3[0], source3[1], '.', colors.teal)
         # .show())
-    .show_last())
+        .show_last())
 
 
 def run_bifurcation():
@@ -285,14 +285,14 @@ def run_bifurcation():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     source = convert_dict_to_lists(source)
 
     (Plotter()
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', 'steelblue', 'aa')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .legend()
      # .show())
         .show_last())
@@ -310,52 +310,55 @@ def run_compare_chaos_bifurcation():
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
-        f=lambda b, x: functions.f(a, b, x)
+        f=lambda b, x: function.f(a, b, x)
     )
     source = convert_dict_to_lists(source)
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
-        f=lambda b, x: functions.f_pa(a, b, x, epsilon)
+        f=lambda b, x: functions_a_noise.f(a, b, x, epsilon)
+        # f=lambda b, x: functions.f_pa(a, b, x, epsilon)
     )
     source = convert_dict_to_lists(source)
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
-        f=lambda b, x: functions.f_pb(a, b, x, epsilon)
+        f=lambda b, x: functions_b_noise.f(a, b, x, epsilon)
+        # f=lambda b, x: functions.f_pb(a, b, x, epsilon)
     )
     source = convert_dict_to_lists(source)
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation beta')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show())
 
     source = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
-        f=lambda b, x: functions.f_p(a, b, x, epsilon)
+        f=lambda b, x: functions_additive_noise.f(a, b, x, epsilon),
+        # f=lambda b, x: functions.f_p(a, b, x, epsilon)
     )
     source = convert_dict_to_lists(source)
 
     (Plotter()
         .setup('b', 'x', 'log', 'major', 'Bifurcation addition')
-        .scatter(source[0], source[1], '.', 'steelblue')
+        .scatter(source[0], source[1], '.', colors.steel_blue)
         .show_last())
 
 
@@ -368,7 +371,7 @@ def run_bifurcation_with_absorbing_area():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(a, b, x)
+        f=lambda b, x: function.f(a, b, x)
     )
     draw_x, draw_y = convert_dict_to_lists(source)
 
@@ -377,14 +380,14 @@ def run_bifurcation_with_absorbing_area():
         left=0,
         right=1,
         step=0.0001,
-        f=lambda b, x: functions.f(a, b, x),
+        f=lambda b, x: function.f(a, b, x),
     )
 
     (Plotter()
         .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(draw_x, draw_y, '.', 'steelblue')
-        .plot(source[0], source[1], ',', 'red')
-        .plot(source[0], source[2], ',', 'red')
+        .scatter(draw_x, draw_y, '.', colors.steel_blue)
+        .plot(source[0], source[1], ',', colors.red)
+        .plot(source[0], source[2], ',', colors.red)
         .show_last())
 
 
@@ -395,13 +398,13 @@ def run_lyapunov():
         x_start=0.2,
         time_range=range(1, 100 + 1),
         T=100,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         lambda_=functions.lambda_
     )
 
     (Plotter()
         .setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
-        .plot(source[0], source[1], ',', 'red')
+        .plot(source[0], source[1], ',', colors.red)
         .show_last())
 
 
@@ -416,19 +419,19 @@ def run_lamerei():
         x_start=0.03,
         time_range=time_range,
         skip=skip,
-        f=lambda x: functions.f(a, b, x)
+        f=lambda x: function.f(a, b, x)
     )
     source1 = lamerei(
         x_start=0.1,
         time_range=time_range,
         skip=skip,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
     )
     source2 = lamerei(
         x_start=0.3,
         time_range=time_range,
         skip=skip,
-        f=lambda x: functions.f(a, b, x),
+        f=lambda x: function.f(a, b, x),
     )
 
     plotter = Plotter().setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
@@ -438,8 +441,8 @@ def run_lamerei():
             plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
 
     (plotter
-        .plot(x_range, functions.g(a, x_range), ',', 'steelblue')
-        .plot(x_range, functions.f(a, b, x_range), ',', 'orange')
+        .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+        .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
         .show_last())
 
 
@@ -448,7 +451,7 @@ def run_bifurcation_with_equilibrium():
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         down_border=None
     )
 
@@ -456,11 +459,14 @@ def run_bifurcation_with_equilibrium():
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -468,12 +474,12 @@ def run_bifurcation_with_equilibrium():
 
     (Plotter()
         .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
-        .scatter(values[0], values[1], '.', 'steelblue')
-        .plot_line(source[0], ',', 'red')
-        .plot_line(source[1], ',', 'deeppink')
-        .plot_line(source[2], ',', 'green')
-     .show())
-        # .show_last())
+        .scatter(values[0], values[1], '.', colors.steel_blue)
+        .plot_line(source[0], ',', colors.red)
+        .plot_line(source[1], ',', colors.deep_pink)
+        .plot_line(source[2], ',', colors.green)
+     # .show())
+        .show_last())
 
 
 def run_equilibrium():
@@ -481,17 +487,19 @@ def run_equilibrium():
         x12=0.12,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        d=lambda b, x: functions.df(1, b, x)
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        d=lambda b, x: function.f_dx(1, b, x)
+        # d=lambda b, x: functions.df(1, b, x)
     )
 
     plotter = Plotter().setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
 
-    colors = ['red', 'deeppink', 'green', 'black', 'black']
+    colors_ = [colors.red, colors.deep_pink, colors.green, colors.black, colors.black]
 
     for i in range(len(source)):
-        plotter.plot_line(source[i], ',', colors[i])
+        plotter.plot_line(source[i], ',', colors_[i])
 
     plotter.show_last()
 
@@ -501,7 +509,7 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         up_border=10_000,
         down_border=None
     )
@@ -514,7 +522,8 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         up_border=10_000,
         down_border=None
     )
@@ -527,7 +536,8 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         up_border=10_000,
         down_border=None
     )
@@ -540,7 +550,8 @@ def run_mean():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         up_border=10_000,
         down_border=None
     )
@@ -551,10 +562,10 @@ def run_mean():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV')
-        .plot_line(source0, '.', 'steelblue', 'original')
-        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .plot_line(source0, '.', colors.steel_blue, 'original')
+        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
         .legend()
         .show_last())
 
@@ -564,37 +575,40 @@ def run_cyclic_mean():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         count=100
     )
     source1 = cyclical_mean(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         count=100
     )
     source2 = cyclical_mean(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         count=100
     )
     source3 = cyclical_mean(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         count=100
     )
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot_line(source0, '.', 'steelblue', 'Original')
-        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .plot_line(source0, '.', colors.steel_blue, 'Original')
+        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
         .show_last())
 
 
@@ -603,7 +617,7 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         down_border=None
     )
     source0 = variance(
@@ -615,7 +629,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         down_border=None
     )
     source1 = variance(
@@ -627,7 +642,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         down_border=None
     )
     source2 = variance(
@@ -639,7 +655,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         down_border=None
     )
     source3 = variance(
@@ -649,10 +666,10 @@ def run_variance():
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance')
-        .plot_line(source0, '.', 'steelblue')
-        .plot(source1.x, source1.y, '.', 'red')
-        .plot(source2.x, source2.y, '.', 'green')
-        .plot(source3.x, source3.y, '.', 'black')
+        .plot_line(source0, '.', colors.steel_blue)
+        .plot(source1.x, source1.y, '.', colors.red)
+        .plot(source2.x, source2.y, '.', colors.green)
+        .plot(source3.x, source3.y, '.', colors.black)
         .show_last())
 
 
@@ -661,37 +678,40 @@ def run_cyclic_variance():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         count=100
     )
     source1 = cyclical_variance(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         count=100
     )
     source2 = cyclical_variance(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         count=100
     )
     source3 = cyclical_variance(
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         count=100
     )
 
     (Plotter()
         .setup('b', 'x', 'linear', 'major', 'Variance cyclic')
-        .plot_line(source0, '.', 'steelblue', 'original')
-        .plot_line(source1, '.', 'red', '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', 'green', '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', 'black', '$\\varepsilon = 0.04$')
+        .plot_line(source0, '.', colors.steel_blue, 'original')
+        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
         .show_last())
 
 
@@ -704,18 +724,18 @@ def run_stochastic_sensitivity_b_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
         b_range=p_range,
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon),
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
         epsilon=epsilon,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, epsilon),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, epsilon),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s(1, b, x, epsilon),
+        q=lambda b, x: functions_b_noise.q(1, b, x, epsilon),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s
     )
@@ -723,16 +743,17 @@ def run_stochastic_sensitivity_b_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f_pb(1, b, x, epsilon)
+        f=lambda b, x: functions_b_noise.f(1, b, x, epsilon)
+        # f=lambda b, x: functions.f_pb(1, b, x, epsilon)
     )
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
-        plotter.plot(line.x, line.y, ',', 'red')
+        plotter.plot(line.x, line.y, ',', colors.red)
 
     # plotter.plot_line(source[0], ',', 'orange')
     # plotter.plot_line(source[3], ',', 'orange')
@@ -755,25 +776,18 @@ def run_stochastic_sensitivity_b_noise_1():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
         b_range=p_range,
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s
     )
@@ -781,7 +795,8 @@ def run_stochastic_sensitivity_b_noise_1():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -803,25 +818,18 @@ def run_stochastic_sensitivity_b_noise_2():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
         b_range=p_range,
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s
     )
@@ -829,7 +837,8 @@ def run_stochastic_sensitivity_b_noise_2():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -851,25 +860,18 @@ def run_stochastic_sensitivity_b_noise_3():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
         b_range=p_range,
         a=1,
-        left1=0.44,
-        right1=0.582355932,
-        left2=0.379,
-        right2=0.435,
-        left3=0.22,
-        right3=0.34,
-        left4=0.36,
-        right4=0.37,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0.001),
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s
     )
@@ -877,7 +879,8 @@ def run_stochastic_sensitivity_b_noise_3():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -897,18 +900,18 @@ def run_stochastic_sensitivity_a_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0.001),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s
     )
@@ -916,19 +919,20 @@ def run_stochastic_sensitivity_a_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_pa(1, b, x, 0.001),
+        f=lambda b, x: functions_a_noise.f(1, b, x, 0.001)
+        # f=lambda b, x: functions.f_pa(1, b, x, 0.001),
     )
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\alpha$-noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
-        plotter.plot(line.x, line.y, ',', 'red')
+        plotter.plot(line.x, line.y, ',', colors.red)
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_stochastic_sensitivity_additive_noise():
@@ -936,18 +940,18 @@ def run_stochastic_sensitivity_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0.001),
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
-        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s
     )
@@ -955,16 +959,17 @@ def run_stochastic_sensitivity_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f_p(1, b, x, 0.001),
+        f=lambda b, x: functions_additive_noise.f(1, b, x, 0.001)
+        # f=lambda b, x: functions.f_p(1, b, x, 0.001),
     )
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
                .setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with additive noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
-        plotter.plot(line.x, line.y, ',', 'red')
+        plotter.plot(line.x, line.y, ',', colors.red)
 
     plotter.show_last()
 
@@ -974,7 +979,7 @@ def run_m_b_beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -987,13 +992,13 @@ def run_m_b_beta_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity $\\beta$-noise'))
@@ -1010,7 +1015,7 @@ def run_m_b_alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -1023,13 +1028,13 @@ def run_m_b_alpha_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity $\\alpha$-noise'))
@@ -1037,8 +1042,8 @@ def run_m_b_alpha_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_m_b_additive_noise():
@@ -1046,7 +1051,7 @@ def run_m_b_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -1059,13 +1064,13 @@ def run_m_b_additive_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
-        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity additive-noise'))
@@ -1083,18 +1088,21 @@ def run_machalanobis_beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values,
         save_all=True
     )
@@ -1110,13 +1118,13 @@ def run_machalanobis_beta_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -1133,43 +1141,47 @@ def run_machalanobis_beta_noise():
     line3 = convert_line_to_dict(m_beta[7])
     lines = [line0, line1, line2, line3]
 
-    result = dict()
-    for b in stable_equilibrium.keys():
-        result[b] = 0
-
     mahalanobis0 = Line()
-    mahalanobis1 = Line()
-    for b in result.keys():
-        y_s = None
-        if b in stable_equilibrium.keys():
-            y_s = stable_equilibrium[b]
-
-        y_n = None
-        if b in unstable_equilibrium.keys():
-            y_n = unstable_equilibrium[b]
-
-        y_p = None
-        if b in prototype_equilibrium.keys():
-            y_p = prototype_equilibrium[b]
+    for b in stable_equilibrium.keys():
+        y_s = stable_equilibrium[b]
+        y_n = unstable_equilibrium[b]
 
         for line in lines:
             m = None
             if b in line.keys():
                 m = line[b]
 
-            metrics0 = None
-            if y_s is not None and y_n is not None and m is not None:
-                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+            metrics = None
+            if m is not None:
+                # metrics = abs(y_s - y_n) / np.sqrt(m)
+                metrics = abs(y_s - y_n)
 
-            metrics1 = None
-            if y_s is not None and y_p is not None and m is not None:
-                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+            if metrics is not None:
+                mahalanobis0.add_x(b).add_y(metrics)
 
-            if metrics0 is not None:
-                mahalanobis0.add_x(b).add_y(metrics0)
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[1])
+    line2 = convert_line_to_dict(m_beta[5])
+    line3 = convert_line_to_dict(m_beta[8])
+    lines = [line0, line1, line2, line3]
 
-            if metrics1 is not None:
-                mahalanobis1.add_x(b).add_y(metrics1)
+    mahalanobis1 = Line()
+    for b in stable_equilibrium.keys():
+        y_s = stable_equilibrium[b]
+        y_p = prototype_equilibrium[b]
+
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics = None
+            if m is not None:
+                # metrics = abs(y_s - y_p) / np.sqrt(m)
+                metrics = abs(y_s - y_p)
+
+            if metrics is not None:
+                mahalanobis1.add_x(b).add_y(metrics)
 
     plotter = (Plotter().setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
 
@@ -1186,18 +1198,21 @@ def run_machalanobis_alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values,
         save_all=True
     )
@@ -1213,13 +1228,13 @@ def run_machalanobis_alpha_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -1291,18 +1306,21 @@ def run_machalanobis_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values,
         save_all=True
     )
@@ -1318,13 +1336,13 @@ def run_machalanobis_additive_noise():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
-        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -1394,7 +1412,7 @@ def critical_intensity_beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
 
     epsilon_ = 0.005
@@ -1403,11 +1421,14 @@ def critical_intensity_beta_noise():
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -1416,9 +1437,9 @@ def critical_intensity_beta_noise():
         b_range=p_range,
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, epsilon_),
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
-        f=lambda b, x: base_functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, epsilon_),
         q=lambda b, x: functions_b_noise.q(1, b, x, epsilon_),
         q_=functions_b_noise._q,
@@ -1436,7 +1457,7 @@ def critical_intensity_beta_noise():
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
             m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
-            f=lambda b, x: base_functions.f(1, b, x),
+            f=lambda b, x: function.f(1, b, x),
             s=lambda b, x: functions_b_noise.s(1, b, x, epsilon),
             q=lambda b, x: functions_b_noise.q(1, b, x, epsilon),
             q_=functions_b_noise._q,
@@ -1593,7 +1614,7 @@ def critical_intensity_alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
 
     epsilon_ = 0.005
@@ -1602,11 +1623,14 @@ def critical_intensity_alpha_noise():
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -1617,7 +1641,7 @@ def critical_intensity_alpha_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
-        f=lambda b, x: base_functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
         s=lambda b, x: functions_a_noise.s(1, b, x, epsilon_),
         q=lambda b, x: functions_a_noise.q(1, b, x, epsilon_),
         q_=functions_a_noise._q,
@@ -1635,7 +1659,7 @@ def critical_intensity_alpha_noise():
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
             m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
-            f=lambda b, x: base_functions.f(1, b, x),
+            f=lambda b, x: function.f(1, b, x),
             s=lambda b, x: functions_a_noise.s(1, b, x, epsilon),
             q=lambda b, x: functions_a_noise.q(1, b, x, epsilon),
             q_=functions_a_noise._q,
@@ -1793,7 +1817,7 @@ def critical_intensity_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
 
     epsilon_ = 0.005
@@ -1802,11 +1826,14 @@ def critical_intensity_additive_noise():
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: functions.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
-        f=lambda b, x: functions.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -1815,11 +1842,11 @@ def critical_intensity_additive_noise():
         b_range=p_range,
         a=1,
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, epsilon_),
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
-        f=lambda b, x: base_functions.f(1, b, x),
-        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, epsilon_),
-        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, epsilon_),
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_additive_noise.s(1, b, x, epsilon_),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, epsilon_),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s
     )
@@ -1833,11 +1860,11 @@ def critical_intensity_additive_noise():
             b_range=p_range,
             a=1,
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
-            m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, epsilon),
+            m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
-            f=lambda b, x: base_functions.f(1, b, x),
-            s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, epsilon),
-            q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, epsilon),
+            f=lambda b, x: function.f(1, b, x),
+            s=lambda b, x: functions_additive_noise.s(1, b, x, epsilon),
+            q=lambda b, x: functions_additive_noise.q(1, b, x, epsilon),
             q_=functions_additive_noise._q,
             s_=functions_additive_noise._s
         )
@@ -1992,7 +2019,7 @@ def run_stochastic_sensitivity_b_noise_to_file():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -2005,13 +2032,13 @@ def run_stochastic_sensitivity_b_noise_to_file():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_b_noise.m_chaos_b(a, b, x, 0),
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_b_noise.s_chaos_b(1, b, x, 0.001),
-        q=lambda b, x: functions_b_noise.q_chaos_b(1, b, x, 0.001),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     prefix = "line"
@@ -2037,7 +2064,7 @@ def run_stochastic_sensitivity_a_noise_to_file():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -2050,13 +2077,13 @@ def run_stochastic_sensitivity_a_noise_to_file():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_a_noise.m_chaos_a(a, b, x, 0),
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_a_noise.s_chaos_a(1, b, x, 0.001),
-        q=lambda b, x: functions_a_noise.q_chaos_a(1, b, x, 0.001),
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     prefix = "line"
@@ -2082,7 +2109,7 @@ def run_stochastic_sensitivity_additive_noise_to_file():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: functions.f(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -2095,13 +2122,13 @@ def run_stochastic_sensitivity_additive_noise_to_file():
         right3=0.37,
         left4=0.22,
         right4=0.34,
-        m=lambda a, b, x: functions_additive_noise.m_chaos(a, b, x, 0),
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),
         values=values,
-        s=lambda b, x: functions_additive_noise.s_chaos(1, b, x, 0.001),
-        q=lambda b, x: functions_additive_noise.q_chaos(1, b, x, 0.001),
+        s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: base_functions.f(1, b, x)
+        f=lambda b, x: function.f(1, b, x)
     )
 
     prefix = "line"
