@@ -106,7 +106,8 @@ def run_time_series_different_noises():
     source = time_series(
         time_range=time_range,
         x_start=x_start,
-        f=lambda x: functions.f_pb(a, b, x, epsilon),
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
+        # f=lambda x: functions.f_pb(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
@@ -615,7 +616,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         down_border=None
     )
     source1 = variance(
@@ -627,7 +629,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         down_border=None
     )
     source2 = variance(
@@ -639,7 +642,8 @@ def run_variance():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         down_border=None
     )
     source3 = variance(

@@ -6,7 +6,7 @@ if __name__ == "__main__":
 
     # Показать график временного ряда
     # run_time_series_without_chaos_1()
-    # run_time_series_different_noises()
+    run_time_series_different_noises()
     # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
