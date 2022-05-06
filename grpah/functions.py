@@ -49,26 +49,26 @@ def dh(a, b, x):
     return (2 * a * x * (2 * x - b)) / ((b + x) ** 7) + 1
 
 
-def f_pb(a, b, x, epsilon):
-    xi = numpy.random.normal(0, 1)
-    return (a * x ** 2) / ((b + (epsilon * xi) + x) ** 6)
+# def f_pb(a, b, x, epsilon):
+#     xi = numpy.random.normal(0, 1)
+#     return (a * x ** 2) / ((b + (epsilon * xi) + x) ** 6)
 
 
-def f_pa(a, b, x, epsilon):
-    xi = numpy.random.normal(0, 1)
-    return ((a + (epsilon * xi)) * x ** 2) / ((b + x) ** 6)
+# def f_pa(a, b, x, epsilon):
+#     xi = numpy.random.normal(0, 1)
+#     return ((a + (epsilon * xi)) * x ** 2) / ((b + x) ** 6)
 
 
-def f_p(a, b, x, epsilon):
-    xi = numpy.random.normal(0, 1)
-    return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
+# def f_p(a, b, x, epsilon):
+#     xi = numpy.random.normal(0, 1)
+#     return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
 
 
 def df(a, b, x):
     return (2 * a * x * (b - 2 * x)) / ((b + x) ** 7)
 
 
-def dfx2(a, b, x):
-    return (16 * (a ** 6) * (x ** 6) * (((b ** 6) + ((a * (x ** 3) * (-5 * b + 4 * x)) / ((b + x) ** 7)) + b * x * (
-                -2 + ((a * x * (-2 * b + 7 * x)) / ((b + x) ** 7)))) ** 2)) / (
-                       ((b + x) ** 26) + ((b + ((a * x ** 2) / ((b + x) ** 6))) ** 14))
+# def dfx2(a, b, x):
+#     return (16 * (a ** 6) * (x ** 6) * (((b ** 6) + ((a * (x ** 3) * (-5 * b + 4 * x)) / ((b + x) ** 7)) + b * x * (
+#                 -2 + ((a * x * (-2 * b + 7 * x)) / ((b + x) ** 7)))) ** 2)) / (
+#                        ((b + x) ** 26) + ((b + ((a * x ** 2) / ((b + x) ** 6))) ** 14))

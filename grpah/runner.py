@@ -1205,10 +1205,13 @@ def run_machalanobis_alpha_noise():
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values,
         save_all=True
     )
@@ -1310,10 +1313,13 @@ def run_machalanobis_additive_noise():
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values,
         save_all=True
     )
@@ -1415,10 +1421,13 @@ def critical_intensity_beta_noise():
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -1614,10 +1623,13 @@ def critical_intensity_alpha_noise():
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -1814,10 +1826,13 @@ def critical_intensity_additive_noise():
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: functions.dh(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: functions.sf(1, b, x, shift),
-        dsf=lambda b, x: functions.df(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
