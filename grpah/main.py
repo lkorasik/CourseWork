@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # Показать график временного ряда
     # run_time_series_without_chaos_1()
     # run_time_series_different_noises()
-    run_time_series_compare_noise()
+    # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
     # Показать график бифуркации
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_a_noise_to_file()
     # run_stochastic_sensitivity_additive_noise_to_file()
 
-    # run_machalanobis_beta_noise()
+    run_machalanobis_beta_noise()
     # run_machalanobis_alpha_noise()
     # run_machalanobis_additive_noise()
 
