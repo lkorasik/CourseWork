@@ -41,8 +41,8 @@ def sf(a, b, x, shift):
     return (a * x ** 2) / ((b + x) ** 6) - shift
 
 
-def h(a, b, x):
-    return x - (a * x ** 2) / ((b + x) ** 6)
+# def h(a, b, x):
+#     return x - (a * x ** 2) / ((b + x) ** 6)
 
 
 def dh(a, b, x):
