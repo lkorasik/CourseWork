@@ -490,7 +490,8 @@ def run_equilibrium():
         function=lambda b, x: others.h(1, b, x),
         d_function=lambda b, x: others.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
-        d=lambda b, x: functions.df(1, b, x)
+        d=lambda b, x: function.f_dx(1, b, x)
+        # d=lambda b, x: functions.df(1, b, x)
     )
 
     plotter = Plotter().setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')

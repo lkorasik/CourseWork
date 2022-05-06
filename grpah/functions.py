@@ -36,17 +36,17 @@ def lambda_(dx, epsilon):
 #     return a * x
 
 
-def sf(a, b, x, shift):
-    """Сдвиг функции f"""
-    return (a * x ** 2) / ((b + x) ** 6) - shift
+# def sf(a, b, x, shift):
+#     """Сдвиг функции f"""
+#     return (a * x ** 2) / ((b + x) ** 6) - shift
 
 
 # def h(a, b, x):
 #     return x - (a * x ** 2) / ((b + x) ** 6)
 
 
-def dh(a, b, x):
-    return (2 * a * x * (2 * x - b)) / ((b + x) ** 7) + 1
+# def dh(a, b, x):
+#     return (2 * a * x * (2 * x - b)) / ((b + x) ** 7) + 1
 
 
 # def f_pb(a, b, x, epsilon):
@@ -64,8 +64,8 @@ def dh(a, b, x):
 #     return (a * x ** 2) / ((b + x) ** 6) + (epsilon * xi)
 
 
-def df(a, b, x):
-    return (2 * a * x * (b - 2 * x)) / ((b + x) ** 7)
+# def df(a, b, x):
+#     return (2 * a * x * (b - 2 * x)) / ((b + x) ** 7)
 
 
 # def dfx2(a, b, x):
