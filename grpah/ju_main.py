@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     param = list(np.arange(0.22, 0.582355932, 0.001))
 
-    source = Main.FastAlgorithm.bifurcation(range(1, 100 + 1), 0.2, param, lambda b, x: base_functions.f(1, b, x))
+    source = Main.FastAlgorithm.bifurcation(range(1, 100 + 1), 0.2, param, lambda b, x: function.f(1, b, x))
 
     source = convert_dict_to_lists(source)
 
