@@ -1,4 +1,4 @@
-from sympy import Symbol, solve
+from sympy import Symbol
 
 from visual.line import Line
 

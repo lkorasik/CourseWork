@@ -1,4 +1,4 @@
-from sympy import Symbol, latex
+from sympy import Symbol
 
 a = Symbol('a')
 x = Symbol('x')

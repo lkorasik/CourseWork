@@ -1,6 +1,5 @@
 from collections import Counter
 
-import functions
 from algorithms.single_newton_iteration import single_newton_iteration
 from functions_pkg import others
 
