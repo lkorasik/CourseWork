@@ -718,7 +718,7 @@ def run_cyclic_variance():
 def run_stochastic_sensitivity_b_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
-    epsilon = 0.001
+    epsilon = 0.01
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1006,6 +1006,11 @@ def run_m_b_beta_noise():
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
 
+    plotter.plot(source[0].x, source[0].y, ',', 'orange')
+    plotter.plot(source[2].x, source[2].y, ',', 'orange')
+    plotter.plot(source[4].x, source[4].y, ',', 'orange')
+    plotter.plot(source[7].x, source[7].y, ',', 'orange')
+
     plotter.show_last()
     # plotter.show()
 
@@ -1126,6 +1131,8 @@ def run_machalanobis_beta_noise():
         s_=functions_b_noise._s,
         f=lambda b, x: function.f(1, b, x)
     )
+
+    # Проверь, что используется в хаосе и в циклах. Похоже где-то перепутал местами
 
     stable_equilibrium = equilibrium[1]
     unstable_equilibrium = equilibrium[0]
