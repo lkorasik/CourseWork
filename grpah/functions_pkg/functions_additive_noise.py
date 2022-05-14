@@ -1,7 +1,6 @@
 import numpy
-from sympy import lambdify
-
 from functions_pkg.symbols import a, b, x, eta
+from sympy.utilities.lambdify import lambdify
 
 _f = (a * x ** 2) / ((b + x) ** 6) + eta
 

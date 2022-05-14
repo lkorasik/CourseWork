@@ -19,7 +19,7 @@ c10=load('cycle10.txt');
 %c14=load('cycle14.txt');
 %c15=load('cycle15.txt');
 
-plot(peq(:,1),peq(:,2),'.','Color',[201/255,242/255,242/255],'MarkerSize',markersize,'DisplayName','eq')
+plot(peq(:,1),peq(:,2),'.','Color',[201/255,242/255,242/255],'MarkerSize',markersize,'DisplayName','eq1')
 hold on
 plot(peq1(:,1),peq1(:,2),'.','Color',[193/255,222/255,198/255],'MarkerSize',markersize,'DisplayName','eq2')
 
