@@ -1,0 +1,2 @@
+linear = 'linear'
+log = 'log'

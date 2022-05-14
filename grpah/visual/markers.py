@@ -1,0 +1,3 @@
+star = '*'
+point = '.'
+nothing = ','

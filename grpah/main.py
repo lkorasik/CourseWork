@@ -6,7 +6,7 @@ if __name__ == "__main__":
     print("Run")
 
     # Показать график временного ряда
-    # run_time_series_without_chaos_1()
+    run_time_series_without_chaos()
     # run_time_series_different_noises()
     # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
@@ -32,14 +32,14 @@ if __name__ == "__main__":
     # Показать графики равновесий
     # run_equilibrium()
 
-    regime_map(
-        x_start=0.2,
-        a_range=np.arange(0.01, 2, 0.001),
-        b_range=np.arange(0.01, 0.6, 0.001),
-        time_range=range(1, 10000 + 1),
-        f=function.f,
-        file_path="C:\\Users\\lkora\\Desktop\\data\\"
-    )
+    # regime_map(
+    #     x_start=0.2,
+    #     a_range=np.arange(0.01, 2, 0.001),
+    #     b_range=np.arange(0.01, 0.6, 0.001),
+    #     time_range=range(1, 10000 + 1),
+    #     f=function.f,
+    #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
+    # )
 
     # find_all_roots(
     #     x_range=np.arange(0, 1.5, 0.01),

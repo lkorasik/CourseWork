@@ -8,13 +8,38 @@ class Plotter:
         self.fig, self.ax = plt.subplots()
         self._legend = dict()
 
-    def setup(self, x_label, y_label, y_scale, grid, title):
+    def _setup(self, x_label, y_label, y_scale, grid, title):
         plt.xlabel(x_label)
         plt.ylabel(y_label)
         plt.yscale(y_scale)
         self.ax.grid(which=grid)
         plt.title(title)
         self.fig.canvas.manager.set_window_title(title)
+        return self
+
+    def setup_title(self, title):
+        plt.title(title)
+        self.fig.canvas.manager.set_window_title(title)
+        return self
+
+    def setup_grid(self, grid):
+        self.ax.grid(which=grid)
+        return self
+
+    def setup_y_scale(self, scale):
+        plt.yscale(scale)
+        return self
+
+    def setup_x_scale(self, scale):
+        plt.xscale(scale)
+        return self
+
+    def setup_x_label(self, label, rotation=0):
+        plt.xlabel(label, rotation=rotation)
+        return self
+
+    def setup_y_label(self, label, rotation=0):
+        plt.ylabel(label, rotation=rotation)
         return self
 
     def plot(self, draw_x, draw_y, marker, color, name=""):

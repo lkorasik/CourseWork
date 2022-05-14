@@ -1,7 +1,7 @@
 peq=load('eqX2Gt2X1.txt'); %равновесие
 peq1=load('eqX2Lt2X1.txt'); %равновесие
 
-markersize = 20;
+markersize = 2;
 
 %pinf=load('C:\Таня\_Прога Дискр Стох\inf.txt');
 c2=load('cycle2.txt'); %циклы
