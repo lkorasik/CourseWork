@@ -141,6 +141,101 @@ def run_time_series_different_noises():
         .show_last())
 
 
+def run_time_series_no_noise():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: function.f(a, b, x),
+        skip=skip
+    )
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_grid(grid.major)
+        # .setup_title('Time series original')
+        .plot(source[0], source[1], '.', colors.steel_blue)
+        .show_last())
+
+
+def run_time_series_beta_noise():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.004
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_grid(grid.major)
+        # .setup_title('Time series $\beta$-noise')
+        .plot(source[0], source[1], '.', colors.steel_blue)
+        .show_last())
+
+
+def run_time_series_alpha_noise():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.004
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions_a_noise.f(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_grid(grid.major)
+        # .setup_title('Time series $\alpha$-noise')
+        .plot(source[0], source[1], '.', colors.steel_blue)
+        .show_last())
+
+
+def run_time_series_additive_noise():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.004
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_grid(grid.major)
+        # .setup_title('Time series additive-noise')
+        .plot(source[0], source[1], '.', colors.steel_blue)
+        .show_last())
+
+
 def run_time_series_compare_noise():
     time_range = range(1, 30 + 1)
     x_start0 = 0.04

@@ -6,8 +6,14 @@ if __name__ == "__main__":
     print("Run")
 
     # Показать график временного ряда
-    run_time_series_without_chaos()
+    # run_time_series_without_chaos()
     # run_time_series_different_noises()
+
+    # run_time_series_no_noise()
+    run_time_series_beta_noise()
+    # run_time_series_alpha_noise()
+    # run_time_series_additive_noise()
+
     # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
