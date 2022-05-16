@@ -34,12 +34,25 @@ class Plotter:
         plt.xscale(scale)
         return self
 
-    def setup_x_label(self, label, rotation=0):
-        plt.xlabel(label, rotation=rotation)
+    def adjust(self, left=0.125, bottom=0.11, right=0.9, top=0.88, w_space=0.2, h_space=0.2):
+        plt.subplots_adjust(left=left, bottom=bottom, right=right, top=top, wspace=w_space, hspace=h_space)
         return self
 
-    def setup_y_label(self, label, rotation=0):
-        plt.ylabel(label, rotation=rotation)
+    def setup_x_ticks(self, font_size=10, rotation=0):
+        plt.xticks(fontsize=font_size, rotation=rotation)
+        return self
+
+    def setup_x_label(self, label, rotation=0, font_size=10, label_pad=0, location='center'):
+        # plt.xticks(fontsize=14, rotation=90)
+        plt.xlabel(label, rotation=rotation, fontsize=font_size, labelpad=label_pad, loc=location)
+        return self
+
+    def setup_y_ticks(self, font_size=10, rotation=0):
+        plt.yticks(fontsize=font_size, rotation=rotation)
+        return self
+
+    def setup_y_label(self, label, rotation=0, font_size=10, label_pad=0):
+        plt.ylabel(label, rotation=rotation, fontsize=font_size, labelpad=label_pad)
         return self
 
     def plot(self, draw_x, draw_y, marker, color, name=""):
