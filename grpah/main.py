@@ -46,14 +46,7 @@ if __name__ == "__main__":
     #     f=function.f,
     #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
     # )
-
-    # find_all_roots(
-    #     x_range=np.arange(0, 1.5, 0.01),
-    #     a_range=np.arange(0.01, 2, 0.01),
-    #     b_range=np.arange(0.01, 0.6, 0.01),
-    #     precision=0.001
-    # )
-
+    
     # Матожидание
     # run_mean()
 
