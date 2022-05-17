@@ -11,8 +11,8 @@ f, q, s, m = generate_functions(_f)
 #
 # _f = (a * x ** 2) / ((b + x) ** 6) + eta
 #
-# _q = ((_f.diff(x).subs(eta, 0)) ** 2).simplify()
-# _s = ((_f.diff(eta).subs(eta, 0)) ** 2).simplify()
+_q = ((_f.diff(x).subs(eta, 0)) ** 2).simplify()
+_s = ((_f.diff(eta).subs(eta, 0)) ** 2).simplify()
 #
 # _m = (_s / (1 - _q)).simplify()
 #
