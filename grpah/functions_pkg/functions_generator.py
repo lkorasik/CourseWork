@@ -32,4 +32,4 @@ def generate_functions(_f):
         val_eta = numpy.random.normal(0, 1) * val_epsilon
         return float(_lam_m(val_a, val_b, val_x, val_eta))
 
-    return f, q, s, m
+    return f, q, s, m, _q, _s
