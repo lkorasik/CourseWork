@@ -16,7 +16,7 @@ if __name__ == "__main__":
     source = convert_dict_to_lists(source)
 
     (Plotter()
-        .setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+        ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
         .scatter(source[0], source[1], '.', 'steelblue', 'aa')
         .legend()
         .show_last())

@@ -1,7 +1,7 @@
 peq=load('eqX2Gt2X1.txt'); %равновесие
 peq1=load('eqX2Lt2X1.txt'); %равновесие
 
-markersize = 20;
+markersize = 2;
 
 %pinf=load('C:\Таня\_Прога Дискр Стох\inf.txt');
 c2=load('cycle2.txt'); %циклы
@@ -19,7 +19,7 @@ c10=load('cycle10.txt');
 %c14=load('cycle14.txt');
 %c15=load('cycle15.txt');
 
-plot(peq(:,1),peq(:,2),'.','Color',[201/255,242/255,242/255],'MarkerSize',markersize,'DisplayName','eq')
+plot(peq(:,1),peq(:,2),'.','Color',[201/255,242/255,242/255],'MarkerSize',markersize,'DisplayName','eq1')
 hold on
 plot(peq1(:,1),peq1(:,2),'.','Color',[193/255,222/255,198/255],'MarkerSize',markersize,'DisplayName','eq2')
 

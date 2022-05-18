@@ -1,3 +1,4 @@
+from algorithms.regime_map import regime_map
 from runner import *
 
 
@@ -5,8 +6,14 @@ if __name__ == "__main__":
     print("Run")
 
     # Показать график временного ряда
-    # run_time_series_without_chaos_1()
+    # run_time_series_without_chaos()
     # run_time_series_different_noises()
+
+    # run_time_series_no_noise()
+    # run_time_series_beta_noise()
+    # run_time_series_alpha_noise()
+    # run_time_series_additive_noise()
+
     # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
@@ -33,20 +40,13 @@ if __name__ == "__main__":
 
     # regime_map(
     #     x_start=0.2,
-    #     a_range=np.arange(0.01, 2, 0.01),
-    #     b_range=np.arange(0.01, 0.6, 0.01),
+    #     a_range=np.arange(0.01, 2, 0.001),
+    #     b_range=np.arange(0.01, 0.6, 0.001),
     #     time_range=range(1, 10000 + 1),
-    #     f=functions_pkg.f,
+    #     f=function.f,
     #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
     # )
-
-    # find_all_roots(
-    #     x_range=np.arange(0, 1.5, 0.01),
-    #     a_range=np.arange(0.01, 2, 0.01),
-    #     b_range=np.arange(0.01, 0.6, 0.01),
-    #     precision=0.001
-    # )
-
+    
     # Матожидание
     # run_mean()
 
@@ -82,6 +82,6 @@ if __name__ == "__main__":
     # run_machalanobis_alpha_noise()
     # run_machalanobis_additive_noise()
 
-    # critical_intensity_beta_noise()
-    # critical_intensity_alpha_noise()
+    critical_intensity_beta_noise()
+    critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()

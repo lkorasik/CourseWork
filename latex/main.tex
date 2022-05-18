@@ -1,22 +1,27 @@
 \documentclass[12pt, a4paper]{article}
 
-%Russian-specific packages
+% Russian-specific packages
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian,english]{babel}
 
-%Graphics
+% Graphics
 \usepackage{graphicx}
-\graphicspath{{images/}}
 \DeclareGraphicsExtensions{.pdf, .png, .jpg}
 \usepackage{wrapfig}
 
-%Color text
-%Remove for release
+% Color text
+% Remove for release
 \usepackage{color}
 
-%Setup captions for figures
+% Same line width
+\sloppy
+
+% Setup captions for figures
 \usepackage{caption}
+
+% Enumerate item 
+\usepackage[shortlabels]{enumitem}
 
 %Math packages
 \usepackage{amsmath}
@@ -36,17 +41,26 @@
     pdfpagemode=FullScreen,
 }
 
-\newcommand{\comment}[1]{\textcolor{red}{#1}}
+% Содержание
+\addto\captionsenglish{\renewcommand{\contentsname}{\begin{center}СОДЕРЖАНИЕ\end{center}}}
+
+\newcommand{\comment}[1]{\textcolor{red}{\emph{#1}}}
 
 \begin{document}
     \tableofcontents
 
     \include{intro.tex}
+
     \newpage
-    \include{deterministic.tex}
+
+    \input{deterministic.tex}
+
     \newpage
+
     \include{stochastic.tex}
+
     \newpage
+
     \include{conclusion.tex}
 
     \comment{@book{
