@@ -716,10 +716,11 @@ def run_cyclic_mean():
 
     (Plotter()
         ._setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot_line(source0, '.', colors.steel_blue, 'Original')
+        .plot_line(source0, '.', colors.steel_blue, '$\\varepsilon = 0$')
         .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
         .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
         .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
+        .legend()
         .show_last())
 
 
@@ -1709,7 +1710,7 @@ def critical_intensity_beta_noise():
     (Plotter()
         ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\beta$-noise')
         .scatter(xR, yR, '.', 'red')
-        .scatter(xS, yS, '.', 'navy')
+        # .scatter(xS, yS, '.', 'navy')
         .show())
 
     plotter = (Plotter()
