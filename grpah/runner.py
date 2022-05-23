@@ -47,44 +47,41 @@ def run_time_series_without_chaos_composition():
     a = 1
     b = 0.56
 
-    source = time_series(
+    source0 = time_series(
         time_range=time_range,
         x_start=1.3,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
-
-    plotter = (Plotter()
-               ._setup('t', 'x', 'linear', 'major', 'Time series')
-               .plot(source[0], source[1], '*', colors.dark_violet, '1.3'))
-
-    source = time_series(
+    source1 = time_series(
         time_range=time_range,
         x_start=0.3,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
-
-    plotter.plot(source[0], source[1], '*', colors.dark_slate_blue, '0.3')
-
-    source = time_series(
+    source2 = time_series(
         time_range=time_range,
         x_start=0.06,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
-
-    plotter.plot(source[0], source[1], '*', colors.blue, '0.06')
-
-    source = time_series(
+    source3 = time_series(
         time_range=time_range,
         x_start=0.04,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
 
-    (plotter
-        .plot(source[0], source[1], '*', colors.royal_blue, '0.04')
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series')
+        .plot(source0[0], source0[1], markers.star, colors.dark_violet, '1.3')
+        .plot(source1[0], source1[1], markers.star, colors.dark_slate_blue, '0.3')
+        .plot(source2[0], source2[1], markers.star, colors.blue, '0.06')
+        .plot(source3[0], source3[1], markers.star, colors.royal_blue, '0.04')
         .legend()
         .show_last())
 
