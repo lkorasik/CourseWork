@@ -954,7 +954,7 @@ def run_stochastic_sensitivity_b_noise():
                 .setup_y_ticks(font_size=13)
                 .setup_y_scale(scale.log)
                 .setup_grid(grid.major)
-                .setup_title('Bifurcation with $\\beta$-noise')
+                # .setup_title('Bifurcation with $\\beta$-noise')
                 .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
@@ -1054,6 +1054,7 @@ def run_stochastic_sensitivity_b_noise_2():
     plotter = (Plotter()
                 .setup_x_limit(0.352, 0.387)
                 .setup_y_limit(0.7, 1.6)
+                .setup_grid(grid.major)
                 .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
                 .setup_x_label('$\\beta$', font_size=25, label_pad=0)
                 .setup_x_ticks(ticks=np.arange(0.352, 0.387, 0.01), font_size=20)
@@ -1103,7 +1104,14 @@ def run_stochastic_sensitivity_b_noise_3():
     plotter = (Plotter()
                 .setup_x_limit(0.24, 0.27)
                 .setup_y_limit(0.0003, 0.002)
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+                .setup_y_scale(scale.log)
+                .setup_grid(grid.major)
+                .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+                .setup_y_label('x', font_size=25, label_pad=12)
+                .setup_x_ticks(ticks=np.arange(0.24, 0.27, 0.01), font_size=20)
+                .setup_y_ticks(font_size=15)
+                .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+               # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
@@ -1147,7 +1155,14 @@ def run_stochastic_sensitivity_b_noise_4():
     plotter = (Plotter()
                 .setup_x_limit(0.252, 0.282)
                 .setup_y_limit(2, 9.4)
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+                .setup_y_scale(scale.log)
+                .setup_grid(grid.major)
+                .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+                .setup_y_label('x', font_size=25, label_pad=12)
+                .setup_x_ticks(ticks=np.arange(0.252, 0.282, 0.01), font_size=20)
+                .setup_y_ticks(font_size=15)
+                .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+               # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
