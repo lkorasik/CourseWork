@@ -765,7 +765,6 @@ def run_cyclic_mean():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         count=100
     )
     source2 = cyclical_mean(
@@ -773,7 +772,6 @@ def run_cyclic_mean():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         count=100
     )
     source3 = cyclical_mean(
@@ -781,16 +779,19 @@ def run_cyclic_mean():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         count=100
     )
 
     (Plotter()
-        ._setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot_line(source0, '.', colors.steel_blue, '$\\varepsilon = 0$')
-        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('EV cyclic')
+        .plot_line(source0, markers.point, colors.steel_blue, '$\\varepsilon = 0$')
+        .plot_line(source1, markers.point, colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, markers.point, colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, markers.point, colors.black, '$\\varepsilon = 0.04$')
         .legend()
         .show_last())
 
