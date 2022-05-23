@@ -45,7 +45,7 @@ if __name__ == "__main__":
     # run_mean()
 
     # Усредненное матожидание
-    run_cyclic_mean()
+    # run_cyclic_mean()
 
     # Дисперсия
     # run_variance()

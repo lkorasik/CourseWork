@@ -891,11 +891,16 @@ def run_cyclic_variance():
     )
 
     (Plotter()
-        ._setup('b', 'x', 'linear', 'major', 'Variance cyclic')
-        .plot_line(source0, '.', colors.steel_blue, 'original')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Variance cyclic')
+        .plot_line(source0, '.', colors.steel_blue, '$\\varepsilon = 0$')
         .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
         .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
         .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
+        .legend()
         .show_last())
 
 
