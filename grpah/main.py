@@ -38,14 +38,8 @@ if __name__ == "__main__":
     # Показать графики равновесий
     # run_equilibrium()
 
-    # regime_map(
-    #     x_start=0.2,
-    #     a_range=np.arange(0.01, 2, 0.001),
-    #     b_range=np.arange(0.01, 0.6, 0.001),
-    #     time_range=range(1, 10000 + 1),
-    #     f=function.f,
-    #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
-    # )
+    # Просчитать карту режимов
+    # run_regime_map()
     
     # Матожидание
     # run_mean()
@@ -67,6 +61,7 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_b_noise_1()
     # run_stochastic_sensitivity_b_noise_2()
     # run_stochastic_sensitivity_b_noise_3()
+    # run_stochastic_sensitivity_b_noise_4()
 
     # График стохастической чувствительности
     # run_m_b_beta_noise()
@@ -82,6 +77,6 @@ if __name__ == "__main__":
     # run_machalanobis_alpha_noise()
     # run_machalanobis_additive_noise()
 
-    critical_intensity_beta_noise()
-    critical_intensity_alpha_noise()
+    # critical_intensity_beta_noise()
+    # critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()

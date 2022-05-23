@@ -1,12 +1,19 @@
 from matplotlib import pyplot as plt
+from matplotlib.patches import Rectangle
 
 from visual.line import Line
+from visual.values import colors
 
 
 class Plotter:
     def __init__(self):
         self.fig, self.ax = plt.subplots()
         self._legend = dict()
+
+    def add_rectangle(self, x, y, width, height, line_width=1, edge_color=colors.black, face_color='none'):
+        rectangle = Rectangle((x, y), width, height, linewidth=line_width, edgecolor=edge_color, facecolor=face_color)
+        self.ax.add_patch(rectangle)
+        return self
 
     def _setup(self, x_label, y_label, y_scale, grid, title):
         plt.xlabel(x_label)
@@ -15,6 +22,14 @@ class Plotter:
         self.ax.grid(which=grid)
         plt.title(title)
         self.fig.canvas.manager.set_window_title(title)
+        return self
+
+    def setup_x_limit(self, start, end):
+        plt.xlim([start, end])
+        return self
+
+    def setup_y_limit(self, start, end):
+        plt.ylim([start, end])
         return self
 
     def setup_title(self, title):
@@ -38,8 +53,8 @@ class Plotter:
         plt.subplots_adjust(left=left, bottom=bottom, right=right, top=top, wspace=w_space, hspace=h_space)
         return self
 
-    def setup_x_ticks(self, font_size=10, rotation=0):
-        plt.xticks(fontsize=font_size, rotation=rotation)
+    def setup_x_ticks(self, ticks=None, font_size=10, rotation=0):
+        plt.xticks(ticks=ticks, fontsize=font_size, rotation=rotation)
         return self
 
     def setup_x_label(self, label, rotation=0, font_size=10, label_pad=0, location='center'):

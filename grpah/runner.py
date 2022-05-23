@@ -1,4 +1,5 @@
 import numpy as np
+from matplotlib import patches, pyplot as plt
 
 import functions
 from algorithms.absorbing_area import absorbing_area
@@ -14,6 +15,7 @@ from algorithms.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
 from algorithms.m_b import m_b
 from algorithms.mean import mean
+from algorithms.regime_map import regime_map
 from algorithms.time_series import time_series
 from algorithms.variance import variance
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
@@ -45,44 +47,41 @@ def run_time_series_without_chaos_composition():
     a = 1
     b = 0.56
 
-    source = time_series(
+    source0 = time_series(
         time_range=time_range,
         x_start=1.3,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
-
-    plotter = (Plotter()
-               ._setup('t', 'x', 'linear', 'major', 'Time series')
-               .plot(source[0], source[1], '*', colors.dark_violet, '1.3'))
-
-    source = time_series(
+    source1 = time_series(
         time_range=time_range,
         x_start=0.3,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
-
-    plotter.plot(source[0], source[1], '*', colors.dark_slate_blue, '0.3')
-
-    source = time_series(
+    source2 = time_series(
         time_range=time_range,
         x_start=0.06,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
-
-    plotter.plot(source[0], source[1], '*', colors.blue, '0.06')
-
-    source = time_series(
+    source3 = time_series(
         time_range=time_range,
         x_start=0.04,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
 
-    (plotter
-        .plot(source[0], source[1], '*', colors.royal_blue, '0.04')
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series')
+        .plot(source0[0], source0[1], markers.star, colors.dark_violet, '1.3')
+        .plot(source1[0], source1[1], markers.star, colors.dark_slate_blue, '0.3')
+        .plot(source2[0], source2[1], markers.star, colors.blue, '0.06')
+        .plot(source3[0], source3[1], markers.star, colors.royal_blue, '0.04')
         .legend()
         .show_last())
 
@@ -96,48 +95,64 @@ def run_time_series_different_noises():
     b = 0.56
     epsilon = 0.004
 
-    source = time_series(
+    source0 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series original')
+        .plot(source0[0], source0[1], markers.point, colors.steel_blue)
         .show())
 
-    source = time_series(
+    source1 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with $\\beta$-noise')
+        .plot(source1[0], source1[1], markers.point, colors.steel_blue)
         .show())
 
-    source = time_series(
+    source2 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with $\\alpha$-noise')
+        .plot(source2[0], source2[1], markers.point, colors.steel_blue)
         .show())
 
-    source = time_series(
+    source3 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with additive noise')
+        .plot(source3[0], source3[1], markers.point, colors.steel_blue)
         .show_last())
 
 
@@ -284,12 +299,17 @@ def run_time_series_compare_noise():
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
+
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source0[0], source0[1], '.', colors.light_coral)
-        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
-        .plot(source2[0], source2[1], '.', colors.olive)
-        .plot(source3[0], source3[1], '.', colors.teal)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series original')
+        .plot(source0[0], source0[1], markers.point, colors.light_coral)
+        .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
+        .plot(source2[0], source2[1], markers.point, colors.olive)
+        .plot(source3[0], source3[1], markers.point, colors.teal)
         .show())
     # .show_last())
 
@@ -318,11 +338,15 @@ def run_time_series_compare_noise():
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source0[0], source0[1], '.', colors.light_coral)
-        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
-        .plot(source2[0], source2[1], '.', colors.olive)
-        .plot(source3[0], source3[1], '.', colors.teal)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with $\\beta$-noise')
+        .plot(source0[0], source0[1], markers.point, colors.light_coral)
+        .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
+        .plot(source2[0], source2[1], markers.point, colors.olive)
+        .plot(source3[0], source3[1], markers.point, colors.teal)
         .show())
 
     source0 = time_series(
@@ -350,11 +374,15 @@ def run_time_series_compare_noise():
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source0[0], source0[1], '.', colors.light_coral)
-        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
-        .plot(source2[0], source2[1], '.', colors.olive)
-        .plot(source3[0], source3[1], '.', colors.teal)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with $\\alpha$-noise')
+        .plot(source0[0], source0[1], markers.point, colors.light_coral)
+        .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
+        .plot(source2[0], source2[1], markers.point, colors.olive)
+        .plot(source3[0], source3[1], markers.point, colors.teal)
         .show())
 
     source0 = time_series(
@@ -382,11 +410,15 @@ def run_time_series_compare_noise():
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source0[0], source0[1], '.', colors.light_coral)
-        .plot(source1[0], source1[1], '.', colors.dark_olive_green)
-        .plot(source2[0], source2[1], '.', colors.olive)
-        .plot(source3[0], source3[1], '.', colors.teal)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with additive noise')
+        .plot(source0[0], source0[1], markers.point, colors.light_coral)
+        .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
+        .plot(source2[0], source2[1], markers.point, colors.olive)
+        .plot(source3[0], source3[1], markers.point, colors.teal)
         # .show())
         .show_last())
 
@@ -402,9 +434,12 @@ def run_bifurcation():
     source = convert_dict_to_lists(source)
 
     (Plotter()
-        ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation')
         .scatter(source[0], source[1], '.', colors.steel_blue)
-        .legend()
      # .show())
         .show_last())
 
@@ -417,59 +452,84 @@ def run_compare_chaos_bifurcation():
     a = 1
     epsilon = 0.01
 
-    source = bifurcation(
+    source0 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
         f=lambda b, x: function.f(a, b, x)
     )
-    source = convert_dict_to_lists(source)
+    source0 = convert_dict_to_lists(source0)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .adjust(top=0.92, bottom=0.165, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+        .setup_y_label('x', font_size=25, label_pad=12)
+        .setup_x_ticks(font_size=15)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation')
+        .scatter(source0[0], source0[1], '.', colors.steel_blue)
         .show())
 
-    source = bifurcation(
+    source1 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
         f=lambda b, x: functions_a_noise.f(a, b, x, epsilon)
-        # f=lambda b, x: functions.f_pa(a, b, x, epsilon)
     )
-    source = convert_dict_to_lists(source)
+    source1 = convert_dict_to_lists(source1)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .adjust(top=0.92, bottom=0.165, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+        .setup_y_label('x', font_size=25, label_pad=12)
+        .setup_x_ticks(font_size=15)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation alpha')
+        .scatter(source1[0], source1[1], '.', colors.steel_blue)
         .show())
 
-    source = bifurcation(
+    source2 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(a, b, x, epsilon)
-        # f=lambda b, x: functions.f_pb(a, b, x, epsilon)
     )
-    source = convert_dict_to_lists(source)
+    source2 = convert_dict_to_lists(source2)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation beta')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .adjust(top=0.92, bottom=0.165, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+        .setup_y_label('x', font_size=25, label_pad=12)
+        .setup_x_ticks(font_size=15)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation beta')
+        .scatter(source2[0], source2[1], '.', colors.steel_blue)
         .show())
 
-    source = bifurcation(
+    source3 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
-        f=lambda b, x: functions_additive_noise.f(a, b, x, epsilon),
-        # f=lambda b, x: functions.f_p(a, b, x, epsilon)
+        f=lambda b, x: functions_additive_noise.f(a, b, x, epsilon)
     )
-    source = convert_dict_to_lists(source)
+    source3 = convert_dict_to_lists(source3)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation addition')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .adjust(top=0.92, bottom=0.165, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+        .setup_y_label('x', font_size=25, label_pad=12)
+        .setup_x_ticks(font_size=15)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation addition')
+        .scatter(source3[0], source3[1], '.', colors.steel_blue)
         .show_last())
 
 
@@ -615,6 +675,17 @@ def run_equilibrium():
     plotter.show_last()
 
 
+def run_regime_map():
+    regime_map(
+        x_start=0.2,
+        a_range=np.arange(0.01, 2, 0.001),
+        b_range=np.arange(0.01, 0.6, 0.001),
+        time_range=range(1, 10000 + 1),
+        f=function.f,
+        file_path="C:\\Users\\lkora\\Desktop\\data\\"
+    )
+
+
 def run_mean():
     values = bifurcation(
         time_range=range(1, 1000 + 1),
@@ -694,7 +765,6 @@ def run_cyclic_mean():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
         count=100
     )
     source2 = cyclical_mean(
@@ -702,7 +772,6 @@ def run_cyclic_mean():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
         count=100
     )
     source3 = cyclical_mean(
@@ -710,16 +779,20 @@ def run_cyclic_mean():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
         count=100
     )
 
     (Plotter()
-        ._setup('b', 'x', 'linear', 'major', 'EV cyclic')
-        .plot_line(source0, '.', colors.steel_blue, 'Original')
-        .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
-        .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
-        .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('EV cyclic')
+        .plot_line(source0, markers.point, colors.steel_blue, '$\\varepsilon = 0$')
+        .plot_line(source1, markers.point, colors.red, '$\\varepsilon = 0.01$')
+        .plot_line(source2, markers.point, colors.green, '$\\varepsilon = 0.03$')
+        .plot_line(source3, markers.point, colors.black, '$\\varepsilon = 0.04$')
+        .legend()
         .show_last())
 
 
@@ -818,18 +891,23 @@ def run_cyclic_variance():
     )
 
     (Plotter()
-        ._setup('b', 'x', 'linear', 'major', 'Variance cyclic')
-        .plot_line(source0, '.', colors.steel_blue, 'original')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Variance cyclic')
+        .plot_line(source0, '.', colors.steel_blue, '$\\varepsilon = 0$')
         .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
         .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
         .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
+        .legend()
         .show_last())
 
 
 def run_stochastic_sensitivity_b_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
-    epsilon = 0.01
+    epsilon = 0.001
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -859,29 +937,41 @@ def run_stochastic_sensitivity_b_noise():
     )
     chaos = convert_dict_to_lists(chaos)
 
+    # .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+    # .setup_x_label('t', font_size=25, label_pad=0)
+    # .setup_x_ticks(font_size=20)
+    # .setup_y_label('x', font_size=25, label_pad=12)
+    # .setup_y_ticks(font_size=20)
+
+    # Create a Rectangle patch
+    # rect = patches.Rectangle((50, 100), 40, 30, linewidth=1, edgecolor='r', facecolor='none')
+
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
-               .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
+                # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+                .setup_x_label('$\\beta$', font_size=13, label_pad=2)
+                .setup_y_label('x', font_size=13, label_pad=6)
+                .setup_x_ticks(font_size=13)
+                .setup_y_ticks(font_size=13)
+                .setup_y_scale(scale.log)
+                .setup_grid(grid.major)
+                # .setup_title('Bifurcation with $\\beta$-noise')
+                .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
         plotter.plot(line.x, line.y, ',', colors.red)
 
-    # plotter.plot_line(source[0], ',', 'orange')
-    # plotter.plot_line(source[3], ',', 'orange')
-    # plotter.plot_line(source[7], ',', 'orange')
-    # plotter.plot_line(source[14], ',', 'orange')
-
-    # plotter.plot_line(source[1], ',', 'navy')
-    # plotter.plot_line(source[4], ',', 'navy')
-    # plotter.plot_line(source[10], ',', 'navy')
-    # plotter.plot_line(source[15], ',', 'navy')
+    (plotter
+        .add_rectangle(0.451, 0.275, 0.025, 0.3)
+        .add_rectangle(0.352, 0.7, 0.035, 0.9)
+        .add_rectangle(0.24, 0.0003, 0.03, 0.0017)
+        .add_rectangle(0.252, 2, 0.03, 7.4))
 
     plotter.show_last()
     # plotter.show()
 
 
 def run_stochastic_sensitivity_b_noise_1():
-    p_range = np.arange(0.35, 0.385, 0.0001)
+    p_range = np.arange(0.451, 0.476, 0.0001)
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -912,8 +1002,16 @@ def run_stochastic_sensitivity_b_noise_1():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
-               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+                .setup_x_limit(0.451, 0.476)
+                .setup_y_limit(0.275, 0.575)
+                # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+                .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+                .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+                .setup_x_ticks(font_size=20)
+                .setup_y_label('x', font_size=25, label_pad=12)
+                .setup_y_ticks(font_size=20)
+                .setup_grid(grid.major)
+                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
@@ -923,7 +1021,7 @@ def run_stochastic_sensitivity_b_noise_1():
 
 
 def run_stochastic_sensitivity_b_noise_2():
-    p_range = np.arange(0.4, 0.6, 0.0001)
+    p_range = np.arange(0.352, 0.387, 0.0001)
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -954,7 +1052,15 @@ def run_stochastic_sensitivity_b_noise_2():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+                .setup_x_limit(0.352, 0.387)
+                .setup_y_limit(0.7, 1.6)
+                .setup_grid(grid.major)
+                .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+                .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+                .setup_x_ticks(ticks=np.arange(0.352, 0.387, 0.01), font_size=20)
+                .setup_y_label('x', font_size=25, label_pad=12)
+                .setup_y_ticks(font_size=20)
+               # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
@@ -965,7 +1071,7 @@ def run_stochastic_sensitivity_b_noise_2():
 
 
 def run_stochastic_sensitivity_b_noise_3():
-    p_range = np.arange(0.22, 0.3, 0.0001)
+    p_range = np.arange(0.24, 0.27, 0.0001)
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -996,7 +1102,67 @@ def run_stochastic_sensitivity_b_noise_3():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+                .setup_x_limit(0.24, 0.27)
+                .setup_y_limit(0.0003, 0.002)
+                .setup_y_scale(scale.log)
+                .setup_grid(grid.major)
+                .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+                .setup_y_label('x', font_size=25, label_pad=12)
+                .setup_x_ticks(ticks=np.arange(0.24, 0.27, 0.01), font_size=20)
+                .setup_y_ticks(font_size=15)
+                .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+               # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
+               .scatter(chaos[0], chaos[1], '.', 'steelblue'))
+
+    for line in source:
+        plotter.plot(line.x, line.y, ',', 'red')
+
+    plotter.show_last()
+    # plotter.show()
+
+
+def run_stochastic_sensitivity_b_noise_4():
+    p_range = np.arange(0.252, 0.282, 0.0001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: function.f(1, b, x),
+    )
+    source = bifurcation_with_ssf(
+        values=values,
+        b_range=p_range,
+        a=1,
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
+        epsilon=0.001,
+        f=lambda b, x: function.f(1, b, x),
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s
+    )
+    chaos = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
+        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+    )
+    chaos = convert_dict_to_lists(chaos)
+
+    plotter = (Plotter()
+                .setup_x_limit(0.252, 0.282)
+                .setup_y_limit(2, 9.4)
+                .setup_y_scale(scale.log)
+                .setup_grid(grid.major)
+                .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+                .setup_y_label('x', font_size=25, label_pad=12)
+                .setup_x_ticks(ticks=np.arange(0.252, 0.282, 0.01), font_size=20)
+                .setup_y_ticks(font_size=15)
+                .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+               # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
                .scatter(chaos[0], chaos[1], '.', 'steelblue'))
 
     for line in source:
@@ -1524,7 +1690,8 @@ def run_machalanobis_additive_noise():
 
 
 def critical_intensity_beta_noise():
-    p_range = np.arange(0.22, 0.582355932, 0.001)
+    step = 0.001
+    p_range = np.arange(0.22, 0.582355932, step)
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1536,17 +1703,14 @@ def critical_intensity_beta_noise():
     epsilon_ = 0.005
 
     source1 = bifurcation_with_equilibrium(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, step),
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
         d_function=lambda b, x: others.h_dx(1, b, x),
-        # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
-        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
-        # dsf=lambda b, x: functions.df(1, b, x),
         bifurcation=values
     )
 
@@ -1566,7 +1730,7 @@ def critical_intensity_beta_noise():
 
     R = []
     S = []
-    for epsilon in np.arange(0.001, 0.21, 0.001):
+    for epsilon in np.arange(0.001, 0.21, step):
         print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
@@ -1726,7 +1890,8 @@ def critical_intensity_beta_noise():
 
 
 def critical_intensity_alpha_noise():
-    p_range = np.arange(0.22, 0.582355932, 0.001)
+    step = 0.001
+    p_range = np.arange(0.22, 0.582355932, step)
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1738,7 +1903,7 @@ def critical_intensity_alpha_noise():
     epsilon_ = 0.005
 
     source1 = bifurcation_with_equilibrium(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, step),
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
@@ -1768,7 +1933,7 @@ def critical_intensity_alpha_noise():
 
     R = []
     S = []
-    for epsilon in np.arange(0.001, 1.5, 0.001):
+    for epsilon in np.arange(0.001, 1.5, step):
         print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
@@ -1929,7 +2094,8 @@ def critical_intensity_alpha_noise():
 
 
 def critical_intensity_additive_noise():
-    p_range = np.arange(0.22, 0.582355932, 0.001)
+    step = 0.001
+    p_range = np.arange(0.22, 0.582355932, step)
 
     values = bifurcation(
         time_range=range(1, 100 + 1),
@@ -1941,7 +2107,7 @@ def critical_intensity_additive_noise():
     epsilon_ = 0.005
 
     source1 = bifurcation_with_equilibrium(
-        b_range=np.arange(0.22, 0.582355932, 0.001),
+        b_range=np.arange(0.22, 0.582355932, step),
         x12=0.12,
         precision=0.0000001,
         function=lambda b, x: others.h(1, b, x),
@@ -1971,7 +2137,7 @@ def critical_intensity_additive_noise():
 
     R = []
     S = []
-    for epsilon in np.arange(0.001, 1, 0.001):
+    for epsilon in np.arange(0.001, 1, step):
         print("Epsilon = ", epsilon)
         source0 = bifurcation_with_ssf(
             values=values,
