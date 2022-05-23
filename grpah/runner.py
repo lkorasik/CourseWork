@@ -434,9 +434,12 @@ def run_bifurcation():
     source = convert_dict_to_lists(source)
 
     (Plotter()
-        ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation')
         .scatter(source[0], source[1], '.', colors.steel_blue)
-        .legend()
      # .show())
         .show_last())
 
@@ -449,59 +452,72 @@ def run_compare_chaos_bifurcation():
     a = 1
     epsilon = 0.01
 
-    source = bifurcation(
+    source0 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
         f=lambda b, x: function.f(a, b, x)
     )
-    source = convert_dict_to_lists(source)
+    source0 = convert_dict_to_lists(source0)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation')
+        .scatter(source0[0], source0[1], '.', colors.steel_blue)
         .show())
 
-    source = bifurcation(
+    source1 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
         f=lambda b, x: functions_a_noise.f(a, b, x, epsilon)
-        # f=lambda b, x: functions.f_pa(a, b, x, epsilon)
     )
-    source = convert_dict_to_lists(source)
+    source1 = convert_dict_to_lists(source1)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation alpha')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation alpha')
+        .scatter(source1[0], source1[1], '.', colors.steel_blue)
         .show())
 
-    source = bifurcation(
+    source2 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(a, b, x, epsilon)
-        # f=lambda b, x: functions.f_pb(a, b, x, epsilon)
     )
-    source = convert_dict_to_lists(source)
+    source2 = convert_dict_to_lists(source2)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation beta')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation beta')
+        .scatter(source2[0], source2[1], '.', colors.steel_blue)
         .show())
 
-    source = bifurcation(
+    source3 = bifurcation(
         time_range=time_range,
         x_start=x_start,
         p_range=p_range,
-        f=lambda b, x: functions_additive_noise.f(a, b, x, epsilon),
-        # f=lambda b, x: functions.f_p(a, b, x, epsilon)
+        f=lambda b, x: functions_additive_noise.f(a, b, x, epsilon)
     )
-    source = convert_dict_to_lists(source)
+    source3 = convert_dict_to_lists(source3)
 
     (Plotter()
-        ._setup('b', 'x', 'log', 'major', 'Bifurcation addition')
-        .scatter(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x')
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        .setup_title('Bifurcation addition')
+        .scatter(source3[0], source3[1], '.', colors.steel_blue)
         .show_last())
 
 
