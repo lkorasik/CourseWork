@@ -95,48 +95,64 @@ def run_time_series_different_noises():
     b = 0.56
     epsilon = 0.004
 
-    source = time_series(
+    source0 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series original')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series original')
+        .plot(source0[0], source0[1], markers.point, colors.steel_blue)
         .show())
 
-    source = time_series(
+    source1 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with $\\beta$-noise')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with $\\beta$-noise')
+        .plot(source1[0], source1[1], markers.point, colors.steel_blue)
         .show())
 
-    source = time_series(
+    source2 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with $\\alpha$-noise')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with $\\alpha$-noise')
+        .plot(source2[0], source2[1], markers.point, colors.steel_blue)
         .show())
 
-    source = time_series(
+    source3 = time_series(
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     (Plotter()
-        ._setup('t', 'x', 'linear', 'major', 'Time series with additive noise')
-        .plot(source[0], source[1], '.', colors.steel_blue)
+        .setup_x_label('t')
+        .setup_y_label('x')
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        .setup_title('Time series with additive noise')
+        .plot(source3[0], source3[1], markers.point, colors.steel_blue)
         .show_last())
 
 
