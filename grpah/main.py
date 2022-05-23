@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # run_time_series_alpha_noise()
     # run_time_series_additive_noise()
 
-    # run_time_series_compare_noise()
+    run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
     # Показать график бифуркации
