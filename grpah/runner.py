@@ -1718,7 +1718,7 @@ def critical_intensity_beta_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: function.f(1, b, x),
@@ -1871,7 +1871,15 @@ def critical_intensity_beta_noise():
     yS = list(map(lambda x: x[2], S))
 
     (Plotter()
-        ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\beta$-noise')
+        .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('$\\varepsilon^*$', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Epsilon for $\\beta$-noise')
+        # ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\beta$-noise')
         .scatter(xR, yR, '.', 'red')
         .scatter(xS, yS, '.', 'navy')
         .show())
@@ -2074,7 +2082,15 @@ def critical_intensity_alpha_noise():
     yS = list(map(lambda x: x[2], S))
 
     (Plotter()
-        ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\alpha$-noise')
+        .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('$\\varepsilon^*$', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Epsilon for $\\alpha$-noise')
+        # ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\alpha$-noise')
         .scatter(xR, yR, '.', 'red')
         .scatter(xS, yS, '.', 'navy')
         .show())
@@ -2278,7 +2294,15 @@ def critical_intensity_additive_noise():
     yS = list(map(lambda x: x[2], S))
 
     (Plotter()
-        ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for additive noise')
+        .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('$\\varepsilon^*$', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Epsilon for additive noise')
+        # ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for additive noise')
         .scatter(xR, yR, '.', 'red')
         .scatter(xS, yS, '.', 'navy')
         .show())
