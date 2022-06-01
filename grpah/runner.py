@@ -209,6 +209,33 @@ def run_time_series_beta_noise():
         .show_last())
 
 
+def run_time_series_beta_noise_can_drop():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.04
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
+        .setup_x_label('t', font_size=25, label_pad=0)
+        .setup_x_ticks(font_size=20)
+        .setup_y_label('x', font_size=25, label_pad=12)
+        .setup_y_ticks(font_size=20)
+        .setup_grid(grid.major)
+        # .setup_title('Time series $\beta$-noise')
+        .plot(source[0], source[1], '.', colors.steel_blue)
+        .show_last())
+
+
 def run_time_series_alpha_noise():
     time_range = range(1, 250 + 1)
     x_start = 0.06

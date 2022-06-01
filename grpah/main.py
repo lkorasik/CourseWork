@@ -17,6 +17,8 @@ if __name__ == "__main__":
     # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
+    # run_time_series_beta_noise_can_drop()
+
     # Показать график бифуркации
     # run_bifurcation()
 
@@ -77,6 +79,6 @@ if __name__ == "__main__":
     # run_machalanobis_alpha_noise()
     # run_machalanobis_additive_noise()
 
-    critical_intensity_beta_noise()
+    # critical_intensity_beta_noise()
     # critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()
