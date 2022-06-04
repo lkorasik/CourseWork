@@ -656,7 +656,12 @@ def run_lyapunov():
     )
 
     (Plotter()
-        ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('$\\lambda$', label_pad=5)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title("Lyapunov")
+        # ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
         .plot(source[0], source[1], ',', colors.red)
         .show_last())
 
