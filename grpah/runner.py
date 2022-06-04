@@ -74,10 +74,10 @@ def run_time_series_without_chaos_composition():
 
     (Plotter()
         .setup_x_label('t')
-        .setup_y_label('x')
+        .setup_y_label('x', label_pad=10)
         .setup_y_scale(scale.linear)
         .setup_grid(grid.major)
-        .setup_title('Time series')
+        # .setup_title('Time series')
         .plot(source0[0], source0[1], markers.star, colors.dark_violet, '1.3')
         .plot(source1[0], source1[1], markers.star, colors.dark_slate_blue, '0.3')
         .plot(source2[0], source2[1], markers.star, colors.blue, '0.06')
@@ -447,6 +447,56 @@ def run_time_series_compare_noise():
         .plot(source2[0], source2[1], markers.point, colors.olive)
         .plot(source3[0], source3[1], markers.point, colors.teal)
         # .show())
+        .show_last())
+
+
+def run_time_series_2_cycle():
+    time_range = range(1, 100 + 1)
+    x_start = 0.1
+    skip = False
+
+    a = 1
+    b = 0.4
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: function.f(a, b, x),
+        skip=skip
+    )
+
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x', label_pad=10)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Time series')
+        .plot(source[0], source[1], markers.star, colors.steel_blue)
+        .show_last())
+
+
+def run_time_series_chaos():
+    time_range = range(1, 100 + 1)
+    x_start = 0.1
+    skip = False
+
+    a = 1
+    b = 0.25
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: function.f(a, b, x),
+        skip=skip
+    )
+
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x', label_pad=10)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Time series')
+        .plot(source[0], source[1], markers.star, colors.steel_blue)
         .show_last())
 
 

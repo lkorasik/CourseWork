@@ -19,6 +19,9 @@ if __name__ == "__main__":
 
     # run_time_series_beta_noise_can_drop()
 
+    # run_time_series_2_cycle()
+    # run_time_series_chaos()
+
     # Показать график бифуркации
     # run_bifurcation()
 
@@ -77,11 +80,11 @@ if __name__ == "__main__":
 
     # run_machalanobis_beta_noise()
     # run_machalanobis_alpha_noise()
-    run_machalanobis_additive_noise()
+    # run_machalanobis_additive_noise()
 
     # run_euclid_beta_noise()
     # run_euclid_alpha_noise()
-    run_euclid_additive_noise()
+    # run_euclid_additive_noise()
 
     # critical_intensity_beta_noise()
     # critical_intensity_alpha_noise()
