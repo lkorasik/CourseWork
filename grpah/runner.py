@@ -538,14 +538,14 @@ def run_compare_chaos_bifurcation():
     source0 = convert_dict_to_lists(source0)
 
     (Plotter()
-        .adjust(top=0.92, bottom=0.165, left=0.175, right=0.95)
+        .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
         .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+        .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
         .setup_y_label('x', font_size=25, label_pad=12)
-        .setup_x_ticks(font_size=15)
         .setup_y_ticks(font_size=15)
         .setup_y_scale(scale.log)
         .setup_grid(grid.major)
-        .setup_title('Bifurcation')
+        # .setup_title('Bifurcation')
         .scatter(source0[0], source0[1], '.', colors.steel_blue)
         .show())
 
