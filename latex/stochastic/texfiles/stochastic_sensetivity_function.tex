@@ -24,7 +24,7 @@
         M_1 = \frac{r_{k + 1}}{1 - q_1 \cdot \ldots \cdot q_k}
     \]
 
-    Набор \(\{M_1, \cdots, M_k\}\) определяет значения стохастической чувствительности \(k\)-цикла. Для вычисления требуется знать \(r_{t + 1}\), который можно найти по формуле \(r_{t + 1} = q_t r_t + s_t\), \(t \in \overline{1, k}\) и \(r_1 = 0\).
+    То есть набор \(\{M_1, \cdots, M_k\}\) определяет значения стохастической чувствительности \(k\)-цикла. Для вычисления требуется знать \(r_{t + 1}\), который можно найти по формуле \(r_{t + 1} = q_t r_t + s_t\), \(t \in \overline{1, k}\) и \(r_1 = 0\).
 
     Стохастическая чувствительность хаоса вычисляется по формулам:
 
@@ -36,9 +36,10 @@
 
     Полоса рассеивания строится по формулам: 
 
-    \[
-        x_\varepsilon = x^* \pm 3\varepsilon \sqrt{M}
-    \]
+    \begin{equation}
+        \label{scattering_band}
+        x_\varepsilon = x^* \pm 3\varepsilon \sqrt{M}        
+    \end{equation}
 
     где \(x^*\) --- одно из значений модели при каком-то фиксированном \(\beta\).
   
@@ -75,3 +76,18 @@
     Увеличенный участок от \(\beta \approx 0.45\) до \(\beta \approx 0.48\) изображен на рисунке \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable}. Видно, что случайные состояния почти всегда находятся внутри полосы рассеивания, построенной по правилу трех сигм. 
 
     На участках с k-циклами и хаосом (рисунки \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}, \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up} и \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}) будет наблюдаться аналогичная ситуация: значения лежат внутри полосы рассеивания.
+
+    \begin{figure}
+        \centering
+        \subfloat[Минимум]{
+            \includegraphics[width=0.9\textwidth]{stochastic/images/SSF_min.jpg}
+            \label{SSF_min}
+        }
+        
+        \subfloat[Максимум]{
+            \includegraphics[width=0.9\textwidth]{stochastic/images/SSF_max.jpg}
+            \label{SSF_max}
+        }  
+            
+        \caption{Функции стохастической чувствительности для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos})}
+    \end{figure}
