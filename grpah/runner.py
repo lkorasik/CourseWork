@@ -682,11 +682,80 @@ def run_lamerei():
         f=lambda x: function.f(a, b, x),
     )
 
-    plotter = Plotter()._setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
+    plotter = (Plotter()
+               # .setup_title("Lamerei")
+               .setup_x_label('$x_t$')
+               .setup_y_label('$x_{t + 1}$')
+               .setup_grid(grid.major)
+               .setup_y_scale(scale.linear))
 
     for lst in [source0, source1, source2]:
         for i in lst:
             plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    (plotter
+        .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+        .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+        .show_last())
+
+
+def run_lamerei_fast_zero():
+    a = 1
+    b = 0.56
+    time_range = range(1, 100 + 1)
+    skip = False
+    x_range = np.arange(0, 1.4, 0.01)
+
+    source = lamerei(
+        x_start=1.3,
+        time_range=time_range,
+        skip=skip,
+        f=lambda x: function.f(a, b, x)
+    )
+
+    plotter = (Plotter()
+               # .setup_title("Lamerei")
+               .setup_x_label('$x_t$')
+               .setup_y_label('$x_{t + 1}$', label_pad=15)
+               .setup_grid(grid.major)
+               .setup_y_scale(scale.linear))
+
+    for i in source:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
+
+    (plotter
+        .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+        .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+        .show_last())
+
+
+def run_lamerei_fast_zero_segment():
+    a = 1
+    b = 0.56
+    time_range = range(1, 100 + 1)
+    skip = False
+    x_range = np.arange(0, 0.1, 0.01)
+
+    source = lamerei(
+        x_start=1.3,
+        time_range=time_range,
+        skip=skip,
+        f=lambda x: function.f(a, b, x)
+    )
+
+    plotter = (Plotter()
+               # .setup_title("Lamerei")
+               .setup_x_label('$x_t$')
+               .setup_y_label('$x_{t + 1}$', label_pad=15)
+               .setup_grid(grid.major)
+               .setup_y_scale(scale.linear))
+
+    for i in source:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
 
     (plotter
         .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)

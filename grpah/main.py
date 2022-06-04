@@ -36,6 +36,8 @@ if __name__ == "__main__":
 
     # Показать лестницу Ламерея
     # run_lamerei()
+    # run_lamerei_fast_zero()
+    # run_lamerei_fast_zero_segment()
 
     # Показать график бифуркации и корни
     # run_bifurcation_with_equilibrium()
