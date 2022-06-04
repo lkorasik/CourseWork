@@ -1,37 +1,77 @@
 \subsection{Стохастическая чувствительность}
 
-    Для аппроксимации вероятностного распределения случайных состояний вокруг детерминированных аттракторов (равновесия или циклов) можно использовать метод функции стохастический чувствительности. Данный подход описан в работе Ряшко Л. Б. \cite{Ryashko}.
+    Для аппроксимации вероятностного распределения случайных состояний вокруг детерминированных аттракторов (равновесия, циклов или хаоса) можно использовать метод функции стохастический чувствительности. Данный подход описан в работе Ряшко Л. Б. \cite{Ryashko}.
 
-    На графике \ref{bifurcation_x_0_2_a_1_beta_chaos_fss} красными линиями изображена функция стохастической чувствительности. 
+    Стохастическая чувствительность равновесия \(\bar{x}\) вычисляется по формуле:
+
+    \[
+        M = \frac{s(\bar{x})}{1 - q(\bar{x})}
+    \]
+
+    где 
+
+    \[
+        q(x) = \left[\frac{\partial f}{\partial x}(x, 0)\right]^2 \quad s(x) = \left[\frac{\partial f}{\partial \eta}(x, 0)\right]^2
+    \]
+
+    Стохастическая чувствительность \(k\)-циклов можно вычислить по формулам:
+
+    \[
+        M_{t + 1} = q_t M_t + s_t \quad q_t = q(\bar{x_t}) \quad s_t = s(\bar{x_t})
+    \]
+
+    \[
+        M_1 = \frac{r_{k + 1}}{1 - q_1 \cdot \ldots \cdot q_k}
+    \]
+
+    Набор \(\{M_1, \cdots, M_k\}\) определяет значения стохастической чувствительности \(k\)-цикла. Для вычисления требуется знать \(r_{t + 1}\), который можно найти по формуле \(r_{t + 1} = q_t r_t + s_t\), \(t \in \overline{1, k}\) и \(r_1 = 0\).
+
+    Стохастическая чувствительность хаоса вычисляется по формулам:
+
+    \[
+        M(c_1) = \left[\frac{\partial f}{\partial x}(f(c_{-1}, 0), 0)\right]^2 s(c_{-1}) + s(f(c_{-1}, 0)) \quad M(c) = s(c_{-1})
+    \]
+
+    где \(c_{-1}\) --- прообраз критической точки, \(c = f(c_{-1}), c_1 = f(c)\).
+
+    Полоса рассеивания строится по формулам: 
+
+    \[
+        x_\varepsilon = x^* \pm 3\varepsilon \sqrt{M}
+    \]
+
+    где \(x^*\) --- одно из значений модели при каком-то фиксированном \(\beta\).
+  
+    На рисунке \ref{bifurcation_x_0_2_a_1_beta_chaos_fss} красными линиями изображена полоса рассеивания вокруг стохастических состояний системы (\ref{beta_chaos}) с \(\beta\)-шумом при интенсивности \(\varepsilon = 0.001\). 
 
     \begin{figure}
         \centering
-        \subfloat[Общий вид бифуркационной диаграммы с ФСЧ]{
+        \subfloat[Общий вид стохастической диаграммы и доверительной полосы]{
             \includegraphics[width=0.7\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_beta_noise_fss.jpg}
             \label{bifurcation_x_0_2_a_1_beta_chaos_fss}
         }
 
-        \subfloat[ФСЧ для равновесия]{
+        \subfloat[полоса для равновесия]{
             \includegraphics[width=0.5\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_beta_noise_fss_segment_stable.jpg}
             \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable}
         }  
-        \subfloat[ФСЧ для 2-цикла]{
+        \subfloat[полоса для 4-цикла]{
             \includegraphics[width=0.5\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_beta_noise_fss_segment_2_cycle.jpg}
             \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}
         }
             
-        \subfloat[ФСЧ для хаоса]{
+        \subfloat[полоса для хаоса]{
             \includegraphics[width=0.5\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_beta_noise_fss_segment_chaos_up.jpg}
             \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up}
         }
-        \subfloat[ФСЧ для хаоса]{
+        \subfloat[полоса для хаоса]{
             \includegraphics[width=0.5\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_beta_noise_fss_segment_chaos_down.jpg}
             \label{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}
         }
             
-        \caption{Бифуркационная диаграмма с ФСЧ для модели \ref{beta_chaos}}
+        \caption{Доверительная полоса для модели \ref{beta_chaos} (с \(\beta\)-шумом) при \(\varepsilon = 0.001\)}
     \end{figure}
 
-    Рассмотрим участок от \(\beta \approx 0.45\) до \(\beta \approx 0.48\), он изображен на рисунке \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable}. Мы видим, что значения графика бифуркации почти всегда находятся в коридоре, границами которого являются значения ФСЧ. Этот коридор строится по правилу трех сигм. Такой подход гарантирует, что почти все значения будут находиться в этом интервале, что собственно мы и наблюдаем.
+    Увеличенный участок от \(\beta \approx 0.45\) до \(\beta \approx 0.48\) изображен на рисунке \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_stable}. Видно, что случайные состояния почти всегда находятся внутри полосы рассеивания, построенной по правилу трех сигм. 
 
-    На участках с k-циклами и хаосом (рисунки \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}, \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up} и \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}) будет наблюдаться аналогичная ситуация: значения лежат в коридоре, ограниченном значениями ФСЧ.
+    На участках с k-циклами и хаосом (рисунки \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}, \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up} и \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}) будет наблюдаться аналогичная ситуация: значения лежат внутри полосы рассеивания.

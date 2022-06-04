@@ -1,25 +1,25 @@
 \subsection{Стохастические диаграммы}
 
-    Далее представлено случайное возмущение на бифуркационной диаграмме с разными видами шумов. На рисунках \ref{bifurcation_x_0_2_a_1_compare_alpha_noise}, \ref{bifurcation_x_0_2_a_1_compare_beta_noise} и \ref{bifurcation_x_0_2_a_1_compare_additional_noise} представлены графики бифуркационных диаграмм для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos}). Во всех моделях зафиксировано значение параметра \(\alpha = 1\). На каждом графике, так же как и в исходной модели, существует участок равновесия, участки с циклами и участок с хаотическим поведением системы. От вида и интенсивности шума зависит то, насколько \comment{А вот тут я не понял правку}.
+    Далее представлено влияние случайного возмущения на бифуркационных диаграммах для разных видов шума. На рисунках \ref{bifurcation_x_0_2_a_1_compare_alpha_noise}, \ref{bifurcation_x_0_2_a_1_compare_beta_noise} и \ref{bifurcation_x_0_2_a_1_compare_additional_noise} представлены графики бифуркационных диаграмм для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos}). Во всех моделях зафиксировано значение параметра \(\alpha = 1\). На каждом графике, так же как и в исходной модели, существует участок равновесия, участки с циклами и участок с хаотическим поведением системы. От вида и интенсивности шума зависит то, насколько выделены участки с регулярной динамикой.
 
-    Видно, что \(\alpha\)-шум сохранят бифуркационную структуру лучше, чем \(\beta\)-шум и аддитивный шум.
+    Видно, что модель с \(\alpha\)-шум сохранят бифуркационную структуру лучше, чем модель с \(\beta\)-шумом и с аддитивным шумом.
 
     \begin{figure}
         \centering
-        \subfloat[для модели (\ref{origin})]{
+        \subfloat[для модели (\ref{origin}) (без шума)]{
             \includegraphics[width=0.55\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_compare_no_noise.jpg}
             \label{bifurcation_x_0_2_a_1_compare_no_noise}
         }  
-        \subfloat[для модели (\ref{alpha_chaos})]{
+        \subfloat[для модели (\ref{alpha_chaos}) (с \(\alpha\)-шумом)]{
             \includegraphics[width=0.55\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_compare_alpha_noise.jpg}
             \label{bifurcation_x_0_2_a_1_compare_alpha_noise}
         }
         
-        \subfloat[для модели (\ref{beta_chaos})]{
+        \subfloat[для модели (\ref{beta_chaos}) (с \(\beta\)-шумом)]{
             \includegraphics[width=0.55\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_compare_beta_noise.jpg}
             \label{bifurcation_x_0_2_a_1_compare_beta_noise}
         }
-        \subfloat[для модели (\ref{additive_chaos})]{
+        \subfloat[для модели (\ref{additive_chaos}) (с аддитивным шумом)]{
             \includegraphics[width=0.55\textwidth]{stochastic/images/bifurcation_x_0_2_a_1_compare_additional_noise.jpg}
             \label{bifurcation_x_0_2_a_1_compare_additional_noise}
         }
