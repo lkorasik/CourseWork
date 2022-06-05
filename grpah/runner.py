@@ -1742,7 +1742,15 @@ def run_machalanobis_beta_noise():
             if metrics1 is not None:
                 mahalanobis1.add_x(b).add_y(metrics1)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
@@ -1849,13 +1857,21 @@ def run_machalanobis_additive_noise():
             if metrics1 is not None:
                 mahalanobis1.add_x(b).add_y(metrics1)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_euclid_beta_noise():
@@ -1962,7 +1978,15 @@ def run_euclid_beta_noise():
             if metrics is not None:
                 mahalanobis1.add_x(b).add_y(metrics)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
@@ -2070,7 +2094,15 @@ def run_euclid_alpha_noise():
             if metrics1 is not None:
                 mahalanobis1.add_x(b).add_y(metrics1)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
@@ -2176,7 +2208,15 @@ def run_euclid_additive_noise():
             if metrics1 is not None:
                 mahalanobis1.add_x(b).add_y(metrics1)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')

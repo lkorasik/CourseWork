@@ -81,11 +81,11 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_additive_noise_to_file()
 
     # run_machalanobis_alpha_noise()
-    run_machalanobis_beta_noise()
+    # run_machalanobis_beta_noise()
     # run_machalanobis_additive_noise()
 
-    # run_euclid_beta_noise()
     # run_euclid_alpha_noise()
+    # run_euclid_beta_noise()
     # run_euclid_additive_noise()
 
     # critical_intensity_beta_noise()
