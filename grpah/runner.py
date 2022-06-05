@@ -1081,7 +1081,7 @@ def run_stochastic_sensitivity_b_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.373], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
         epsilon=epsilon,
         f=lambda b, x: function.f(1, b, x),
@@ -1098,15 +1098,6 @@ def run_stochastic_sensitivity_b_noise():
         # f=lambda b, x: functions.f_pb(1, b, x, epsilon)
     )
     chaos = convert_dict_to_lists(chaos)
-
-    # .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
-    # .setup_x_label('t', font_size=25, label_pad=0)
-    # .setup_x_ticks(font_size=20)
-    # .setup_y_label('x', font_size=25, label_pad=12)
-    # .setup_y_ticks(font_size=20)
-
-    # Create a Rectangle patch
-    # rect = patches.Rectangle((50, 100), 40, 30, linewidth=1, edgecolor='r', facecolor='none')
 
     plotter = (Plotter()
                 # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
@@ -1195,7 +1186,7 @@ def run_stochastic_sensitivity_b_noise_2():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.373], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: function.f(1, b, x),
