@@ -942,8 +942,8 @@ def run_cyclic_mean():
         .adjust(left=0.125, right=0.9, top=0.92, bottom=0.15)
         .setup_x_label('$\\beta$', font_size=20)
         .setup_y_label('x', font_size=20, label_pad=10)
-        .setup_y_ticks(font_size=20)
-        .setup_x_ticks(font_size=20, ticks=np.arange(0.2, 0.6, 0.1))
+        .setup_y_ticks(font_size=15)
+        .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
         .setup_y_scale(scale.linear)
         .setup_grid(grid.major)
         # .setup_title('EV cyclic')
@@ -1050,8 +1050,11 @@ def run_cyclic_variance():
     )
 
     (Plotter()
-        .setup_x_label('$\\beta$')
-        .setup_y_label('x')
+        .adjust(left=0.125, right=0.9, top=0.92, bottom=0.15)
+        .setup_x_label('$\\beta$', font_size=20)
+        .setup_y_label('x', font_size=20, label_pad=10)
+        .setup_y_ticks(font_size=15)
+        .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
         .setup_y_scale(scale.log)
         .setup_grid(grid.major)
         # .setup_title('Variance cyclic')
@@ -1059,7 +1062,7 @@ def run_cyclic_variance():
         .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
         .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
         .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
-        .legend()
+        .legend(font_size=15)
         .show_last())
 
 
@@ -1568,8 +1571,6 @@ def run_machalanobis_beta_noise():
         f=lambda b, x: function.f(1, b, x)
     )
 
-    # Проверь, что используется в хаосе и в циклах. Похоже где-то перепутал местами
-
     stable_equilibrium = equilibrium[1]
     unstable_equilibrium = equilibrium[0]
     prototype_equilibrium = equilibrium[2]
@@ -1578,61 +1579,59 @@ def run_machalanobis_beta_noise():
     unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
     prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
 
+    # Что-то намудрил с m
+
     line0 = convert_line_to_dict(m_beta[0])
     line1 = convert_line_to_dict(m_beta[2])
     line2 = convert_line_to_dict(m_beta[4])
     line3 = convert_line_to_dict(m_beta[7])
     lines = [line0, line1, line2, line3]
 
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
+
     mahalanobis0 = Line()
-    for b in stable_equilibrium.keys():
-        y_s = stable_equilibrium[b]
-        y_n = unstable_equilibrium[b]
-
-        for line in lines:
-            m = None
-            if b in line.keys():
-                m = line[b]
-
-            metrics = None
-            if m is not None:
-                metrics = abs(y_s - y_n) / np.sqrt(m)
-                # metrics = abs(y_s - y_n)
-
-            if metrics is not None:
-                mahalanobis0.add_x(b).add_y(metrics)
-
-    line0 = convert_line_to_dict(m_beta[0])
-    line1 = convert_line_to_dict(m_beta[1])
-    line2 = convert_line_to_dict(m_beta[5])
-    line3 = convert_line_to_dict(m_beta[8])
-    lines = [line0, line1, line2, line3]
-
     mahalanobis1 = Line()
-    for b in stable_equilibrium.keys():
-        y_s = stable_equilibrium[b]
-        y_p = prototype_equilibrium[b]
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
+
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
+
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
 
         for line in lines:
             m = None
             if b in line.keys():
                 m = line[b]
 
-            metrics = None
-            if m is not None:
-                metrics = abs(y_s - y_p) / np.sqrt(m)
-                # metrics = abs(y_s - y_p)
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
 
-            if metrics is not None:
-                mahalanobis1.add_x(b).add_y(metrics)
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
 
     plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
 
-    # plotter.show_last()
-    plotter.show()
+    plotter.show_last()
+    # plotter.show()
 
 
 def run_machalanobis_alpha_noise():
