@@ -2421,6 +2421,7 @@ def critical_intensity_beta_noise():
         plotter.plot_line(line, ',', 'orange')
 
     plotter.show_last()
+    # plotter.show()
 
 
 def critical_intensity_alpha_noise():
@@ -2455,7 +2456,7 @@ def critical_intensity_alpha_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: function.f(1, b, x),
@@ -2631,8 +2632,8 @@ def critical_intensity_alpha_noise():
     for line in source2:
         plotter.plot_line(line, ',', 'orange')
 
-    plotter.show()
-    # plotter.show_last()
+    # plotter.show()
+    plotter.show_last()
 
 
 def critical_intensity_additive_noise():
@@ -2667,7 +2668,7 @@ def critical_intensity_additive_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: function.f(1, b, x),
