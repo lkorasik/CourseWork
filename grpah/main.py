@@ -86,8 +86,8 @@ if __name__ == "__main__":
 
     # run_euclid_alpha_noise()
     # run_euclid_beta_noise()
-    # run_euclid_additive_noise()
+    run_euclid_additive_noise()
 
     # critical_intensity_beta_noise()
-    critical_intensity_alpha_noise()
+    # critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()
