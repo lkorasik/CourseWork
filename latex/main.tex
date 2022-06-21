@@ -31,6 +31,8 @@
 % Subfigures
 \usepackage{subfig}
 
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+
 % Hyperlink
 \usepackage{hyperref}
 \hypersetup{
@@ -44,12 +46,15 @@
 }
 
 % Содержание
-\addto\captionsenglish{\renewcommand{\contentsname}{\begin{center}СОДЕРЖАНИЕ\end{center}}}
+\addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}}
 
 \newcommand{\comment}[1]{\textcolor{red}{\emph{#1}}}
 
 \begin{document}
-    \tableofcontents
+\selectlanguage{russian}
+    \begin{center}
+        \tableofcontents
+    \end{center}
 
     \include{intro.tex}
 
