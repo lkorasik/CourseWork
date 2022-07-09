@@ -1055,7 +1055,7 @@ def run_cyclic_variance():
         .setup_y_label('x', font_size=20, label_pad=10)
         .setup_y_ticks(font_size=15)
         .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
-        .setup_y_scale(scale.log)
+        .setup_y_scale(scale.linear)
         .setup_grid(grid.major)
         # .setup_title('Variance cyclic')
         .plot_line(source0, '.', colors.steel_blue, '$\\varepsilon = 0$')

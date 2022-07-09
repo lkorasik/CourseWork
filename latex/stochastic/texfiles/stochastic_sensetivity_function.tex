@@ -41,7 +41,24 @@
         x_\varepsilon = x^* \pm 3\varepsilon \sqrt{M}        
     \end{equation}
 
-    где \(x^*\) --- одно из значений модели при каком-то фиксированном \(\beta\).
+    где \(x^*\) --- одно из значений аттрактора при фиксированном \(\beta\). Формула для вычисления значения \(M\) выбирается в зависимости от вида аттрактора, для которого строится полоса рассеивания.
+
+    На рисунках \ref{SSF_max} и \ref{SSF_min} изображены максимум и минимум значений функции стохастической чувствительности соответственно. Красные линии соответствуют модели с \(\alpha\)-шумом, синии линии --- модели с \(\beta\)-шумом, а зеленые --- модели с аддитивным шумом.
+
+    \begin{figure}
+        \centering
+        \subfloat[Минимум]{
+            \includegraphics[width=0.5\textwidth]{stochastic/images/SSF_min.jpg}
+            \label{SSF_min}
+        }
+        \subfloat[Максимум]{
+            \includegraphics[width=0.5\textwidth]{stochastic/images/SSF_max.jpg}
+            \label{SSF_max}
+        }  
+            
+        \captionsetup{justification=centering}
+        \caption{Функции стохастической чувствительности для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos})}
+    \end{figure}
   
     На рисунке \ref{bifurcation_x_0_2_a_1_beta_chaos_fss} красными линиями изображена полоса рассеивания вокруг стохастических состояний системы (\ref{beta_chaos}) с \(\beta\)-шумом при интенсивности \(\varepsilon = 0.001\). 
 
@@ -78,18 +95,4 @@
 
     На участках с k-циклами и хаосом (рисунки \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_2_cycle}, \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_up} и \ref{bifurcation_x_0_2_a_1_beta_chaos_fss_segment_chaos_down}) будет наблюдаться аналогичная ситуация: значения лежат внутри полосы рассеивания.
 
-    \begin{figure}
-        \centering
-        \subfloat[Минимум]{
-            \includegraphics[width=0.9\textwidth]{stochastic/images/SSF_min.jpg}
-            \label{SSF_min}
-        }
-        
-        \subfloat[Максимум]{
-            \includegraphics[width=0.9\textwidth]{stochastic/images/SSF_max.jpg}
-            \label{SSF_max}
-        }  
-            
-        \captionsetup{justification=centering}
-        \caption{Функции стохастической чувствительности для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos})}
-    \end{figure}
+    Таким образом, наблюдается хорошее согласование эмпирических данных и теоретической аппроксимации их разброса.

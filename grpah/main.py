@@ -6,7 +6,7 @@ if __name__ == "__main__":
     print("Run")
 
     # Показать график временного ряда
-    run_time_series_without_chaos()
+    # run_time_series_without_chaos()
     # run_time_series_different_noises()
 
     # run_time_series_no_noise()
@@ -88,6 +88,6 @@ if __name__ == "__main__":
     # run_euclid_beta_noise()
     # run_euclid_additive_noise()
 
-    # critical_intensity_beta_noise()
+    critical_intensity_beta_noise()
     # critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()

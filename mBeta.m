@@ -41,7 +41,7 @@ additiveNoise_line5 = load(strcat(additiveNoise, "line5.txt"));
 additiveNoise_line6 = load(strcat(additiveNoise, "line6.txt"));
 additiveNoise_line7 = load(strcat(additiveNoise, "line7.txt"));
 additiveNoise_line8 = load(strcat(additiveNoise, "line8.txt"));
-
+    
 a_chaos_color = [166/255, 23/255, 0/255];
 b_chaos_color = [63/255, 4/255, 111/255];
 additive_chaos_color = [103/255, 155/255, 0/255];
