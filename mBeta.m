@@ -41,37 +41,49 @@ additiveNoise_line5 = load(strcat(additiveNoise, "line5.txt"));
 additiveNoise_line6 = load(strcat(additiveNoise, "line6.txt"));
 additiveNoise_line7 = load(strcat(additiveNoise, "line7.txt"));
 additiveNoise_line8 = load(strcat(additiveNoise, "line8.txt"));
+    
+a_chaos_color = [166/255, 23/255, 0/255];
+b_chaos_color = [63/255, 4/255, 111/255];
+additive_chaos_color = [103/255, 155/255, 0/255];
+
+line_style = '-';
+line_width = 2;
+marker_size = 20;
+
+set(gca, 'YScale', 'log');
+xlabel('\beta');
+ylabel('x');
 
 hold on
-plot(aNoise_line0(:, 1), aNoise_line0(:, 2), '.', 'Color', [000/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 0');
-plot(aNoise_line1(:, 1), aNoise_line1(:, 2), '.', 'Color', [020/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 1');
-plot(aNoise_line2(:, 1), aNoise_line2(:, 2), '.', 'Color', [040/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 2');
-plot(aNoise_line3(:, 1), aNoise_line3(:, 2), '.', 'Color', [060/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 3');
-plot(aNoise_line4(:, 1), aNoise_line4(:, 2), '.', 'Color', [080/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 4');
-plot(aNoise_line5(:, 1), aNoise_line5(:, 2), '.', 'Color', [100/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 5');
-plot(aNoise_line6(:, 1), aNoise_line6(:, 2), '.', 'Color', [120/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 6');
-plot(aNoise_line7(:, 1), aNoise_line7(:, 2), '.', 'Color', [140/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 7');
-plot(aNoise_line8(:, 1), aNoise_line8(:, 2), '.', 'Color', [160/255, 000/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'a line 8');
+plot(aNoise_line0(:, 1), aNoise_line0(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a equilibrium', 'LineWidth', line_width);
+plot(aNoise_line1(:, 1), aNoise_line1(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a 2 cycle max', 'LineWidth', line_width);
+% plot(aNoise_line2(:, 1), aNoise_line2(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a 2 cycle min', 'LineWidth', line_width);
+% plot(aNoise_line3(:, 1), aNoise_line3(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a line 3', 'LineWidth', line_width);
+% plot(aNoise_line4(:, 1), aNoise_line4(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a 4 cycle min', 'LineWidth', line_width);
+plot(aNoise_line5(:, 1), aNoise_line5(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a 4 cycle max', 'LineWidth', line_width);
+% plot(aNoise_line6(:, 1), aNoise_line6(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a line 6', 'LineWidth', line_width);
+% plot(aNoise_line7(:, 1), aNoise_line7(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a chaos min', 'LineWidth', line_width);
+plot(aNoise_line8(:, 1), aNoise_line8(:, 2), line_style, 'Color', a_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'a chaos max', 'LineWidth', line_width);
 
-plot(bNoise_line0(:, 1), bNoise_line0(:, 2), '.', 'Color', [020/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 0');
-plot(bNoise_line1(:, 1), bNoise_line1(:, 2), '.', 'Color', [040/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 1');
-plot(bNoise_line2(:, 1), bNoise_line2(:, 2), '.', 'Color', [060/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 2');
-plot(bNoise_line3(:, 1), bNoise_line3(:, 2), '.', 'Color', [080/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 3');
-plot(bNoise_line4(:, 1), bNoise_line4(:, 2), '.', 'Color', [100/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 4');
-plot(bNoise_line5(:, 1), bNoise_line5(:, 2), '.', 'Color', [120/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 5');
-plot(bNoise_line6(:, 1), bNoise_line6(:, 2), '.', 'Color', [140/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 6');
-plot(bNoise_line7(:, 1), bNoise_line7(:, 2), '.', 'Color', [160/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 7');
-plot(bNoise_line8(:, 1), bNoise_line8(:, 2), '.', 'Color', [180/255, 060/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'b line 8');
+plot(bNoise_line0(:, 1), bNoise_line0(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b equilibrium', 'LineWidth', line_width);
+plot(bNoise_line1(:, 1), bNoise_line1(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b 2 cycle max', 'LineWidth', line_width);
+% plot(bNoise_line2(:, 1), bNoise_line2(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b 2 cycle min', 'LineWidth', line_width);
+% plot(bNoise_line3(:, 1), bNoise_line3(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b line 3', 'LineWidth', line_width);
+% plot(bNoise_line4(:, 1), bNoise_line4(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b 4 cycle min', 'LineWidth', line_width);
+plot(bNoise_line5(:, 1), bNoise_line5(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b 4 cycle max', 'LineWidth', line_width);
+% plot(bNoise_line6(:, 1), bNoise_line6(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b line 6', 'LineWidth', line_width);
+% plot(bNoise_line7(:, 1), bNoise_line7(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b chaos min', 'LineWidth', line_width);
+plot(bNoise_line8(:, 1), bNoise_line8(:, 2), line_style, 'Color', b_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'b chaos max', 'LineWidth', line_width);
 
-plot(additiveNoise_line0(:, 1), additiveNoise_line0(:, 2), '.', 'Color', [000/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 0');
-plot(additiveNoise_line1(:, 1), additiveNoise_line1(:, 2), '.', 'Color', [020/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 1');
-plot(additiveNoise_line2(:, 1), additiveNoise_line2(:, 2), '.', 'Color', [040/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 2');
-plot(additiveNoise_line3(:, 1), additiveNoise_line3(:, 2), '.', 'Color', [060/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 3');
-plot(additiveNoise_line4(:, 1), additiveNoise_line4(:, 2), '.', 'Color', [080/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 4');
-plot(additiveNoise_line5(:, 1), additiveNoise_line5(:, 2), '.', 'Color', [100/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 5');
-plot(additiveNoise_line6(:, 1), additiveNoise_line6(:, 2), '.', 'Color', [120/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 6');
-plot(additiveNoise_line7(:, 1), additiveNoise_line7(:, 2), '.', 'Color', [140/255, 120/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 7');
-plot(additiveNoise_line8(:, 1), additiveNoise_line8(:, 2), '.', 'Color', [160/255, 0/255, 000/255], 'MarkerSize', 20, 'DisplayName', 'additive line 8');
+plot(additiveNoise_line0(:, 1), additiveNoise_line0(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive equilibruim', 'LineWidth', line_width);
+plot(additiveNoise_line1(:, 1), additiveNoise_line1(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive 2 cycle max', 'LineWidth', line_width);
+% plot(additiveNoise_line2(:, 1), additiveNoise_line2(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive 2 cycle min', 'LineWidth', line_width);
+% plot(additiveNoise_line3(:, 1), additiveNoise_line3(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive line 3', 'LineWidth', line_width);
+% plot(additiveNoise_line4(:, 1), additiveNoise_line4(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive 4 cycle min', 'LineWidth', line_width);
+plot(additiveNoise_line5(:, 1), additiveNoise_line5(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive 4 cycle max', 'LineWidth', line_width);
+% plot(additiveNoise_line6(:, 1), additiveNoise_line6(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive line 6', 'LineWidth', line_width);
+plot(additiveNoise_line7(:, 1), additiveNoise_line7(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive chaos max', 'LineWidth', line_width);
+% plot(additiveNoise_line8(:, 1), additiveNoise_line8(:, 2), line_style, 'Color', additive_chaos_color, 'MarkerSize', marker_size, 'DisplayName', 'additive chaos min', 'LineWidth', line_width);
 hold off
 
-legend('show','Location','southeastoutside');
+% legend('show','Location','southeastoutside');

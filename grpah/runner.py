@@ -74,10 +74,10 @@ def run_time_series_without_chaos_composition():
 
     (Plotter()
         .setup_x_label('t')
-        .setup_y_label('x')
+        .setup_y_label('x', label_pad=10)
         .setup_y_scale(scale.linear)
         .setup_grid(grid.major)
-        .setup_title('Time series')
+        # .setup_title('Time series')
         .plot(source0[0], source0[1], markers.star, colors.dark_violet, '1.3')
         .plot(source1[0], source1[1], markers.star, colors.dark_slate_blue, '0.3')
         .plot(source2[0], source2[1], markers.star, colors.blue, '0.06')
@@ -190,6 +190,33 @@ def run_time_series_beta_noise():
     a = 1
     b = 0.56
     epsilon = 0.004
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: functions_b_noise.f(a, b, x, epsilon),
+        skip=skip
+    )
+    (Plotter()
+        .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
+        .setup_x_label('t', font_size=25, label_pad=0)
+        .setup_x_ticks(font_size=20)
+        .setup_y_label('x', font_size=25, label_pad=12)
+        .setup_y_ticks(font_size=20)
+        .setup_grid(grid.major)
+        # .setup_title('Time series $\beta$-noise')
+        .plot(source[0], source[1], '.', colors.steel_blue)
+        .show_last())
+
+
+def run_time_series_beta_noise_can_drop():
+    time_range = range(1, 250 + 1)
+    x_start = 0.06
+    skip = False
+
+    a = 1
+    b = 0.56
+    epsilon = 0.04
 
     source = time_series(
         time_range=time_range,
@@ -423,6 +450,56 @@ def run_time_series_compare_noise():
         .show_last())
 
 
+def run_time_series_2_cycle():
+    time_range = range(1, 100 + 1)
+    x_start = 0.1
+    skip = False
+
+    a = 1
+    b = 0.4
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: function.f(a, b, x),
+        skip=skip
+    )
+
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x', label_pad=10)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Time series')
+        .plot(source[0], source[1], markers.star, colors.steel_blue)
+        .show_last())
+
+
+def run_time_series_chaos():
+    time_range = range(1, 100 + 1)
+    x_start = 0.1
+    skip = False
+
+    a = 1
+    b = 0.25
+
+    source = time_series(
+        time_range=time_range,
+        x_start=x_start,
+        f=lambda x: function.f(a, b, x),
+        skip=skip
+    )
+
+    (Plotter()
+        .setup_x_label('t')
+        .setup_y_label('x', label_pad=10)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Time series')
+        .plot(source[0], source[1], markers.star, colors.steel_blue)
+        .show_last())
+
+
 def run_bifurcation():
     source = bifurcation(
         time_range=range(1, 100 + 1),
@@ -435,10 +512,10 @@ def run_bifurcation():
 
     (Plotter()
         .setup_x_label('$\\beta$')
-        .setup_y_label('x')
+        .setup_y_label('x', label_pad=5)
         .setup_y_scale(scale.log)
         .setup_grid(grid.major)
-        .setup_title('Bifurcation')
+        # .setup_title('Bifurcation')
         .scatter(source[0], source[1], '.', colors.steel_blue)
      # .show())
         .show_last())
@@ -461,14 +538,14 @@ def run_compare_chaos_bifurcation():
     source0 = convert_dict_to_lists(source0)
 
     (Plotter()
-        .adjust(top=0.92, bottom=0.165, left=0.175, right=0.95)
+        .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
         .setup_x_label('$\\beta$', font_size=25, label_pad=0)
+        .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
         .setup_y_label('x', font_size=25, label_pad=12)
-        .setup_x_ticks(font_size=15)
         .setup_y_ticks(font_size=15)
         .setup_y_scale(scale.log)
         .setup_grid(grid.major)
-        .setup_title('Bifurcation')
+        # .setup_title('Bifurcation')
         .scatter(source0[0], source0[1], '.', colors.steel_blue)
         .show())
 
@@ -555,7 +632,12 @@ def run_bifurcation_with_absorbing_area():
     )
 
     (Plotter()
-        ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('x', label_pad=5)
+        .setup_y_scale(scale.log)
+        .setup_grid(grid.major)
+        # .setup_title("Bifurcation")
+        # ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
         .scatter(draw_x, draw_y, '.', colors.steel_blue)
         .plot(source[0], source[1], ',', colors.red)
         .plot(source[0], source[2], ',', colors.red)
@@ -574,7 +656,12 @@ def run_lyapunov():
     )
 
     (Plotter()
-        ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
+        .setup_x_label('$\\beta$')
+        .setup_y_label('$\\lambda$', label_pad=5)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title("Lyapunov")
+        # ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
         .plot(source[0], source[1], ',', colors.red)
         .show_last())
 
@@ -605,11 +692,80 @@ def run_lamerei():
         f=lambda x: function.f(a, b, x),
     )
 
-    plotter = Plotter()._setup('$x_t$', '$x_{t+1}$', 'linear', 'major', 'Lamerei')
+    plotter = (Plotter()
+               # .setup_title("Lamerei")
+               .setup_x_label('$x_t$')
+               .setup_y_label('$x_{t + 1}$')
+               .setup_grid(grid.major)
+               .setup_y_scale(scale.linear))
 
     for lst in [source0, source1, source2]:
         for i in lst:
             plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    (plotter
+        .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+        .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+        .show_last())
+
+
+def run_lamerei_fast_zero():
+    a = 1
+    b = 0.56
+    time_range = range(1, 100 + 1)
+    skip = False
+    x_range = np.arange(0, 1.4, 0.01)
+
+    source = lamerei(
+        x_start=1.3,
+        time_range=time_range,
+        skip=skip,
+        f=lambda x: function.f(a, b, x)
+    )
+
+    plotter = (Plotter()
+               # .setup_title("Lamerei")
+               .setup_x_label('$x_t$')
+               .setup_y_label('$x_{t + 1}$', label_pad=15)
+               .setup_grid(grid.major)
+               .setup_y_scale(scale.linear))
+
+    for i in source:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
+
+    (plotter
+        .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+        .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+        .show_last())
+
+
+def run_lamerei_fast_zero_segment():
+    a = 1
+    b = 0.56
+    time_range = range(1, 100 + 1)
+    skip = False
+    x_range = np.arange(0, 0.1, 0.01)
+
+    source = lamerei(
+        x_start=1.3,
+        time_range=time_range,
+        skip=skip,
+        f=lambda x: function.f(a, b, x)
+    )
+
+    plotter = (Plotter()
+               # .setup_title("Lamerei")
+               .setup_x_label('$x_t$')
+               .setup_y_label('$x_{t + 1}$', label_pad=15)
+               .setup_grid(grid.major)
+               .setup_y_scale(scale.linear))
+
+    for i in source:
+        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+
+    plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
 
     (plotter
         .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
@@ -783,8 +939,11 @@ def run_cyclic_mean():
     )
 
     (Plotter()
-        .setup_x_label('$\\beta$')
-        .setup_y_label('x')
+        .adjust(left=0.125, right=0.9, top=0.92, bottom=0.15)
+        .setup_x_label('$\\beta$', font_size=20)
+        .setup_y_label('x', font_size=20, label_pad=10)
+        .setup_y_ticks(font_size=15)
+        .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
         .setup_y_scale(scale.linear)
         .setup_grid(grid.major)
         # .setup_title('EV cyclic')
@@ -792,7 +951,7 @@ def run_cyclic_mean():
         .plot_line(source1, markers.point, colors.red, '$\\varepsilon = 0.01$')
         .plot_line(source2, markers.point, colors.green, '$\\varepsilon = 0.03$')
         .plot_line(source3, markers.point, colors.black, '$\\varepsilon = 0.04$')
-        .legend()
+        .legend(font_size=15)
         .show_last())
 
 
@@ -863,7 +1022,7 @@ def run_cyclic_variance():
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: function.f(1, b, x),
-        count=100
+        count=1000
     )
     source1 = cyclical_variance(
         time_range=range(1, 100 + 1),
@@ -871,7 +1030,7 @@ def run_cyclic_variance():
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
         # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
-        count=100
+        count=1000
     )
     source2 = cyclical_variance(
         time_range=range(1, 100 + 1),
@@ -879,7 +1038,7 @@ def run_cyclic_variance():
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
         # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
-        count=100
+        count=1000
     )
     source3 = cyclical_variance(
         time_range=range(1, 100 + 1),
@@ -887,12 +1046,15 @@ def run_cyclic_variance():
         b_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
         # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
-        count=100
+        count=1000
     )
 
     (Plotter()
-        .setup_x_label('$\\beta$')
-        .setup_y_label('x')
+        .adjust(left=0.125, right=0.9, top=0.92, bottom=0.15)
+        .setup_x_label('$\\beta$', font_size=20)
+        .setup_y_label('x', font_size=20, label_pad=10)
+        .setup_y_ticks(font_size=15)
+        .setup_x_ticks(font_size=15, ticks=np.arange(0.2, 0.6, 0.05))
         .setup_y_scale(scale.linear)
         .setup_grid(grid.major)
         # .setup_title('Variance cyclic')
@@ -900,7 +1062,7 @@ def run_cyclic_variance():
         .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
         .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
         .plot_line(source3, '.', colors.black, '$\\varepsilon = 0.04$')
-        .legend()
+        .legend(font_size=15)
         .show_last())
 
 
@@ -919,7 +1081,7 @@ def run_stochastic_sensitivity_b_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.373], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
         epsilon=epsilon,
         f=lambda b, x: function.f(1, b, x),
@@ -936,15 +1098,6 @@ def run_stochastic_sensitivity_b_noise():
         # f=lambda b, x: functions.f_pb(1, b, x, epsilon)
     )
     chaos = convert_dict_to_lists(chaos)
-
-    # .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
-    # .setup_x_label('t', font_size=25, label_pad=0)
-    # .setup_x_ticks(font_size=20)
-    # .setup_y_label('x', font_size=25, label_pad=12)
-    # .setup_y_ticks(font_size=20)
-
-    # Create a Rectangle patch
-    # rect = patches.Rectangle((50, 100), 40, 30, linewidth=1, edgecolor='r', facecolor='none')
 
     plotter = (Plotter()
                 # ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\beta$-noise')
@@ -1033,7 +1186,7 @@ def run_stochastic_sensitivity_b_noise_2():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.373], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
         f=lambda b, x: function.f(1, b, x),
@@ -1363,6 +1516,123 @@ def run_m_b_additive_noise():
     plotter.show_last()
 
 
+def run_machalanobis_alpha_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    equilibrium = bifurcation_with_equilibrium(
+        b_range=p_range,
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values,
+        save_all=True
+    )
+
+    m_beta = m_b(
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.375,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    stable_equilibrium = equilibrium[1]
+    unstable_equilibrium = equilibrium[0]
+    prototype_equilibrium = equilibrium[2]
+
+    stable_equilibrium = convert_line_to_dict(stable_equilibrium)
+    unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
+    prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
+
+    # Что-то намудрил с m
+
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[2])
+    line2 = convert_line_to_dict(m_beta[4])
+    line3 = convert_line_to_dict(m_beta[7])
+    lines = [line0, line1, line2, line3]
+
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
+
+    mahalanobis0 = Line()
+    mahalanobis1 = Line()
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
+
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
+
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
+
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
+
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+
+    plotter.plot_line(mahalanobis0, '.', 'red')
+    plotter.plot_line(mahalanobis1, '.', 'blue')
+
+    plotter.show_last()
+    # plotter.show()
+
+
 def run_machalanobis_beta_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
@@ -1397,7 +1667,239 @@ def run_machalanobis_beta_noise():
         left2=0.379,
         right2=0.435,
         left3=0.36,
-        right3=0.37,
+        right3=0.375,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    stable_equilibrium = equilibrium[1]
+    unstable_equilibrium = equilibrium[0]
+    prototype_equilibrium = equilibrium[2]
+
+    stable_equilibrium = convert_line_to_dict(stable_equilibrium)
+    unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
+    prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
+
+    # Что-то намудрил с m
+
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[2])
+    line2 = convert_line_to_dict(m_beta[4])
+    line3 = convert_line_to_dict(m_beta[7])
+    lines = [line0, line1, line2, line3]
+
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
+
+    mahalanobis0 = Line()
+    mahalanobis1 = Line()
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
+
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
+
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
+
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
+
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+
+    plotter.plot_line(mahalanobis0, '.', 'red')
+    plotter.plot_line(mahalanobis1, '.', 'blue')
+
+    plotter.show_last()
+    # plotter.show()
+
+
+def run_machalanobis_additive_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    equilibrium = bifurcation_with_equilibrium(
+        b_range=p_range,
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values,
+        save_all=True
+    )
+
+    m_beta = m_b(
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.375,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    stable_equilibrium = equilibrium[1]
+    unstable_equilibrium = equilibrium[0]
+    prototype_equilibrium = equilibrium[2]
+
+    stable_equilibrium = convert_line_to_dict(stable_equilibrium)
+    unstable_equilibrium = convert_line_to_dict(unstable_equilibrium)
+    prototype_equilibrium = convert_line_to_dict(prototype_equilibrium)
+
+    line0 = convert_line_to_dict(m_beta[0])
+    line1 = convert_line_to_dict(m_beta[2])
+    line2 = convert_line_to_dict(m_beta[4])
+    line3 = convert_line_to_dict(m_beta[7])
+    lines = [line0, line1, line2, line3]
+
+    result = dict()
+    for b in stable_equilibrium.keys():
+        result[b] = 0
+
+    mahalanobis0 = Line()
+    mahalanobis1 = Line()
+    for b in result.keys():
+        y_s = None
+        if b in stable_equilibrium.keys():
+            y_s = stable_equilibrium[b]
+
+        y_n = None
+        if b in unstable_equilibrium.keys():
+            y_n = unstable_equilibrium[b]
+
+        y_p = None
+        if b in prototype_equilibrium.keys():
+            y_p = prototype_equilibrium[b]
+
+        for line in lines:
+            m = None
+            if b in line.keys():
+                m = line[b]
+
+            metrics0 = None
+            if y_s is not None and y_n is not None and m is not None:
+                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+
+            metrics1 = None
+            if y_s is not None and y_p is not None and m is not None:
+                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+
+            if metrics0 is not None:
+                mahalanobis0.add_x(b).add_y(metrics0)
+
+            if metrics1 is not None:
+                mahalanobis1.add_x(b).add_y(metrics1)
+
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+
+    plotter.plot_line(mahalanobis0, '.', 'red')
+    plotter.plot_line(mahalanobis1, '.', 'blue')
+
+    plotter.show_last()
+    # plotter.show()
+
+
+def run_euclid_beta_noise():
+    p_range = np.arange(0.22, 0.582355932, 0.001)
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=p_range,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    equilibrium = bifurcation_with_equilibrium(
+        b_range=p_range,
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values,
+        save_all=True
+    )
+
+    m_beta = m_b(
+        b_range=p_range,
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.375,
         left4=0.22,
         right4=0.34,
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
@@ -1467,7 +1969,15 @@ def run_machalanobis_beta_noise():
             if metrics is not None:
                 mahalanobis1.add_x(b).add_y(metrics)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
@@ -1475,7 +1985,7 @@ def run_machalanobis_beta_noise():
     plotter.show_last()
 
 
-def run_machalanobis_alpha_noise():
+def run_euclid_alpha_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
     values = bifurcation(
@@ -1509,7 +2019,7 @@ def run_machalanobis_alpha_noise():
         left2=0.379,
         right2=0.435,
         left3=0.36,
-        right3=0.37,
+        right3=0.375,
         left4=0.22,
         right4=0.34,
         m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
@@ -1563,11 +2073,11 @@ def run_machalanobis_alpha_noise():
 
             metrics0 = None
             if y_s is not None and y_n is not None and m is not None:
-                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+                metrics0 = abs(y_s - y_n)
 
             metrics1 = None
             if y_s is not None and y_p is not None and m is not None:
-                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+                metrics1 = abs(y_s - y_p)
 
             if metrics0 is not None:
                 mahalanobis0.add_x(b).add_y(metrics0)
@@ -1575,7 +2085,15 @@ def run_machalanobis_alpha_noise():
             if metrics1 is not None:
                 mahalanobis1.add_x(b).add_y(metrics1)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
@@ -1583,7 +2101,7 @@ def run_machalanobis_alpha_noise():
     plotter.show_last()
 
 
-def run_machalanobis_additive_noise():
+def run_euclid_additive_noise():
     p_range = np.arange(0.22, 0.582355932, 0.001)
 
     values = bifurcation(
@@ -1617,7 +2135,7 @@ def run_machalanobis_additive_noise():
         left2=0.379,
         right2=0.435,
         left3=0.36,
-        right3=0.37,
+        right3=0.375,
         left4=0.22,
         right4=0.34,
         m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),
@@ -1669,11 +2187,11 @@ def run_machalanobis_additive_noise():
 
             metrics0 = None
             if y_s is not None and y_n is not None and m is not None:
-                metrics0 = abs(y_s - y_n) / np.sqrt(m)
+                metrics0 = abs(y_s - y_n)
 
             metrics1 = None
             if y_s is not None and y_p is not None and m is not None:
-                metrics1 = abs(y_s - y_p) / np.sqrt(m)
+                metrics1 = abs(y_s - y_p)
 
             if metrics0 is not None:
                 mahalanobis0.add_x(b).add_y(metrics0)
@@ -1681,7 +2199,15 @@ def run_machalanobis_additive_noise():
             if metrics1 is not None:
                 mahalanobis1.add_x(b).add_y(metrics1)
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Mahalanobis metrics'))
+    plotter = (Plotter()
+        .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('x', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_grid(grid.major))
+
+    # plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Euclid metrics'))
 
     plotter.plot_line(mahalanobis0, '.', 'red')
     plotter.plot_line(mahalanobis1, '.', 'blue')
@@ -1718,7 +2244,7 @@ def critical_intensity_beta_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: function.f(1, b, x),
@@ -1736,7 +2262,7 @@ def critical_intensity_beta_noise():
             values=values,
             b_range=p_range,
             a=1,
-            borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+            borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
             m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
             f=lambda b, x: function.f(1, b, x),
@@ -1871,7 +2397,15 @@ def critical_intensity_beta_noise():
     yS = list(map(lambda x: x[2], S))
 
     (Plotter()
-        ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\beta$-noise')
+        .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('$\\varepsilon^*$', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Epsilon for $\\beta$-noise')
+        # ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\beta$-noise')
         .scatter(xR, yR, '.', 'red')
         .scatter(xS, yS, '.', 'navy')
         .show())
@@ -1887,6 +2421,7 @@ def critical_intensity_beta_noise():
         plotter.plot_line(line, ',', 'orange')
 
     plotter.show_last()
+    # plotter.show()
 
 
 def critical_intensity_alpha_noise():
@@ -1921,7 +2456,7 @@ def critical_intensity_alpha_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: function.f(1, b, x),
@@ -1939,7 +2474,7 @@ def critical_intensity_alpha_noise():
             values=values,
             b_range=p_range,
             a=1,
-            borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+            borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
             m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
             f=lambda b, x: function.f(1, b, x),
@@ -2074,7 +2609,15 @@ def critical_intensity_alpha_noise():
     yS = list(map(lambda x: x[2], S))
 
     (Plotter()
-        ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\alpha$-noise')
+        .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('$\\varepsilon^*$', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Epsilon for $\\alpha$-noise')
+        # ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for $\\alpha$-noise')
         .scatter(xR, yR, '.', 'red')
         .scatter(xS, yS, '.', 'navy')
         .show())
@@ -2089,8 +2632,8 @@ def critical_intensity_alpha_noise():
     for line in source2:
         plotter.plot_line(line, ',', 'orange')
 
-    plotter.show()
-    # plotter.show_last()
+    # plotter.show()
+    plotter.show_last()
 
 
 def critical_intensity_additive_noise():
@@ -2125,7 +2668,7 @@ def critical_intensity_additive_noise():
         values=values,
         b_range=p_range,
         a=1,
-        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+        borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
         f=lambda b, x: function.f(1, b, x),
@@ -2143,7 +2686,7 @@ def critical_intensity_additive_noise():
             values=values,
             b_range=p_range,
             a=1,
-            borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
+            borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
             m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
             f=lambda b, x: function.f(1, b, x),
@@ -2278,7 +2821,15 @@ def critical_intensity_additive_noise():
     yS = list(map(lambda x: x[2], S))
 
     (Plotter()
-        ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for additive noise')
+        .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
+        .setup_x_label('$\\beta$', font_size=20, label_pad=0)
+        .setup_x_ticks(font_size=15)
+        .setup_y_label('$\\varepsilon^*$', font_size=20, label_pad=12)
+        .setup_y_ticks(font_size=15)
+        .setup_y_scale(scale.linear)
+        .setup_grid(grid.major)
+        # .setup_title('Epsilon for additive noise')
+        # ._setup("$\\beta$", '$\\varepsilon^*$', 'linear', 'major', 'Epsilon for additive noise')
         .scatter(xR, yR, '.', 'red')
         .scatter(xS, yS, '.', 'navy')
         .show())
@@ -2313,7 +2864,7 @@ def run_stochastic_sensitivity_b_noise_to_file():
         left2=0.379,
         right2=0.435,
         left3=0.36,
-        right3=0.37,
+        right3=0.375,
         left4=0.22,
         right4=0.34,
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
@@ -2358,7 +2909,7 @@ def run_stochastic_sensitivity_a_noise_to_file():
         left2=0.379,
         right2=0.435,
         left3=0.36,
-        right3=0.37,
+        right3=0.375,
         left4=0.22,
         right4=0.34,
         m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
@@ -2403,7 +2954,7 @@ def run_stochastic_sensitivity_additive_noise_to_file():
         left2=0.379,
         right2=0.435,
         left3=0.36,
-        right3=0.37,
+        right3=0.375,
         left4=0.22,
         right4=0.34,
         m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),

@@ -17,6 +17,11 @@ if __name__ == "__main__":
     # run_time_series_compare_noise()
     # run_time_series_without_chaos_composition()
 
+    # run_time_series_beta_noise_can_drop()
+
+    # run_time_series_2_cycle()
+    # run_time_series_chaos()
+
     # Показать график бифуркации
     # run_bifurcation()
 
@@ -31,6 +36,8 @@ if __name__ == "__main__":
 
     # Показать лестницу Ламерея
     # run_lamerei()
+    # run_lamerei_fast_zero()
+    # run_lamerei_fast_zero_segment()
 
     # Показать график бифуркации и корни
     # run_bifurcation_with_equilibrium()
@@ -73,10 +80,14 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity_a_noise_to_file()
     # run_stochastic_sensitivity_additive_noise_to_file()
 
-    # run_machalanobis_beta_noise()
     # run_machalanobis_alpha_noise()
+    # run_machalanobis_beta_noise()
     # run_machalanobis_additive_noise()
 
-    # critical_intensity_beta_noise()
+    # run_euclid_alpha_noise()
+    # run_euclid_beta_noise()
+    # run_euclid_additive_noise()
+
+    critical_intensity_beta_noise()
     # critical_intensity_alpha_noise()
     # critical_intensity_additive_noise()

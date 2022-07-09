@@ -1,0 +1,43 @@
+\subsection{Математическое ожидание и дисперсия}
+
+    На графике \ref{EV_cyclic} для системы (\(\ref{beta_chaos}\)) (с \(\beta\)-шумом) представлены зависимости математического ожидания и дисперсии от параметра \(\beta\) и интенсивности шума \(\varepsilon\). На графике зависимости математического ожидания хорошо видно уменьшение параметрического интервала выживаемости популяции при увеличении интенсивности шума. Далее данное явление будет описано с помощью функции стохастической чувствительности.
+
+    На рисунках \ref{variance_cyclic_log} и \ref{variance_cyclic_linear} представлена зависимость дисперсии и параметра системы разными графиками в зависимости от интенсивности шума. Видно, что для выбранных интенсивностей тенденция сохраняется --- дисперсия падает с ростом значения параметра. На рисунке \ref{variance_cyclic_log} не виден график для \(\varepsilon = 0\), но его можно увидеть на рисунке \ref{variance_cyclic_linear}.
+
+    \begin{figure}
+        \centering
+        \subfloat[Математическое ожидание состояний системы]{
+            \includegraphics[width=0.5\textwidth]{stochastic/images/EV_cyclic.jpg}
+            \label{EV_cyclic}
+        }
+
+        \subfloat[Дисперсия состояний системы, логарифмическая шкала значений]{
+            \includegraphics[width=0.5\textwidth]{stochastic/images/variance_cyclic_log.jpg}
+            \label{variance_cyclic_log}
+        }
+        \subfloat[Дисперсия состояний системы, линейная шкала значений]{
+            \includegraphics[width=0.5\textwidth]{stochastic/images/variance_cyclic_linear.jpg}
+            \label{variance_cyclic_linear}
+        }
+        
+        \captionsetup{justification=centering}
+        \caption{Математическое ожидание и дисперсия для модели (\ref{beta_chaos}) (с \(\beta\)-шумом)}
+    \end{figure}
+        
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[width=0.5\textwidth]{stochastic/images/EV_cyclic.jpg}
+        
+    %     \captionsetup{justification=centering}
+    %     \caption{Математическое ожидание состояний системы \(\ref{beta_chaos}\) (для \(\beta\)-шума)}
+    %     \label{EV_cyclic}
+    % \end{figure}
+
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[width=\textwidth]{stochastic/images/variance_cyclic.jpg}
+        
+    %     \captionsetup{justification=centering}
+    %     \caption{Дисперсия состояний системы (\ref{beta_chaos}) (для \(\ref{beta_chaos}\))}
+    %     \label{variance_cyclic}
+    % \end{figure}

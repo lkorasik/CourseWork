@@ -92,11 +92,11 @@ class Plotter:
     def show_last(self):
         plt.show(block=True)
 
-    def legend(self):
+    def legend(self, font_size=10):
         lines = []
         names = []
         for k in self._legend:
             lines.append(k)
             names.append(self._legend[k])
-        self.ax.legend(lines, names)
+        self.ax.legend(lines, names, fontsize=font_size)
         return self

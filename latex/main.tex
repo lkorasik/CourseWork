@@ -19,6 +19,8 @@
 
 % Setup captions for figures
 \usepackage{caption}
+\captionsetup[figure]{name=Рис.}
+% \addto\captionsenglish{\renewcommand{\figurename}{Рис.}}
 
 % Enumerate item 
 \usepackage[shortlabels]{enumitem}
@@ -28,6 +30,8 @@
 
 % Subfigures
 \usepackage{subfig}
+
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 
 % Hyperlink
 \usepackage{hyperref}
@@ -42,12 +46,15 @@
 }
 
 % Содержание
-\addto\captionsenglish{\renewcommand{\contentsname}{\begin{center}СОДЕРЖАНИЕ\end{center}}}
+\addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}}
 
 \newcommand{\comment}[1]{\textcolor{red}{\emph{#1}}}
 
 \begin{document}
-    \tableofcontents
+\selectlanguage{russian}
+    \begin{center}
+        \tableofcontents
+    \end{center}
 
     \include{intro.tex}
 
@@ -63,12 +70,12 @@
 
     \include{conclusion.tex}
 
-    \comment{@book{
-  elementsOfNonlinearDynamic,
-  author = {Ряшко, Л. Б. and Васин, В. В.},
-  year = {2006},
-  title = {Элементы нелинейной динамики: от порядка к хаосу}
-}}
+%     \comment{@book{
+%   elementsOfNonlinearDynamic,
+%   author = {Ряшко, Л. Б. and Васин, В. В.},
+%   year = {2006},
+%   title = {Элементы нелинейной динамики: от порядка к хаосу}
+% }}
 
     \bibliographystyle{apalike}
     % \bibliographystyle{gost2008}
