@@ -1,4 +1,6 @@
+import time
 from multiprocessing import Queue, Process
+from queue import Empty
 from time import sleep
 
 
@@ -34,21 +36,33 @@ class Dispatcher:
         for _ in range(len(self._workers)):
             self._commands.put("stop")
 
+    def tasks_finished(self):
+        for _ in range(len(self._workers)):
+            self._commands.put("tasks_finished")
+
     def wait(self):
         for worker in self._workers:
             worker.join()
 
 
 def executor2(id_, tasks: Queue, commands: Queue):
+    finish = False
     while True:
+        command = None
         if commands.qsize() != 0:
             command = commands.get()
             if command == "stop":
                 break
+            if command == "tasks_finished":
+                finish = True
 
-        task = tasks.get()
-        task.perform()
-        print("Task " + str(task._uid) + " done by worker " + str(id_))
+        try:
+            task = tasks.get_nowait()
+            task.perform()
+            print("Task " + str(task._uid) + " done by worker " + str(id_))
+        except Empty:
+            if finish:
+                break
 
 
 def f():
@@ -70,5 +84,10 @@ if __name__ == "__main__":
 
     # dispatcher.stop()
     # dispatcher.wait()
+    time.sleep(3)
+    dispatcher.add_task(Task(10, f, [], {}))
+
+    time.sleep(3)
+    dispatcher.tasks_finished()
 
     print("All work done")
