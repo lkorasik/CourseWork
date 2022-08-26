@@ -1,15 +1,17 @@
 from multiprocessing import Queue, Process
 from queue import Empty
 
+from parallel.commands import Commands
+
 
 def executor(id_, tasks: Queue, commands: Queue, results: Queue):
     finish = False
     while True:
         if commands.qsize() != 0:
             command = commands.get()
-            if command == "stop":
+            if command == Commands.STOP:
                 break
-            if command == "tasks_finished":
+            if command == Commands.TASK_FINISHED:
                 finish = True
 
         try:
@@ -35,19 +37,19 @@ class Dispatcher:
         self._tasks.put(task)
 
     def start(self):
-        for worker in self._workers:
-            worker.start()
+        for item in self._workers:
+            item.start()
 
     def done(self):
         self._tasks.close()
 
     def stop(self):
         for _ in range(len(self._workers)):
-            self._commands.put("stop")
+            self._commands.put(Commands.STOP)
 
     def tasks_finished(self):
         for _ in range(len(self._workers)):
-            self._commands.put("tasks_finished")
+            self._commands.put(Commands.TASK_FINISHED)
 
     def wait(self):
         for worker in self._workers:
