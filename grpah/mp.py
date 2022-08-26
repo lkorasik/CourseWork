@@ -27,6 +27,9 @@ class Dispatcher:
         for worker in self._workers:
             worker.start()
 
+    def done(self):
+        self._tasks.close()
+
     def stop(self):
         for _ in range(len(self._workers)):
             self._commands.put("stop")
@@ -38,9 +41,10 @@ class Dispatcher:
 
 def executor2(id_, tasks: Queue, commands: Queue):
     while True:
-        command = commands.get()
-        if command == "stop":
-            break
+        if commands.qsize() != 0:
+            command = commands.get()
+            if command == "stop":
+                break
 
         task = tasks.get()
         task.perform()
@@ -64,8 +68,7 @@ if __name__ == "__main__":
 
     print("Thread started")
 
-    dispatcher.stop()
-
+    # dispatcher.stop()
     # dispatcher.wait()
 
     print("All work done")
