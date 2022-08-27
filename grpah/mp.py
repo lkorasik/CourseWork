@@ -18,7 +18,7 @@ if __name__ == "__main__":
     dispatcher = Dispatcher(2)
 
     for i in range(10):
-        task = Task(i, g, [i, i], {})
+        task = Task(i, g, [i], {"y": i})
         dispatcher.add_task(task)
 
     print("Tasks created")
@@ -37,6 +37,6 @@ if __name__ == "__main__":
 
     print("All work done")
 
-    list = dispatcher.get_results()
-    while not list.empty():
-        print(list.get())
+    results = dispatcher.get_results()
+    while not results.empty():
+        print(results.get())

@@ -10,7 +10,10 @@ class Task:
 
     def perform(self):
         result = self._func(*self._args, **self._kwargs)
-        return Result(self._uid, self._args, result)
+        return Result(self, result)
 
     def get_uid(self):
         return self._uid
+
+    def get_args(self):
+        return self._args + list(self._kwargs.values())
