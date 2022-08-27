@@ -16,16 +16,14 @@ def g(x, y):
 
 if __name__ == "__main__":
     dispatcher = Dispatcher(2)
+    dispatcher.start()
+    print("Dispatcher started")
 
     for i in range(10):
         task = Task(i, g, [i], {"y": i})
         dispatcher.add_task(task)
 
     print("Tasks created")
-
-    dispatcher.start()
-
-    print("Thread started")
 
     # dispatcher.stop()
     # dispatcher.wait()
