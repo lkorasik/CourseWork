@@ -1,37 +1,19 @@
-from multiprocessing import Queue, Process
-from queue import Empty
+from multiprocessing import Queue, Process, cpu_count
 
 from parallel.commands import Commands
-
-
-def executor(id_, tasks: Queue, commands: Queue, results: Queue):
-    finish = False
-    while True:
-        if commands.qsize() != 0:
-            command = commands.get()
-            if command == Commands.STOP:
-                break
-            if command == Commands.TASK_FINISHED:
-                finish = True
-
-        try:
-            task = tasks.get_nowait()
-            result = task.perform()
-            results.put(result)
-            print("Task " + str(task._uid) + " done by worker " + str(id_))
-        except Empty:
-            if finish:
-                break
+from parallel.worker import Worker
 
 
 class Dispatcher:
-    def __init__(self):
+    def __init__(self, workers_count=cpu_count()):
         self._tasks = Queue()
         self._commands = Queue()
         self._results = Queue()
-        self._worker_count = 2
-        self._workers = [Process(target=executor, args=(i, self._tasks, self._commands, self._results)) for i in
-                         range(self._worker_count)]
+        self._worker_count = workers_count
+        self._workers = [self._create_worker(i) for i in range(self._worker_count)]
+
+    def _create_worker(self, uid):
+        return Process(target=Worker.start_work, args=(uid, self._tasks, self._commands, self._results))
 
     def add_task(self, task):
         self._tasks.put(task)

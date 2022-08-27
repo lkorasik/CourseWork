@@ -11,3 +11,6 @@ class Task:
     def perform(self):
         result = self._func(*self._args, **self._kwargs)
         return Result(self._uid, self._args, result)
+
+    def get_uid(self):
+        return self._uid

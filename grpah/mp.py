@@ -15,7 +15,7 @@ def g(x, y):
 
 
 if __name__ == "__main__":
-    dispatcher = Dispatcher()
+    dispatcher = Dispatcher(2)
 
     for i in range(10):
         task = Task(i, g, [i, i], {})
