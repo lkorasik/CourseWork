@@ -1,7 +1,6 @@
 from algorithms.regime_map import regime_map
 from runner import *
 
-
 if __name__ == "__main__":
     print("Run")
 
@@ -47,7 +46,7 @@ if __name__ == "__main__":
 
     # Просчитать карту режимов
     # run_regime_map()
-    
+
     # Матожидание
     # run_mean()
 

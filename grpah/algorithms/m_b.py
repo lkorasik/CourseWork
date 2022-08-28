@@ -60,10 +60,18 @@ def m_b(b_range, a, left1, right1, left2, right2, left3, right3, left4, right4, 
 
         for i in range(len(x0)):
             r = alg.get_m(4)
-            m1_ = float(r[0].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
-            m2_ = float(r[1].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
-            m3_ = float(r[2].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
-            m4_ = float(r[3].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
+            m1_ = float(
+                r[0].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(
+                    Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
+            m2_ = float(
+                r[1].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(
+                    Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
+            m3_ = float(
+                r[2].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(
+                    Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
+            m4_ = float(
+                r[3].subs(symbols.a, a).subs(symbols.b, b).subs(Symbol("x1"), x0[i]).subs(Symbol("x2"), x1[i]).subs(
+                    Symbol("x3"), x2[i]).subs(Symbol("x4"), x3[i]))
 
             for line in lines:
                 line.add_x(b)
