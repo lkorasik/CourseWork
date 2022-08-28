@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib import patches, pyplot as plt
 
 import functions
 from algorithms.absorbing_area import absorbing_area
@@ -19,9 +18,9 @@ from algorithms.regime_map import regime_map
 from algorithms.time_series import time_series
 from algorithms.variance import variance
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
-from visual.values import colors, grid, markers, scale
 from visual.line import Line
 from visual.plotter import Plotter
+from visual.values import colors, grid, markers, scale
 
 
 def run_time_series_without_chaos():
