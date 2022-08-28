@@ -2,7 +2,8 @@ from algorithms.single_newton import single_newton_unlimited
 from visual.line import Line
 
 
-def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation, save_all=False):
+def bifurcation_with_equilibrium(b_range, x12, precision, function, d_function, f, sf, dsf, bifurcation,
+                                 save_all=False):
     result = []
 
     diffs = dict()
