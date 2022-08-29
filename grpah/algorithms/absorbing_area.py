@@ -17,14 +17,15 @@ def absorbing_area(p_range, left, right, step, f):
     """
 
     draw_x = []
-    draw_y1 = []
-    draw_y2 = []
+    draw_y_up = []
+    draw_y_down = []
+
     for p in p_range:
         max_ = find_local_max(left, right, step, lambda x: f(p, x))
         area_bounds = get_absorbing_area(max_, lambda x: f(p, x))
 
         draw_x.append(p)
-        draw_y1.append(area_bounds[1])
-        draw_y2.append(area_bounds[2])
+        draw_y_up.append(area_bounds[1])
+        draw_y_down.append(area_bounds[2])
 
-    return draw_x, draw_y1, draw_y2
+    return draw_x, draw_y_up, draw_y_down

@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # run_compare_chaos_bifurcation()
 
     # Показать график бифуркации с absorbing area
-    # run_bifurcation_with_absorbing_area()
+    run_bifurcation_with_absorbing_area()
 
     # Показать показатель Ляпунова
     # run_lyapunov()
