@@ -1,8 +1,11 @@
+import types
 from multiprocessing import Queue, Process, cpu_count
 
 from parallel.commands import Commands
 from parallel.worker import Worker
 
+# todo: проблема в том, что 4 команды в общей очереди не всегда могут дойти до всех потоков, в итоге кто-то прочитал не
+#  свои сообщения и остановился
 
 class Dispatcher:
     def __init__(self, workers_count=cpu_count()):

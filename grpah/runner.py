@@ -18,6 +18,9 @@ from algorithms.regime_map import regime_map
 from algorithms.time_series import time_series
 from algorithms.variance import variance
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
+from hack import DillPickleCallable
+from parallel.dispatcher import Dispatcher
+from parallel.task import Task
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import colors, grid, markers, scale
@@ -83,6 +86,82 @@ def run_time_series_without_chaos_composition():
      .plot(source3[0], source3[1], markers.star, colors.royal_blue, '0.04')
      .legend()
      .show_last())
+
+
+def run_time_series_without_chaos_composition_parallel():
+    time_range = range(1, 30 + 1)
+    a = 1
+    b = 0.56
+
+    dispatcher = Dispatcher(1)
+    dispatcher.start()
+
+    task0 = Task(0, time_series, [], {"time_range": time_range,
+                                      "x_start": 1.3,
+                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "skip": False})
+    dispatcher.add_task(task0)
+
+    task1 = Task(1, time_series, [], {"time_range": time_range,
+                                      "x_start": 0.3,
+                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "skip": False})
+    dispatcher.add_task(task1)
+
+    task2 = Task(2, time_series, [], {"time_range": time_range,
+                                      "x_start": 0.06,
+                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "skip": False})
+    dispatcher.add_task(task2)
+
+    task3 = Task(3, time_series, [], {"time_range": time_range,
+                                      "x_start": 0.04,
+                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "skip": False})
+    dispatcher.add_task(task3)
+
+    dispatcher.tasks_finished()
+    dispatcher.wait()
+
+    # source0 = time_series(
+    #     time_range=time_range,
+    #     x_start=1.3,
+    #     f=lambda x: function.f(a, b, x),
+    #     skip=False
+    # )
+    # source1 = time_series(
+    #     time_range=time_range,
+    #     x_start=0.3,
+    #     f=lambda x: function.f(a, b, x),
+    #     skip=False
+    # )
+    # source2 = time_series(
+    #     time_range=time_range,
+    #     x_start=0.06,
+    #     f=lambda x: function.f(a, b, x),
+    #     skip=False
+    # )
+    # source3 = time_series(
+    #     time_range=time_range,
+    #     x_start=0.04,
+    #     f=lambda x: function.f(a, b, x),
+    #     skip=False
+    # )
+
+    plotter = (Plotter()
+     .setup_x_label('t')
+     .setup_y_label('x', label_pad=10)
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     # .setup_title('Time series')
+     .legend())
+
+    results = dispatcher.get_results()
+    while not results.empty():
+        item = results.get()
+        plotter.plot(item[0], item[1], markers.star, colors.dark_violet, '1.3')
+
+    plotter.show_last()
 
 
 def run_time_series_different_noises():
@@ -1619,7 +1698,7 @@ def run_machalanobis_alpha_noise():
                .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
                .setup_x_label('$\\beta$', font_size=20, label_pad=0)
                .setup_x_ticks(font_size=15)
-               .setup_y_label('x', font_size=20, label_pad=12)
+               .setup_y_label('$d_M$', font_size=20, label_pad=12)
                .setup_y_ticks(font_size=15)
                .setup_grid(grid.major))
 
@@ -1736,7 +1815,7 @@ def run_machalanobis_beta_noise():
                .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
                .setup_x_label('$\\beta$', font_size=20, label_pad=0)
                .setup_x_ticks(font_size=15)
-               .setup_y_label('x', font_size=20, label_pad=12)
+               .setup_y_label('$d_M$', font_size=20, label_pad=12)
                .setup_y_ticks(font_size=15)
                .setup_grid(grid.major))
 
@@ -1851,7 +1930,7 @@ def run_machalanobis_additive_noise():
                .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
                .setup_x_label('$\\beta$', font_size=20, label_pad=0)
                .setup_x_ticks(font_size=15)
-               .setup_y_label('x', font_size=20, label_pad=12)
+               .setup_y_label('$d_M$', font_size=20, label_pad=12)
                .setup_y_ticks(font_size=15)
                .setup_grid(grid.major))
 
@@ -1972,7 +2051,7 @@ def run_euclid_beta_noise():
                .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
                .setup_x_label('$\\beta$', font_size=20, label_pad=0)
                .setup_x_ticks(font_size=15)
-               .setup_y_label('x', font_size=20, label_pad=12)
+               .setup_y_label('$d_E$', font_size=20, label_pad=12)
                .setup_y_ticks(font_size=15)
                .setup_grid(grid.major))
 
@@ -2088,7 +2167,7 @@ def run_euclid_alpha_noise():
                .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
                .setup_x_label('$\\beta$', font_size=20, label_pad=0)
                .setup_x_ticks(font_size=15)
-               .setup_y_label('x', font_size=20, label_pad=12)
+               .setup_y_label('$d_E$', font_size=20, label_pad=12)
                .setup_y_ticks(font_size=15)
                .setup_grid(grid.major))
 
@@ -2202,7 +2281,7 @@ def run_euclid_additive_noise():
                .adjust(top=0.9, bottom=0.13, left=0.17, right=0.945)
                .setup_x_label('$\\beta$', font_size=20, label_pad=0)
                .setup_x_ticks(font_size=15)
-               .setup_y_label('x', font_size=20, label_pad=12)
+               .setup_y_label('$d_E$', font_size=20, label_pad=12)
                .setup_y_ticks(font_size=15)
                .setup_grid(grid.major))
 

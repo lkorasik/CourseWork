@@ -14,6 +14,7 @@ class Worker:
                 if command == Commands.STOP:
                     break
                 if command == Commands.TASK_FINISHED:
+                    print("Worker " + str(executor_id) + " got stop command")
                     should_stop = True
 
             try:
@@ -23,4 +24,5 @@ class Worker:
                 print("Task " + str(task.get_uid()) + " done by worker " + str(executor_id))
             except Empty:
                 if should_stop:
+                    print("Worker " + str(executor_id) + " stop running")
                     break

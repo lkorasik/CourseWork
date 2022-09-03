@@ -22,7 +22,10 @@ if __name__ == "__main__":
     # run_time_series_chaos()
 
     # Показать график бифуркации
-    run_bifurcation()
+    # run_bifurcation()
+
+    # todo: experiment
+    # run_time_series_without_chaos_composition_parallel()
 
     # Показать графики бифуркации с разными шумами
     # run_compare_chaos_bifurcation()
