@@ -1,38 +1,39 @@
-from multiprocessing import Queue, Process
+from multiprocessing import Process, Manager
 from queue import Empty
-
-from parallel.commands import Commands
 
 
 class Worker(Process):
-    def __init__(self, uid, tasks, results):
+    """Исполнитель"""
+    def __init__(self, uid, tasks, results, task_finished_event, stop_event):
         print("Worker " + str(uid) + " created")
         self._id = uid
         self._tasks = tasks
-        self._commands = Queue()
         self._results = results
+
+        self._should_stop = Manager().Value('bool', False)
+
+        task_finished_event.add_handler(self.handle_task_finished_event)
+        stop_event.add_handler(self.handle_stop_event)
+
         super(Worker, self).__init__()
 
-    def get_commands(self):
-        return self._commands
+    def handle_stop_event(self, event):
+        """Обработчик события прерывания работы"""
+        self.kill()
+
+    def handle_task_finished_event(self, event):
+        """Обработчик события завершения добавления задач"""
+        self._should_stop.value = True
 
     def run(self):
-        should_stop = False
+        """Запустить исполнителя"""
         while True:
-            if self._commands.qsize() != 0:
-                command = self._commands.get()
-                if command == Commands.STOP:
-                    break
-                if command == Commands.TASK_FINISHED:
-                    print("Worker " + str(self._id) + " got stop command")
-                    should_stop = True
-
             try:
                 task = self._tasks.get_nowait()
                 result = task.perform()
                 self._results.put(result)
                 print("Task " + str(task.get_uid()) + " done by worker " + str(self._id))
             except Empty:
-                if should_stop:
+                if self._should_stop.value:
                     print("Worker " + str(self._id) + " stop running")
                     break
