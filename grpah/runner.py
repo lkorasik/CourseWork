@@ -96,6 +96,13 @@ def run_time_series_without_chaos_composition_parallel():
     dispatcher = Dispatcher(1)
     dispatcher.start()
 
+    colors_dict = {
+        0: colors.dark_violet,
+        1: colors.dark_slate_blue,
+        2: colors.blue,
+        3: colors.royal_blue
+    }
+
     task0 = Task(0, time_series, [], {"time_range": time_range,
                                       "x_start": 1.3,
                                       "f": DillPickleCallable(lambda x: function.f(a, b, x)),
@@ -159,7 +166,7 @@ def run_time_series_without_chaos_composition_parallel():
     results = dispatcher.get_results()
     while not results.empty():
         item = results.get()
-        plotter.plot(item[0], item[1], markers.star, colors.dark_violet, '1.3')
+        plotter.plot(item.get_result()[0], item.get_result()[1], markers.star, colors_dict[item.get_uid()], '1.3')
 
     plotter.show_last()
 
