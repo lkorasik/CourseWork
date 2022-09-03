@@ -1,8 +1,8 @@
-import types
-from multiprocessing import Queue, Process, cpu_count
+from multiprocessing import Queue, cpu_count
 
 from parallel.commands import Commands
 from parallel.worker import Worker
+
 
 # todo: проблема в том, что 4 команды в общей очереди не всегда могут дойти до всех потоков, в итоге кто-то прочитал не
 #  свои сообщения и остановился
@@ -10,13 +10,13 @@ from parallel.worker import Worker
 class Dispatcher:
     def __init__(self, workers_count=cpu_count()):
         self._tasks = Queue()
-        self._commands = Queue()
         self._results = Queue()
         self._worker_count = workers_count
         self._workers = [self._create_worker(i) for i in range(self._worker_count)]
 
     def _create_worker(self, uid):
-        return Process(target=Worker.start_work, args=(uid, self._tasks, self._commands, self._results))
+        return Worker(uid, self._tasks, self._results)
+        # return Process(target=Worker.start_work, args=(uid, self._tasks, self._commands, self._results))
 
     def add_task(self, task):
         self._tasks.put(task)
@@ -29,12 +29,12 @@ class Dispatcher:
         self._tasks.close()
 
     def stop(self):
-        for _ in range(len(self._workers)):
-            self._commands.put(Commands.STOP)
+        for worker in self._workers:
+            worker.get_commands().put(Commands.STOP)
 
     def tasks_finished(self):
-        for _ in range(len(self._workers)):
-            self._commands.put(Commands.TASK_FINISHED)
+        for worker in self._workers:
+            worker.get_commands().put(Commands.TASK_FINISHED)
 
     def wait(self):
         for worker in self._workers:

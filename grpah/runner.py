@@ -93,7 +93,7 @@ def run_time_series_without_chaos_composition_parallel():
     a = 1
     b = 0.56
 
-    dispatcher = Dispatcher(1)
+    dispatcher = Dispatcher(4)
     dispatcher.start()
 
     colors_dict = {

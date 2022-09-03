@@ -1,3 +1,6 @@
+import time
+
+
 def time_series(time_range, x_start, f, skip):
     """
     Вычисление точек для построения графика временного ряда. График t(x).
