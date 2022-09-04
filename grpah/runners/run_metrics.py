@@ -1,6 +1,6 @@
 import numpy as np
 
-from algorithms.bifurcation import bifurcation
+from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from core.utils.convert_line_to_dict import convert_line_to_dict
 from algorithms.m_b import m_b

@@ -1,7 +1,7 @@
 import numpy as np
 
 from algorithms.absorbing_area import absorbing_area
-from algorithms.bifurcation import bifurcation
+from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
@@ -159,7 +159,7 @@ def with_equilibrium():
         x_start=0.1164711,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: function.f(1, b, x),
-        down_border=None
+        lower_bound=None
     )
 
     source = bifurcation_with_equilibrium(

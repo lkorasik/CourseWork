@@ -1,6 +1,6 @@
 import statistics
 
-from algorithms.bifurcation import bifurcation
+from core.algorithms.bifurcation import bifurcation
 from algorithms.variance import variance
 from visual.line import Line
 
@@ -12,7 +12,7 @@ def cyclical_variance(time_range, x_start, b_range, f, count):
 
     data = []
     for i in range(count):
-        values = bifurcation(time_range, x_start, b_range, f, down_border=None)
+        values = bifurcation(time_range, x_start, b_range, f, lower_bound=None)
         variance_ = variance(b_range, values).y
         data.append(variance_)
 
