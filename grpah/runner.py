@@ -156,12 +156,12 @@ def run_time_series_without_chaos_composition_parallel():
     # )
 
     plotter = (Plotter()
-     .setup_x_label('t')
-     .setup_y_label('x', label_pad=10)
-     .setup_y_scale(scale.linear)
-     .setup_grid(grid.major)
-     # .setup_title('Time series')
-     .legend())
+               .setup_x_label('t')
+               .setup_y_label('x', label_pad=10)
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               # .setup_title('Time series')
+               .legend())
 
     results = dispatcher.get_results()
     while not results.empty():

@@ -4,6 +4,7 @@ from queue import Empty
 
 class Worker(Process):
     """Исполнитель"""
+
     def __init__(self, uid, tasks, results, task_finished_event, stop_event):
         print("Worker " + str(uid) + " created")
         self._id = uid

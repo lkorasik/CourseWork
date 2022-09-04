@@ -1,5 +1,6 @@
 class Result:
     """Результаты выполнения задачи"""
+
     def __init__(self, task, task_result):
         self._task = task
         self._task_result = task_result

@@ -7,6 +7,7 @@ from parallel.worker import Worker
 
 class Dispatcher:
     """Диспетчер задач. Управляет исполнителями и распределяет задачи между ними"""
+
     def __init__(self, workers_count=cpu_count()):
         self._task_finished_event = TaskFinishedEvent()
         self._stop_event = StopEvent()
