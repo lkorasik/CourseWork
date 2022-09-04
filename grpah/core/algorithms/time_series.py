@@ -1,3 +1,6 @@
+from visual.line import Line
+
+
 def time_series(time_range, x_start, f, skip):
     """
     Вычисление точек для построения графика временного ряда
@@ -9,23 +12,16 @@ def time_series(time_range, x_start, f, skip):
         skip - следует ли сделать холостой прогон функции?
 
     Выход:
-        [x, ...]
-        [y, ...]
+        Line - линия, набор точек
     """
-    x = []
+    line = Line().add(0, x_start)
 
     x_i = x_start
     if skip:
         for _ in time_range:
             x_i = f(x_i)
-    for _ in time_range:
+    for t in time_range:
         x_i = f(x_i)
-        x.append(x_i)
+        line.add(t, x_i)
 
-    t = list(time_range)
-
-    # Вставляем в результаты начальную точку
-    x.insert(0, x_start)
-    t.insert(0, 0)
-
-    return t, x
+    return line
