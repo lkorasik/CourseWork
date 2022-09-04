@@ -18,8 +18,8 @@ from algorithms.regime_map import regime_map
 from algorithms.time_series import time_series
 from algorithms.variance import variance
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
-from hack import DillPickleCallable
 from parallel.dispatcher import Dispatcher
+from parallel.pickle_lambda import PickleLambda
 from parallel.task import Task
 from visual.line import Line
 from visual.plotter import Plotter
@@ -105,25 +105,25 @@ def run_time_series_without_chaos_composition_parallel():
 
     task0 = Task(0, time_series, [], {"time_range": time_range,
                                       "x_start": 1.3,
-                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task0)
 
     task1 = Task(1, time_series, [], {"time_range": time_range,
                                       "x_start": 0.3,
-                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task1)
 
     task2 = Task(2, time_series, [], {"time_range": time_range,
                                       "x_start": 0.06,
-                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task2)
 
     task3 = Task(3, time_series, [], {"time_range": time_range,
                                       "x_start": 0.04,
-                                      "f": DillPickleCallable(lambda x: function.f(a, b, x)),
+                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task3)
 
