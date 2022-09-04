@@ -1,3 +1,6 @@
+from algorithms.is_out_of_bounds import is_out_of_bounds
+
+
 def bifurcation(time_range, x_start, p_range, f, up_border=10_000, down_border=1e-5):
     """
     Вычисление точек для построения графика бифуркации.
@@ -22,16 +25,12 @@ def bifurcation(time_range, x_start, p_range, f, up_border=10_000, down_border=1
         x_0 = x_start
         for _ in time_range:
             x_t = f(p, x_0)
-            if up_border is not None and abs(x_t) > up_border:
-                break
-            if down_border is not None and abs(x_t) < down_border:
+            if is_out_of_bounds(x_t, up_border, down_border):
                 break
             x_0 = x_t
         for _ in time_range:
             x_t = f(p, x_0)
-            if up_border is not None and abs(x_t) > up_border:
-                break
-            if down_border is not None and abs(x_t) < down_border:
+            if is_out_of_bounds(x_t, up_border, down_border):
                 break
             x_0 = x_t
             values[p].append(x_t)

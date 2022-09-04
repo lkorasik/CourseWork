@@ -24,6 +24,7 @@ if __name__ == "__main__":
         dispatcher.add_task(task)
 
     print("Tasks created")
+    dispatcher.stop()
 
     # dispatcher.stop()
     # dispatcher.wait()
