@@ -1,37 +1,38 @@
 from algorithms.regime_map import regime_map
 from runner import *
+from runners import run_time_series, run_bifurcation
 
 if __name__ == "__main__":
     print("Run")
 
     # Показать график временного ряда
-    # run_time_series_without_chaos()
-    # run_time_series_different_noises()
+    # run_time_series.without_chaos()
+    # run_time_series.different_noises()
 
-    # run_time_series_no_noise()
-    # run_time_series_beta_noise()
-    # run_time_series_alpha_noise()
-    # run_time_series_additive_noise()
+    # run_time_series.no_noise()
+    # run_time_series.beta_noise()
+    # run_time_series.alpha_noise()
+    # run_time_series.additive_noise()
 
-    # run_time_series_compare_noise()
-    # run_time_series_without_chaos_composition()
+    # run_time_series.compare_noise()
+    # run_time_series.without_chaos_composition()
 
-    # run_time_series_beta_noise_can_drop()
+    # run_time_series.beta_noise_can_drop()
 
-    # run_time_series_2_cycle()
-    # run_time_series_chaos()
-
-    # Показать график бифуркации
-    # run_bifurcation()
+    # run_time_series.cycle_2()
+    # run_time_series.chaos()
 
     # todo: experiment
-    run_time_series_without_chaos_composition_parallel()
+    # run_time_series.without_chaos_composition_parallel()
+
+    # Показать график бифуркации
+    # run_bifurcation.without_chaos()
 
     # Показать графики бифуркации с разными шумами
-    # run_compare_chaos_bifurcation()
+    # run_bifurcation.compare_chaos_bifurcation()
 
     # Показать график бифуркации с absorbing area
-    # run_bifurcation_with_absorbing_area()
+    # run_bifurcation.with_absorbing_area()
 
     # Показать показатель Ляпунова
     # run_lyapunov()
