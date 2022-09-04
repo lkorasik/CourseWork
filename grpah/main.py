@@ -1,7 +1,7 @@
 from algorithms.regime_map import regime_map
 from runner import *
 from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity, \
-    run_mean, run_variance
+    run_mean, run_variance, run_lamerei
 
 if __name__ == "__main__":
     print("Run")
@@ -47,9 +47,9 @@ if __name__ == "__main__":
     # ----- Показатель Ляпунова -----
 
     # ----- Лестницу Ламерея -----
-    # run_lamerei()
-    # run_lamerei_fast_zero()
-    # run_lamerei_fast_zero_segment()
+    # run_lamerei.default()
+    # run_lamerei.fast_zero()
+    # run_lamerei.fast_zero_segment()
     # ----- Лестницу Ламерея -----
 
     # ----- Графики равновесий -----
