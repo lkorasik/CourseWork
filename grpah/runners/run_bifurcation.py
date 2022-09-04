@@ -3,7 +3,7 @@ import numpy as np
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from algorithms.convert_dict_to_lists import convert_dict_to_lists
+from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale

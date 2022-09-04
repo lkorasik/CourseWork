@@ -3,8 +3,8 @@ import numpy as np
 from algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
-from algorithms.convert_dict_to_lists import convert_dict_to_lists
-from algorithms.convert_line_to_dict import convert_line_to_dict
+from core.utils.convert_dict_to_lists import convert_dict_to_lists
+from core.utils.convert_line_to_dict import convert_line_to_dict
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
 from visual.plotter import Plotter
 from visual.values import grid, scale
