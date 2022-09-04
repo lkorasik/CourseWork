@@ -1,6 +1,6 @@
 from algorithms.regime_map import regime_map
 from runner import *
-from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics
+from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity
 
 if __name__ == "__main__":
     print("Run")
@@ -101,6 +101,8 @@ if __name__ == "__main__":
     # run_metrics.euclid_additive_noise()
     # ----- Метрики -----
 
-    # critical_intensity_beta_noise()
-    # critical_intensity_alpha_noise()
-    # critical_intensity_additive_noise()
+    # ----- Критическая интенсивность -----
+    # run_critical_intensity.beta_noise()
+    # run_critical_intensity.alpha_noise()
+    # run_critical_intensity.additive_noise()
+    # ----- Критическая интенсивность -----
