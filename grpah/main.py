@@ -9,20 +9,20 @@ if __name__ == "__main__":
     # Показать график временного ряда
     # run_time_series.without_chaos()
     # run_time_series.different_noises()
-
+    #
     # run_time_series.no_noise()
     # run_time_series.beta_noise()
     # run_time_series.alpha_noise()
     # run_time_series.additive_noise()
-
+    #
     # run_time_series.compare_noise()
     # run_time_series.without_chaos_composition()
-
+    #
     # run_time_series.beta_noise_can_drop()
-
+    #
     # run_time_series.cycle_2()
     # run_time_series.chaos()
-
+    #
     # todo: experiment
     # run_time_series.without_chaos_composition_parallel()
     # ----- Временные ряды -----
@@ -30,13 +30,13 @@ if __name__ == "__main__":
     # ----- Бифуркация -----
     # Показать график бифуркации
     # run_bifurcation.without_chaos()
-
+    #
     # Показать графики бифуркации с разными шумами
     # run_bifurcation.compare_chaos_bifurcation()
-
+    #
     # Показать график бифуркации с absorbing area
     # run_bifurcation.with_absorbing_area()
-
+    #
     # Показать график бифуркации и корни
     # run_bifurcation_with_equilibrium()
     # ----- Бифуркация -----
@@ -73,12 +73,12 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity.b_noise()
     # run_stochastic_sensitivity.a_noise()
     # run_stochastic_sensitivity.additive_noise()
-
+    #
     # run_stochastic_sensitivity.b_noise_1()
     # run_stochastic_sensitivity.b_noise_2()
     # run_stochastic_sensitivity.b_noise_3()
     # run_stochastic_sensitivity.b_noise_4()
-
+    #
     # Выгрузить в файл данные по функции стохастической чувствительности
     # run_stochastic_sensitivity.b_noise_to_file()
     # run_stochastic_sensitivity.a_noise_to_file()
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # run_metrics.machalanobis_alpha_noise()
     # run_metrics.machalanobis_beta_noise()
     # run_metrics.machalanobis_additive_noise()
-
+    #
     # run_metrics.euclid_alpha_noise()
     # run_metrics.euclid_beta_noise()
     # run_metrics.euclid_additive_noise()
