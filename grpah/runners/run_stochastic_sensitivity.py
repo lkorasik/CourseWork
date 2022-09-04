@@ -6,6 +6,7 @@ from algorithms.convert_dict_to_lists import convert_dict_to_lists
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
+from algorithms.m_b import m_b
 
 
 def b_noise():
@@ -344,3 +345,138 @@ def additive_noise():
         plotter.plot(line.x, line.y, ',', colors.red)
 
     plotter.show_last()
+
+
+def b_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\b_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.375,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_b_noise.m(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
+        q_=functions_b_noise._q,
+        s_=functions_b_noise._s,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
+
+
+def a_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\a_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.375,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_a_noise.m(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
+        q_=functions_a_noise._q,
+        s_=functions_a_noise._s,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)
+
+
+def additive_noise_to_file():
+    base_path = "C:\\Users\\lkora\\Desktop\\data\\additive_noise\\"
+
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.2,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+    )
+    source = m_b(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        a=1,
+        left1=0.44,
+        right1=0.582355932,
+        left2=0.379,
+        right2=0.435,
+        left3=0.36,
+        right3=0.375,
+        left4=0.22,
+        right4=0.34,
+        m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0),
+        values=values,
+        s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
+        q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
+        q_=functions_additive_noise._q,
+        s_=functions_additive_noise._s,
+        f=lambda b, x: function.f(1, b, x)
+    )
+
+    prefix = "line"
+
+    for i in range(len(source)):
+        line = source[i]
+        name = prefix + str(i) + ".txt"
+
+        with open(base_path + name, 'w') as file:
+            for j in range(len(line.x)):
+                x = str(line.x[j])
+                y = str(line.y[j])
+
+                txt = str(x) + " " + str(y) + "\n"
+
+                file.write(txt)

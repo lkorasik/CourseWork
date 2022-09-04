@@ -41,31 +41,33 @@ if __name__ == "__main__":
     # run_bifurcation_with_equilibrium()
     # ----- Бифуркация -----
 
-    # Показать показатель Ляпунова
+    # ----- Показатель Ляпунова -----
     # run_lyapunov()
+    # ----- Показатель Ляпунова -----
 
-    # Показать лестницу Ламерея
+    # ----- Лестницу Ламерея -----
     # run_lamerei()
     # run_lamerei_fast_zero()
     # run_lamerei_fast_zero_segment()
+    # ----- Лестницу Ламерея -----
 
-    # Показать графики равновесий
+    # ----- Графики равновесий -----
     # run_equilibrium()
+    # ----- Графики равновесий -----
 
-    # Просчитать карту режимов
+    # ----- Просчитать карту режимов -----
     # run_regime_map()
+    # ----- Просчитать карту режимов -----
 
-    # Матожидание
+    # ----- Матожидание -----
     # run_mean()
-
-    # Усредненное матожидание
     # run_cyclic_mean()
+    # ----- Матожидание -----
 
-    # Дисперсия
+    # ----- Дисперсия -----
     # run_variance()
-
-    # Циклическая дисперсия
     # run_cyclic_variance()
+    # ----- Дисперсия -----
 
     # ----- Функция стохастической чувствительности -----
     # run_stochastic_sensitivity.b_noise()
@@ -76,17 +78,17 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity.b_noise_2()
     # run_stochastic_sensitivity.b_noise_3()
     # run_stochastic_sensitivity.b_noise_4()
+
+    # Выгрузить в файл данные по функции стохастической чувствительности
+    # run_stochastic_sensitivity.b_noise_to_file()
+    # run_stochastic_sensitivity.a_noise_to_file()
+    # run_stochastic_sensitivity.additive_noise_to_file()
     # ----- Функция стохастической чувствительности -----
 
     # График стохастической чувствительности
     # run_m_b_beta_noise()
     # run_m_b_alpha_noise()
     # run_m_b_additive_noise()
-
-    # Выгрузить в файл данные по функции стохастической чувствительности
-    # run_stochastic_sensitivity_b_noise_to_file()
-    # run_stochastic_sensitivity_a_noise_to_file()
-    # run_stochastic_sensitivity_additive_noise_to_file()
 
     # run_machalanobis_alpha_noise()
     # run_machalanobis_beta_noise()
