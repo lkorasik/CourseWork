@@ -1,5 +1,6 @@
 class Event:
     """Событие"""
+
     def __init__(self):
         self._handlers = []
 
