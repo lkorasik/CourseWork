@@ -1,6 +1,6 @@
 from sympy import Symbol
 
-import r as alg
+import generator as alg
 from functions_pkg import symbols
 from algorithms.get_absorbing_area import get_absorbing_area
 from algorithms.list_spliter import split
