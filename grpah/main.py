@@ -1,6 +1,6 @@
 from algorithms.regime_map import regime_map
 from runner import *
-from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity
+from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics
 
 if __name__ == "__main__":
     print("Run")
@@ -91,13 +91,15 @@ if __name__ == "__main__":
     # run_m_b_additive_noise()
     # ----- График стохастической чувствительности -----
 
-    # run_machalanobis_alpha_noise()
-    # run_machalanobis_beta_noise()
-    # run_machalanobis_additive_noise()
+    # ----- Метрики -----
+    # run_metrics.machalanobis_alpha_noise()
+    # run_metrics.machalanobis_beta_noise()
+    # run_metrics.machalanobis_additive_noise()
 
-    # run_euclid_alpha_noise()
-    # run_euclid_beta_noise()
-    # run_euclid_additive_noise()
+    # run_metrics.euclid_alpha_noise()
+    # run_metrics.euclid_beta_noise()
+    # run_metrics.euclid_additive_noise()
+    # ----- Метрики -----
 
     # critical_intensity_beta_noise()
     # critical_intensity_alpha_noise()
