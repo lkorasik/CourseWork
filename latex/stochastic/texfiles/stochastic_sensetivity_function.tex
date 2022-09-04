@@ -5,31 +5,31 @@
     Стохастическая чувствительность равновесия \(\bar{x}\) вычисляется по формуле:
 
     \[
-        M = \frac{s(\bar{x})}{1 - q(\bar{x})}
+        M = \frac{s(\bar{x})}{1 - q(\bar{x})},
     \]
 
     где 
 
     \[
-        q(x) = \left[\frac{\partial f}{\partial x}(x, 0)\right]^2 \quad s(x) = \left[\frac{\partial f}{\partial \eta}(x, 0)\right]^2
+        q(x) = \left[\frac{\partial f}{\partial x}(x, 0)\right]^2 \quad s(x) = \left[\frac{\partial f}{\partial \eta}(x, 0)\right]^2.
     \]
 
     Стохастическая чувствительность \(k\)-циклов можно вычислить по формулам:
 
     \[
-        M_{t + 1} = q_t M_t + s_t \quad q_t = q(\bar{x_t}) \quad s_t = s(\bar{x_t})
+        M_{t + 1} = q_t M_t + s_t \quad q_t = q(\bar{x_t}) \quad s_t = s(\bar{x_t}),
     \]
 
     \[
-        M_1 = \frac{r_{k + 1}}{1 - q_1 \cdot \ldots \cdot q_k}
+        M_1 = \frac{r_{k + 1}}{1 - q_1 \cdot \ldots \cdot q_k}.
     \]
 
-    То есть набор \(\{M_1, \cdots, M_k\}\) определяет значения стохастической чувствительности \(k\)-цикла. Для вычисления требуется знать \(r_{t + 1}\), который можно найти по формуле \(r_{t + 1} = q_t r_t + s_t\), \(t \in \overline{1, k}\) и \(r_1 = 0\).
+    То есть набор элементов \(\{M_1, \cdots, M_k\}\) определяет значения стохастической чувствительности \(k\)-цикла. Для вычисления требуется знать \(r_{t + 1}\), который можно найти по формуле \(r_{t + 1} = q_t r_t + s_t\), \(t \in \overline{1, k}\) и \(r_1 = 0\).
 
     Стохастическая чувствительность хаоса вычисляется по формулам:
 
     \[
-        M(c_1) = \left[\frac{\partial f}{\partial x}(f(c_{-1}, 0), 0)\right]^2 s(c_{-1}) + s(f(c_{-1}, 0)) \quad M(c) = s(c_{-1})
+        M(c_1) = \left[\frac{\partial f}{\partial x}(f(c_{-1}, 0), 0)\right]^2 s(c_{-1}) + s(f(c_{-1}, 0)) \quad M(c) = s(c_{-1}),
     \]
 
     где \(c_{-1}\) --- прообраз критической точки, \(c = f(c_{-1}), c_1 = f(c)\).
@@ -38,7 +38,7 @@
 
     \begin{equation}
         \label{scattering_band}
-        x_\varepsilon = x^* \pm 3\varepsilon \sqrt{M}        
+        x_\varepsilon = x^* \pm 3\varepsilon \sqrt{M},    
     \end{equation}
 
     где \(x^*\) --- одно из значений аттрактора при фиксированном \(\beta\). Формула для вычисления значения \(M\) выбирается в зависимости от вида аттрактора, для которого строится полоса рассеивания.
@@ -57,7 +57,7 @@
         }  
             
         \captionsetup{justification=centering}
-        \caption{Функции стохастической чувствительности для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos})}
+        \caption{Функции стохастической чувствительности для моделей (\ref{alpha_chaos}), (\ref{beta_chaos}) и (\ref{additive_chaos}) (красный, синий и зеленый соответственно)}
     \end{figure}
   
     На рисунке \ref{bifurcation_x_0_2_a_1_beta_chaos_fss} красными линиями изображена полоса рассеивания вокруг стохастических состояний системы (\ref{beta_chaos}) с \(\beta\)-шумом при интенсивности \(\varepsilon = 0.001\). 
