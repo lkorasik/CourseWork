@@ -85,10 +85,11 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity.additive_noise_to_file()
     # ----- Функция стохастической чувствительности -----
 
-    # График стохастической чувствительности
+    # ----- График стохастической чувствительности -----
     # run_m_b_beta_noise()
     # run_m_b_alpha_noise()
     # run_m_b_additive_noise()
+    # ----- График стохастической чувствительности -----
 
     # run_machalanobis_alpha_noise()
     # run_machalanobis_beta_noise()
