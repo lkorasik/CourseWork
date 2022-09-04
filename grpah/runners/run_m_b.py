@@ -6,7 +6,7 @@ from functions_pkg import functions_b_noise, function, functions_a_noise, functi
 from visual.plotter import Plotter
 
 
-def run_m_b_beta_noise():
+def beta_noise():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -47,7 +47,7 @@ def run_m_b_beta_noise():
     # plotter.show()
 
 
-def run_m_b_alpha_noise():
+def alpha_noise():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,
@@ -83,7 +83,7 @@ def run_m_b_alpha_noise():
     # plotter.show()
 
 
-def run_m_b_additive_noise():
+def additive_noise():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.2,

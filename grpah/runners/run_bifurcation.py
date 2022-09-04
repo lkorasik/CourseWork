@@ -153,7 +153,7 @@ def with_absorbing_area():
      .show_last())
 
 
-def run_bifurcation_with_equilibrium():
+def with_equilibrium():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
