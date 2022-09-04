@@ -1,6 +1,7 @@
 from algorithms.regime_map import regime_map
 from runner import *
-from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity
+from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity, \
+    run_mean, run_variance
 
 if __name__ == "__main__":
     print("Run")
@@ -60,13 +61,13 @@ if __name__ == "__main__":
     # ----- Просчитать карту режимов -----
 
     # ----- Матожидание -----
-    # run_mean()
-    # run_cyclic_mean()
+    # run_mean.single()
+    # run_mean.cyclic()
     # ----- Матожидание -----
 
     # ----- Дисперсия -----
-    # run_variance()
-    # run_cyclic_variance()
+    # run_variance.single()
+    # run_variance.cyclic()
     # ----- Дисперсия -----
 
     # ----- Функция стохастической чувствительности -----
