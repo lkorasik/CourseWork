@@ -2,8 +2,9 @@ import numpy as np
 
 from algorithms.absorbing_area import absorbing_area
 from algorithms.bifurcation import bifurcation
+from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.convert_dict_to_lists import convert_dict_to_lists
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
+from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
 
@@ -149,4 +150,40 @@ def with_absorbing_area():
      .scatter(draw_x, draw_y, '.', colors.steel_blue)
      .plot(source[0], source[1], ',', colors.red)
      .plot(source[0], source[2], ',', colors.red)
+     .show_last())
+
+
+def run_bifurcation_with_equilibrium():
+    values = bifurcation(
+        time_range=range(1, 100 + 1),
+        x_start=0.1164711,
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: function.f(1, b, x),
+        down_border=None
+    )
+
+    source = bifurcation_with_equilibrium(
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        x12=0.12,
+        precision=0.0000001,
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        f=lambda b, x: function.f(1, b, x),
+        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        dsf=lambda b, x: function.f_dx(1, b, x),
+        # dsf=lambda b, x: functions.df(1, b, x),
+        bifurcation=values
+    )
+
+    values = convert_dict_to_lists(values)
+
+    (Plotter()
+     ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+     .scatter(values[0], values[1], '.', colors.steel_blue)
+     .plot_line(source[0], ',', colors.red)
+     .plot_line(source[1], ',', colors.deep_pink)
+     .plot_line(source[2], ',', colors.green)
+     # .show())
      .show_last())

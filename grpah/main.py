@@ -1,10 +1,11 @@
 from algorithms.regime_map import regime_map
 from runner import *
-from runners import run_time_series, run_bifurcation
+from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity
 
 if __name__ == "__main__":
     print("Run")
 
+    # ----- Временные ряды -----
     # Показать график временного ряда
     # run_time_series.without_chaos()
     # run_time_series.different_noises()
@@ -24,7 +25,9 @@ if __name__ == "__main__":
 
     # todo: experiment
     # run_time_series.without_chaos_composition_parallel()
+    # ----- Временные ряды -----
 
+    # ----- Бифуркация -----
     # Показать график бифуркации
     # run_bifurcation.without_chaos()
 
@@ -34,6 +37,10 @@ if __name__ == "__main__":
     # Показать график бифуркации с absorbing area
     # run_bifurcation.with_absorbing_area()
 
+    # Показать график бифуркации и корни
+    # run_bifurcation_with_equilibrium()
+    # ----- Бифуркация -----
+
     # Показать показатель Ляпунова
     # run_lyapunov()
 
@@ -41,9 +48,6 @@ if __name__ == "__main__":
     # run_lamerei()
     # run_lamerei_fast_zero()
     # run_lamerei_fast_zero_segment()
-
-    # Показать график бифуркации и корни
-    # run_bifurcation_with_equilibrium()
 
     # Показать графики равновесий
     # run_equilibrium()
@@ -63,15 +67,16 @@ if __name__ == "__main__":
     # Циклическая дисперсия
     # run_cyclic_variance()
 
-    # Функция стохастической чувствительности
-    # run_stochastic_sensitivity_b_noise()
-    # run_stochastic_sensitivity_a_noise()
-    # run_stochastic_sensitivity_additive_noise()
+    # ----- Функция стохастической чувствительности -----
+    # run_stochastic_sensitivity.b_noise()
+    # run_stochastic_sensitivity.a_noise()
+    # run_stochastic_sensitivity.additive_noise()
 
-    # run_stochastic_sensitivity_b_noise_1()
-    # run_stochastic_sensitivity_b_noise_2()
-    # run_stochastic_sensitivity_b_noise_3()
-    # run_stochastic_sensitivity_b_noise_4()
+    # run_stochastic_sensitivity.b_noise_1()
+    # run_stochastic_sensitivity.b_noise_2()
+    # run_stochastic_sensitivity.b_noise_3()
+    # run_stochastic_sensitivity.b_noise_4()
+    # ----- Функция стохастической чувствительности -----
 
     # График стохастической чувствительности
     # run_m_b_beta_noise()
