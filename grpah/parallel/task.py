@@ -2,7 +2,7 @@ from parallel.result import Result
 
 
 class Task:
-    """Задача"""
+    """Задача. Вызов функции с заданными аргументами в каком-то из исполнителей"""
     def __init__(self, uid, func, args, kwargs):
         self._uid = uid
         self._func = func
