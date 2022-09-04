@@ -1,0 +1,64 @@
+import numpy as np
+
+import functions
+from algorithms.equilibrium import equilibrium
+from algorithms.lyapunov import lyapunov
+from algorithms.regime_map import regime_map
+from functions_pkg import function, others
+from visual.plotter import Plotter
+from visual.values import colors, grid, scale
+
+
+def run_lyapunov():
+    source = lyapunov(
+        epsilon=10 ** (-5),
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        x_start=0.2,
+        time_range=range(1, 100 + 1),
+        T=100,
+        f=lambda b, x: function.f(1, b, x),
+        lambda_=functions.lambda_
+    )
+
+    (Plotter()
+     .setup_x_label('$\\beta$')
+     .setup_y_label('$\\lambda$', label_pad=5)
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     # .setup_title("Lyapunov")
+     # ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
+     .plot(source[0], source[1], ',', colors.red)
+     .show_last())
+
+
+def run_equilibrium():
+    source = equilibrium(
+        x12=0.12,
+        b_range=np.arange(0.22, 0.582355932, 0.001),
+        precision=0.0000001,
+        function=lambda b, x: others.h(1, b, x),
+        d_function=lambda b, x: others.h_dx(1, b, x),
+        # d_function=lambda b, x: functions.dh(1, b, x),
+        d=lambda b, x: function.f_dx(1, b, x)
+        # d=lambda b, x: functions.df(1, b, x)
+    )
+
+    plotter = Plotter()._setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
+
+    colors_ = [colors.red, colors.deep_pink, colors.green, colors.black, colors.black]
+
+    for i in range(len(source)):
+        plotter.plot_line(source[i], ',', colors_[i])
+
+    plotter.show_last()
+
+
+def run_regime_map():
+    regime_map(
+        x_start=0.2,
+        a_range=np.arange(0.01, 2, 0.001),
+        b_range=np.arange(0.01, 0.6, 0.001),
+        time_range=range(1, 10000 + 1),
+        f=function.f,
+        file_path="C:\\Users\\lkora\\Desktop\\data\\"
+    )
