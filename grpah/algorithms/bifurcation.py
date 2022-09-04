@@ -1,4 +1,4 @@
-from algorithms.is_out_of_bounds import is_out_of_bounds
+from core.utils.is_out_of_bounds import is_out_of_bounds
 
 
 def bifurcation(time_range, x_start, p_range, f, up_border=10_000, down_border=1e-5):

@@ -70,8 +70,8 @@ if __name__ == "__main__":
     # ----- Дисперсия -----
 
     # ----- Функция стохастической чувствительности -----
-    # run_stochastic_sensitivity.b_noise()
     # run_stochastic_sensitivity.a_noise()
+    # run_stochastic_sensitivity.b_noise()
     # run_stochastic_sensitivity.additive_noise()
     #
     # run_stochastic_sensitivity.b_noise_1()
