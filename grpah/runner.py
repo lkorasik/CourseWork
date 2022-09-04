@@ -130,31 +130,6 @@ def run_time_series_without_chaos_composition_parallel():
     dispatcher.tasks_finished()
     dispatcher.wait()
 
-    # source0 = time_series(
-    #     time_range=time_range,
-    #     x_start=1.3,
-    #     f=lambda x: function.f(a, b, x),
-    #     skip=False
-    # )
-    # source1 = time_series(
-    #     time_range=time_range,
-    #     x_start=0.3,
-    #     f=lambda x: function.f(a, b, x),
-    #     skip=False
-    # )
-    # source2 = time_series(
-    #     time_range=time_range,
-    #     x_start=0.06,
-    #     f=lambda x: function.f(a, b, x),
-    #     skip=False
-    # )
-    # source3 = time_series(
-    #     time_range=time_range,
-    #     x_start=0.04,
-    #     f=lambda x: function.f(a, b, x),
-    #     skip=False
-    # )
-
     plotter = (Plotter()
                .setup_x_label('t')
                .setup_y_label('x', label_pad=10)
