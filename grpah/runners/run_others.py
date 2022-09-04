@@ -2,7 +2,6 @@ import numpy as np
 
 import functions
 from algorithms.equilibrium import equilibrium
-from algorithms.lamerei import lamerei
 from algorithms.lyapunov import lyapunov
 from algorithms.regime_map import regime_map
 from functions_pkg import function, others
@@ -30,9 +29,6 @@ def run_lyapunov():
      # ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
      .plot(source[0], source[1], ',', colors.red)
      .show_last())
-
-
-
 
 
 def run_equilibrium():

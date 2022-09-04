@@ -1,7 +1,6 @@
 from algorithms.regime_map import regime_map
-from runner import *
 from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity, \
-    run_mean, run_variance, run_lamerei
+    run_mean, run_variance, run_lamerei, run_others
 
 if __name__ == "__main__":
     print("Run")
@@ -43,7 +42,7 @@ if __name__ == "__main__":
     # ----- Бифуркация -----
 
     # ----- Показатель Ляпунова -----
-    # run_lyapunov()
+    # run_others.run_lyapunov()
     # ----- Показатель Ляпунова -----
 
     # ----- Лестницу Ламерея -----
@@ -53,7 +52,7 @@ if __name__ == "__main__":
     # ----- Лестницу Ламерея -----
 
     # ----- Графики равновесий -----
-    # run_equilibrium()
+    # run_others.run_equilibrium()
     # ----- Графики равновесий -----
 
     # ----- Просчитать карту режимов -----
