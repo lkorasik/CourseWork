@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # ----- Лестницу Ламерея -----
     # run_lamerei.default()
     # run_lamerei.fast_zero()
-    # run_lamerei.fast_zero_segment()
+    run_lamerei.fast_zero_segment()
     # ----- Лестницу Ламерея -----
 
     # ----- Графики равновесий -----
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # ----- Матожидание -----
 
     # ----- Дисперсия -----
-    run_variance.single()
+    # run_variance.single()
     # run_variance.cyclic()
     # ----- Дисперсия -----
 
