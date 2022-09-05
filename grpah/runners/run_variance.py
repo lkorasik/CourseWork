@@ -1,8 +1,8 @@
 import numpy as np
 
-from algorithms.bifurcation import bifurcation
+from core.algorithms.bifurcation import bifurcation
 from algorithms.cyclical_variance import cyclical_variance
-from algorithms.variance import variance
+from core.algorithms.variance import variance
 from functions_pkg import functions_b_noise, function
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
@@ -14,7 +14,7 @@ def single():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: function.f(1, b, x),
-        down_border=None
+        lower_bound=None
     )
     source0 = variance(
         p_range=np.arange(0.22, 0.582355932, 0.01),
@@ -27,7 +27,7 @@ def single():
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
         # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
-        down_border=None
+        lower_bound=None
     )
     source1 = variance(
         p_range=np.arange(0.22, 0.582355932, 0.01),
@@ -40,7 +40,7 @@ def single():
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
         # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
-        down_border=None
+        lower_bound=None
     )
     source2 = variance(
         p_range=np.arange(0.22, 0.582355932, 0.01),
@@ -53,7 +53,7 @@ def single():
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
         # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
-        down_border=None
+        lower_bound=None
     )
     source3 = variance(
         p_range=np.arange(0.22, 0.582355932, 0.01),

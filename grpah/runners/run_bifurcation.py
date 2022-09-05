@@ -1,9 +1,9 @@
 import numpy as np
 
 from algorithms.absorbing_area import absorbing_area
-from algorithms.bifurcation import bifurcation
+from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from algorithms.convert_dict_to_lists import convert_dict_to_lists
+from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
@@ -153,13 +153,13 @@ def with_absorbing_area():
      .show_last())
 
 
-def run_bifurcation_with_equilibrium():
+def with_equilibrium():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: function.f(1, b, x),
-        down_border=None
+        lower_bound=None
     )
 
     source = bifurcation_with_equilibrium(

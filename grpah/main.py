@@ -1,6 +1,6 @@
 from algorithms.regime_map import regime_map
 from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity, \
-    run_mean, run_variance, run_lamerei, run_others
+    run_mean, run_variance, run_lamerei, run_others, run_m_b
 
 if __name__ == "__main__":
     print("Run")
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     # run_bifurcation.with_absorbing_area()
     #
     # Показать график бифуркации и корни
-    # run_bifurcation_with_equilibrium()
+    # run_bifurcation.with_equilibrium()
     # ----- Бифуркация -----
 
     # ----- Показатель Ляпунова -----
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # ----- Лестницу Ламерея -----
     # run_lamerei.default()
     # run_lamerei.fast_zero()
-    # run_lamerei.fast_zero_segment()
+    run_lamerei.fast_zero_segment()
     # ----- Лестницу Ламерея -----
 
     # ----- Графики равновесий -----
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # ----- Графики равновесий -----
 
     # ----- Просчитать карту режимов -----
-    # run_regime_map()
+    # run_others.run_regime_map()
     # ----- Просчитать карту режимов -----
 
     # ----- Матожидание -----
@@ -70,8 +70,8 @@ if __name__ == "__main__":
     # ----- Дисперсия -----
 
     # ----- Функция стохастической чувствительности -----
-    # run_stochastic_sensitivity.b_noise()
     # run_stochastic_sensitivity.a_noise()
+    # run_stochastic_sensitivity.b_noise()
     # run_stochastic_sensitivity.additive_noise()
     #
     # run_stochastic_sensitivity.b_noise_1()
@@ -86,9 +86,9 @@ if __name__ == "__main__":
     # ----- Функция стохастической чувствительности -----
 
     # ----- График стохастической чувствительности -----
-    # run_m_b_beta_noise()
-    # run_m_b_alpha_noise()
-    # run_m_b_additive_noise()
+    # run_m_b.beta_noise()
+    # run_m_b.alpha_noise()
+    # run_m_b.additive_noise()
     # ----- График стохастической чувствительности -----
 
     # ----- Метрики -----

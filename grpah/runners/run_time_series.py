@@ -1,4 +1,4 @@
-from algorithms.time_series import time_series
+from core.algorithms.time_series import time_series
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
 from parallel.dispatcher import Dispatcher
 from parallel.pickle_lambda import PickleLambda
@@ -16,12 +16,12 @@ def without_chaos():
     )
 
     (Plotter()
-     .setup_x_label('x')
-     .setup_y_label('t')
+     .setup_x_label('t')
+     .setup_y_label('x')
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series')
-     .plot(source[0], source[1], markers.star, colors.steel_blue)
+     .plot_line(source, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -61,10 +61,10 @@ def without_chaos_composition():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      # .setup_title('Time series')
-     .plot(source0[0], source0[1], markers.star, colors.dark_violet, '1.3')
-     .plot(source1[0], source1[1], markers.star, colors.dark_slate_blue, '0.3')
-     .plot(source2[0], source2[1], markers.star, colors.blue, '0.06')
-     .plot(source3[0], source3[1], markers.star, colors.royal_blue, '0.04')
+     .plot_line(source0, markers.star, colors.dark_violet, '1.3')
+     .plot_line(source1, markers.star, colors.dark_slate_blue, '0.3')
+     .plot_line(source2, markers.star, colors.blue, '0.06')
+     .plot_line(source3, markers.star, colors.royal_blue, '0.04')
      .legend()
      .show_last())
 
@@ -122,7 +122,7 @@ def without_chaos_composition_parallel():
     results = dispatcher.get_results()
     while not results.empty():
         item = results.get()
-        plotter.plot(item.get_result()[0], item.get_result()[1], markers.star, colors_dict[item.get_uid()], '1.3')
+        plotter.plot_line(item.get_result(), markers.star, colors_dict[item.get_uid()], '1.3')
 
     plotter.show_last()
 
@@ -148,7 +148,7 @@ def different_noises():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series original')
-     .plot(source0[0], source0[1], markers.point, colors.steel_blue)
+     .plot_line(source0, markers.point, colors.steel_blue)
      .show())
 
     source1 = time_series(
@@ -163,7 +163,7 @@ def different_noises():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with $\\beta$-noise')
-     .plot(source1[0], source1[1], markers.point, colors.steel_blue)
+     .plot_line(source1, markers.point, colors.steel_blue)
      .show())
 
     source2 = time_series(
@@ -178,7 +178,7 @@ def different_noises():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with $\\alpha$-noise')
-     .plot(source2[0], source2[1], markers.point, colors.steel_blue)
+     .plot_line(source2, markers.point, colors.steel_blue)
      .show())
 
     source3 = time_series(
@@ -193,7 +193,7 @@ def different_noises():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with additive noise')
-     .plot(source3[0], source3[1], markers.point, colors.steel_blue)
+     .plot_line(source3, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -219,7 +219,7 @@ def no_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series original')
-     .plot(source[0], source[1], '.', colors.steel_blue)
+     .plot_line(source, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -246,7 +246,7 @@ def beta_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series $\beta$-noise')
-     .plot(source[0], source[1], '.', colors.steel_blue)
+     .plot_line(source, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -273,7 +273,7 @@ def beta_noise_can_drop():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series $\beta$-noise')
-     .plot(source[0], source[1], '.', colors.steel_blue)
+     .plot_line(source, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -300,7 +300,7 @@ def alpha_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series $\alpha$-noise')
-     .plot(source[0], source[1], '.', colors.steel_blue)
+     .plot_line(source, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -327,7 +327,7 @@ def additive_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series additive-noise')
-     .plot(source[0], source[1], '.', colors.steel_blue)
+     .plot_line(source, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -374,10 +374,10 @@ def compare_noise():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series original')
-     .plot(source0[0], source0[1], markers.point, colors.light_coral)
-     .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
-     .plot(source2[0], source2[1], markers.point, colors.olive)
-     .plot(source3[0], source3[1], markers.point, colors.teal)
+     .plot_line(source0, markers.point, colors.light_coral)
+     .plot_line(source1, markers.point, colors.dark_olive_green)
+     .plot_line(source2, markers.point, colors.olive)
+     .plot_line(source3, markers.point, colors.teal)
      .show())
     # .show_last())
 
@@ -411,10 +411,10 @@ def compare_noise():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with $\\beta$-noise')
-     .plot(source0[0], source0[1], markers.point, colors.light_coral)
-     .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
-     .plot(source2[0], source2[1], markers.point, colors.olive)
-     .plot(source3[0], source3[1], markers.point, colors.teal)
+     .plot_line(source0, markers.point, colors.light_coral)
+     .plot_line(source1, markers.point, colors.dark_olive_green)
+     .plot_line(source2, markers.point, colors.olive)
+     .plot_line(source3, markers.point, colors.teal)
      .show())
 
     source0 = time_series(
@@ -447,10 +447,10 @@ def compare_noise():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with $\\alpha$-noise')
-     .plot(source0[0], source0[1], markers.point, colors.light_coral)
-     .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
-     .plot(source2[0], source2[1], markers.point, colors.olive)
-     .plot(source3[0], source3[1], markers.point, colors.teal)
+     .plot_line(source0, markers.point, colors.light_coral)
+     .plot_line(source1, markers.point, colors.dark_olive_green)
+     .plot_line(source2, markers.point, colors.olive)
+     .plot_line(source3, markers.point, colors.teal)
      .show())
 
     source0 = time_series(
@@ -483,10 +483,10 @@ def compare_noise():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with additive noise')
-     .plot(source0[0], source0[1], markers.point, colors.light_coral)
-     .plot(source1[0], source1[1], markers.point, colors.dark_olive_green)
-     .plot(source2[0], source2[1], markers.point, colors.olive)
-     .plot(source3[0], source3[1], markers.point, colors.teal)
+     .plot_line(source0, markers.point, colors.light_coral)
+     .plot_line(source1, markers.point, colors.dark_olive_green)
+     .plot_line(source2, markers.point, colors.olive)
+     .plot_line(source3, markers.point, colors.teal)
      # .show())
      .show_last())
 
@@ -512,7 +512,7 @@ def cycle_2():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      # .setup_title('Time series')
-     .plot(source[0], source[1], markers.star, colors.steel_blue)
+     .plot_line(source, markers.star, colors.steel_blue)
      .show_last())
 
 
@@ -537,5 +537,5 @@ def chaos():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      # .setup_title('Time series')
-     .plot(source[0], source[1], markers.star, colors.steel_blue)
+     .plot_line(source, markers.star, colors.steel_blue)
      .show_last())
