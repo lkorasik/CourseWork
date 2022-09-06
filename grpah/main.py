@@ -38,7 +38,7 @@ if __name__ == "__main__":
     # run_bifurcation.with_absorbing_area()
     #
     # Показать график бифуркации и корни
-    # run_bifurcation.with_equilibrium()
+    run_bifurcation.with_equilibrium()
     # ----- Бифуркация -----
 
     # ----- Показатель Ляпунова -----
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # ----- Лестницу Ламерея -----
     # run_lamerei.default()
     # run_lamerei.fast_zero()
-    run_lamerei.fast_zero_segment()
+    # run_lamerei.fast_zero_segment()
     # ----- Лестницу Ламерея -----
 
     # ----- Графики равновесий -----

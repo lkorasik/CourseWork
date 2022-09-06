@@ -1,4 +1,4 @@
-from algorithms.single_newton import single_newton_unlimited
+from core.algorithms.single_newton import single_newton
 from visual.line import Line
 
 
@@ -11,7 +11,7 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
     result.append(line)
     x = x12 - (x12 / 4)
     for b in b_range:
-        x = single_newton_unlimited(x, precision, lambda x: function(b, x), lambda x: d_function(b, x))
+        x = single_newton(x, precision, lambda x: function(b, x), lambda x: d_function(b, x))
         root.append(x)
         line.add_x(b).add_y(d(b, x))  # Значения производной
 
@@ -21,7 +21,7 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
     result.append(line)
     x = x12 + (x12 / 4)
     for b in b_range:
-        x = single_newton_unlimited(x, precision, lambda x: function(b, x), lambda x: d_function(b, x))
+        x = single_newton(x, precision, lambda x: function(b, x), lambda x: d_function(b, x))
         root.append(x)
         line.add_x(b).add_y(d(b, x))
 
@@ -31,7 +31,7 @@ def equilibrium(x12, b_range, precision, function, d_function, d):
     result.append(line)
     x = 0
     for b in b_range:
-        x = single_newton_unlimited(x, precision, lambda x: function(b, x), lambda x: d_function(b, x))
+        x = single_newton(x, precision, lambda x: function(b, x), lambda x: d_function(b, x))
         root.append(x)
         line.add_x(b).add_y(d(b, x))
 
