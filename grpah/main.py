@@ -35,7 +35,7 @@ if __name__ == "__main__":
     # run_bifurcation.compare_chaos_bifurcation()
     #
     # Показать график бифуркации с absorbing area
-    run_bifurcation.with_absorbing_area()
+    # run_bifurcation.with_absorbing_area()
     #
     # Показать график бифуркации и корни
     # run_bifurcation.with_equilibrium()
@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
     # ----- Дисперсия -----
     # run_variance.single()
-    # run_variance.cyclic()
+    run_variance.cyclic()
     # ----- Дисперсия -----
 
     # ----- Функция стохастической чувствительности -----
