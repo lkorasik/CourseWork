@@ -38,11 +38,11 @@ if __name__ == "__main__":
     # run_bifurcation.with_absorbing_area()
     #
     # Показать график бифуркации и корни
-    run_bifurcation.with_equilibrium()
+    # run_bifurcation.with_equilibrium()
     # ----- Бифуркация -----
 
     # ----- Показатель Ляпунова -----
-    # run_others.run_lyapunov()
+    run_others.run_lyapunov()
     # ----- Показатель Ляпунова -----
 
     # ----- Лестницу Ламерея -----
