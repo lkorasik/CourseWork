@@ -3,8 +3,7 @@ import numpy as np
 from core.algorithms.bifurcation import bifurcation
 from algorithms.cyclical_mean import cyclical_mean
 from core.algorithms.mean import mean
-from functions_pkg import functions_b_noise
-from functions import function
+from functions import function, functions_b_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, markers, scale
 

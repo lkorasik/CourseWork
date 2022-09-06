@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
     # ----- Дисперсия -----
     # run_variance.single()
-    run_variance.cyclic()
+    # run_variance.cyclic()
     # ----- Дисперсия -----
 
     # ----- Функция стохастической чувствительности -----

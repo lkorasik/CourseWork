@@ -3,8 +3,7 @@ import numpy as np
 from core.algorithms.bifurcation import bifurcation
 from algorithms.cyclical_variance import cyclical_variance
 from core.algorithms.variance import variance
-from functions_pkg import functions_b_noise
-from functions import function
+from functions import function, functions_b_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
 

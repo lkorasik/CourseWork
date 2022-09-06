@@ -4,8 +4,7 @@ from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.m_b import m_b
 from core.algorithms.bifurcation import bifurcation
 from core.utils.convert_line_to_dict import convert_line_to_dict
-from functions import function
-from functions_pkg import functions_b_noise, functions_a_noise, functions_additive_noise
+from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import grid
