@@ -2,7 +2,8 @@ import numpy as np
 
 from core.algorithms.bifurcation import bifurcation
 from algorithms.m_b import m_b
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
+from functions_pkg import functions_b_noise, functions_a_noise, functions_additive_noise
+from functions import function
 from visual.plotter import Plotter
 
 

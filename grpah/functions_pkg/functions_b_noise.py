@@ -1,5 +1,5 @@
 from functions_pkg.functions_generator import generate_functions
-from functions_pkg.symbols import a, b, x, eta
+from functions.symbols import a, b, x, eta
 
 _f = (a * x ** 2) / ((b + x + eta) ** 6)
 

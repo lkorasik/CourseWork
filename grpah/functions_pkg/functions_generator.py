@@ -1,5 +1,5 @@
 import numpy
-from functions_pkg.symbols import a, b, x, eta
+from functions.symbols import a, b, x, eta
 from sympy.utilities.lambdify import lambdify
 
 

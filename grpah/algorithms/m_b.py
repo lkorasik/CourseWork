@@ -1,7 +1,7 @@
 from sympy import Symbol
 
 import generator as alg
-from functions_pkg import symbols
+from functions import symbols
 from algorithms.get_absorbing_area import get_absorbing_area
 from core.utils.list_spliter import split
 from visual.line import Line

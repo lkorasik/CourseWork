@@ -1,10 +1,11 @@
 import numpy as np
 
-from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from core.utils.convert_line_to_dict import convert_line_to_dict
 from algorithms.m_b import m_b
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
+from core.algorithms.bifurcation import bifurcation
+from core.utils.convert_line_to_dict import convert_line_to_dict
+from functions import function
+from functions_pkg import functions_b_noise, functions_a_noise, functions_additive_noise
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import grid
@@ -24,8 +25,8 @@ def machalanobis_alpha_noise():
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -141,8 +142,8 @@ def machalanobis_beta_noise():
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -258,8 +259,8 @@ def machalanobis_additive_noise():
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -373,8 +374,8 @@ def euclid_beta_noise():
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -493,8 +494,8 @@ def euclid_alpha_noise():
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -609,8 +610,8 @@ def euclid_additive_noise():
         b_range=p_range,
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
