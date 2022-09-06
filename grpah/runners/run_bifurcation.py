@@ -6,7 +6,7 @@ from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
 from visual.plotter import Plotter
-from visual.values import colors, grid, scale
+from visual.values import colors, grid, scale, markers
 
 
 def without_chaos():
@@ -148,8 +148,8 @@ def with_absorbing_area():
      # .setup_title("Bifurcation")
      # ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
      .scatter(draw_x, draw_y, '.', colors.steel_blue)
-     .plot(source[0], source[1], ',', colors.red)
-     .plot(source[0], source[2], ',', colors.red)
+     .plot_line(source[0], markers.nothing, colors.red)
+     .plot_line(source[1], markers.nothing, colors.red)
      .show_last())
 
 
