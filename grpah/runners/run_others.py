@@ -40,7 +40,12 @@ def run_equilibrium():
         # d=lambda b, x: functions.df(1, b, x)
     )
 
-    plotter = Plotter()._setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
+    plotter = (Plotter()
+               .setup_x_label("b")
+               .setup_y_label("x")
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with equilibrium'))
 
     colors_ = [colors.red, colors.deep_pink, colors.green, colors.black, colors.black]
 

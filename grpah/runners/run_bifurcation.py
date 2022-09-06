@@ -180,7 +180,11 @@ def with_equilibrium():
     values = convert_dict_to_lists(values)
 
     (Plotter()
-     ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+     .setup_x_label("$\\beta$")
+     .setup_y_label('x')
+     .setup_y_scale(scale.log)
+     .setup_grid(grid.major)
+     .setup_title('Bifurcation with equilibrium')
      .scatter(values[0], values[1], '.', colors.steel_blue)
      .plot_line(source[0], ',', colors.red)
      .plot_line(source[1], ',', colors.deep_pink)

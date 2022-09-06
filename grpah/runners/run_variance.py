@@ -61,7 +61,11 @@ def single():
     )
 
     (Plotter()
-     ._setup('b', 'x', 'linear', 'major', 'Variance')
+     .setup_x_label("b")
+     .setup_y_label("x")
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     .setup_title('Variance')
      .plot_line(source0, '.', colors.steel_blue)
      .plot(source1.x, source1.y, '.', colors.red)
      .plot(source2.x, source2.y, '.', colors.green)

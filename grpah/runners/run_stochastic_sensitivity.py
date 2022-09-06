@@ -298,7 +298,11 @@ def a_noise():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\alpha$-noise')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with $\\alpha$-noise')
                .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
@@ -338,7 +342,11 @@ def additive_noise():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with additive noise')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with additive nois')
                .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:

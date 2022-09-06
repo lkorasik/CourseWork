@@ -64,8 +64,11 @@ def single():
         values=values
     )
 
-    (Plotter()
-     ._setup('b', 'x', 'linear', 'major', 'EV')
+    (Plotter().setup_x_label("b")
+     .setup_y_label("x")
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     .setup_title('EV')
      .plot_line(source0, '.', colors.steel_blue, 'original')
      .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
      .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
