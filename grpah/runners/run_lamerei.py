@@ -1,7 +1,7 @@
 import numpy as np
 
 from core.algorithms.lamerei import lamerei
-from functions_pkg import function, others
+from functions import function
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale, markers
 
@@ -43,7 +43,7 @@ def default():
         plotter.plot_line(line, markers.nothing, colors.red)
 
     (plotter
-     .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+     .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
      .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
      .show_last())
 
@@ -75,7 +75,7 @@ def fast_zero():
     plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
 
     (plotter
-     .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+     .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
      .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
      .show_last())
 
@@ -107,6 +107,6 @@ def fast_zero_segment():
     plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
 
     (plotter
-     .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+     .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
      .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
      .show_last())

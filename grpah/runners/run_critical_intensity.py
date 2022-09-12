@@ -5,7 +5,7 @@ from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from core.utils.convert_line_to_dict import convert_line_to_dict
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
+from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
 from visual.plotter import Plotter
 from visual.values import grid, scale
 
@@ -27,8 +27,8 @@ def beta_noise():
         b_range=np.arange(0.22, 0.582355932, step),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
         dsf=lambda b, x: function.f_dx(1, b, x),
@@ -206,7 +206,11 @@ def beta_noise():
      .show())
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with equilibrium')
                .scatter(values[0], values[1], ',', 'steelblue')
                .plot_line(source1[0], ',', 'red')
                .plot_line(source1[1], ',', 'deeppink')
@@ -236,8 +240,8 @@ def alpha_noise():
         b_range=np.arange(0.22, 0.582355932, step),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -418,7 +422,11 @@ def alpha_noise():
      .show())
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with equilibrium')
                .scatter(values[0], values[1], ',', 'steelblue')
                .plot_line(source1[0], ',', 'red')
                .plot_line(source1[1], ',', 'deeppink')
@@ -448,8 +456,8 @@ def additive_noise():
         b_range=np.arange(0.22, 0.582355932, step),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -630,7 +638,11 @@ def additive_noise():
      .show())
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with equilibrium')
                .scatter(values[0], values[1], ',', 'steelblue')
                .plot_line(source1[0], ',', 'red')
                .plot_line(source1[1], ',', 'deeppink')

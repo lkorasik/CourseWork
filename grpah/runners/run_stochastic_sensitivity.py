@@ -3,7 +3,7 @@ import numpy as np
 from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
+from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
 from algorithms.m_b import m_b
@@ -298,7 +298,11 @@ def a_noise():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with $\\alpha$-noise')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with $\\alpha$-noise')
                .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:
@@ -338,7 +342,11 @@ def additive_noise():
     chaos = convert_dict_to_lists(chaos)
 
     plotter = (Plotter()
-               ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with additive noise')
+               .setup_x_label("$\\beta$")
+               .setup_y_label("x")
+               .setup_y_scale(scale.log)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with additive nois')
                .scatter(chaos[0], chaos[1], '.', colors.steel_blue))
 
     for line in source:

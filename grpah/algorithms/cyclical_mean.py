@@ -5,6 +5,7 @@ from core.algorithms.mean import mean
 from visual.line import Line
 
 
+# todo: уточни правильно ли реализован алгоритм...
 def cyclical_mean(time_range, x_start, b_range, f, count):
     line = Line()
     for b in b_range:

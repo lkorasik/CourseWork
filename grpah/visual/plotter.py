@@ -15,15 +15,6 @@ class Plotter:
         self.ax.add_patch(rectangle)
         return self
 
-    def _setup(self, x_label, y_label, y_scale, grid, title):
-        plt.xlabel(x_label)
-        plt.ylabel(y_label)
-        plt.yscale(y_scale)
-        self.ax.grid(which=grid)
-        plt.title(title)
-        self.fig.canvas.manager.set_window_title(title)
-        return self
-
     def setup_x_limit(self, start, end):
         plt.xlim([start, end])
         return self

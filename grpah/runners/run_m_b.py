@@ -2,8 +2,9 @@ import numpy as np
 
 from core.algorithms.bifurcation import bifurcation
 from algorithms.m_b import m_b
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise
+from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
 from visual.plotter import Plotter
+from visual.values import scale, grid
 
 
 def beta_noise():
@@ -33,7 +34,12 @@ def beta_noise():
         f=lambda b, x: function.f(1, b, x)
     )
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity $\\beta$-noise'))
+    plotter = (Plotter()
+               .setup_x_label("$\\beta$")
+               .setup_y_label("M")
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               .setup_title('Stochastic sensetivity $\\beta$-noise'))
 
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
@@ -74,7 +80,12 @@ def alpha_noise():
         f=lambda b, x: function.f(1, b, x)
     )
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity $\\alpha$-noise'))
+    plotter = (Plotter()
+               .setup_x_label("$\\beta$")
+               .setup_y_label("M")
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               .setup_title('Stochastic sensetivity $\\alpha$-noise'))
 
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')
@@ -110,7 +121,12 @@ def additive_noise():
         f=lambda b, x: function.f(1, b, x)
     )
 
-    plotter = (Plotter()._setup('$\\beta$', 'M', 'linear', 'major', 'Stochastic sensetivity additive-noise'))
+    plotter = (Plotter()
+               .setup_x_label("$\\beta$")
+               .setup_y_label("M")
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               .setup_title('Stochastic sensetivity additive-noise'))
 
     for line in source:
         plotter.plot(line.x, line.y, ',', 'red')

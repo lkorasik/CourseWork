@@ -3,7 +3,7 @@ import numpy as np
 from core.algorithms.bifurcation import bifurcation
 from algorithms.cyclical_mean import cyclical_mean
 from core.algorithms.mean import mean
-from functions_pkg import functions_b_noise, function
+from functions import function, functions_b_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, markers, scale
 
@@ -64,8 +64,11 @@ def single():
         values=values
     )
 
-    (Plotter()
-     ._setup('b', 'x', 'linear', 'major', 'EV')
+    (Plotter().setup_x_label("b")
+     .setup_y_label("x")
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     .setup_title('EV')
      .plot_line(source0, '.', colors.steel_blue, 'original')
      .plot_line(source1, '.', colors.red, '$\\varepsilon = 0.01$')
      .plot_line(source2, '.', colors.green, '$\\varepsilon = 0.03$')
