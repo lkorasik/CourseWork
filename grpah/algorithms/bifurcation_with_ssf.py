@@ -5,7 +5,7 @@ from functions import symbols
 from visual.line import Line
 from core.utils.get_absorbing_area import get_absorbing_area
 from core.utils.list_spliter import split
-import generator as Alg
+from algorithms import generator as Alg
 
 
 def bifurcation_with_ssf(b_range, a, borders, m, epsilon, values, f, s, q, s_, q_):
