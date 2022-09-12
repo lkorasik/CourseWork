@@ -1,6 +1,6 @@
 import numpy as np
 
-from algorithms.equilibrium import equilibrium
+from core.algorithms.equilibrium import equilibrium
 from algorithms.regime_map import regime_map
 from core.algorithms.lyapunov import lyapunov
 from functions import function
