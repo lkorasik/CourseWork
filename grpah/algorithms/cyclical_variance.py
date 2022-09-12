@@ -21,6 +21,6 @@ def cyclical_variance(time_range, x_start, b_range, f, count):
         arr = []
         for item in data:
             arr.append(item[i])
-        line.add_y(statistics.variance(arr))
+        line.add_y(statistics.mean(arr))
 
     return line
