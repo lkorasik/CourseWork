@@ -1,6 +1,6 @@
 import numpy as np
 
-from algorithms.absorbing_area import absorbing_area
+from core.algorithms.absorbing_area import absorbing_area
 from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
