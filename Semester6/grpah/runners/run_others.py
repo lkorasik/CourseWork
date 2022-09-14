@@ -12,6 +12,7 @@ def run_lyapunov():
     source = lyapunov(
         epsilon=10 ** (-5),
         b_range=np.arange(0.22, 0.582355932, 0.001),
+        time_range=range(1, 100 + 1),
         x_start=0.2,
         T=100,
         f=lambda b, x: function.f(1, b, x)
