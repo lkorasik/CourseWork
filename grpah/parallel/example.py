@@ -24,7 +24,7 @@ if __name__ == "__main__":
         dispatcher.add_task(task)
 
     print("Tasks created")
-    # dispatcher.stop()
+    dispatcher.stop()
 
     # dispatcher.stop()
     # dispatcher.wait()
@@ -33,7 +33,6 @@ if __name__ == "__main__":
 
     time.sleep(3)
     dispatcher.tasks_finished()
-    # dispatcher.wait()
 
     print("All work done")
 
