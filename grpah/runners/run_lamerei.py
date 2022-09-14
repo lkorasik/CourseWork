@@ -1,9 +1,9 @@
 import numpy as np
 
-from algorithms.lamerei import lamerei
-from functions_pkg import function, others
+from core.algorithms.lamerei import lamerei
+from functions import function
 from visual.plotter import Plotter
-from visual.values import colors, grid, scale
+from visual.values import colors, grid, scale, markers
 
 
 def default():
@@ -39,12 +39,11 @@ def default():
                .setup_grid(grid.major)
                .setup_y_scale(scale.linear))
 
-    for lst in [source0, source1, source2]:
-        for i in lst:
-            plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    for line in source0 + source1 + source2:
+        plotter.plot_line(line, markers.nothing, colors.red)
 
     (plotter
-     .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+     .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
      .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
      .show_last())
 
@@ -70,13 +69,13 @@ def fast_zero():
                .setup_grid(grid.major)
                .setup_y_scale(scale.linear))
 
-    for i in source:
-        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    for line in source:
+        plotter.plot_line(line, markers.nothing, colors.red)
 
     plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
 
     (plotter
-     .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+     .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
      .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
      .show_last())
 
@@ -102,12 +101,12 @@ def fast_zero_segment():
                .setup_grid(grid.major)
                .setup_y_scale(scale.linear))
 
-    for i in source:
-        plotter.plot([i[0], i[2]], [i[1], i[3]], ',', 'red')
+    for line in source:
+        plotter.plot_line(line, markers.nothing, colors.red)
 
     plotter.add_rectangle(-0.0035, -0.0035, 0.0835, 0.0835)
 
     (plotter
-     .plot(x_range, others.g(a, x_range), ',', colors.steel_blue)
+     .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
      .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
      .show_last())

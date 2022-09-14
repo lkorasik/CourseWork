@@ -1,11 +1,11 @@
 import numpy as np
 from sympy import Symbol
 
-from functions_pkg import symbols
+from functions import symbols
 from visual.line import Line
-from algorithms.get_absorbing_area import get_absorbing_area
-from algorithms.list_spliter import split
-import r as Alg
+from core.utils.get_absorbing_area import get_absorbing_area
+from core.utils.list_spliter import split
+from algorithms import generator as Alg
 
 
 def bifurcation_with_ssf(b_range, a, borders, m, epsilon, values, f, s, q, s_, q_):

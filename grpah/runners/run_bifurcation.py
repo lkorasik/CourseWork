@@ -1,12 +1,12 @@
 import numpy as np
 
-from algorithms.absorbing_area import absorbing_area
-from algorithms.bifurcation import bifurcation
+from core.algorithms.absorbing_area import absorbing_area
+from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
-from algorithms.convert_dict_to_lists import convert_dict_to_lists
-from functions_pkg import functions_b_noise, function, functions_a_noise, functions_additive_noise, others
+from core.utils.convert_dict_to_lists import convert_dict_to_lists
+from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
 from visual.plotter import Plotter
-from visual.values import colors, grid, scale
+from visual.values import colors, grid, scale, markers
 
 
 def without_chaos():
@@ -148,26 +148,26 @@ def with_absorbing_area():
      # .setup_title("Bifurcation")
      # ._setup(r'$\beta$', 'x', 'log', 'major', 'Bifurcation')
      .scatter(draw_x, draw_y, '.', colors.steel_blue)
-     .plot(source[0], source[1], ',', colors.red)
-     .plot(source[0], source[2], ',', colors.red)
+     .plot_line(source[0], markers.nothing, colors.red)
+     .plot_line(source[1], markers.nothing, colors.red)
      .show_last())
 
 
-def run_bifurcation_with_equilibrium():
+def with_equilibrium():
     values = bifurcation(
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: function.f(1, b, x),
-        down_border=None
+        lower_bound=None
     )
 
     source = bifurcation_with_equilibrium(
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x12=0.12,
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
@@ -180,7 +180,11 @@ def run_bifurcation_with_equilibrium():
     values = convert_dict_to_lists(values)
 
     (Plotter()
-     ._setup('$\\beta$', 'x', 'log', 'major', 'Bifurcation with equilibrium')
+     .setup_x_label("$\\beta$")
+     .setup_y_label('x')
+     .setup_y_scale(scale.log)
+     .setup_grid(grid.major)
+     .setup_title('Bifurcation with equilibrium')
      .scatter(values[0], values[1], '.', colors.steel_blue)
      .plot_line(source[0], ',', colors.red)
      .plot_line(source[1], ',', colors.deep_pink)

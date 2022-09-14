@@ -1,9 +1,7 @@
 from sympy import Symbol
+from functions.symbols import a, b, x
 
-a = Symbol('a')
-x = Symbol('x')
-b = Symbol('b')
-
+# q и s можно взять из пакета functions
 q = (4 * (a ** 2) * (x ** 2) * ((b - 2 * x) ** 2)) / ((x + b) ** 14)
 s = (36 * (a ** 2) * (x ** 4)) / ((x + b) ** 14)
 

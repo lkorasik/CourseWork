@@ -1,10 +1,9 @@
 import numpy as np
 
-import functions
-from algorithms.equilibrium import equilibrium
-from algorithms.lyapunov import lyapunov
+from core.algorithms.equilibrium import equilibrium
 from algorithms.regime_map import regime_map
-from functions_pkg import function, others
+from core.algorithms.lyapunov import lyapunov
+from functions import function
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
 
@@ -14,10 +13,8 @@ def run_lyapunov():
         epsilon=10 ** (-5),
         b_range=np.arange(0.22, 0.582355932, 0.001),
         x_start=0.2,
-        time_range=range(1, 100 + 1),
         T=100,
-        f=lambda b, x: function.f(1, b, x),
-        lambda_=functions.lambda_
+        f=lambda b, x: function.f(1, b, x)
     )
 
     (Plotter()
@@ -27,7 +24,7 @@ def run_lyapunov():
      .setup_grid(grid.major)
      # .setup_title("Lyapunov")
      # ._setup(r'$\beta$', '$\lambda$', 'linear', 'major', 'Lyapunov')
-     .plot(source[0], source[1], ',', colors.red)
+     .plot_line(source, ',', colors.red)
      .show_last())
 
 
@@ -36,14 +33,19 @@ def run_equilibrium():
         x12=0.12,
         b_range=np.arange(0.22, 0.582355932, 0.001),
         precision=0.0000001,
-        function=lambda b, x: others.h(1, b, x),
-        d_function=lambda b, x: others.h_dx(1, b, x),
+        function=lambda b, x: function.h(1, b, x),
+        d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: functions.dh(1, b, x),
         d=lambda b, x: function.f_dx(1, b, x)
         # d=lambda b, x: functions.df(1, b, x)
     )
 
-    plotter = Plotter()._setup('b', 'x', 'linear', 'major', 'Bifurcation with equilibrium')
+    plotter = (Plotter()
+               .setup_x_label("b")
+               .setup_y_label("x")
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               .setup_title('Bifurcation with equilibrium'))
 
     colors_ = [colors.red, colors.deep_pink, colors.green, colors.black, colors.black]
 

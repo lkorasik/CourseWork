@@ -1,17 +1,17 @@
-from multiprocessing import Process, Manager
+from multiprocessing import Process
 from queue import Empty
 
 
 class Worker(Process):
     """Исполнитель"""
 
-    def __init__(self, uid, tasks, results, task_finished_event, stop_event):
+    def __init__(self, uid, tasks, results, task_finished_event, stop_event, manager):
         print("Worker " + str(uid) + " created")
         self._id = uid
         self._tasks = tasks
         self._results = results
 
-        self._should_stop = Manager().Value('bool', False)
+        self._should_stop = manager.Value('bool', False)
 
         task_finished_event.add_handler(self.handle_task_finished_event)
         stop_event.add_handler(self.handle_stop_event)
