@@ -35,6 +35,9 @@ class Worker(Process):
                 self._results.put(result)
                 print("Task " + str(task.get_uid()) + " done by worker " + str(self._id))
             except Empty:
+                print('read')
+                # todo: проблема в том, что почему-то нельзя прочитать эту переменнуб. Тут все тормозит
+                print(self._should_stop.get())
                 if self._should_stop.value:
                     print("Worker " + str(self._id) + " stop running")
                     break
