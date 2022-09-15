@@ -1,5 +1,5 @@
 from sympy import lambdify
-from functions.symbols import a, b, x
+from models.hassel.symbols import a, b, x
 
 _f = (a * x ** 2) / ((b + x) ** 6)
 f = lambdify([a, b, x], _f)
