@@ -1,7 +1,7 @@
 import numpy as np
 from sympy import Symbol
 
-from functions import symbols
+from models.hassel import symbols
 from visual.line import Line
 from core.utils.get_absorbing_area import get_absorbing_area
 from core.utils.list_spliter import split

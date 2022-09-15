@@ -3,7 +3,7 @@ import numpy as np
 from core.algorithms.equilibrium import equilibrium
 from algorithms.regime_map import regime_map
 from core.algorithms.lyapunov import lyapunov
-from functions import function
+from models.hassel import function
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
 
@@ -12,6 +12,7 @@ def run_lyapunov():
     source = lyapunov(
         epsilon=10 ** (-5),
         b_range=np.arange(0.22, 0.582355932, 0.001),
+        time_range=range(1, 100 + 1),
         x_start=0.2,
         T=100,
         f=lambda b, x: function.f(1, b, x)
@@ -35,9 +36,9 @@ def run_equilibrium():
         precision=0.0000001,
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
-        # d_function=lambda b, x: functions.dh(1, b, x),
+        # d_function=lambda b, x: hassel.dh(1, b, x),
         d=lambda b, x: function.f_dx(1, b, x)
-        # d=lambda b, x: functions.df(1, b, x)
+        # d=lambda b, x: hassel.df(1, b, x)
     )
 
     plotter = (Plotter()

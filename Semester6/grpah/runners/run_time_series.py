@@ -1,5 +1,6 @@
 from core.algorithms.time_series import time_series
-from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
+from models.hassel import function, functions_additive_noise
+from models.hassel import functions_b_noise, functions_a_noise
 from parallel.dispatcher import Dispatcher
 from parallel.pickle_lambda import PickleLambda
 from parallel.task import Task

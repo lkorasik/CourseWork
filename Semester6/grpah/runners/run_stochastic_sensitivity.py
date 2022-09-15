@@ -3,7 +3,8 @@ import numpy as np
 from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
-from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
+from models.hassel import function, functions_additive_noise
+from models.hassel import functions_b_noise, functions_a_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
 from algorithms.m_b import m_b
@@ -38,7 +39,7 @@ def b_noise():
         x_start=0.2,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(1, b, x, epsilon)
-        # f=lambda b, x: functions.f_pb(1, b, x, epsilon)
+        # f=lambda b, x: hassel.f_pb(1, b, x, epsilon)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -93,7 +94,7 @@ def b_noise_1():
         x_start=0.2,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -143,7 +144,7 @@ def b_noise_2():
         x_start=0.2,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -193,7 +194,7 @@ def b_noise_3():
         x_start=0.2,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -244,7 +245,7 @@ def b_noise_4():
         x_start=0.2,
         p_range=p_range,
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.001)
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.001)
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.001)
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -293,7 +294,7 @@ def a_noise():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions_a_noise.f(1, b, x, 0.001)
-        # f=lambda b, x: functions.f_pa(1, b, x, 0.001),
+        # f=lambda b, x: hassel.f_pa(1, b, x, 0.001),
     )
     chaos = convert_dict_to_lists(chaos)
 
@@ -337,7 +338,7 @@ def additive_noise():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: functions_additive_noise.f(1, b, x, 0.001)
-        # f=lambda b, x: functions.f_p(1, b, x, 0.001),
+        # f=lambda b, x: hassel.f_p(1, b, x, 0.001),
     )
     chaos = convert_dict_to_lists(chaos)
 

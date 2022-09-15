@@ -1,7 +1,7 @@
 from sympy.utilities.lambdify import lambdify
 
-from functions.symbols import a, b, x, eta
-from functions.wrap import wrap
+from models.hassel.symbols import a, b, x, eta
+from models.hassel.wrap import wrap
 
 
 def generate_additional_functions(_f):

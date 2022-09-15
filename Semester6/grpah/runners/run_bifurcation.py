@@ -4,7 +4,8 @@ from core.algorithms.absorbing_area import absorbing_area
 from core.algorithms.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
-from functions import function, functions_a_noise, functions_additive_noise, functions_b_noise
+from models.hassel import function, functions_additive_noise
+from models.hassel import functions_b_noise, functions_a_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale, markers
 
@@ -168,12 +169,12 @@ def with_equilibrium():
         precision=0.0000001,
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
-        # d_function=lambda b, x: functions.dh(1, b, x),
+        # d_function=lambda b, x: hassel.dh(1, b, x),
         f=lambda b, x: function.f(1, b, x),
         sf=lambda b, x, shift: function.f(1, b, x) - shift,
-        # sf=lambda b, x, shift: functions.sf(1, b, x, shift),
+        # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
-        # dsf=lambda b, x: functions.df(1, b, x),
+        # dsf=lambda b, x: hassel.df(1, b, x),
         bifurcation=values
     )
 

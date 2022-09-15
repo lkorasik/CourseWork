@@ -3,7 +3,8 @@ import numpy as np
 from core.algorithms.bifurcation import bifurcation
 from algorithms.cyclical_mean import cyclical_mean
 from core.algorithms.mean import mean
-from functions import function, functions_b_noise
+from models.hassel import function
+from models.hassel import functions_b_noise
 from visual.plotter import Plotter
 from visual.values import colors, grid, markers, scale
 
@@ -27,7 +28,7 @@ def single():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.01),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.01),
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.01),
         upper_bound=10_000,
         lower_bound=None
     )
@@ -41,7 +42,7 @@ def single():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.03),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.03),
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.03),
         upper_bound=10_000,
         lower_bound=None
     )
@@ -55,7 +56,7 @@ def single():
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
         f=lambda b, x: functions_b_noise.f(1, b, x, 0.04),
-        # f=lambda b, x: functions.f_pb(1, b, x, 0.04),
+        # f=lambda b, x: hassel.f_pb(1, b, x, 0.04),
         upper_bound=10_000,
         lower_bound=None
     )
