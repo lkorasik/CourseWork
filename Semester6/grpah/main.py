@@ -1,6 +1,11 @@
-from algorithms.regime_map import regime_map
-from runners import run_time_series, run_bifurcation, run_stochastic_sensitivity, run_metrics, run_critical_intensity, \
-    run_mean, run_variance, run_lamerei, run_others, run_m_b
+from alg import phase_portrait
+from models.new_model import function
+from runners.new import run_phase_portrait
+from runners.new.run_phase_portrait import run1
+from runners.old import run_metrics
+from visual.line import Line
+from visual.plotter import Plotter
+from visual.values import scale, grid, markers, colors
 
 if __name__ == "__main__":
     print("Run")
@@ -106,3 +111,22 @@ if __name__ == "__main__":
     # run_critical_intensity.alpha_noise()
     # run_critical_intensity.additive_noise()
     # ----- Критическая интенсивность -----
+
+    # source = phase_portrait(
+    #     time_range=range(1, 50 + 1),
+    #     x_start=0.4,
+    #     y_start=0.6,
+    #     x=lambda x, y: function.__x(1.5, 1.5, 1.5, x, y),
+    #     y=lambda x, y: function.__y(1.5, 1.5, 1.5, x, y),
+    #     skip=False
+    # )
+
+    # ===== 7 СЕМЕСТР =====
+
+    # ----- Фазовые портреты -----
+    # run_phase_portrait.run1()
+    # run_phase_portrait.run2()
+    # run_phase_portrait.run3()
+    # run_phase_portrait.run4()
+    # run_phase_portrait.run5()
+    # ----- Фазовые портреты -----
