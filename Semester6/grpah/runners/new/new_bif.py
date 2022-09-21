@@ -9,11 +9,11 @@ from visual.values import grid, scale, colors, markers
 
 def run1():
     time_range = range(1, 10000 + 1)
-    x_start = 1.2
-    y_start = 1.2
+    x_start = 0.2
+    y_start = 0.2
     a = 1
     b = 0.4
-    p_range = np.arange(0, 1, 0.001)
+    p_range = np.arange(0, 0.5, 0.001)
 
     f = lambda p, x, y: function.__x(a, b, p, x, y)
     g = lambda p, x, y: function.__y(a, b, p, x, y)
@@ -53,6 +53,18 @@ def run1():
 
     source_x = convert_dict_to_lists(values_x)
     source_y = convert_dict_to_lists(values_y)
+
+    path = "C:\\Users\\lkora\\Desktop\\x.txt"
+    with open(path, 'w') as f:
+        for i in range(len(source_x[0])):
+            line = str(source_x[0][i]) + " " + str(source_x[1][i]) + "\n"
+            f.write(line)
+
+    path = "C:\\Users\\lkora\\Desktop\\y.txt"
+    with open(path, 'w') as f:
+        for i in range(len(source_y[0])):
+            line = str(source_y[0][i]) + " " + str(source_y[1][i]) + "\n"
+            f.write(line)
 
     (Plotter()
      .setup_x_label('$\\gamma$')
