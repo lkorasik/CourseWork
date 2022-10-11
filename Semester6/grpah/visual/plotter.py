@@ -72,9 +72,14 @@ class Plotter:
         self._legend[line[0]] = name
         return self
 
+    def scatter_line(self, line_: Line, marker, color, name=""):
+        line = plt.scatter(line_.x, line_.y, marker=marker, rasterized=True, linewidths=0, color=color)
+        self._legend[line] = name
+        return self
+
     def scatter(self, draw_x, draw_y, marker, color, name=""):
         # scatter = plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0.01, color=color)
-        scatter = plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0, s=1, color=color)
+        scatter = plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0, s=3, color=color)
         self._legend[scatter] = name
         return self
 

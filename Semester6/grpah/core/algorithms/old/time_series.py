@@ -1,7 +1,7 @@
 from visual.line import Line
 
 
-def time_series(time_range, x_start, f, skip):
+def time_series(skip_range, time_range, x_start, f, skip):
     """
     Вычисление точек для построения графика временного ряда
 
@@ -14,11 +14,12 @@ def time_series(time_range, x_start, f, skip):
     Выход:
         Line - линия, набор точек
     """
-    line = Line().add(0, x_start)
+    # line = Line().add(0, x_start)
+    line = Line()
 
     x_i = x_start
     if skip:
-        for _ in time_range:
+        for _ in skip_range:
             x_i = f(x_i)
     for t in time_range:
         x_i = f(x_i)

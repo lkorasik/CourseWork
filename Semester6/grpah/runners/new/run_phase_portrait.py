@@ -4,6 +4,30 @@ from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
 
 
+def run0():
+    a = 1
+    b = 0.4
+    g = 0.6
+
+    line = phase_portrait(
+        time_range=range(1, 1000 + 1),
+        x_start=0.2,
+        y_start=0.2,
+        x=lambda x, y: function.__x(a, b, g, x, y),
+        y=lambda x, y: function.__y(a, b, g, x, y),
+        skip=True
+    )
+
+    (Plotter()
+         .setup_x_label('x')
+         .setup_y_label('y')
+         .setup_y_scale(scale.linear)
+         .setup_grid(grid.major)
+         .setup_title('Phase portrait')
+         .plot_line(line, markers.point, colors.steel_blue)
+         .show_last())
+
+
 def run1():
     a = 1
     b = 1
@@ -112,6 +136,30 @@ def run5():
         x=lambda x, y: function.__x(a, b, g, x, y),
         y=lambda x, y: function.__y(a, b, g, x, y),
         skip=False
+    )
+
+    (Plotter()
+         .setup_x_label('x')
+         .setup_y_label('y')
+         .setup_y_scale(scale.linear)
+         .setup_grid(grid.major)
+         .setup_title('Phase portrait')
+         .plot_line(line, markers.point, colors.steel_blue)
+         .show_last())
+
+
+def run6():
+    a = 1
+    b = 0.4
+    g = 0.826
+
+    line = phase_portrait(
+        time_range=range(1, 5000 + 1),
+        x_start=0.2,
+        y_start=0.2,
+        x=lambda x, y: function.__x(a, b, g, x, y),
+        y=lambda x, y: function.__y(a, b, g, x, y),
+        skip=True
     )
 
     (Plotter()

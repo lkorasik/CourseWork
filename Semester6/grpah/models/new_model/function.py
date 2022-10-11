@@ -19,3 +19,9 @@ def plain_x(α, β, γ, x, y):
 
 def plain_y(α, β, γ, x, y):
     return y + γ * y * (x - y)
+
+
+def f(α, β, γ, x, y):
+    nx = __x(α, β, γ, x, y)
+    ny = __y(α, β, γ, x, y)
+    return [nx, ny]

@@ -1,5 +1,6 @@
 import numpy as np
 
+import runners.new.run_time_series
 from alg import phase_portrait
 from core.algorithms.old.bifurcation import bifurcation
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
@@ -8,7 +9,7 @@ from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from models.new_model import function
 from runners.new import run_phase_portrait, new_bif
 from runners.new.run_phase_portrait import run1
-from runners.old import run_metrics
+from runners.old import run_metrics, run_time_series
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
@@ -367,25 +368,38 @@ if __name__ == "__main__":
     # ===== 7 СЕМЕСТР =====
 
     # ----- Фазовые портреты -----
+    # run_phase_portrait.run0()
     # run_phase_portrait.run1()
     # run_phase_portrait.run2()
     # run_phase_portrait.run3()
     # run_phase_portrait.run4()
     # run_phase_portrait.run5()
+    # run_phase_portrait.run6()
     # ----- Фазовые портреты -----
 
     # ----- График бифуркации -----
-    # new_bif.run1()
-    new_bif.run2()
+    new_bif.run1()
+    # new_bif.run2()
+    # new_bif.run3()
+    # new_bif.run_la()
     # ----- График бифуркации -----
 
+    # a = 1
     # regime_map(
     #     x_start=0.2,
-    #     y_start=0.1,
-    #     a_range=np.arange(0.01, 0.5, 0.01),
-    #     b_range=np.arange(0.01, 0.5, 0.01),
+    #     y_start=0.2,
+    #     a_range=np.arange(0.01, 1, 0.001),
+    #     b_range=np.arange(0.01, 1, 0.001),
     #     time_range=range(1, 10000 + 1),
-    #     f=lambda a, b, x, y: function.__x(a, b, 1, x, y),
-    #     g=lambda a, b, x, y: function.__y(a, b, 1, x, y),
+    #     f=lambda b, γ, x, y: function.__x(a, b, γ, x, y),
+    #     g=lambda b, γ, x, y: function.__y(a, b, γ, x, y),
     #     file_path="C:\\Users\\lkora\\Desktop\\data\\"
     # )
+
+    # ----- Временные ряды -----
+    # runners.new.run_time_series.run_2_cycle_0()
+    # runners.new.run_time_series.run_2_cycle_1()
+    # runners.new.run_time_series.run_2_cycle_2()
+    # runners.new.run_time_series.run_2_cycle_3()
+    # runners.new.run_time_series.run_2_cycle_4()
+    # ----- Временные ряды -----
