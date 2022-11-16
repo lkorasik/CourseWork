@@ -9,6 +9,7 @@ fun main(args: Array<String>) {
     val d: Long = 4
     val e: Double = 5.5
     val f: Float = 6.6f
+    val x: String = "x";
 
     val numbA = RNumber(a)
     val numbB = RNumber(b)
@@ -16,6 +17,7 @@ fun main(args: Array<String>) {
     val numbD = RNumber(d)
     val numbE = RNumber(e)
     val numbF = RNumber(f)
+    val varX = RVariable(x);
 
     println("a = $numbA")
     println("b = $numbB")
@@ -23,13 +25,13 @@ fun main(args: Array<String>) {
     println("d = $numbD")
     println("e = $numbE")
     println("f = $numbF")
+    println("x = $varX")
 
     val aPb = RAdd(numbA, numbB)
     println("a + b = $aPb")
 
     val cPdPe = RAdd(RAdd(numbC, numbD), numbE)
     println(cPdPe)
-    println(cPdPe.eval())
 
     val expr = generateCode("TestClass", "double", "func", "double a, double x, double y", "a * x + y")
     println(expr)
@@ -37,27 +39,26 @@ fun main(args: Array<String>) {
     val compiler = CodeCompiler()
     val cls = compiler.compile(expr, "TestClass")
     println(cls.invoke(1, 2, 3))
+
+    val equation = RAdd(numbC, varX)
+    println(equation)
 }
 
-interface RExpression {
-    fun eval(): Double
-}
+interface RExpression
 
 class RNumber(private val value: Number): RExpression {
-    override fun eval(): Double {
-        return value.toDouble()
-    }
-
     override fun toString(): String {
         return value.toString()
     }
 }
 
-class RAdd(private val left: RExpression, private val right: RExpression): RExpression {
-    override fun eval(): Double {
-        return left.eval() + right.eval()
+class RVariable(private val name: String): RExpression {
+    override fun toString(): String {
+        return name;
     }
+}
 
+class RAdd(private val left: RExpression, private val right: RExpression): RExpression {
     override fun toString(): String {
         return "$left + $right"
     }
