@@ -1,7 +1,7 @@
 import numpy as np
 
-from core.algorithms.absorbing_area import absorbing_area
-from core.algorithms.bifurcation import bifurcation
+from core.algorithms.old.absorbing_area import absorbing_area
+from core.algorithms.old.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from models.hassel import function, functions_additive_noise

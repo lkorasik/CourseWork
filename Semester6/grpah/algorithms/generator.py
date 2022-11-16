@@ -1,5 +1,6 @@
 from sympy import Symbol
-from models.hassel import a, b, x
+
+from models.hassel.symbols import a, b, x
 
 # q и s можно взять из пакета hassel
 q = (4 * (a ** 2) * (x ** 2) * ((b - 2 * x) ** 2)) / ((x + b) ** 14)

@@ -1,6 +1,6 @@
 import numpy as np
 
-from core.algorithms.lamerei import lamerei
+from core.algorithms.old.lamerei import lamerei
 from models.hassel import function
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale, markers

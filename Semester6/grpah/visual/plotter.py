@@ -6,8 +6,9 @@ from visual.values import colors
 
 
 class Plotter:
-    def __init__(self):
-        self.fig, self.ax = plt.subplots()
+    def __init__(self, row=1, columns=1):
+        self.fig, self.ax = plt.subplots(row, columns, subplot_kw=dict(box_aspect=1), sharex=True, sharey=True, constrained_layout=True)
+        print(self.ax)
         self._legend = dict()
 
     def add_rectangle(self, x, y, width, height, line_width=1, edge_color=colors.black, face_color='none'):
@@ -71,8 +72,14 @@ class Plotter:
         self._legend[line[0]] = name
         return self
 
+    def scatter_line(self, line_: Line, marker, color, name=""):
+        line = plt.scatter(line_.x, line_.y, marker=marker, rasterized=True, linewidths=0, color=color)
+        self._legend[line] = name
+        return self
+
     def scatter(self, draw_x, draw_y, marker, color, name=""):
-        scatter = plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0.01, color=color)
+        # scatter = plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0.01, color=color)
+        scatter = plt.scatter(draw_x, draw_y, marker=marker, rasterized=True, linewidths=0, s=3, color=color)
         self._legend[scatter] = name
         return self
 

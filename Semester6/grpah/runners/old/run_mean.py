@@ -1,8 +1,8 @@
 import numpy as np
 
-from core.algorithms.bifurcation import bifurcation
+from core.algorithms.old.bifurcation import bifurcation
 from algorithms.cyclical_mean import cyclical_mean
-from core.algorithms.mean import mean
+from core.algorithms.old.mean import mean
 from models.hassel import function
 from models.hassel import functions_b_noise
 from visual.plotter import Plotter

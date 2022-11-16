@@ -1,6 +1,6 @@
 import numpy as np
 
-from core.algorithms.bifurcation import bifurcation
+from core.algorithms.old.bifurcation import bifurcation
 from algorithms.bifurcation_with_ssf import bifurcation_with_ssf
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from models.hassel import function, functions_additive_noise

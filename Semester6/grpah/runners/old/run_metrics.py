@@ -2,7 +2,7 @@ import numpy as np
 
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
 from algorithms.m_b import m_b
-from core.algorithms.bifurcation import bifurcation
+from core.algorithms.old.bifurcation import bifurcation
 from core.utils.convert_line_to_dict import convert_line_to_dict
 from models.hassel import function, functions_additive_noise
 from models.hassel import functions_b_noise, functions_a_noise

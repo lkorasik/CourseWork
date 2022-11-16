@@ -1,7 +1,7 @@
 import statistics
 
-from core.algorithms.bifurcation import bifurcation
-from core.algorithms.variance import variance
+from core.algorithms.old.bifurcation import bifurcation
+from core.algorithms.old.variance import variance
 from visual.line import Line
 
 

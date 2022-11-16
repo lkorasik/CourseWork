@@ -1,7 +1,7 @@
 import statistics
 
-from core.algorithms.bifurcation import bifurcation
-from core.algorithms.mean import mean
+from core.algorithms.old.bifurcation import bifurcation
+from core.algorithms.old.mean import mean
 from visual.line import Line
 
 

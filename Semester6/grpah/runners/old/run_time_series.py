@@ -1,4 +1,4 @@
-from core.algorithms.time_series import time_series
+from core.algorithms.old.time_series import time_series
 from models.hassel import function, functions_additive_noise
 from models.hassel import functions_b_noise, functions_a_noise
 from parallel.dispatcher import Dispatcher
@@ -9,8 +9,10 @@ from visual.values import colors, grid, markers, scale
 
 
 def without_chaos():
+    time_range = range(1, 50 + 1)
     source = time_series(
-        time_range=range(1, 50 + 1),
+        skip_range=time_range,
+        time_range=time_range,
         x_start=1.3,
         f=lambda x: function.f(1, 0.56, x),
         skip=False
@@ -32,24 +34,28 @@ def without_chaos_composition():
     b = 0.56
 
     source0 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=1.3,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
     source1 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=0.3,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
     source2 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=0.06,
         f=lambda x: function.f(a, b, x),
         skip=False
     )
     source3 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=0.04,
         f=lambda x: function.f(a, b, x),
@@ -85,25 +91,29 @@ def without_chaos_composition_parallel():
         3: colors.royal_blue
     }
 
-    task0 = Task(0, time_series, [], {"time_range": time_range,
+    task0 = Task(0, time_series, [], {"skip_range": time_range,
+                                      "time_range": time_range,
                                       "x_start": 1.3,
                                       "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task0)
 
-    task1 = Task(1, time_series, [], {"time_range": time_range,
+    task1 = Task(1, time_series, [], {"skip_range": time_range,
+                                      "time_range": time_range,
                                       "x_start": 0.3,
                                       "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task1)
 
-    task2 = Task(2, time_series, [], {"time_range": time_range,
+    task2 = Task(2, time_series, [], {"skip_range": time_range,
+                                      "time_range": time_range,
                                       "x_start": 0.06,
                                       "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
     dispatcher.add_task(task2)
 
-    task3 = Task(3, time_series, [], {"time_range": time_range,
+    task3 = Task(3, time_series, [], {"skip_range": time_range,
+                                      "time_range": time_range,
                                       "x_start": 0.04,
                                       "f": PickleLambda(lambda x: function.f(a, b, x)),
                                       "skip": False})
@@ -138,6 +148,7 @@ def different_noises():
     epsilon = 0.004
 
     source0 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: function.f(a, b, x),
@@ -153,6 +164,7 @@ def different_noises():
      .show())
 
     source1 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
@@ -168,6 +180,7 @@ def different_noises():
      .show())
 
     source2 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
@@ -183,6 +196,7 @@ def different_noises():
      .show())
 
     source3 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
@@ -207,6 +221,7 @@ def no_noise():
     b = 0.56
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: function.f(a, b, x),
@@ -234,6 +249,7 @@ def beta_noise():
     epsilon = 0.004
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
@@ -261,6 +277,7 @@ def beta_noise_can_drop():
     epsilon = 0.04
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
@@ -288,6 +305,7 @@ def alpha_noise():
     epsilon = 0.004
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
@@ -315,6 +333,7 @@ def additive_noise():
     epsilon = 0.004
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
@@ -345,24 +364,28 @@ def compare_noise():
     epsilon = 0.01
 
     source0 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start0,
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
     source1 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start1,
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
     source2 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start2,
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
     source3 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start3,
         f=lambda x: function.f(a, b, x),
@@ -383,24 +406,28 @@ def compare_noise():
     # .show_last())
 
     source0 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start0,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start1,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start2,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start3,
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
@@ -419,24 +446,28 @@ def compare_noise():
      .show())
 
     source0 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start0,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start1,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start2,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start3,
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
@@ -455,24 +486,28 @@ def compare_noise():
      .show())
 
     source0 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start0,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source1 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start1,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source2 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start2,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
     source3 = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start3,
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
@@ -501,6 +536,7 @@ def cycle_2():
     b = 0.4
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: function.f(a, b, x),
@@ -526,6 +562,7 @@ def chaos():
     b = 0.25
 
     source = time_series(
+        skip_range=time_range,
         time_range=time_range,
         x_start=x_start,
         f=lambda x: function.f(a, b, x),

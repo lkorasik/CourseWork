@@ -1,6 +1,6 @@
 import numpy as np
 
-from core.algorithms.bifurcation import bifurcation
+from core.algorithms.old.bifurcation import bifurcation
 from algorithms.m_b import m_b
 from models.hassel import function, functions_additive_noise
 from models.hassel import functions_b_noise, functions_a_noise

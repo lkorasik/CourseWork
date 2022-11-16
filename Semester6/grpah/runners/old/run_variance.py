@@ -1,8 +1,8 @@
 import numpy as np
 
-from core.algorithms.bifurcation import bifurcation
+from core.algorithms.old.bifurcation import bifurcation
 from algorithms.cyclical_variance import cyclical_variance
-from core.algorithms.variance import variance
+from core.algorithms.old.variance import variance
 from models.hassel import function
 from models.hassel import functions_b_noise
 from visual.plotter import Plotter

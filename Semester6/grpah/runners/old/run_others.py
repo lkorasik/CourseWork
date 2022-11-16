@@ -1,8 +1,8 @@
 import numpy as np
 
-from core.algorithms.equilibrium import equilibrium
+from core.algorithms.old.equilibrium import equilibrium
 from algorithms.regime_map import regime_map
-from core.algorithms.lyapunov import lyapunov
+from core.algorithms.old.lyapunov import lyapunov
 from models.hassel import function
 from visual.plotter import Plotter
 from visual.values import colors, grid, scale
