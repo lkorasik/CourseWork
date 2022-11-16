@@ -33,11 +33,11 @@ fun main(args: Array<String>) {
     val cPdPe = RAdd(RAdd(numbC, numbD), numbE)
     println(cPdPe)
 
-    val expr = Function("TestClass", "double", "func", "double a, double x, double y", "a * x + y")
+    val expr = FunctionPattern("TestClass", "double", "func", "double a, double x, double y", "a * x + y")
     println(expr)
 
     val compiler = CodeCompiler()
-    val cls = compiler.compile(expr, "TestClass")
+    val cls = compiler.compile(expr)
     println(cls.invoke(1, 2, 3))
 
     val equation = RAdd(numbC, varX)

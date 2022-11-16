@@ -13,10 +13,10 @@ import java.nio.file.Paths;
 public class CodeCompiler {
     private final Path pathToTempFolder = Path.of(String.valueOf(Paths.get(".").toAbsolutePath()), "temp");
 
-    public Func compile(Function source, String fileName) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        File sourceFile = saveCode(source.getTemplate(), fileName);
+    public LoadedFunction compile(FunctionPattern source) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        File sourceFile = saveCode(source.getCode(), source.getClassName());
         compile(sourceFile.getPath());
-        return loadClass(sourceFile, fileName);
+        return loadClass(sourceFile, source.getClassName());
     }
 
     private File saveCode(String source, String fileName) throws IOException {
@@ -30,9 +30,9 @@ public class CodeCompiler {
         compiler.run(null, null, null, path);
     }
 
-    private Func loadClass(File sourceFile, String className) throws MalformedURLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    private LoadedFunction loadClass(File sourceFile, String className) throws MalformedURLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] { sourceFile.getParentFile().toURI().toURL() });
         Class<?> cls = Class.forName(className, true, classLoader);
-        return new Func(cls);
+        return new LoadedFunction(cls);
     }
 }
