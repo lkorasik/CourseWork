@@ -30,6 +30,9 @@ fun main(args: Array<String>) {
     val aPb = RAdd(numbA, numbB)
     println("a + b = $aPb")
 
+    val aPb2 = numbA + numbB
+    println("a + b = $aPb")
+
     val cPdPe = RAdd(RAdd(numbC, numbD), numbE)
     println(cPdPe)
 
@@ -58,6 +61,14 @@ class RNumber(private val value: Number) : RExpression {
     override fun toString(): String {
         return value.toString()
     }
+
+    operator fun plus(other: Int): RAdd {
+        return RAdd(this, RNumber(other))
+    }
+
+    operator fun plus(other: RExpression): RAdd {
+        return RAdd(this, other)
+    }
 }
 
 class RVariable(private val name: String) : RExpression {
@@ -69,5 +80,11 @@ class RVariable(private val name: String) : RExpression {
 class RAdd(private val left: RExpression, private val right: RExpression) : RExpression {
     override fun toString(): String {
         return "$left + $right"
+    }
+}
+
+class RMul(private val left: RExpression, private val right: RExpression) : RExpression {
+    override fun toString(): String {
+        return "$left * $right"
     }
 }
