@@ -151,6 +151,7 @@ if __name__ == "__main__":
     # run_phase_portrait.run4()
     # run_phase_portrait.run5()
     # run_phase_portrait.run6()
+    # run_phase_portrait.run7()
     # ----- Фазовые портреты -----
 
     # ----- График бифуркации -----
@@ -160,7 +161,7 @@ if __name__ == "__main__":
     # new_bif.run_la()
     # new_bif.run4()
     # new_bif.run_combine()
-    new_bif.run_bif_with_equilibrium()
+    # new_bif.run_bif_with_equilibrium()
     # ----- График бифуркации -----
 
     # ----- Карта режимов -----
