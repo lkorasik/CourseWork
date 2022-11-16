@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 public class CodeCompiler {
     private final Path pathToTempFolder = Path.of(String.valueOf(Paths.get(".").toAbsolutePath()), "temp");
 
-    public Func compile(String source, String fileName) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-        File sourceFile = saveCode(source, fileName);
+    public Func compile(Function source, String fileName) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        File sourceFile = saveCode(source.getTemplate(), fileName);
         compile(sourceFile.getPath());
         return loadClass(sourceFile, fileName);
     }

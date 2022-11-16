@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
     val cPdPe = RAdd(RAdd(numbC, numbD), numbE)
     println(cPdPe)
 
-    val expr = generateCode("TestClass", "double", "func", "double a, double x, double y", "a * x + y")
+    val expr = Function("TestClass", "double", "func", "double a, double x, double y", "a * x + y")
     println(expr)
 
     val compiler = CodeCompiler()
@@ -62,20 +62,4 @@ class RAdd(private val left: RExpression, private val right: RExpression): RExpr
     override fun toString(): String {
         return "$left + $right"
     }
-}
-
-fun generateCode(className: String, returnType: String, functionName: String, args: String, expression: String): String {
-    return """
-        public class {{className}} {
-            public {{returnType}} {{functionName}}({{args}}) {
-                return {{expression}};
-            }
-        }
-    """
-        .trimIndent()
-        .replace("{{className}}", className)
-        .replace("{{returnType}}", returnType)
-        .replace("{{functionName}}", functionName)
-        .replace("{{args}}", args)
-        .replace("{{expression}}", expression)
 }
