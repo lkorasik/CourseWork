@@ -33,7 +33,15 @@ fun main(args: Array<String>) {
     val cPdPe = RAdd(RAdd(numbC, numbD), numbE)
     println(cPdPe)
 
-    val expr = FunctionPattern("TestClass", "double", "func", "double a, double x, double y", "a * x + y")
+    val expr = FunctionBuilder()
+        .setClassName { "TestClass" }
+        .setReturnType { "double" }
+        .setFunctionName { "func" }
+        .addArg("double", "a")
+        .addArg("double", "x")
+        .addArg("double", "y")
+        .setExpression { "a * x + y" }
+        .build()
     println(expr)
 
     val compiler = CodeCompiler()
@@ -46,19 +54,19 @@ fun main(args: Array<String>) {
 
 interface RExpression
 
-class RNumber(private val value: Number): RExpression {
+class RNumber(private val value: Number) : RExpression {
     override fun toString(): String {
         return value.toString()
     }
 }
 
-class RVariable(private val name: String): RExpression {
+class RVariable(private val name: String) : RExpression {
     override fun toString(): String {
         return name;
     }
 }
 
-class RAdd(private val left: RExpression, private val right: RExpression): RExpression {
+class RAdd(private val left: RExpression, private val right: RExpression) : RExpression {
     override fun toString(): String {
         return "$left + $right"
     }

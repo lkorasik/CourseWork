@@ -1,18 +1,17 @@
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class LoadedFunction {
-    private final Class<?> cls;
     private final Object instance;
-    private Method func;
+    private final Method function;
 
-    public LoadedFunction(Class<?> cls) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        this.cls = cls;
-        func = cls.getMethod("func", double.class, double.class, double.class);
+    public LoadedFunction(Class<?> cls, String functionName) throws InvocationTargetException, InstantiationException, IllegalAccessException {
+        function = Arrays.stream(cls.getMethods()).filter(method -> method.getName().equals(functionName)).toList().get(0);
         instance = cls.getDeclaredConstructors()[0].newInstance();
     }
 
     public Double invoke(Object... objects) throws InvocationTargetException, IllegalAccessException {
-        return (Double) func.invoke(instance, objects);
+        return (Double) function.invoke(instance, objects);
     }
 }

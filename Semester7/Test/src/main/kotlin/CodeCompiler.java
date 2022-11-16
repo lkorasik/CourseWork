@@ -16,7 +16,7 @@ public class CodeCompiler {
     public LoadedFunction compile(FunctionPattern source) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         File sourceFile = saveCode(source.getCode(), source.getClassName());
         compile(sourceFile.getPath());
-        return loadClass(sourceFile, source.getClassName());
+        return loadClass(sourceFile, source.getClassName(), source.getFunctionName());
     }
 
     private File saveCode(String source, String fileName) throws IOException {
@@ -30,9 +30,9 @@ public class CodeCompiler {
         compiler.run(null, null, null, path);
     }
 
-    private LoadedFunction loadClass(File sourceFile, String className) throws MalformedURLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    private LoadedFunction loadClass(File sourceFile, String className, String funcName) throws MalformedURLException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] { sourceFile.getParentFile().toURI().toURL() });
         Class<?> cls = Class.forName(className, true, classLoader);
-        return new LoadedFunction(cls);
+        return new LoadedFunction(cls, funcName);
     }
 }
