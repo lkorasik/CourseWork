@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
     val e: Double = 5.5
     val f: Float = 6.6f
     val x: String = "x";
+    val y: String = "y";
 
     val numbA = RNumber(a)
     val numbB = RNumber(b)
@@ -17,7 +18,9 @@ fun main(args: Array<String>) {
     val numbD = RNumber(d)
     val numbE = RNumber(e)
     val numbF = RNumber(f)
+
     val varX = RVariable(x);
+    val varY = RVariable(y);
 
     println("a = $numbA")
     println("b = $numbB")
@@ -26,9 +29,13 @@ fun main(args: Array<String>) {
     println("e = $numbE")
     println("f = $numbF")
     println("x = $varX")
+    println("y = $varY")
 
     val aPb = RAdd(numbA, numbB)
     println("a + b = $aPb")
+
+    val power = varY pow varX
+    println(power)
 
     val aPb2 = numbA + numbB * numbC
     println("a + b * c = $aPb2")
@@ -44,6 +51,7 @@ fun main(args: Array<String>) {
         .addArg("double", "x")
         .addArg("double", "y")
         .setExpression { "a * x + y" }
+        .setExpressionF { numbA * varX + varY * 3 }
         .build()
     println(expr)
 
@@ -111,6 +119,34 @@ interface RExpression {
     operator fun times(other: RExpression): RMul {
         return RMul(this, other)
     }
+
+    infix fun pow(other: Byte): RPow {
+        return RPow(this, RNumber(other))
+    }
+
+    infix fun pow(other: Short): RPow {
+        return RPow(this, RNumber(other))
+    }
+
+    infix fun pow(other: Int): RPow {
+        return RPow(this, RNumber(other))
+    }
+
+    infix fun pow(other: Long): RPow {
+        return RPow(this, RNumber(other))
+    }
+
+    infix fun pow(other: Float): RPow {
+        return RPow(this, RNumber(other))
+    }
+
+    infix fun pow(other: Double): RPow {
+        return RPow(this, RNumber(other))
+    }
+
+    infix fun pow(other: RExpression): RPow {
+        return RPow(this, other)
+    }
 }
 
 class RNumber(private val value: Number) : RExpression {
@@ -130,6 +166,13 @@ class RAdd(private val left: RExpression, private val right: RExpression) : RExp
         return "$left + $right"
     }
 }
+
+class RPow(private val left: RExpression, private val right: RExpression) : RExpression {
+    override fun toString(): String {
+        return "$left ^ $right"
+    }
+}
+
 
 class RMul(private val left: RExpression, private val right: RExpression) : RExpression {
     override fun toString(): String {

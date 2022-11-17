@@ -52,6 +52,16 @@ class FunctionBuilder {
         return this
     }
 
+    fun setExpression(expression: RExpression): FunctionBuilder {
+        this.expression = expression.toString()
+        return this
+    }
+
+    fun setExpressionF(getExpression: () -> RExpression): FunctionBuilder {
+        expression = getExpression().toString()
+        return this
+    }
+
     fun build(): FunctionPattern {
         return FunctionPattern(className, functionName, args, returnType, expression)
     }
