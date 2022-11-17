@@ -30,8 +30,8 @@ fun main(args: Array<String>) {
     val aPb = RAdd(numbA, numbB)
     println("a + b = $aPb")
 
-    val aPb2 = numbA + numbB
-    println("a + b = $aPb")
+    val aPb2 = numbA + numbB * numbC
+    println("a + b * c = $aPb2")
 
     val cPdPe = RAdd(RAdd(numbC, numbD), numbE)
     println(cPdPe)
@@ -55,13 +55,7 @@ fun main(args: Array<String>) {
     println(equation)
 }
 
-interface RExpression
-
-class RNumber(private val value: Number) : RExpression {
-    override fun toString(): String {
-        return value.toString()
-    }
-
+interface RExpression {
     operator fun plus(other: Byte): RAdd {
         return RAdd(this, RNumber(other))
     }
@@ -116,6 +110,12 @@ class RNumber(private val value: Number) : RExpression {
 
     operator fun times(other: RExpression): RMul {
         return RMul(this, other)
+    }
+}
+
+class RNumber(private val value: Number) : RExpression {
+    override fun toString(): String {
+        return value.toString()
     }
 }
 

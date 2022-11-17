@@ -53,6 +53,6 @@ class FunctionBuilder {
     }
 
     fun build(): FunctionPattern {
-        return FunctionPattern(className, returnType, functionName, args, expression)
+        return FunctionPattern(className, functionName, args, returnType, expression)
     }
 }
