@@ -1,4 +1,4 @@
-class FunctionPattern(private val className: String, private val function: String, private val args: Map<String, String>, returnType: String, expression: String) {
+class JavaFunctionPattern(private val className: String, private val function: String, private val args: Map<String, String>, returnType: String, expression: String) {
     val code = """
 public class $className {
     public $returnType $function(${argsToList()}) {

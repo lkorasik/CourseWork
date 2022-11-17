@@ -62,7 +62,7 @@ class FunctionBuilder {
         return this
     }
 
-    fun build(): FunctionPattern {
-        return FunctionPattern(className, functionName, args, returnType, expression)
+    fun build(): JavaFunctionPattern {
+        return JavaFunctionPattern(className, functionName, args, returnType, expression)
     }
 }
