@@ -62,12 +62,60 @@ class RNumber(private val value: Number) : RExpression {
         return value.toString()
     }
 
+    operator fun plus(other: Byte): RAdd {
+        return RAdd(this, RNumber(other))
+    }
+
+    operator fun plus(other: Short): RAdd {
+        return RAdd(this, RNumber(other))
+    }
+
     operator fun plus(other: Int): RAdd {
+        return RAdd(this, RNumber(other))
+    }
+
+    operator fun plus(other: Long): RAdd {
+        return RAdd(this, RNumber(other))
+    }
+
+    operator fun plus(other: Float): RAdd {
+        return RAdd(this, RNumber(other))
+    }
+
+    operator fun plus(other: Double): RAdd {
         return RAdd(this, RNumber(other))
     }
 
     operator fun plus(other: RExpression): RAdd {
         return RAdd(this, other)
+    }
+
+    operator fun times(other: Byte): RMul {
+        return RMul(this, RNumber(other))
+    }
+
+    operator fun times(other: Short): RMul {
+        return RMul(this, RNumber(other))
+    }
+
+    operator fun times(other: Int): RMul {
+        return RMul(this, RNumber(other))
+    }
+
+    operator fun times(other: Long): RMul {
+        return RMul(this, RNumber(other))
+    }
+
+    operator fun times(other: Float): RMul {
+        return RMul(this, RNumber(other))
+    }
+
+    operator fun times(other: Double): RMul {
+        return RMul(this, RNumber(other))
+    }
+
+    operator fun times(other: RExpression): RMul {
+        return RMul(this, other)
     }
 }
 
