@@ -1,3 +1,4 @@
+import java.beans.Expression
 import java.nio.file.Paths
 
 fun main(args: Array<String>) {
@@ -19,8 +20,8 @@ fun main(args: Array<String>) {
     val numbE = RNumber(e)
     val numbF = RNumber(f)
 
-    val varX = RVariable(x);
-    val varY = RVariable(y);
+    val varX = RVariable(x)
+    val varY = RVariable(y)
 
     println("a = $numbA")
     println("b = $numbB")
