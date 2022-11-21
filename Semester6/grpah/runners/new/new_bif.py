@@ -643,7 +643,7 @@ def run_bif_with_equilibrium():
             f.write(line)
 
     line1 = Line()
-    x = 0.5
+    x = 0.1
     for g in p_range1:
         x = single_newton(x, 0.0001, lambda x_: (g * x + 1) * (b + x) ** 6 - a * x, lambda x_: -a + g * (b + x) ** 6 + 6 * (b + x) ** 5 * (1 + g * x))
         line1.add(b, x)
