@@ -23,12 +23,12 @@ fun main(args: Array<String>) {
     println(RegimeMap().newRegimeMap(
         xStart = 0.2,
         yStart = 0.2,
-        aRange = lst(0.2, 0.25, 0.001).reversed(),
+        bRange = lst(0.3, 0.5, 0.001).reversed(),
         raRange = lst(0.5, 0.5, 0.001),
-        bRange = lst(0.01, 1.0, 0.001),
+        aRange = lst(0.01, 1.0, 0.001),
         timeRange = 1..10000,
-        f = { b, gg, x, y -> (a * x.pow(2)) / ((b + x).pow(6)) - gg * x * y },
-        g = { b, gg, x, y -> y + gg * y * (x - y) },
+        f = { gg, b, x, y -> (a * x.pow(2)) / ((b + x).pow(6)) - gg * x * y },
+        g = { gg, b, x, y -> y + gg * y * (x - y) },
         filePath = "C:\\users\\lkora\\desktop\\ktData2\\",
         accuracy = 5
     ))

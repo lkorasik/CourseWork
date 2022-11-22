@@ -14,16 +14,16 @@ class RegimeMap {
     }
 
     fun newRegimeMap(
-            xStart: Double,
-            yStart: Double,
-            aRange: List<Double>,
-            raRange: List<Double>,
-            bRange: List<Double>,
-            timeRange: IntRange,
-            f: (a: Double, b: Double, x: Double, y: Double) -> Double,
-            g: (a: Double, b: Double, x: Double, y: Double) -> Double,
-            filePath: String,
-            accuracy: Int
+        xStart: Double,
+        yStart: Double,
+        aRange: List<Double>,
+        raRange: List<Double>,
+        bRange: List<Double>,
+        timeRange: IntRange,
+        f: (a: Double, b: Double, x: Double, y: Double) -> Double,
+        g: (a: Double, b: Double, x: Double, y: Double) -> Double,
+        filePath: String,
+        accuracy: Int
     ) {
         val result_x = HashMap<Double, HashMap<Double, MutableList<Double>>>()
         val result_y = HashMap<Double, HashMap<Double, MutableList<Double>>>()
