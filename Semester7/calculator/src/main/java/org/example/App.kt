@@ -23,9 +23,9 @@ fun main(args: Array<String>) {
     println(RegimeMap().newRegimeMap(
         xStart = 0.2,
         yStart = 0.2,
-        bRange = lst(0.3, 0.5, 0.0001).reversed(),
-        raRange = lst(0.5, 0.5, 0.001),
         aRange = lst(0.01, 1.0, 0.001),
+        raRange = lst(0.5, 0.5, 0.001),
+        bRange = lst(0.3, 0.5, 0.0001).reversed(),
         timeRange = 1..10000,
         f = { gg, b, x, y -> (a * x.pow(2)) / ((b + x).pow(6)) - gg * x * y },
         g = { gg, b, x, y -> y + gg * y * (x - y) },
