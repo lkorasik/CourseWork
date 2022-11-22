@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
     println(RegimeMap().newRegimeMap(
         xStart = 0.2,
         yStart = 0.2,
-        bRange = lst(0.3, 0.5, 0.001).reversed(),
+        bRange = lst(0.3, 0.5, 0.0001).reversed(),
         raRange = lst(0.5, 0.5, 0.001),
         aRange = lst(0.01, 1.0, 0.001),
         timeRange = 1..10000,
