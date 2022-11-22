@@ -1,6 +1,6 @@
 package org.example
 
-import kotlin.math.pow
+import java.nio.file.Path
 
 /**
  * Hello world!
@@ -20,6 +20,8 @@ fun main(args: Array<String>) {
 //            filePath = "C:\\users\\lkora\\desktop\\ktData\\",
 //            accuracy = 5
 //    ))
+
+    /*
     println(RegimeMap().newRegimeMap(
         xStart = 0.2,
         yStart = 0.2,
@@ -32,6 +34,7 @@ fun main(args: Array<String>) {
         filePath = "C:\\users\\lkora\\desktop\\ktData2\\",
         accuracy = 5
     ))
+     */
 }
 
 fun iterator(start: Double, end: Double, step: Double): Iterator<Double> {
