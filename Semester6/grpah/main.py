@@ -3,6 +3,7 @@ import numpy as np
 import runners.new.run_time_series
 from alg import phase_portrait
 from core.algorithms.new import regime_map
+from core.algorithms.new.attractor import area_of_attractor
 from core.algorithms.old.bifurcation import bifurcation
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from core.utils.is_out_of_bounds import is_out_of_bounds
@@ -179,3 +180,16 @@ if __name__ == "__main__":
     # runners.new.run_time_series.run_2_cycle_3()
     # runners.new.run_time_series.run_2_cycle_4()
     # ----- Временные ряды -----
+
+    a = 1
+    b = 0.4
+    γ = 0.14
+    area_of_attractor(
+        file_path="C:\\Users\\lkora\\Desktop\\ktData4\\",
+        x_range=np.arange(0, 2.5, 0.01),
+        y_range=np.arange(0, 2.5, 0.01),
+        time_range=range(10000),
+        cycle=2,
+        f=lambda x, y: function.__x(a, b, γ, x, y),
+        g=lambda x, y: function.__y(a, b, γ, x, y),
+    )
