@@ -226,5 +226,5 @@ if __name__ == "__main__":
     # new_run_phase_portrait.run3_1()
     # new_run_phase_portrait.run4_0()
     # new_run_phase_portrait.run4_1()
-    new_run_phase_portrait.run5()
+    # new_run_phase_portrait.run5()
     # ----- Фазовые портреты -----
