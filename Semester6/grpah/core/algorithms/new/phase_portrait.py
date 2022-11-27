@@ -1,4 +1,3 @@
-from core.utils.is_out_of_bounds import is_out_of_bounds
 from visual.line import Line
 
 
