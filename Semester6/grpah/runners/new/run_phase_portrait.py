@@ -29,27 +29,37 @@ def run0():
 
 
 def run1():
+    # a = 1
     a = 1
-    b = 1
-    g = 1
+    # b = 1
+    b = 0.4
+    # g = 1
+    g = 0.14
 
     line = phase_portrait(
-        time_range=range(1, 1000 + 1),
-        x_start=0.1,
+        time_range=range(1, 3 + 1),
+        x_start=0.2,
         y_start=0.2,
         x=lambda x, y: function.__x(a, b, g, x, y),
         y=lambda x, y: function.__y(a, b, g, x, y),
         skip=False
     )
 
-    (Plotter()
-         .setup_x_label('x')
-         .setup_y_label('y')
-         .setup_y_scale(scale.linear)
-         .setup_grid(grid.major)
-         .setup_title('Phase portrait')
-         .plot_line(line, markers.point, colors.steel_blue)
-         .show_last())
+    points = open("C:\\Users\\lkora\\Desktop\\ktData5\\" + "points.txt", "w")
+    line = ""
+    for i in range(len(line.x)):
+        line += str(line.x[i]) + " " + str(line.y[i]) + "\n"
+    points.write(line)
+    points.close()
+
+    # (Plotter()
+    #      .setup_x_label('x')
+    #      .setup_y_label('y')
+    #      .setup_y_scale(scale.linear)
+    #      .setup_grid(grid.major)
+    #      .setup_title('Phase portrait')
+    #      .plot_line(line, markers.point, colors.steel_blue)
+    #      .show_last())
 
 
 def run2():

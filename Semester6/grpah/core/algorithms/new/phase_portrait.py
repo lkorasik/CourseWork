@@ -8,7 +8,7 @@ def phase_portrait(time_range, x_start, y_start, x, y, skip):
     x_i = x_start
     y_i = y_start
     if skip:
-        for _ in time_range:
+        for _ in range(10000):
             nx = x(x_i, y_i)
             ny = y(x_i, y_i)
             # if is_out_of_bounds(nx, 0, 100):

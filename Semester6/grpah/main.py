@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
     # ----- Фазовые портреты -----
     # run_phase_portrait.run0()
-    # run_phase_portrait.run1()
+    run_phase_portrait.run1()
     # run_phase_portrait.run2()
     # run_phase_portrait.run3()
     # run_phase_portrait.run4()
@@ -181,15 +181,19 @@ if __name__ == "__main__":
     # runners.new.run_time_series.run_2_cycle_4()
     # ----- Временные ряды -----
 
-    a = 1
-    b = 0.4
-    γ = 0.14
-    area_of_attractor(
-        file_path="C:\\Users\\lkora\\Desktop\\ktData4\\",
-        x_range=np.arange(0, 2.5, 0.01),
-        y_range=np.arange(0, 2.5, 0.01),
-        time_range=range(10000),
-        cycle=2,
-        f=lambda x, y: function.__x(a, b, γ, x, y),
-        g=lambda x, y: function.__y(a, b, γ, x, y),
-    )
+    # a = 1
+    # b = 0.4
+    # γ = 0.14
+    # area_of_attractor(
+    #     file_path="C:\\Users\\lkora\\Desktop\\ktData5\\",
+    #     x_range=np.arange(0, 2.5, 1),
+    #     y_range=np.arange(0, 2.5, 1),
+    #     time_range=range(10000),
+    #     cycle=2,
+    #     g=lambda x, y: function.__y(a, b, γ, x, y),
+    #     f=lambda x, y: function.__x(a, b, γ, x, y),
+    #     gc=lambda γ, x, y: function.__y(a, b, γ, x, y),
+    #     fc=lambda γ, x, y: function.__x(a, b, γ, x, y),
+    #     x_start=0.2,
+    # y_start = 0.2
+    # )
