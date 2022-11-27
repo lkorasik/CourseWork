@@ -11,6 +11,7 @@ from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from models.new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
+from runners.new_new import new_run_phase_portrait
 from runners.old import run_metrics, run_time_series, run_others, run_bifurcation
 from visual.line import Line
 from visual.plotter import Plotter
@@ -146,7 +147,7 @@ if __name__ == "__main__":
 
     # ----- Фазовые портреты -----
     # run_phase_portrait.run0()
-    run_phase_portrait.run1()
+    # run_phase_portrait.run1()
     # run_phase_portrait.run2()
     # run_phase_portrait.run3()
     # run_phase_portrait.run4()
@@ -197,3 +198,33 @@ if __name__ == "__main__":
     #     x_start=0.2,
     # y_start = 0.2
     # )
+
+    #                                                        ____________
+    #                                  (`-..________....---''  ____..._.-`
+    #                                   \\`._______.._,.---'''     ,'
+    #                                   ; )`.      __..-'`-.      /
+    #                                  / /     _.-' _,.;;._ `-._,'
+    #                                 / /   ,-' _.-'  //   ``--._``._
+    #                               ,','_.-' ,-' _.- (( =-    -. `-._`-._____
+    #                             ,;.''__..-'   _..--.\\.--'````--.._``-.`-._`.
+    #              _          |\,' .-''        ```-'`---'`-...__,._  ``-.`-.`-.`.
+    #   _     _.-,'(__)\__)\-'' `     ___  .          `     \      `--._
+    # ,',)---' /|)          `     `      ``-.   `     /     /     `     `-.
+    # \_____--.  '`  `               __..-.  \     . (   < _...-----..._   `.
+    #  \_,--..__. \\ .-`.\----'';``,..-.__ \  \      ,`_. `.,-'`--'`---''`.  )
+    #            `.\`.\  `_.-..' ,'   _,-..'  /..,-''(, ,' ; ( _______`___..'__
+    #                    ((,(,__(    ((,(,__,'  ``'-- `'`.(\  `.,..______   SSt
+    #                                                       ``--------..._``--.__
+    #
+
+    # ----- Фазовые портреты -----
+    # new_run_phase_portrait.run0()
+    # new_run_phase_portrait.run1_0()
+    # new_run_phase_portrait.run1_1()
+    # new_run_phase_portrait.run2()
+    # new_run_phase_portrait.run3_0()
+    # new_run_phase_portrait.run3_1()
+    # new_run_phase_portrait.run4_0()
+    # new_run_phase_portrait.run4_1()
+    new_run_phase_portrait.run5()
+    # ----- Фазовые портреты -----
