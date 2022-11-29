@@ -49,16 +49,7 @@ def run1():
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
          .scatter(line.x, line.y, markers.point, colors.steel_blue)
-         .show())
-
-    (Plotter()
-     .setup_x_label('x')
-     .setup_y_label('y')
-     .setup_y_scale(scale.linear)
-     .setup_grid(grid.major)
-     .setup_title('Phase portrait')
-     .plot_line(line, markers.point, colors.steel_blue)
-     .show_last())
+         .show_last())
 
 
 def run2():
@@ -81,7 +72,7 @@ def run2():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .plot_line(line, markers.point, colors.steel_blue)
+         .scatter(line.x, line.y, markers.point, colors.steel_blue)
          .show_last())
 
 
