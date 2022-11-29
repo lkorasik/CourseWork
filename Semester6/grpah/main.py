@@ -11,7 +11,7 @@ from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from models.new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
-from runners.new_new import new_run_phase_portrait
+from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation
 from runners.old import run_metrics, run_time_series, run_others, run_bifurcation
 from visual.line import Line
 from visual.plotter import Plotter
@@ -225,3 +225,7 @@ if __name__ == "__main__":
     # new_run_phase_portrait.run4()
     # new_run_phase_portrait.run5()
     # ----- Фазовые портреты -----
+
+    # ----- Бифуркационная диаграмма -----
+    # new_new_run_bifurcation.run1()
+    # ----- Бифуркационная диаграмма -----
