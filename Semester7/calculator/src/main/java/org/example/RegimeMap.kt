@@ -17,7 +17,6 @@ class RegimeMap {
         xStart: Double,
         yStart: Double,
         aRange: List<Double>,
-        raRange: List<Double>,
         bRange: List<Double>,
         timeRange: IntRange,
         f: (a: Double, b: Double, x: Double, y: Double) -> Double,
@@ -32,37 +31,10 @@ class RegimeMap {
             result_x[fk] = HashMap()
             result_y[fk] = HashMap()
             println(fk)
-            var x0 = xStart
-            var y0 = yStart
             for (b in bRange) {
                 val sc = round(b, accuracy)
-                result_x[fk]!![sc] = mutableListOf()
-                result_y[fk]!![sc] = mutableListOf()
-                for (t in timeRange) {
-                    val xt = f(a, b, x0, y0)
-                    val yt = g(a, b, x0, y0)
-                    x0 = xt
-                    y0 = yt
-                }
-                for (t in 1..20) {
-                    val xt = f(a, b, x0, y0)
-                    val yt = g(a, b, x0, y0)
-                    result_x[fk]!![sc]!!.add(xt)
-                    result_y[fk]!![sc]!!.add(yt)
-                    x0 = xt
-                    y0 = yt
-                }
-            }
-        }
-        for (a in raRange) {
-            val fk = round(a, accuracy)
-            result_x[fk] = HashMap()
-            result_y[fk] = HashMap()
-            println(fk)
-            var x0 = xStart
-            var y0 = yStart
-            for (b in bRange) {
-                val sc = round(b, accuracy)
+                var x0 = xStart
+                var y0 = yStart
                 result_x[fk]!![sc] = mutableListOf()
                 result_y[fk]!![sc] = mutableListOf()
                 for (t in timeRange) {

@@ -25,7 +25,7 @@ def area_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc, 
     #             x0 = xt
     #             y0 = yt
 
-    p = 0.14
+    p = 0.4
     values_x = []
     values_y = []
 

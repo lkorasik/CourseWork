@@ -1,6 +1,5 @@
 package org.example
 
-import java.nio.file.Path
 import kotlin.math.pow
 
 /**
@@ -37,17 +36,31 @@ fun main(args: Array<String>) {
     ))
      */
 
+//    println(
+//        RegimeMap().newRegimeMap(
+//            xStart = 0.2037,
+//            yStart = 0.2726,
+//            aRange = lst(0.38, 0.405, 0.0001),
+//            raRange = lst(0.5, 0.5, 0.001),
+//            bRange = lst(0.3, 1.0, 0.001),
+//            timeRange = 1..10000,
+//            f = { b: Double, gg: Double, x: Double, y: Double -> (a * x.pow(2)) / ((b + x).pow(6)) - gg * x * y },
+//            g = { b: Double, gg: Double, x: Double, y: Double -> y + gg * y * (x - y) },
+//            filePath = "C:\\users\\lkora\\desktop\\ktData3\\",
+//            accuracy = 5
+//        )
+//    )
+
     println(
         RegimeMap().newRegimeMap(
-            xStart = 0.2037,
-            yStart = 0.2726,
-            aRange = lst(0.38, 0.405, 0.0001),
-            raRange = lst(0.5, 0.5, 0.001),
-            bRange = lst(0.3, 1.0, 0.001),
+            xStart = 0.2,
+            yStart = 0.3,
+            aRange = lst(0.0, 1.0, 0.001),
+            bRange = lst(0.0, 1.0, 0.001),
             timeRange = 1..10000,
-            f = { b: Double, gg: Double, x: Double, y: Double -> (a * x.pow(2)) / ((b + x).pow(6)) - gg * x * y },
-            g = { b: Double, gg: Double, x: Double, y: Double -> y + gg * y * (x - y) },
-            filePath = "C:\\users\\lkora\\desktop\\ktData3\\",
+            f = { b: Double, ss: Double, x: Double, y: Double -> (a * x.pow(2)) / ((b + x).pow(6)) + ss * (y - x) },
+            g = { b: Double, ss: Double, x: Double, y: Double -> (a * y.pow(2)) / ((b + y).pow(6)) - ss * (y - x) },
+            filePath = "C:\\users\\lkora\\desktop\\tpy3\\",
             accuracy = 5
         )
     )

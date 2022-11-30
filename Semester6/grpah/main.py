@@ -8,10 +8,10 @@ from core.algorithms.old.bifurcation import bifurcation
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from core.utils.is_out_of_bounds import is_out_of_bounds
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
-from models.new_model import function
+from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
-from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation
+from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map
 from runners.old import run_metrics, run_time_series, run_others, run_bifurcation
 from visual.line import Line
 from visual.plotter import Plotter
@@ -229,3 +229,24 @@ if __name__ == "__main__":
     # ----- Бифуркационная диаграмма -----
     # new_new_run_bifurcation.run1()
     # ----- Бифуркационная диаграмма -----
+
+    # ----- Карта режимов -----
+    # new_new_regime_map.run0()
+    # ----- Карта режимов -----
+
+    # a = 1
+    # b = 0.4
+    # γ = 0.4
+    # area_of_attractor(
+    #     file_path="C:\\Users\\lkora\\Desktop\\ktData6\\",
+    #     x_range=np.arange(0, 1.0, 1),
+    #     y_range=np.arange(0, 1.0, 1),
+    #     time_range=range(10000),
+    #     cycle=10,
+    #     g=lambda n, x, y: function.__y(a, b, γ, x, y),
+    #     f=lambda n, x, y: function.__x(a, b, γ, x, y),
+    #     gc=lambda γ, x, y: function.__y(a, b, γ, x, y),
+    #     fc=lambda γ, x, y: function.__x(a, b, γ, x, y),
+    #     x_start=0.2,
+    #     y_start = 0.3
+    # )
