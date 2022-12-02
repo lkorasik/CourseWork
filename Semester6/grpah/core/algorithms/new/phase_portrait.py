@@ -27,7 +27,4 @@ def phase_portrait(time_range, x_start, y_start, x, y, skip):
         y_i = ny
         line.add(nx, ny)
 
-    print(line.x[-1])
-    print(line.y[-1])
-
     return line
