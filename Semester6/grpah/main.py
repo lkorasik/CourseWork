@@ -218,12 +218,12 @@ if __name__ == "__main__":
     #
 
     # ----- Фазовые портреты -----
-    # new_run_phase_portrait.run0()
-    # new_run_phase_portrait.run1()
-    # new_run_phase_portrait.run2()
-    # new_run_phase_portrait.run3()
-    # new_run_phase_portrait.run4()
-    # new_run_phase_portrait.run5()
+    # new_new_run_phase_portrait.run0()
+    # new_new_run_phase_portrait.run1()
+    # new_new_run_phase_portrait.run2()
+    # new_new_run_phase_portrait.run3()
+    # new_new_run_phase_portrait.run4()
+    # new_new_run_phase_portrait.run5()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
