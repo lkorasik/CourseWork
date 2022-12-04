@@ -1,7 +1,6 @@
 import numpy as np
 
 import runners.new.run_time_series
-from alg import phase_portrait
 from core.algorithms.new import regime_map
 from core.algorithms.new.attractor import area_of_attractor
 from core.algorithms.old.bifurcation import bifurcation
