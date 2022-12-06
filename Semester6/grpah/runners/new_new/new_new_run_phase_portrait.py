@@ -126,15 +126,40 @@ def run4():
          .show_last())
 
 
-def run5():
+def run6():
     α = 1
-    β = 0.5
-    σ = 0.63077
+    β = 0.38
+    σ = 0.25
 
     line = phase_portrait(
         time_range=range(1, 100000 + 1),
-        x_start=0.2,
-        y_start=0.3,
+        x_start=1.0,
+        y_start=0.85,
+        x=lambda x, y: function.__x(α, β, σ, x, y),
+        y=lambda x, y: function.__y(α, β, σ, x, y),
+        skip=True
+    )
+
+    (Plotter()
+         .setup_x_label('x')
+         .setup_y_label('y')
+         .setup_y_scale(scale.linear)
+         .setup_grid(grid.major)
+         .setup_title('Phase portrait')
+         .scatter(line.x, line.y, markers.point, colors.steel_blue)
+         # .plot_line(line, markers.point, colors.steel_blue)
+         .show_last())
+
+
+def run7():
+    α = 1
+    β = 0.4
+    σ = 0.4
+
+    line = phase_portrait(
+        time_range=range(1, 100000 + 1),
+        x_start=0.3,
+        y_start=0.2,
         x=lambda x, y: function.__x(α, β, σ, x, y),
         y=lambda x, y: function.__y(α, β, σ, x, y),
         skip=True

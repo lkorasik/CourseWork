@@ -26,20 +26,20 @@ if __name__ == "__main__":
     # Показать график временного ряда
     # run_time_series.without_chaos()
     # run_time_series.different_noises()
-    #
+
     # run_time_series.no_noise()
     # run_time_series.beta_noise()
     # run_time_series.alpha_noise()
     # run_time_series.additive_noise()
-    #
+
     # run_time_series.compare_noise()
     # run_time_series.without_chaos_composition()
-    #
+
     # run_time_series.beta_noise_can_drop()
-    #
+
     # run_time_series.cycle_2()
     # run_time_series.chaos()
-    #
+
     # todo: experiment
     # run_time_series.without_chaos_composition_parallel()
     # ----- Временные ряды -----
@@ -223,29 +223,32 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run3()
     # new_new_run_phase_portrait.run4()
     # new_new_run_phase_portrait.run5()
+    # new_new_run_phase_portrait.run6()
+    # new_new_run_phase_portrait.run7()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
     # new_new_run_bifurcation.run1()
+    # new_new_run_bifurcation.run2()
     # ----- Бифуркационная диаграмма -----
 
     # ----- Карта режимов -----
     # new_new_regime_map.run0()
+    # new_new_regime_map.run1()
     # ----- Карта режимов -----
 
     # a = 1
     # b = 0.4
-    # γ = 0.4
+    # σ = 0.4
     # area_of_attractor(
     #     file_path="C:\\Users\\lkora\\Desktop\\ktData6\\",
-    #     x_range=np.arange(0, 1.0, 1),
-    #     y_range=np.arange(0, 1.0, 1),
+    #     x_range=np.arange(0, 1.0, 0.1),
+    #     y_range=np.arange(0, 1.0, 0.1),
     #     time_range=range(10000),
     #     cycle=10,
-    #     g=lambda n, x, y: function.__y(a, b, γ, x, y),
-    #     f=lambda n, x, y: function.__x(a, b, γ, x, y),
-    #     gc=lambda γ, x, y: function.__y(a, b, γ, x, y),
-    #     fc=lambda γ, x, y: function.__x(a, b, γ, x, y),
-    #     x_start=0.2,
-    #     y_start = 0.3
+    #     g=lambda x, y: function.__y(a, b, σ, x, y),
+    #     f=lambda x, y: function.__x(a, b, σ, x, y),
+    #     gc=lambda x, y: function.__y(a, b, σ, x, y),
+    #     fc=lambda x, y: function.__x(a, b, σ, x, y),
+    #     R=3
     # )
