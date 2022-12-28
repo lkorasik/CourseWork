@@ -56,6 +56,7 @@ def area_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc, 
                     res_x[j].append([x, y, di_x.keys()])
                     res_y[j].append([x, y, di_y.keys()])
                     continue
+    # todo: надо разделить двойки
 
     for j in res_x.keys():
         for i in res_x[j]:
@@ -89,7 +90,6 @@ def area_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc, 
 
         if j == 1:
             zero_x.write(k)
-
 
     for j in range(1, 10 + 1):
         line = ""

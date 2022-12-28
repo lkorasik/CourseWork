@@ -46,10 +46,10 @@ def run1():
     )
 
     points = open("C:\\Users\\lkora\\Desktop\\ktData5\\" + "points.txt", "w")
-    line = ""
+    line_ = ""
     for i in range(len(line.x)):
-        line += str(line.x[i]) + " " + str(line.y[i]) + "\n"
-    points.write(line)
+        line_ += str(line.x[i]) + " " + str(line.y[i]) + "\n"
+    points.write(line_)
     points.close()
 
     # (Plotter()
