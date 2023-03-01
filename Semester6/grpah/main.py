@@ -11,13 +11,13 @@ from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
 from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map
-from runners.old import run_metrics, run_time_series, run_others, run_bifurcation
+from runners.old import run_metrics, run_time_series, run_others, run_bifurcation, run_lamerei, \
+    run_stochastic_sensitivity
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
 
 from collections import Counter
-
 
 if __name__ == "__main__":
     print("Run")
@@ -47,13 +47,13 @@ if __name__ == "__main__":
     # ----- Бифуркация -----
     # Показать график бифуркации
     # run_bifurcation.without_chaos()
-    #
+
     # Показать графики бифуркации с разными шумами
     # run_bifurcation.compare_chaos_bifurcation()
-    #
+
     # Показать график бифуркации с absorbing area
     # run_bifurcation.with_absorbing_area()
-    #
+
     # Показать график бифуркации и корни
     # run_bifurcation.with_equilibrium()
     # ----- Бифуркация -----
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # run_stochastic_sensitivity.b_noise_2()
     # run_stochastic_sensitivity.b_noise_3()
     # run_stochastic_sensitivity.b_noise_4()
-    #
+
     # Выгрузить в файл данные по функции стохастической чувствительности
     # run_stochastic_sensitivity.b_noise_to_file()
     # run_stochastic_sensitivity.a_noise_to_file()
@@ -168,7 +168,7 @@ if __name__ == "__main__":
     # ----- Карта режимов -----
     # run_regime_map.run_preview()
     # run_regime_map.run_full()
-    # run_regime_map.run_new_preview()
+    # run_regime_map.run    _new_preview()  
     # run_regime_map.run_new_full()
     # run_regime_map.run0()
     # ----- Карта режимов -----
@@ -253,3 +253,17 @@ if __name__ == "__main__":
     #     fc=lambda x, y: function.__x(a, b, σ, x, y),
     #     R=3
     # )
+
+    new_new_regime_map.run4()
+
+    # dx = 0.0175
+    # dy = 0.1
+    #
+    # sx = 0.42
+    # sy = 0
+    #
+    # x = [sx + dx * i for i in np.arange(11)]
+    # y = [sy + dy * i for i in np.arange(11)]
+    #
+    # z = list(zip(x, y))
+    # print(z)

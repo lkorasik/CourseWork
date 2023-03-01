@@ -154,14 +154,20 @@ def different_noises():
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
-    (Plotter()
-     .setup_x_label('t')
-     .setup_y_label('x')
-     .setup_y_scale(scale.linear)
-     .setup_grid(grid.major)
-     .setup_title('Time series original')
-     .plot_line(source0, markers.point, colors.steel_blue)
-     .show())
+    plotter = (Plotter()
+               .setup_x_label('t', font_size=14)
+               .setup_y_label('x', font_size=14)
+    .setup_x_ticks(font_size=14)
+    .setup_y_ticks(font_size=14)
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+               .setup_x_limit(46, 102)
+               .setup_y_limit(0.18, 0.24)
+               .setup_title('Without noise')
+               .plot_line(source0, markers.point, colors.steel_blue))
+
+    plotter.fig.set_size_inches(3, 3)
+    (plotter.show())
 
     source1 = time_series(
         skip_range=time_range,
@@ -170,14 +176,20 @@ def different_noises():
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
-    (Plotter()
-     .setup_x_label('t')
-     .setup_y_label('x')
-     .setup_y_scale(scale.linear)
-     .setup_grid(grid.major)
-     .setup_title('Time series with $\\beta$-noise')
-     .plot_line(source1, markers.point, colors.steel_blue)
-     .show())
+    plotter = (Plotter()
+               .setup_x_label('t', font_size=14)
+               .setup_y_label('x', font_size=14)
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+    .setup_x_ticks(font_size=14)
+    .setup_y_ticks(font_size=14)
+               .setup_x_limit(46, 102)
+               .setup_y_limit(0.18, 0.24)
+               .setup_title('$\\beta$-noise')
+               .plot_line(source1, markers.point, colors.steel_blue))
+
+    plotter.fig.set_size_inches(3, 3)
+    (plotter.show())
 
     source2 = time_series(
         skip_range=time_range,
@@ -186,14 +198,20 @@ def different_noises():
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
-    (Plotter()
-     .setup_x_label('t')
-     .setup_y_label('x')
-     .setup_y_scale(scale.linear)
-     .setup_grid(grid.major)
-     .setup_title('Time series with $\\alpha$-noise')
-     .plot_line(source2, markers.point, colors.steel_blue)
-     .show())
+    plotter = (Plotter()
+               .setup_x_label('t', font_size=14)
+               .setup_y_label('x', font_size=14)
+               .setup_y_scale(scale.linear)
+               .setup_grid(grid.major)
+    .setup_x_ticks(font_size=14)
+    .setup_y_ticks(font_size=14)
+               .setup_x_limit(46, 102)
+               .setup_y_limit(0.18, 0.24)
+               .setup_title('$\\alpha$-noise')
+               .plot_line(source2, markers.point, colors.steel_blue))
+
+    plotter.fig.set_size_inches(3, 3)
+    (plotter.show())
 
     source3 = time_series(
         skip_range=time_range,
@@ -202,14 +220,21 @@ def different_noises():
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
-    (Plotter()
-     .setup_x_label('t')
-     .setup_y_label('x')
-     .setup_y_scale(scale.linear)
-     .setup_grid(grid.major)
-     .setup_title('Time series with additive noise')
-     .plot_line(source3, markers.point, colors.steel_blue)
-     .show_last())
+    plotter = (Plotter()
+               .setup_x_label('t', font_size=14)
+               .setup_y_label('x', font_size=14)
+               .setup_y_scale(scale.linear)
+    .setup_x_ticks(font_size=14)
+    .setup_y_ticks(font_size=14)
+               .setup_grid(grid.major)
+               .setup_x_limit(46, 102)
+               .setup_y_limit(0.18, 0.24)
+               .setup_title('Additive noise')
+               .plot_line(source3, markers.point, colors.steel_blue))
+
+    plotter.fig.set_size_inches(3, 3)
+
+    (plotter.show_last())
 
 
 def no_noise():
@@ -274,7 +299,7 @@ def beta_noise_can_drop():
 
     a = 1
     b = 0.56
-    epsilon = 0.04
+    epsilon = 0.004
 
     source = time_series(
         skip_range=time_range,
@@ -285,11 +310,12 @@ def beta_noise_can_drop():
     )
     (Plotter()
      .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
-     .setup_x_label('t', font_size=25, label_pad=0)
-     .setup_x_ticks(font_size=20)
-     .setup_y_label('x', font_size=25, label_pad=12)
-     .setup_y_ticks(font_size=20)
+     .setup_x_label('t', font_size=14, label_pad=0)
+     .setup_x_ticks(font_size=14)
+     .setup_y_label('x', font_size=14, label_pad=12)
+     .setup_y_ticks(font_size=14)
      .setup_grid(grid.major)
+    .setup_title("$\\beta$-noise, $\\varepsilon$ = " + str(epsilon))
      # .setup_title('Time series $\beta$-noise')
      .plot_line(source, markers.point, colors.steel_blue)
      .show_last())

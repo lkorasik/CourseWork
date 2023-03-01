@@ -34,8 +34,10 @@ def default():
 
     plotter = (Plotter()
                # .setup_title("Lamerei")
-               .setup_x_label('$x_t$')
-               .setup_y_label('$x_{t + 1}$')
+               .setup_x_label('$x_t$', font_size=14)
+               .setup_y_label('$x_{t + 1}$', font_size=14)
+               .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
                .setup_grid(grid.major)
                .setup_y_scale(scale.linear))
 
@@ -64,8 +66,10 @@ def fast_zero():
 
     plotter = (Plotter()
                # .setup_title("Lamerei")
-               .setup_x_label('$x_t$')
-               .setup_y_label('$x_{t + 1}$', label_pad=15)
+               .setup_x_label('$x_t$', font_size=14)
+               .setup_y_label('$x_{t + 1}$', label_pad=15, font_size=14)
+               .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
                .setup_grid(grid.major)
                .setup_y_scale(scale.linear))
 
@@ -96,8 +100,10 @@ def fast_zero_segment():
 
     plotter = (Plotter()
                # .setup_title("Lamerei")
-               .setup_x_label('$x_t$')
-               .setup_y_label('$x_{t + 1}$', label_pad=15)
+               .setup_x_label('$x_t$', font_size=14)
+               .setup_y_label('$x_{t + 1}$', label_pad=15, font_size=14)
+               .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
                .setup_grid(grid.major)
                .setup_y_scale(scale.linear))
 
