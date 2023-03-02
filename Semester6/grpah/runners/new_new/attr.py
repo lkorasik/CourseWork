@@ -1,103 +1,43 @@
+from collections import Counter
+
+import numpy as np
+
 from models.new_new_model import function
 
 
 def run1():
     α = 1
-    x_start = 0.88
-    y_start = 0.17
+    β = 0.5
+    σ = 0.4
     time_range = range(0, 10000 + 1)
-    f = lambda β, σ, x, y: function.__x(α, β, σ, x, y)
-    g = lambda β, σ, x, y: function.__y(α, β, σ, x, y)
-    file_path = "C:\\users\\lkora\\desktop\\data8\\"
+    f = lambda x, y: function.__x(α, β, σ, x, y)
+    g = lambda x, y: function.__y(α, β, σ, x, y)
+    file_path = "C:\\users\\lkora\\desktop\\data10\\"
 
     result_x = dict()
     result_y = dict()
+    for x in np.arange(0.0, 0.9, 0.01):
+        result_x[x] = dict()
+        result_y[x] = dict()
 
-    n = 200
-    dx = (0.595 - 0.42) / n
-    dy = (1 - 0) / n
+        for y in np.arange(0.0, 0.9, 0.01):
+            result_x[x][y] = []
+            result_y[x][y] = []
 
-    sx = 0.42
-    sy = 0
+            print(x, y)
 
-    x2 = [sx + i * dx for i in range(n)]  # 11
-    y2 = [sy + i * dy for i in range(n)]  # 11
-
-    file = open(file_path + "test.txt", 'w')
-
-    rx = x_start
-    ry = y_start
-    for pair in list(zip(x2, y2)):
-        a = pair[0]  # β
-        b = pair[1]  # σ
-
-        file.write(str(a) + " " + str(b) + "\n")
-
-        result_x[b] = dict()
-        result_y[b] = dict()
-
-        result_x[b][a] = []
-        result_y[b][a] = []
-
-        print(a, b)
-
-        x0 = rx
-        y0 = ry
-        for _ in time_range:
-            xt = f(a, b, x0, y0)
-            yt = g(a, b, x0, y0)
-            x0 = xt
-            y0 = yt
-        for t in range(20):
-            xt = f(a, b, x0, y0)
-            yt = g(a, b, x0, y0)
-            result_x[b][a].append(xt)
-            result_y[b][a].append(yt)
-            x0 = xt
-            y0 = yt
-
-        rx = x0
-        ry = y0
-
-        x0 = rx
-        y0 = ry
-        for x in np.arange(a - 0.001, 0.4, -0.001):  # 0.1
-            result_x[b][x] = []
-            result_y[b][x] = []
-
-            print(x, b)
-
+            x0 = x
+            y0 = y
             for _ in time_range:
-                xt = f(x, b, x0, y0)
-                yt = g(x, b, x0, y0)
+                xt = f(x0, y0)
+                yt = g(x0, y0)
                 x0 = xt
                 y0 = yt
             for t in range(20):
-                xt = f(x, b, x0, y0)
-                yt = g(x, b, x0, y0)
-                result_x[b][x].append(xt)
-                result_y[b][x].append(yt)
-                x0 = xt
-                y0 = yt
-
-        x0 = rx
-        y0 = ry
-        for x in np.arange(a + 0.001, 0.6, 0.001):  # 0.1
-            result_x[b][x] = []
-            result_y[b][x] = []
-
-            print(x, b)
-
-            for _ in time_range:
-                xt = f(x, b, x0, y0)
-                yt = g(x, b, x0, y0)
-                x0 = xt
-                y0 = yt
-            for t in range(20):
-                xt = f(x, b, x0, y0)
-                yt = g(x, b, x0, y0)
-                result_x[b][x].append(xt)
-                result_y[b][x].append(yt)
+                xt = f(x0, y0)
+                yt = g(x0, y0)
+                result_x[x][y].append(xt)
+                result_y[x][y].append(yt)
                 x0 = xt
                 y0 = yt
 
@@ -106,28 +46,17 @@ def run1():
     for j in range(1, 15 + 1):
         res_x[j] = []
         res_y[j] = []
-        for pair in list(zip(x2, y2)):
-            a = pair[0]  # x
-            b = pair[1]  # y
 
-            data_x = result_x[b][a]
-            data_y = result_y[b][a]
-            for i in range(len(data_x)):
-                data_x[i] = round(data_x[i], 5)
-            for i in range(len(data_y)):
-                data_y[i] = round(data_y[i], 5)
-            # используй set
-            di_x = Counter(data_x)
-            di_y = Counter(data_y)
-            # print(fk, sc, Counter(data))
-            if len(di_x.keys()) == j and len(di_y.keys()) == j:
-                res_x[j].append([b, a, di_x.keys()])
-                res_y[j].append([b, a, di_y.keys()])
-                # continue
+        for x in np.arange(0.0, 0.9, 0.01):
+            result_x[x] = dict()
+            result_y[x] = dict()
 
-            for x in np.arange(a - 0.001, 0.4, -0.001):  # 0.1
-                data_x = result_x[b][x]
-                data_y = result_y[b][x]
+            for y in np.arange(0.0, 0.9, 0.01):
+                result_x[x][y] = []
+                result_y[x][y] = []
+
+                data_x = result_x[x][y]
+                data_y = result_y[x][y]
                 for i in range(len(data_x)):
                     data_x[i] = round(data_x[i], 5)
                 for i in range(len(data_y)):
@@ -137,25 +66,9 @@ def run1():
                 di_y = Counter(data_y)
                 # print(fk, sc, Counter(data))
                 if len(di_x.keys()) == j and len(di_y.keys()) == j:
-                    res_x[j].append([b, x, di_x.keys()])
-                    res_y[j].append([b, x, di_y.keys()])
-                    continue
-
-            for x in np.arange(a + 0.001, 0.6, 0.001):  # 0.1
-                data_x = result_x[b][x]
-                data_y = result_y[b][x]
-                for i in range(len(data_x)):
-                    data_x[i] = round(data_x[i], 5)
-                for i in range(len(data_y)):
-                    data_y[i] = round(data_y[i], 5)
-                # используй set
-                di_x = Counter(data_x)
-                di_y = Counter(data_y)
-                # print(fk, sc, Counter(data))
-                if len(di_x.keys()) == j and len(di_y.keys()) == j:
-                    res_x[j].append([b, x, di_x.keys()])
-                    res_y[j].append([b, x, di_y.keys()])
-                    continue
+                    res_x[j].append([x, y, di_x.keys()])
+                    res_y[j].append([x, y, di_y.keys()])
+                    # continue
 
     for j in res_x.keys():
         for i in res_x[j]:
@@ -310,8 +223,6 @@ def run1():
             c15_y.write(line)
         if j == 16:
             c16_y.write(line)
-
-    file.close()
 
     peq1_x.close()
     peq_x.close()

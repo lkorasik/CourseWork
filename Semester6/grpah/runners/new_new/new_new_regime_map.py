@@ -1194,20 +1194,20 @@ def run4():
     time_range = range(0, 10000 + 1)
     f = lambda β, σ, x, y: function.__x(α, β, σ, x, y)
     g = lambda β, σ, x, y: function.__y(α, β, σ, x, y)
-    file_path = "C:\\users\\lkora\\desktop\\data8\\"
+    file_path = "C:\\users\\lkora\\desktop\\data9\\"
 
     result_x = dict()
     result_y = dict()
 
-    n = 200
-    dx = (0.595 - 0.42) / n
+    n = 100
+    dx = (0.586 - 0.434) / n
     dy = (1 - 0) / n
 
-    sx = 0.42
+    sx = 0.434
     sy = 0
 
-    x2 = [sx + i * dx for i in range(n)]  # 11
-    y2 = [sy + i * dy for i in range(n)]  # 11
+    x2 = [sx + i * dx for i in range(n + 1)]  # 11
+    y2 = [sy + i * dy for i in range(n + 1)]  # 11
 
     file = open(file_path + "test.txt", 'w')
 

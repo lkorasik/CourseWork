@@ -10,7 +10,7 @@ from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
-from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map
+from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map, attr
 from runners.old import run_metrics, run_time_series, run_others, run_bifurcation, run_lamerei, \
     run_stochastic_sensitivity
 from visual.line import Line
@@ -254,16 +254,5 @@ if __name__ == "__main__":
     #     R=3
     # )
 
-    new_new_regime_map.run4()
-
-    # dx = 0.0175
-    # dy = 0.1
-    #
-    # sx = 0.42
-    # sy = 0
-    #
-    # x = [sx + dx * i for i in np.arange(11)]
-    # y = [sy + dy * i for i in np.arange(11)]
-    #
-    # z = list(zip(x, y))
-    # print(z)
+    # new_new_regime_map.run4()
+    attr.run1()
