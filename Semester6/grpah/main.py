@@ -224,10 +224,11 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run4()
     # new_new_run_phase_portrait.run6()
     # new_new_run_phase_portrait.run7()
+    # new_new_run_phase_portrait.run8()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
-    # new_new_run_bifurcation.run1()
+    new_new_run_bifurcation.run1()
     # new_new_run_bifurcation.run2()
     # new_new_run_bifurcation.run3()
     # new_new_run_bifurcation.run4()
@@ -255,4 +256,4 @@ if __name__ == "__main__":
     # )
 
     # new_new_regime_map.run4()
-    attr.run1()
+    # attr.run1()

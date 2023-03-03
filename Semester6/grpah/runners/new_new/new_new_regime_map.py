@@ -1194,16 +1194,16 @@ def run4():
     time_range = range(0, 10000 + 1)
     f = lambda β, σ, x, y: function.__x(α, β, σ, x, y)
     g = lambda β, σ, x, y: function.__y(α, β, σ, x, y)
-    file_path = "C:\\users\\lkora\\desktop\\data9\\"
+    file_path = "C:\\users\\lkora\\desktop\\data11\\"
 
     result_x = dict()
     result_y = dict()
 
-    n = 100
-    dx = (0.586 - 0.434) / n
+    n = 200
+    dx = (0.5862 - 0.42) / n
     dy = (1 - 0) / n
 
-    sx = 0.434
+    sx = 0.42
     sy = 0
 
     x2 = [sx + i * dx for i in range(n + 1)]  # 11
@@ -1234,7 +1234,7 @@ def run4():
             yt = g(a, b, x0, y0)
             x0 = xt
             y0 = yt
-        for t in range(20):
+        for t in range(25):
             xt = f(a, b, x0, y0)
             yt = g(a, b, x0, y0)
             result_x[b][a].append(xt)
@@ -1258,7 +1258,7 @@ def run4():
                 yt = g(x, b, x0, y0)
                 x0 = xt
                 y0 = yt
-            for t in range(20):
+            for t in range(25):
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
                 result_x[b][x].append(xt)
@@ -1279,7 +1279,7 @@ def run4():
                 yt = g(x, b, x0, y0)
                 x0 = xt
                 y0 = yt
-            for t in range(20):
+            for t in range(25):
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
                 result_x[b][x].append(xt)
@@ -1289,7 +1289,7 @@ def run4():
 
     res_x = dict()
     res_y = dict()
-    for j in range(1, 15 + 1):
+    for j in range(1, 20 + 1):
         res_x[j] = []
         res_y[j] = []
         for pair in list(zip(x2, y2)):
@@ -1368,6 +1368,10 @@ def run4():
     c14_x = open(file_path + 'cycle14_x.txt', 'w')
     c15_x = open(file_path + 'cycle15_x.txt', 'w')
     c16_x = open(file_path + 'cycle16_x.txt', 'w')
+    c17_x = open(file_path + 'cycle17_x.txt', 'w')
+    c18_x = open(file_path + 'cycle18_x.txt', 'w')
+    c19_x = open(file_path + 'cycle19_x.txt', 'w')
+    c20_x = open(file_path + 'cycle20_x.txt', 'w')
 
     peq_y = open(file_path + "eqX2Gt2X1_y.txt", "w")
     peq1_y = open(file_path + "eqX2Lt2X1_y.txt", 'w')
@@ -1387,8 +1391,12 @@ def run4():
     c14_y = open(file_path + 'cycle14_y.txt', 'w')
     c15_y = open(file_path + 'cycle15_y.txt', 'w')
     c16_y = open(file_path + 'cycle16_y.txt', 'w')
+    c17_y = open(file_path + 'cycle17_y.txt', 'w')
+    c18_y = open(file_path + 'cycle18_y.txt', 'w')
+    c19_y = open(file_path + 'cycle19_y.txt', 'w')
+    c20_y = open(file_path + 'cycle20_y.txt', 'w')
 
-    for j in range(1, 15 + 1):
+    for j in range(1, 20 + 1):
         line = ""
         k = ""
 
@@ -1447,8 +1455,16 @@ def run4():
             c15_x.write(line)
         if j == 16:
             c16_x.write(line)
+        if j == 17:
+            c17_x.write(line)
+        if j == 18:
+            c18_x.write(line)
+        if j == 19:
+            c19_x.write(line)
+        if j == 20:
+            c20_x.write(line)
 
-    for j in range(1, 15 + 1):
+    for j in range(1, 20 + 1):
         line = ""
         k = ""
         for item in res_y[j]:
@@ -1496,6 +1512,14 @@ def run4():
             c15_y.write(line)
         if j == 16:
             c16_y.write(line)
+        if j == 17:
+            c17_y.write(line)
+        if j == 18:
+            c18_y.write(line)
+        if j == 19:
+            c19_y.write(line)
+        if j == 20:
+            c20_y.write(line)
 
     file.close()
 
@@ -1516,6 +1540,10 @@ def run4():
     c14_x.close()
     c15_x.close()
     c16_x.close()
+    c17_x.close()
+    c18_x.close()
+    c19_x.close()
+    c20_x.close()
 
     peq1_y.close()
     peq_y.close()
@@ -1534,3 +1562,7 @@ def run4():
     c14_y.close()
     c15_y.close()
     c16_y.close()
+    c17_y.close()
+    c18_y.close()
+    c19_y.close()
+    c20_y.close()

@@ -174,3 +174,28 @@ def run7():
          .scatter(line.x, line.y, markers.point, colors.steel_blue)
          # .plot_line(line, markers.point, colors.steel_blue)
          .show_last())
+
+
+def run8():
+    α = 1
+    β = 0.44
+    σ = 0.44
+
+    line = phase_portrait(
+        time_range=range(1, 10000 + 1),
+        x_start=0.88,
+        y_start=0.17,
+        x=lambda x, y: function.__x(α, β, σ, x, y),
+        y=lambda x, y: function.__y(α, β, σ, x, y),
+        skip=True
+    )
+
+    (Plotter()
+         .setup_x_label('x')
+         .setup_y_label('y')
+         .setup_y_scale(scale.linear)
+         .setup_grid(grid.major)
+         .setup_title('Phase portrait')
+         .scatter(line.x, line.y, markers.point, colors.steel_blue)
+         # .plot_line(line, markers.point, colors.steel_blue)
+         .show_last())

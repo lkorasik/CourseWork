@@ -8,7 +8,7 @@ from models.new_new_model import function
 def run1():
     α = 1
     β = 0.5
-    σ = 0.4
+    σ = 0.5
     time_range = range(0, 10000 + 1)
     f = lambda x, y: function.__x(α, β, σ, x, y)
     g = lambda x, y: function.__y(α, β, σ, x, y)
@@ -16,11 +16,11 @@ def run1():
 
     result_x = dict()
     result_y = dict()
-    for x in np.arange(0.0, 0.9, 0.01):
+    for x in np.arange(0.0, 1.0, 0.01):
         result_x[x] = dict()
         result_y[x] = dict()
 
-        for y in np.arange(0.0, 0.9, 0.01):
+        for y in np.arange(0.0, 1.0, 0.01):
             result_x[x][y] = []
             result_y[x][y] = []
 
@@ -47,14 +47,8 @@ def run1():
         res_x[j] = []
         res_y[j] = []
 
-        for x in np.arange(0.0, 0.9, 0.01):
-            result_x[x] = dict()
-            result_y[x] = dict()
-
-            for y in np.arange(0.0, 0.9, 0.01):
-                result_x[x][y] = []
-                result_y[x][y] = []
-
+        for x in np.arange(0.0, 1.0, 0.01):
+            for y in np.arange(0.0, 1.0, 0.01):
                 data_x = result_x[x][y]
                 data_y = result_y[x][y]
                 for i in range(len(data_x)):

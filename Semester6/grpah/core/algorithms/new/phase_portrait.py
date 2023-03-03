@@ -11,19 +11,19 @@ def phase_portrait(time_range, x_start, y_start, x, y, skip):
         for _ in range(10000):
             nx = x(x_i, y_i)
             ny = y(x_i, y_i)
-            if is_out_of_bounds(nx, 10000, 0):
-                break
-            if is_out_of_bounds(ny, 10000, 0):
-                break
+            # if is_out_of_bounds(nx, 10000, 0):
+            #     break
+            # if is_out_of_bounds(ny, 10000, 0):
+            #     break
             x_i = nx
             y_i = ny
     for _ in time_range:
         nx = x(x_i, y_i)
         ny = y(x_i, y_i)
-        if is_out_of_bounds(nx, 10000, 0):
-            break
-        if is_out_of_bounds(ny, 10000, 0):
-            break
+        # if is_out_of_bounds(nx, 10000, 0):
+        #     break
+        # if is_out_of_bounds(ny, 10000, 0):
+        #     break
         x_i = nx
         y_i = ny
         line.add(nx, ny)
