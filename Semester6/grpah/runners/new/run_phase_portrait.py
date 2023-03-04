@@ -3,7 +3,6 @@ from models.new_model import function
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
 
-
 def run0():
     a = 1
     b = 0.4

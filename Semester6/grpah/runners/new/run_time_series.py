@@ -1,8 +1,7 @@
-from core.algorithms.old.time_series import time_series
 from models.new_model import function
-from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
+from core.algorithms.new.time_series import time_series
 
 
 def run_2_cycle_0():
@@ -11,7 +10,6 @@ def run_2_cycle_0():
     γ = 0.1
 
     time_range = range(1, 100 + 1)
-
     source = time_series(
         skip_range=range(1, 10000 + 1),
         time_range=time_range,
@@ -20,19 +18,9 @@ def run_2_cycle_0():
         skip=False
     )
 
-    y = source.y
-
-    y1 = Line()
-    y2 = Line()
-    y1.x = source.x
-    y2.x = source.x
-    for item in y:
-        y1.add_y(item[0])
-        y2.add_y(item[1])
-
-    y3 = Line()
-    y3.x = y1.y
-    y3.y = y2.y
+    time = list(map(lambda x: x[0], source))
+    values0 = list(map(lambda x: x[1][0], source))
+    values1 = list(map(lambda x: x[1][1], source))
 
     (Plotter()
      .setup_x_label('t')
@@ -40,7 +28,8 @@ def run_2_cycle_0():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-t')
-     .plot_line(y1, markers.point, colors.steel_blue).show())
+     .plot(time, values0, markers.point, colors.steel_blue)
+     .show())
 
     (Plotter()
      .setup_x_label('t')
@@ -48,7 +37,8 @@ def run_2_cycle_0():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series y-t')
-     .plot_line(y2, markers.point, colors.steel_blue).show())
+     .plot(time, values1, markers.point, colors.steel_blue)
+     .show())
 
     (Plotter()
      .setup_x_label('x')
@@ -56,8 +46,8 @@ def run_2_cycle_0():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-y')
-     .scatter_line(y3, markers.point, colors.steel_blue).show_last())
-     # .plot_line(y3, markers.point, colors.steel_blue).show_last())
+     .scatter(values0, values1, markers.point, colors.steel_blue)
+     .show_last())
 
 
 def run_2_cycle_1():
@@ -66,7 +56,6 @@ def run_2_cycle_1():
     γ = 0.2
 
     time_range = range(1, 100 + 1)
-
     source = time_series(
         skip_range=range(1, 10000 + 1),
         time_range=time_range,
@@ -75,19 +64,9 @@ def run_2_cycle_1():
         skip=False
     )
 
-    y = source.y
-
-    y1 = Line()
-    y2 = Line()
-    y1.x = source.x
-    y2.x = source.x
-    for item in y:
-        y1.add_y(item[0])
-        y2.add_y(item[1])
-
-    y3 = Line()
-    y3.x = y1.y
-    y3.y = y2.y
+    time = list(map(lambda x: x[0], source))
+    values0 = list(map(lambda x: x[1][0], source))
+    values1 = list(map(lambda x: x[1][1], source))
 
     (Plotter()
      .setup_x_label('t')
@@ -95,7 +74,7 @@ def run_2_cycle_1():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-t')
-     .plot_line(y1, markers.point, colors.steel_blue).show())
+     .plot(time, values0, markers.point, colors.steel_blue).show())
 
     (Plotter()
      .setup_x_label('t')
@@ -103,7 +82,7 @@ def run_2_cycle_1():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series y-t')
-     .plot_line(y2, markers.point, colors.steel_blue).show())
+     .plot(time, values1, markers.point, colors.steel_blue).show())
 
     (Plotter()
      .setup_x_label('x')
@@ -111,8 +90,8 @@ def run_2_cycle_1():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-y')
-     .scatter_line(y3, markers.point, colors.steel_blue).show_last())
-     # .plot_line(y3, markers.point, colors.steel_blue).show_last())
+     .scatter(values0, values1, markers.point, colors.steel_blue)
+     .show_last())
 
 
 def run_2_cycle_2():
@@ -121,7 +100,6 @@ def run_2_cycle_2():
     γ = 0.25
 
     time_range = range(1, 100 + 1)
-
     source = time_series(
         skip_range=range(1, 10000 + 1),
         time_range=time_range,
@@ -130,19 +108,9 @@ def run_2_cycle_2():
         skip=True
     )
 
-    y = source.y
-
-    y1 = Line()
-    y2 = Line()
-    y1.x = source.x
-    y2.x = source.x
-    for item in y:
-        y1.add_y(item[0])
-        y2.add_y(item[1])
-
-    y3 = Line()
-    y3.x = y1.y
-    y3.y = y2.y
+    time = list(map(lambda x: x[0], source))
+    values0 = list(map(lambda x: x[1][0], source))
+    values1 = list(map(lambda x: x[1][1], source))
 
     (Plotter()
      .setup_x_label('t')
@@ -150,7 +118,7 @@ def run_2_cycle_2():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-t')
-     .plot_line(y1, markers.point, colors.steel_blue).show())
+     .plot(time, values0, markers.point, colors.steel_blue).show())
 
     (Plotter()
      .setup_x_label('t')
@@ -158,7 +126,7 @@ def run_2_cycle_2():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series y-t')
-     .plot_line(y2, markers.point, colors.steel_blue).show())
+     .plot(time, values1, markers.point, colors.steel_blue).show())
 
     (Plotter()
      .setup_x_label('x')
@@ -166,16 +134,14 @@ def run_2_cycle_2():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-y')
-     .scatter_line(y3, markers.point, colors.steel_blue).show_last())
-     # .plot_line(y3, markers.point, colors.steel_blue).show_last())
+     .scatter(values0, values1, markers.point, colors.steel_blue)
+     .show_last())
 
 
 def run_2_cycle_3():
     α = 1
     β = 0.4
     γ = 0.7
-
-    time_range = range(1, 100 + 1)
 
     source = time_series(
         skip_range=range(1, 10000 + 1),
@@ -185,19 +151,9 @@ def run_2_cycle_3():
         skip=True
     )
 
-    y = source.y
-
-    y1 = Line()
-    y2 = Line()
-    y1.x = source.x
-    y2.x = source.x
-    for item in y:
-        y1.add_y(item[0])
-        y2.add_y(item[1])
-
-    y3 = Line()
-    y3.x = y1.y
-    y3.y = y2.y
+    time = list(map(lambda x: x[0], source))
+    values0 = list(map(lambda x: x[1][0], source))
+    values1 = list(map(lambda x: x[1][1], source))
 
     (Plotter()
      .setup_x_label('t')
@@ -205,7 +161,8 @@ def run_2_cycle_3():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-t')
-     .plot_line(y1, markers.point, colors.steel_blue).show())
+     .plot(time, values0, markers.point, colors.steel_blue)
+     .show())
 
     (Plotter()
      .setup_x_label('t')
@@ -213,7 +170,8 @@ def run_2_cycle_3():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series y-t')
-     .plot_line(y2, markers.point, colors.steel_blue).show())
+     .plot(time, values1, markers.point, colors.steel_blue)
+     .show())
 
     (Plotter()
      .setup_x_label('x')
@@ -221,8 +179,8 @@ def run_2_cycle_3():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-y')
-     .scatter_line(y3, markers.point, colors.steel_blue).show_last())
-     # .plot_line(y3, markers.point, colors.steel_blue).show_last())
+     .scatter(values0, values1, markers.point, colors.steel_blue)
+     .show_last())
 
 
 def run_2_cycle_4():
@@ -231,7 +189,6 @@ def run_2_cycle_4():
     γ = 0.805
 
     time_range = range(1, 100 + 1)
-
     source = time_series(
         skip_range=time_range,
         time_range=time_range,
@@ -240,19 +197,9 @@ def run_2_cycle_4():
         skip=False
     )
 
-    y = source.y
-
-    y1 = Line()
-    y2 = Line()
-    y1.x = source.x
-    y2.x = source.x
-    for item in y:
-        y1.add_y(item[0])
-        y2.add_y(item[1])
-
-    y3 = Line()
-    y3.x = y1.y
-    y3.y = y2.y
+    time = list(map(lambda x: x[0], source))
+    values0 = list(map(lambda x: x[1][0], source))
+    values1 = list(map(lambda x: x[1][1], source))
 
     (Plotter()
      .setup_x_label('t')
@@ -260,7 +207,8 @@ def run_2_cycle_4():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-t')
-     .plot_line(y1, markers.point, colors.steel_blue).show())
+     .plot(time, values0, markers.point, colors.steel_blue)
+     .show())
 
     (Plotter()
      .setup_x_label('t')
@@ -268,7 +216,8 @@ def run_2_cycle_4():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series y-t')
-     .plot_line(y2, markers.point, colors.steel_blue).show())
+     .plot(time, values1, markers.point, colors.steel_blue)
+     .show())
 
     (Plotter()
      .setup_x_label('x')
@@ -276,6 +225,5 @@ def run_2_cycle_4():
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series x-y')
-     .scatter_line(y3, markers.point, colors.steel_blue).show_last())
-     # .plot_line(y3, markers.point, colors.steel_blue).show_last())
-
+     .scatter(values0, values1, markers.point, colors.steel_blue)
+     .show_last())

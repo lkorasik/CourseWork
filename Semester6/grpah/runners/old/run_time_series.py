@@ -1,11 +1,8 @@
-from core.algorithms.old.time_series import time_series
 from models.hassel import function, functions_additive_noise
 from models.hassel import functions_b_noise, functions_a_noise
-from parallel.dispatcher import Dispatcher
-from parallel.pickle_lambda import PickleLambda
-from parallel.task import Task
 from visual.plotter import Plotter
 from visual.values import colors, grid, markers, scale
+from core.algorithms.new.time_series import time_series
 
 
 def without_chaos():
@@ -18,13 +15,16 @@ def without_chaos():
         skip=False
     )
 
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x')
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series')
-     .plot_line(source, markers.point, colors.steel_blue)
+     .plot(time, values, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -62,80 +62,29 @@ def without_chaos_composition():
         skip=False
     )
 
+    time0 = list(map(lambda x: x[0], source0))
+    values0 = list(map(lambda x: x[1], source0))
+
+    time1 = list(map(lambda x: x[0], source1))
+    values1 = list(map(lambda x: x[1], source1))
+
+    time2 = list(map(lambda x: x[0], source2))
+    values2 = list(map(lambda x: x[1], source2))
+
+    time3 = list(map(lambda x: x[0], source3))
+    values3 = list(map(lambda x: x[1], source3))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x', label_pad=10)
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
-     # .setup_title('Time series')
-     .plot_line(source0, markers.star, colors.dark_violet, '1.3')
-     .plot_line(source1, markers.star, colors.dark_slate_blue, '0.3')
-     .plot_line(source2, markers.star, colors.blue, '0.06')
-     .plot_line(source3, markers.star, colors.royal_blue, '0.04')
+     .plot(time0, values0, markers.star, colors.dark_violet, '1.3')
+     .plot(time1, values1, markers.star, colors.dark_slate_blue, '0.3')
+     .plot(time2, values2, markers.star, colors.blue, '0.06')
+     .plot(time3, values3, markers.star, colors.royal_blue, '0.04')
      .legend()
      .show_last())
-
-
-def without_chaos_composition_parallel():
-    time_range = range(1, 30 + 1)
-    a = 1
-    b = 0.56
-
-    dispatcher = Dispatcher(2)
-    dispatcher.start()
-
-    colors_dict = {
-        0: colors.dark_violet,
-        1: colors.dark_slate_blue,
-        2: colors.blue,
-        3: colors.royal_blue
-    }
-
-    task0 = Task(0, time_series, [], {"skip_range": time_range,
-                                      "time_range": time_range,
-                                      "x_start": 1.3,
-                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
-                                      "skip": False})
-    dispatcher.add_task(task0)
-
-    task1 = Task(1, time_series, [], {"skip_range": time_range,
-                                      "time_range": time_range,
-                                      "x_start": 0.3,
-                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
-                                      "skip": False})
-    dispatcher.add_task(task1)
-
-    task2 = Task(2, time_series, [], {"skip_range": time_range,
-                                      "time_range": time_range,
-                                      "x_start": 0.06,
-                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
-                                      "skip": False})
-    dispatcher.add_task(task2)
-
-    task3 = Task(3, time_series, [], {"skip_range": time_range,
-                                      "time_range": time_range,
-                                      "x_start": 0.04,
-                                      "f": PickleLambda(lambda x: function.f(a, b, x)),
-                                      "skip": False})
-    dispatcher.add_task(task3)
-
-    dispatcher.tasks_finished()
-    dispatcher.wait()
-
-    plotter = (Plotter()
-               .setup_x_label('t')
-               .setup_y_label('x', label_pad=10)
-               .setup_y_scale(scale.linear)
-               .setup_grid(grid.major)
-               # .setup_title('Time series')
-               .legend())
-
-    results = dispatcher.get_results()
-    while not results.empty():
-        item = results.get()
-        plotter.plot_line(item.get_result(), markers.star, colors_dict[item.get_uid()], '1.3')
-
-    plotter.show_last()
 
 
 def different_noises():
@@ -154,17 +103,21 @@ def different_noises():
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source0))
+    values = list(map(lambda x: x[1], source0))
+
     plotter = (Plotter()
                .setup_x_label('t', font_size=14)
                .setup_y_label('x', font_size=14)
-    .setup_x_ticks(font_size=14)
-    .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
+               .setup_y_ticks(font_size=14)
                .setup_y_scale(scale.linear)
                .setup_grid(grid.major)
                .setup_x_limit(46, 102)
                .setup_y_limit(0.18, 0.24)
                .setup_title('Without noise')
-               .plot_line(source0, markers.point, colors.steel_blue))
+               .plot(time, values, markers.point, colors.steel_blue))
 
     plotter.fig.set_size_inches(3, 3)
     (plotter.show())
@@ -176,17 +129,21 @@ def different_noises():
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source1))
+    values = list(map(lambda x: x[1], source1))
+
     plotter = (Plotter()
                .setup_x_label('t', font_size=14)
                .setup_y_label('x', font_size=14)
                .setup_y_scale(scale.linear)
                .setup_grid(grid.major)
-    .setup_x_ticks(font_size=14)
-    .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
+               .setup_y_ticks(font_size=14)
                .setup_x_limit(46, 102)
                .setup_y_limit(0.18, 0.24)
                .setup_title('$\\beta$-noise')
-               .plot_line(source1, markers.point, colors.steel_blue))
+               .plot(time, values, markers.point, colors.steel_blue))
 
     plotter.fig.set_size_inches(3, 3)
     (plotter.show())
@@ -198,17 +155,21 @@ def different_noises():
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source2))
+    values = list(map(lambda x: x[1], source2))
+
     plotter = (Plotter()
                .setup_x_label('t', font_size=14)
                .setup_y_label('x', font_size=14)
                .setup_y_scale(scale.linear)
                .setup_grid(grid.major)
-    .setup_x_ticks(font_size=14)
-    .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
+               .setup_y_ticks(font_size=14)
                .setup_x_limit(46, 102)
                .setup_y_limit(0.18, 0.24)
                .setup_title('$\\alpha$-noise')
-               .plot_line(source2, markers.point, colors.steel_blue))
+               .plot(time, values, markers.point, colors.steel_blue))
 
     plotter.fig.set_size_inches(3, 3)
     (plotter.show())
@@ -220,17 +181,21 @@ def different_noises():
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source3))
+    values = list(map(lambda x: x[1], source3))
+
     plotter = (Plotter()
                .setup_x_label('t', font_size=14)
                .setup_y_label('x', font_size=14)
                .setup_y_scale(scale.linear)
-    .setup_x_ticks(font_size=14)
-    .setup_y_ticks(font_size=14)
+               .setup_x_ticks(font_size=14)
+               .setup_y_ticks(font_size=14)
                .setup_grid(grid.major)
                .setup_x_limit(46, 102)
                .setup_y_limit(0.18, 0.24)
                .setup_title('Additive noise')
-               .plot_line(source3, markers.point, colors.steel_blue))
+               .plot(time, values, markers.point, colors.steel_blue))
 
     plotter.fig.set_size_inches(3, 3)
 
@@ -252,6 +217,10 @@ def no_noise():
         f=lambda x: function.f(a, b, x),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
      .setup_x_label('t', font_size=25, label_pad=0)
@@ -260,7 +229,7 @@ def no_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series original')
-     .plot_line(source, markers.point, colors.steel_blue)
+     .plot(time, values, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -280,6 +249,10 @@ def beta_noise():
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
      .setup_x_label('t', font_size=25, label_pad=0)
@@ -288,7 +261,7 @@ def beta_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series $\beta$-noise')
-     .plot_line(source, markers.point, colors.steel_blue)
+     .plot(time, values, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -308,6 +281,10 @@ def beta_noise_can_drop():
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
      .setup_x_label('t', font_size=14, label_pad=0)
@@ -316,8 +293,7 @@ def beta_noise_can_drop():
      .setup_y_ticks(font_size=14)
      .setup_grid(grid.major)
     .setup_title("$\\beta$-noise, $\\varepsilon$ = " + str(epsilon))
-     # .setup_title('Time series $\beta$-noise')
-     .plot_line(source, markers.point, colors.steel_blue)
+     .plot(time, values, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -337,6 +313,10 @@ def alpha_noise():
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .adjust(top=0.92, bottom=0.15, left=0.175, right=0.95)
      .setup_x_label('t', font_size=25, label_pad=0)
@@ -345,7 +325,7 @@ def alpha_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series $\alpha$-noise')
-     .plot_line(source, markers.point, colors.steel_blue)
+     .plot(time, values, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -365,6 +345,10 @@ def additive_noise():
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .adjust(top=0.92, bottom=0.15, left=0.195, right=0.97)
      .setup_x_label('t', font_size=25, label_pad=0)
@@ -373,7 +357,7 @@ def additive_noise():
      .setup_y_ticks(font_size=20)
      .setup_grid(grid.major)
      # .setup_title('Time series additive-noise')
-     .plot_line(source, markers.point, colors.steel_blue)
+     .plot(time, values, markers.point, colors.steel_blue)
      .show_last())
 
 
@@ -418,16 +402,28 @@ def compare_noise():
         skip=skip
     )
 
+    time0 = list(map(lambda x: x[0], source0))
+    values0 = list(map(lambda x: x[1], source0))
+
+    time1 = list(map(lambda x: x[0], source1))
+    values1 = list(map(lambda x: x[1], source1))
+
+    time2 = list(map(lambda x: x[0], source2))
+    values2 = list(map(lambda x: x[1], source2))
+
+    time3 = list(map(lambda x: x[0], source3))
+    values3 = list(map(lambda x: x[1], source3))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x')
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series original')
-     .plot_line(source0, markers.point, colors.light_coral)
-     .plot_line(source1, markers.point, colors.dark_olive_green)
-     .plot_line(source2, markers.point, colors.olive)
-     .plot_line(source3, markers.point, colors.teal)
+     .plot(time0, values0, markers.point, colors.light_coral)
+     .plot(time1, values1, markers.point, colors.dark_olive_green)
+     .plot(time2, values2, markers.point, colors.olive)
+     .plot(time3, values3, markers.point, colors.teal)
      .show())
     # .show_last())
 
@@ -459,16 +455,29 @@ def compare_noise():
         f=lambda x: functions_b_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time0 = list(map(lambda x: x[0], source0))
+    values0 = list(map(lambda x: x[1], source0))
+
+    time1 = list(map(lambda x: x[0], source1))
+    values1 = list(map(lambda x: x[1], source1))
+
+    time2 = list(map(lambda x: x[0], source2))
+    values2 = list(map(lambda x: x[1], source2))
+
+    time3 = list(map(lambda x: x[0], source3))
+    values3 = list(map(lambda x: x[1], source3))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x')
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with $\\beta$-noise')
-     .plot_line(source0, markers.point, colors.light_coral)
-     .plot_line(source1, markers.point, colors.dark_olive_green)
-     .plot_line(source2, markers.point, colors.olive)
-     .plot_line(source3, markers.point, colors.teal)
+     .plot(time0, values0, markers.point, colors.light_coral)
+     .plot(time1, values1, markers.point, colors.dark_olive_green)
+     .plot(time2, values2, markers.point, colors.olive)
+     .plot(time3, values3, markers.point, colors.teal)
      .show())
 
     source0 = time_series(
@@ -499,16 +508,29 @@ def compare_noise():
         f=lambda x: functions_a_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time0 = list(map(lambda x: x[0], source0))
+    values0 = list(map(lambda x: x[1], source0))
+
+    time1 = list(map(lambda x: x[0], source1))
+    values1 = list(map(lambda x: x[1], source1))
+
+    time2 = list(map(lambda x: x[0], source2))
+    values2 = list(map(lambda x: x[1], source2))
+
+    time3 = list(map(lambda x: x[0], source3))
+    values3 = list(map(lambda x: x[1], source3))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x')
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with $\\alpha$-noise')
-     .plot_line(source0, markers.point, colors.light_coral)
-     .plot_line(source1, markers.point, colors.dark_olive_green)
-     .plot_line(source2, markers.point, colors.olive)
-     .plot_line(source3, markers.point, colors.teal)
+     .plot(time0, values0, markers.point, colors.light_coral)
+     .plot(time1, values1, markers.point, colors.dark_olive_green)
+     .plot(time2, values2, markers.point, colors.olive)
+     .plot(time3, values3, markers.point, colors.teal)
      .show())
 
     source0 = time_series(
@@ -539,16 +561,29 @@ def compare_noise():
         f=lambda x: functions_additive_noise.f(a, b, x, epsilon),
         skip=skip
     )
+
+    time0 = list(map(lambda x: x[0], source0))
+    values0 = list(map(lambda x: x[1], source0))
+
+    time1 = list(map(lambda x: x[0], source1))
+    values1 = list(map(lambda x: x[1], source1))
+
+    time2 = list(map(lambda x: x[0], source2))
+    values2 = list(map(lambda x: x[1], source2))
+
+    time3 = list(map(lambda x: x[0], source3))
+    values3 = list(map(lambda x: x[1], source3))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x')
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      .setup_title('Time series with additive noise')
-     .plot_line(source0, markers.point, colors.light_coral)
-     .plot_line(source1, markers.point, colors.dark_olive_green)
-     .plot_line(source2, markers.point, colors.olive)
-     .plot_line(source3, markers.point, colors.teal)
+     .plot(time0, values0, markers.point, colors.light_coral)
+     .plot(time1, values1, markers.point, colors.dark_olive_green)
+     .plot(time2, values2, markers.point, colors.olive)
+     .plot(time3, values3, markers.point, colors.teal)
      # .show())
      .show_last())
 
@@ -569,13 +604,16 @@ def cycle_2():
         skip=skip
     )
 
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x', label_pad=10)
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      # .setup_title('Time series')
-     .plot_line(source, markers.star, colors.steel_blue)
+     .plot(time, values, markers.star, colors.steel_blue)
      .show_last())
 
 
@@ -595,11 +633,14 @@ def chaos():
         skip=skip
     )
 
+    time = list(map(lambda x: x[0], source))
+    values = list(map(lambda x: x[1], source))
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x', label_pad=10)
      .setup_y_scale(scale.linear)
      .setup_grid(grid.major)
      # .setup_title('Time series')
-     .plot_line(source, markers.star, colors.steel_blue)
+     .plot(time, values, markers.star, colors.steel_blue)
      .show_last())

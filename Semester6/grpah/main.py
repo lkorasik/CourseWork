@@ -39,9 +39,6 @@ if __name__ == "__main__":
 
     # run_time_series.cycle_2()
     # run_time_series.chaos()
-
-    # todo: experiment
-    # run_time_series.without_chaos_composition_parallel()
     # ----- Временные ряды -----
 
     # ----- Бифуркация -----
@@ -228,7 +225,7 @@ if __name__ == "__main__":
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
-    new_new_run_bifurcation.run1()
+    # new_new_run_bifurcation.run1()
     # new_new_run_bifurcation.run2()
     # new_new_run_bifurcation.run3()
     # new_new_run_bifurcation.run4()
