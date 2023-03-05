@@ -1,6 +1,5 @@
 import numpy as np
 
-import runners.new.run_time_series
 from core.algorithms.new import regime_map
 from core.algorithms.new.attractor import area_of_attractor
 from core.algorithms.old.bifurcation import bifurcation
@@ -11,8 +10,6 @@ from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
 from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map, attr
-from runners.old import run_metrics, run_time_series, run_others, run_bifurcation, run_lamerei, \
-    run_stochastic_sensitivity
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors

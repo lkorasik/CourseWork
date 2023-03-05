@@ -1,4 +1,4 @@
-from core.algorithms.new.phase_portrait import phase_portrait
+from core.algorithms.time_series import time_series
 from models.new_new_model import function
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
@@ -9,14 +9,16 @@ def run0():
     β = 0.5
     σ = 0
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=0.2,
-        y_start=0.3,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[0.2, 0.3],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -24,7 +26,7 @@ def run0():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .plot_line(line, markers.point, colors.steel_blue)
+         .plot(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -33,14 +35,16 @@ def run1():
     β = 0.5
     σ = 0.5
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=0.2,
-        y_start=0.3,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[0.2, 0.3],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -48,7 +52,7 @@ def run1():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -57,14 +61,16 @@ def run2():
     β = 0.5
     σ = 0.4
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=0.2,
-        y_start=0.3,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[0.2, 0.3],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -72,7 +78,7 @@ def run2():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -81,14 +87,16 @@ def run3():
     β = 0.5
     σ = 0.48
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=0.2,
-        y_start=0.3,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[0.2, 0.3],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -96,8 +104,7 @@ def run3():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
-         # .plot_line(line, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -106,14 +113,17 @@ def run4():
     β = 0.5
     σ = 0.625
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=0.2,
-        y_start=0.3,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[0.2, 0.3],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
+
 
     (Plotter()
          .setup_x_label('x')
@@ -121,8 +131,7 @@ def run4():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
-         # .plot_line(line, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -131,14 +140,16 @@ def run6():
     β = 0.38
     σ = 0.25
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=1.0,
-        y_start=0.85,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[1.0, 0.85],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -146,8 +157,7 @@ def run6():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
-         # .plot_line(line, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -156,14 +166,16 @@ def run7():
     β = 0.4
     σ = 0.4
 
-    line = phase_portrait(
+    line = time_series(
+        skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=0.3,
-        y_start=0.2,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+        x_start=[0.3, 0.2],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -171,8 +183,7 @@ def run7():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
-         # .plot_line(line, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
 
 
@@ -181,14 +192,16 @@ def run8():
     β = 0.44
     σ = 0.44
 
-    line = phase_portrait(
-        time_range=range(1, 10000 + 1),
-        x_start=0.88,
-        y_start=0.17,
-        x=lambda x, y: function.__x(α, β, σ, x, y),
-        y=lambda x, y: function.__y(α, β, σ, x, y),
+    line = time_series(
+        skip_range=range(10000),
+        time_range=range(1, 100000 + 1),
+        x_start=[0.88, 0.17],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
         skip=True
     )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
 
     (Plotter()
          .setup_x_label('x')
@@ -196,6 +209,5 @@ def run8():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .scatter(line.x, line.y, markers.point, colors.steel_blue)
-         # .plot_line(line, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
