@@ -19,7 +19,7 @@ def beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
 
     epsilon_ = 0.005
@@ -30,8 +30,8 @@ def beta_noise():
         precision=0.0000001,
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         dsf=lambda b, x: function.f_dx(1, b, x),
         bifurcation=values
     )
@@ -43,7 +43,7 @@ def beta_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, epsilon_),
         q=lambda b, x: functions_b_noise.q(1, b, x, epsilon_),
         q_=functions_b_noise._q,
@@ -61,7 +61,7 @@ def beta_noise():
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
             m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
-            f=lambda b, x: function.f(1, b, x),
+            f=lambda b, x: function.__f(1, b, x),
             s=lambda b, x: functions_b_noise.s(1, b, x, epsilon),
             q=lambda b, x: functions_b_noise.q(1, b, x, epsilon),
             q_=functions_b_noise._q,
@@ -232,7 +232,7 @@ def alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
 
     epsilon_ = 0.005
@@ -244,8 +244,8 @@ def alpha_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -259,7 +259,7 @@ def alpha_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_a_noise.s(1, b, x, epsilon_),
         q=lambda b, x: functions_a_noise.q(1, b, x, epsilon_),
         q_=functions_a_noise._q,
@@ -277,7 +277,7 @@ def alpha_noise():
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
             m=lambda a, b, x: functions_a_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
-            f=lambda b, x: function.f(1, b, x),
+            f=lambda b, x: function.__f(1, b, x),
             s=lambda b, x: functions_a_noise.s(1, b, x, epsilon),
             q=lambda b, x: functions_a_noise.q(1, b, x, epsilon),
             q_=functions_a_noise._q,
@@ -448,7 +448,7 @@ def additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
 
     epsilon_ = 0.005
@@ -460,8 +460,8 @@ def additive_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -475,7 +475,7 @@ def additive_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
         m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon_),
         epsilon=epsilon_,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_additive_noise.s(1, b, x, epsilon_),
         q=lambda b, x: functions_additive_noise.q(1, b, x, epsilon_),
         q_=functions_additive_noise._q,
@@ -493,7 +493,7 @@ def additive_noise():
             borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.375], [0.22, 0.34]],
             m=lambda a, b, x: functions_additive_noise.m(a, b, x, epsilon),
             epsilon=epsilon,
-            f=lambda b, x: function.f(1, b, x),
+            f=lambda b, x: function.__f(1, b, x),
             s=lambda b, x: functions_additive_noise.s(1, b, x, epsilon),
             q=lambda b, x: functions_additive_noise.q(1, b, x, epsilon),
             q_=functions_additive_noise._q,

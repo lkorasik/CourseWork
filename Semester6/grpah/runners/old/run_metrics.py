@@ -18,7 +18,7 @@ def machalanobis_alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
@@ -28,8 +28,8 @@ def machalanobis_alpha_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -54,7 +54,7 @@ def machalanobis_alpha_noise():
         q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -135,7 +135,7 @@ def machalanobis_beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
@@ -145,8 +145,8 @@ def machalanobis_beta_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -171,7 +171,7 @@ def machalanobis_beta_noise():
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -252,7 +252,7 @@ def machalanobis_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
@@ -262,8 +262,8 @@ def machalanobis_additive_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -288,7 +288,7 @@ def machalanobis_additive_noise():
         q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -367,7 +367,7 @@ def euclid_beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
@@ -377,8 +377,8 @@ def euclid_beta_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -403,7 +403,7 @@ def euclid_beta_noise():
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     # Проверь, что используется в хаосе и в циклах. Похоже где-то перепутал местами
@@ -487,7 +487,7 @@ def euclid_alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
@@ -497,8 +497,8 @@ def euclid_alpha_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -523,7 +523,7 @@ def euclid_alpha_noise():
         q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]
@@ -603,7 +603,7 @@ def euclid_additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     equilibrium = bifurcation_with_equilibrium(
@@ -613,8 +613,8 @@ def euclid_additive_noise():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),
@@ -639,7 +639,7 @@ def euclid_additive_noise():
         q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     stable_equilibrium = equilibrium[1]

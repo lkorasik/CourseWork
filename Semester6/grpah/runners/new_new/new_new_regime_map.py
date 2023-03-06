@@ -1200,8 +1200,8 @@ def run4():
     result_y = dict()
 
     n = 200
-    dx = (0.5862 - 0.42) / n
-    dy = (1 - 0) / n
+    dx = (0.5773 - 0.42) / n
+    dy = (0.9 - 0) / n
 
     sx = 0.42
     sy = 0
@@ -1247,7 +1247,7 @@ def run4():
 
         x0 = rx
         y0 = ry
-        for x in np.arange(a - 0.001, 0.4, -0.001):  # 0.1
+        for x in np.arange(a - 0.001, 0.3, -0.001):  # 0.1
             result_x[b][x] = []
             result_y[b][x] = []
 
@@ -1311,7 +1311,7 @@ def run4():
                 res_y[j].append([b, a, di_y.keys()])
                 # continue
 
-            for x in np.arange(a - 0.001, 0.4, -0.001):  # 0.1
+            for x in np.arange(a - 0.001, 0.3, -0.001):  # 0.1
                 data_x = result_x[b][x]
                 data_y = result_y[b][x]
                 for i in range(len(data_x)):

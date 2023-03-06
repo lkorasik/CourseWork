@@ -1,5 +1,6 @@
 import numpy as np
 
+from core.algorithms.new_bifurcation import new_bifurcation
 from core.algorithms.old.absorbing_area import absorbing_area
 from core.algorithms.old.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
@@ -11,9 +12,9 @@ from visual.values import colors, grid, scale, markers
 
 
 def without_chaos():
-    source = bifurcation(
+    source = new_bifurcation(
         time_range=range(1, 100 + 1),
-        x_start=0.2,
+        x_start=[0.2],
         p_range=np.arange(0.22, 0.582355932, 0.001),
         f=lambda b, x: function.f(1, b, x)
     )
@@ -41,12 +42,19 @@ def compare_chaos_bifurcation():
     a = 1
     epsilon = 0.01
 
-    source0 = bifurcation(
+    # source0 = bifurcation(
+    #     time_range=time_range,
+    #     x_start=x_start,
+    #     p_range=p_range,
+    #     f=lambda b, x: function.__f(a, b, x)
+    # )
+    source0 = new_bifurcation(
         time_range=time_range,
-        x_start=x_start,
-        p_range=p_range,
-        f=lambda b, x: function.f(a, b, x)
+        x_start=[0.2],
+        p_range=np.arange(0.22, 0.582355932, 0.001),
+        f=lambda b, x: [function.__f(a, b, x[0])]
     )
+
     source0 = convert_dict_to_lists(source0)
 
     (Plotter()
@@ -131,7 +139,7 @@ def with_absorbing_area():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(a, b, x)
+        f=lambda b, x: function.__f(a, b, x)
     )
     draw_x, draw_y = convert_dict_to_lists(source)
 
@@ -140,7 +148,7 @@ def with_absorbing_area():
         left=0,
         right=1,
         step=0.0001,
-        f=lambda b, x: function.f(a, b, x),
+        f=lambda b, x: function.__f(a, b, x),
     )
 
     (Plotter()
@@ -163,7 +171,7 @@ def with_equilibrium():
         time_range=range(1, 100 + 1),
         x_start=0.1164711,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         lower_bound=None
     )
 
@@ -174,8 +182,8 @@ def with_equilibrium():
         function=lambda b, x: function.h(1, b, x),
         d_function=lambda b, x: function.h_dx(1, b, x),
         # d_function=lambda b, x: hassel.dh(1, b, x),
-        f=lambda b, x: function.f(1, b, x),
-        sf=lambda b, x, shift: function.f(1, b, x) - shift,
+        f=lambda b, x: function.__f(1, b, x),
+        sf=lambda b, x, shift: function.__f(1, b, x) - shift,
         # sf=lambda b, x, shift: hassel.sf(1, b, x, shift),
         dsf=lambda b, x: function.f_dx(1, b, x),
         # dsf=lambda b, x: hassel.df(1, b, x),

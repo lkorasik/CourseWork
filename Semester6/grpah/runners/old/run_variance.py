@@ -14,7 +14,7 @@ def single():
         time_range=range(1, 1000 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         lower_bound=None
     )
     source0 = variance(
@@ -79,7 +79,7 @@ def cyclic():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         b_range=np.arange(0.22, 0.582355932, 0.01),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         count=1000
     )
     source1 = cyclical_variance(

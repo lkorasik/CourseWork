@@ -14,7 +14,9 @@ def run0():
         time_range=range(1, 100000 + 1),
         x_start=[0.2, 0.3],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -40,7 +42,9 @@ def run1():
         time_range=range(1, 100000 + 1),
         x_start=[0.2, 0.3],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -66,7 +70,9 @@ def run2():
         time_range=range(1, 100000 + 1),
         x_start=[0.2, 0.3],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -92,7 +98,9 @@ def run3():
         time_range=range(1, 100000 + 1),
         x_start=[0.2, 0.3],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -118,7 +126,9 @@ def run4():
         time_range=range(1, 100000 + 1),
         x_start=[0.2, 0.3],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -145,7 +155,9 @@ def run6():
         time_range=range(1, 100000 + 1),
         x_start=[1.0, 0.85],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -171,7 +183,9 @@ def run7():
         time_range=range(1, 100000 + 1),
         x_start=[0.3, 0.2],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -197,7 +211,9 @@ def run8():
         time_range=range(1, 100000 + 1),
         x_start=[0.88, 0.17],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))

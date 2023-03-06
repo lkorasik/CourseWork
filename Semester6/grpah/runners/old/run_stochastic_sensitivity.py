@@ -19,7 +19,7 @@ def b_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -28,7 +28,7 @@ def b_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.373], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, epsilon),
         epsilon=epsilon,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, epsilon),
         q=lambda b, x: functions_b_noise.q(1, b, x, epsilon),
         q_=functions_b_noise._q,
@@ -74,7 +74,7 @@ def b_noise_1():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -83,7 +83,7 @@ def b_noise_1():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
@@ -124,7 +124,7 @@ def b_noise_2():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -133,7 +133,7 @@ def b_noise_2():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.373], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
@@ -174,7 +174,7 @@ def b_noise_3():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -183,7 +183,7 @@ def b_noise_3():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
@@ -225,7 +225,7 @@ def b_noise_4():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=p_range,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -234,7 +234,7 @@ def b_noise_4():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_b_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_b_noise.s(1, b, x, 0.001),
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
@@ -274,7 +274,7 @@ def a_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -283,7 +283,7 @@ def a_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_a_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_a_noise.s(1, b, x, 0.001),
         q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
@@ -318,7 +318,7 @@ def additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = bifurcation_with_ssf(
         values=values,
@@ -327,7 +327,7 @@ def additive_noise():
         borders=[[0.44, 0.582355932], [0.379, 0.435], [0.36, 0.37], [0.22, 0.34]],
         m=lambda a, b, x: functions_additive_noise.m(a, b, x, 0.001),
         epsilon=0.001,
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
         s=lambda b, x: functions_additive_noise.s(1, b, x, 0.001),
         q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
@@ -363,7 +363,7 @@ def b_noise_to_file():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -382,7 +382,7 @@ def b_noise_to_file():
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     prefix = "line"
@@ -408,7 +408,7 @@ def a_noise_to_file():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -427,7 +427,7 @@ def a_noise_to_file():
         q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     prefix = "line"
@@ -453,7 +453,7 @@ def additive_noise_to_file():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -472,7 +472,7 @@ def additive_noise_to_file():
         q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     prefix = "line"

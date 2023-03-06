@@ -13,7 +13,7 @@ def beta_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -32,7 +32,7 @@ def beta_noise():
         q=lambda b, x: functions_b_noise.q(1, b, x, 0.001),
         q_=functions_b_noise._q,
         s_=functions_b_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     plotter = (Plotter()
@@ -59,7 +59,7 @@ def alpha_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -78,7 +78,7 @@ def alpha_noise():
         q=lambda b, x: functions_a_noise.q(1, b, x, 0.001),
         q_=functions_a_noise._q,
         s_=functions_a_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     plotter = (Plotter()
@@ -100,7 +100,7 @@ def additive_noise():
         time_range=range(1, 100 + 1),
         x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x),
+        f=lambda b, x: function.__f(1, b, x),
     )
     source = m_b(
         b_range=np.arange(0.22, 0.582355932, 0.001),
@@ -119,7 +119,7 @@ def additive_noise():
         q=lambda b, x: functions_additive_noise.q(1, b, x, 0.001),
         q_=functions_additive_noise._q,
         s_=functions_additive_noise._s,
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     plotter = (Plotter()

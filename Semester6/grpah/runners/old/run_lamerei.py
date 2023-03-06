@@ -17,19 +17,19 @@ def default():
         x_start=0.03,
         time_range=time_range,
         skip=skip,
-        f=lambda x: function.f(a, b, x)
+        f=lambda x: function.__f(a, b, x)
     )
     source1 = lamerei(
         x_start=0.1,
         time_range=time_range,
         skip=skip,
-        f=lambda x: function.f(a, b, x),
+        f=lambda x: function.__f(a, b, x),
     )
     source2 = lamerei(
         x_start=0.3,
         time_range=time_range,
         skip=skip,
-        f=lambda x: function.f(a, b, x),
+        f=lambda x: function.__f(a, b, x),
     )
 
     plotter = (Plotter()
@@ -46,7 +46,7 @@ def default():
 
     (plotter
      .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
-     .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+     .plot(x_range, function.__f(a, b, x_range), ',', colors.orange)
      .show_last())
 
 
@@ -61,7 +61,7 @@ def fast_zero():
         x_start=1.3,
         time_range=time_range,
         skip=skip,
-        f=lambda x: function.f(a, b, x)
+        f=lambda x: function.__f(a, b, x)
     )
 
     plotter = (Plotter()
@@ -80,7 +80,7 @@ def fast_zero():
 
     (plotter
      .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
-     .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+     .plot(x_range, function.__f(a, b, x_range), ',', colors.orange)
      .show_last())
 
 
@@ -95,7 +95,7 @@ def fast_zero_segment():
         x_start=1.3,
         time_range=time_range,
         skip=skip,
-        f=lambda x: function.f(a, b, x)
+        f=lambda x: function.__f(a, b, x)
     )
 
     plotter = (Plotter()
@@ -114,5 +114,5 @@ def fast_zero_segment():
 
     (plotter
      .plot(x_range, function.g(a, x_range), ',', colors.steel_blue)
-     .plot(x_range, function.f(a, b, x_range), ',', colors.orange)
+     .plot(x_range, function.__f(a, b, x_range), ',', colors.orange)
      .show_last())

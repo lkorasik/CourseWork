@@ -13,7 +13,9 @@ def run0():
         time_range=range(1, 1000 + 1),
         x_start=[0.2, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -35,11 +37,13 @@ def run1():
     g = 0.14
 
     line = time_series(
-        skip_range=range(10000),
+        skip_range=range(0),
         time_range=range(1, 3 + 1),
         x_start=[0.2, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=False
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -68,11 +72,13 @@ def run2():
     g = 0.5
 
     line = time_series(
-        skip_range=range(10000),
+        skip_range=range(0),
         time_range=range(1, 1000 + 1),
         x_start=[0.1, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=False
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -94,11 +100,13 @@ def run3():
     g = 0.5
 
     line = time_series(
-        skip_range=range(10000),
+        skip_range=range(0),
         time_range=range(1, 50 + 1),
         x_start=[0.1, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=False
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -120,11 +128,13 @@ def run4():
     g = 0.5
 
     line = time_series(
-        skip_range=range(10000),
+        skip_range=range(0),
         time_range=range(1, 5000 + 1),
         x_start=[0.1, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=False
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -146,11 +156,13 @@ def run5():
     g = 0.4
 
     line = time_series(
-        skip_range=range(10000),
+        skip_range=range(0),
         time_range=range(1, 5000 + 1),
         x_start=[0.1, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=False
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -176,7 +188,9 @@ def run6():
         time_range=range(1, 5000 + 1),
         x_start=[0.2, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
@@ -203,7 +217,9 @@ def run7():
         time_range=range(1, 5000 + 1),
         x_start=[0.2, 0.2],
         f=lambda x: function.f(a, b, g, x[0], x[1]),
-        skip=True
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
     )
 
     x = list(map(lambda x: x[1][0], line))
