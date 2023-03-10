@@ -6,13 +6,16 @@ from visual.values import scale, grid, markers, colors
 
 def run0():
     α = 1
+    # β = 0.5
     β = 0.5
-    σ = 0
+    # σ = 0
+    σ = 0.3
 
     line = time_series(
         skip_range=range(10000),
         time_range=range(1, 100000 + 1),
-        x_start=[0.2, 0.3],
+        # x_start=[0.2, 0.3],
+        x_start=[0.88, 0.17],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
         check_bounds=False,
         upper_bounds=10_000,
@@ -28,7 +31,7 @@ def run0():
          .setup_y_scale(scale.linear)
          .setup_grid(grid.major)
          .setup_title('Phase portrait')
-         .plot(x, y, markers.point, colors.steel_blue)
+         .scatter(x, y, markers.star, colors.steel_blue)
          .show_last())
 
 

@@ -10,7 +10,7 @@ from core.utils.new_is_out_of_bounds import new_is_out_of_bounds
 from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
-from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map, attr
+from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map, attr, new_new_bif
 from runners.old import run_bifurcation, run_time_series
 from visual.line import Line
 from visual.plotter import Plotter
@@ -251,5 +251,6 @@ if __name__ == "__main__":
     #     R=3
     # )
 
-    new_new_regime_map.run4()
+    # new_new_regime_map.run5()
+    new_new_bif.run0()
     # attr.run1()

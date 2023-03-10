@@ -36,7 +36,7 @@ def run1():
             y_t = g(p, x_0, y_0)
             if is_out_of_bounds(x_t, upper_bound, lower_bound):
                 break
-            if is_out_of_bounds(x_t, upper_bound, lower_bound):
+            if is_out_of_bounds(y_t, upper_bound, lower_bound):
                 break
             x_0 = x_t
             y_0 = y_t
@@ -45,7 +45,7 @@ def run1():
             y_t = g(p, x_0, y_0)
             if is_out_of_bounds(x_t, upper_bound, lower_bound):
                 break
-            if is_out_of_bounds(x_t, upper_bound, lower_bound):
+            if is_out_of_bounds(y_t, upper_bound, lower_bound):
                 break
             x_0 = x_t
             y_0 = y_t
