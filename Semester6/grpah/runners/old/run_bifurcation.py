@@ -1,6 +1,5 @@
 import numpy as np
 
-from core.algorithms.new_bifurcation import new_bifurcation
 from core.algorithms.old.absorbing_area import absorbing_area
 from core.algorithms.old.bifurcation import bifurcation
 from algorithms.bifurcation_with_equilibrium import bifurcation_with_equilibrium
@@ -12,11 +11,11 @@ from visual.values import colors, grid, scale, markers
 
 
 def without_chaos():
-    source = new_bifurcation(
+    source = bifurcation(
         time_range=range(1, 100 + 1),
-        x_start=[0.2],
+        x_start=0.2,
         p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: function.f(1, b, x)
+        f=lambda b, x: function.__f(1, b, x)
     )
 
     source = convert_dict_to_lists(source)
@@ -42,17 +41,11 @@ def compare_chaos_bifurcation():
     a = 1
     epsilon = 0.01
 
-    # source0 = bifurcation(
-    #     time_range=time_range,
-    #     x_start=x_start,
-    #     p_range=p_range,
-    #     f=lambda b, x: function.__f(a, b, x)
-    # )
-    source0 = new_bifurcation(
+    source0 = bifurcation(
         time_range=time_range,
-        x_start=[0.2],
-        p_range=np.arange(0.22, 0.582355932, 0.001),
-        f=lambda b, x: [function.__f(a, b, x[0])]
+        x_start=x_start,
+        p_range=p_range,
+        f=lambda b, x: function.__f(a, b, x)
     )
 
     source0 = convert_dict_to_lists(source0)

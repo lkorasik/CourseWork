@@ -20,7 +20,6 @@ fire_brick = 'firebrick'
 maroon = 'maroon'
 dark_red = 'darkred'
 red = 'red'
-
 steel_blue = 'steelblue'
 dark_olive_green = 'darkolivegreen'
 olive = 'olive'
