@@ -230,3 +230,31 @@ def run8():
          .setup_title('Phase portrait')
          .scatter(x, y, markers.point, colors.steel_blue)
          .show_last())
+
+
+def run9():
+    α = 1
+    β = 0.445
+    σ = 0.27
+
+    line = time_series(
+        skip_range=range(10000),
+        time_range=range(1, 100000 + 1),
+        x_start=[0.88, 0.17],
+        f=lambda x: function.f(α, β, σ, x[0], x[1]),
+        check_bounds=False,
+        upper_bounds=10_000,
+        lower_bounds=5e-10
+    )
+
+    x = list(map(lambda x: x[1][0], line))
+    y = list(map(lambda x: x[1][1], line))
+
+    (Plotter()
+         .setup_x_label('x')
+         .setup_y_label('y')
+         .setup_y_scale(scale.linear)
+         .setup_grid(grid.major)
+         .setup_title('Phase portrait')
+         .scatter(x, y, markers.point, colors.steel_blue)
+         .show_last())

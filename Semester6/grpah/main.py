@@ -1,7 +1,7 @@
 import numpy as np
 
 from core.algorithms.new import regime_map
-from core.algorithms.new.attractor import area_of_attractor
+from core.algorithms.new.attractor import basin_of_attractor
 from core.algorithms.old.bifurcation import bifurcation
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from core.utils.is_out_of_bounds import is_out_of_bounds
@@ -11,7 +11,7 @@ from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
 from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map, attr, new_new_bif
-from runners.old import run_bifurcation, run_time_series
+from runners.old import run_bifurcation, run_time_series, run_others
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
@@ -221,6 +221,7 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run6()
     # new_new_run_phase_portrait.run7()
     # new_new_run_phase_portrait.run8()
+    new_new_run_phase_portrait.run9()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
@@ -236,9 +237,9 @@ if __name__ == "__main__":
     # ----- Карта режимов -----
 
     # a = 1
-    # b = 0.4
+    # b = 0.445
     # σ = 0.4
-    # area_of_attractor(
+    # basin_of_attractor(
     #     file_path="C:\\Users\\lkora\\Desktop\\ktData6\\",
     #     x_range=np.arange(0, 1.0, 0.1),
     #     y_range=np.arange(0, 1.0, 0.1),

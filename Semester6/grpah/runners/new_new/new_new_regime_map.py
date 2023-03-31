@@ -1194,12 +1194,13 @@ def run4():
     time_range = range(0, 10000 + 1)
     f = lambda β, σ, x, y: function.__x(α, β, σ, x, y)
     g = lambda β, σ, x, y: function.__y(α, β, σ, x, y)
-    file_path = "C:\\users\\lkora\\desktop\\data12\\"
+    # file_path = "C:\\users\\lkora\\desktop\\data12\\"
+    file_path = "C:\\users\\lkora\\desktop\\data14\\"
 
     result_x = dict()
     result_y = dict()
 
-    n = 400
+    n = 400 # 400
     dx = (0.5773 - 0.42) / n
     dy = (0.9 - 0) / n
 
@@ -1232,11 +1233,19 @@ def run4():
         for _ in time_range:
             xt = f(a, b, x0, y0)
             yt = g(a, b, x0, y0)
+            if xt < 0 or yt < 0:
+                break
+            if xt > 1000 or yt > 1000:
+                break
             x0 = xt
             y0 = yt
         for t in range(25):
             xt = f(a, b, x0, y0)
             yt = g(a, b, x0, y0)
+            if xt < 0 or yt < 0:
+                break
+            if xt > 1000 or yt > 1000:
+                break
             result_x[b][a].append(xt)
             result_y[b][a].append(yt)
             x0 = xt
@@ -1256,11 +1265,19 @@ def run4():
             for _ in time_range:
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 x0 = xt
                 y0 = yt
             for t in range(25):
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 result_x[b][x].append(xt)
                 result_y[b][x].append(yt)
                 x0 = xt
@@ -1277,11 +1294,19 @@ def run4():
             for _ in time_range:
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 x0 = xt
                 y0 = yt
             for t in range(25):
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 result_x[b][x].append(xt)
                 result_y[b][x].append(yt)
                 x0 = xt
@@ -1571,16 +1596,20 @@ def run4():
 def run5():
     α = 1
     x_start = 0.88
-    y_start = 0.17
+    # y_start = 0.17
+    y_start = 0.88
     time_range = range(0, 10000 + 1)
     f = lambda β, σ, x, y: function.__x(α, β, σ, x, y)
     g = lambda β, σ, x, y: function.__y(α, β, σ, x, y)
-    file_path = "C:\\users\\lkora\\desktop\\data13\\"
+    # file_path = "C:\\users\\lkora\\desktop\\data13\\"
+    file_path = "C:\\users\\lkora\\desktop\\data14\\"
+
+    shift = 0.01
 
     result_x = dict()
     result_y = dict()
 
-    n = 400
+    n = 1000
     dx = (0.3962 - 0.3962) / n
     dy = (0.5 - 0) / n
 
@@ -1592,7 +1621,7 @@ def run5():
 
     file = open(file_path + "test.txt", 'w')
 
-    rx = x_start
+    rx = x_start + shift
     ry = y_start
     for pair in list(zip(x2, y2)):
         a = pair[0]  # β
@@ -1608,16 +1637,24 @@ def run5():
 
         print(a, b)
 
-        x0 = rx
+        x0 = rx + shift
         y0 = ry
         for _ in time_range:
             xt = f(a, b, x0, y0)
             yt = g(a, b, x0, y0)
+            if xt < 0 or yt < 0:
+                break
+            if xt > 1000 or yt > 1000:
+                break
             x0 = xt
             y0 = yt
         for t in range(25):
             xt = f(a, b, x0, y0)
             yt = g(a, b, x0, y0)
+            if xt < 0 or yt < 0:
+                break
+            if xt > 1000 or yt > 1000:
+                break
             result_x[b][a].append(xt)
             result_y[b][a].append(yt)
             x0 = xt
@@ -1634,15 +1671,24 @@ def run5():
 
             print(x, b)
 
+            x0 = x0 + shift
             for _ in time_range:
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 x0 = xt
                 y0 = yt
             for t in range(25):
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
-                # todo: ограничение снизу 0
+
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 result_x[b][x].append(xt)
                 result_y[b][x].append(yt)
                 x0 = xt
@@ -1656,14 +1702,24 @@ def run5():
 
             print(x, b)
 
+            x0 = x0 + shift
             for _ in time_range:
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 x0 = xt
                 y0 = yt
             for t in range(25):
                 xt = f(x, b, x0, y0)
                 yt = g(x, b, x0, y0)
+                if xt < 0 or yt < 0:
+                    break
+                if xt > 1000 or yt > 1000:
+                    break
                 result_x[b][x].append(xt)
                 result_y[b][x].append(yt)
                 x0 = xt

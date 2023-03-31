@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-def area_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc, gc, R):
+def basin_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc, gc, R):
     result_x = dict()
     result_y = dict()
 
