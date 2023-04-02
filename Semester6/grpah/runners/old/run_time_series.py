@@ -6,10 +6,9 @@ from visual.values import colors, grid, markers, scale
 
 
 def without_chaos():
-    time_range = range(1, 50 + 1)
     source = time_series(
         skip_range=range(0),
-        time_range=time_range,
+        time_range=range(1, 50 + 1),
         x_start=1.3,
         f=lambda x: function.__f(1, 0.56, x),
         check_bounds=False,

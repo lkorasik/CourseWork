@@ -221,7 +221,7 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run6()
     # new_new_run_phase_portrait.run7()
     # new_new_run_phase_portrait.run8()
-    new_new_run_phase_portrait.run9()
+    # new_new_run_phase_portrait.run9()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
