@@ -2,6 +2,7 @@ from collections import Counter
 
 import numpy as np
 
+from core.utils.is_out_of_bounds import is_out_of_bounds
 from models.new_new_model import function
 
 
@@ -10,11 +11,15 @@ def run0():
     a_range = np.arange(0, 1, 0.001)  # β
     b_range = np.arange(0, 1, 0.001)  # σ
     x_start = 0.2
+    # x_start = 0.88
     y_start = 0.3
+    # y_start = 0.17
     time_range = range(0, 10000 + 1)
     f = lambda β, σ, x, y: function.__x(α, β, σ, x, y)
     g = lambda β, σ, x, y: function.__y(α, β, σ, x, y)
     file_path = "C:\\users\\lkora\\desktop\\data3\\"
+    lower_bound = 0
+    upper_bound = 1000
 
     result_x = dict()
     result_y = dict()
@@ -32,11 +37,23 @@ def run0():
             for _ in time_range:
                 xt = f(a, b_x, x0, y0)
                 yt = g(a, b_x, x0, y0)
+                if is_out_of_bounds(xt, upper_bound, lower_bound):
+                    print("a ", fk, " b ", sc, " x ", xt)
+                    break
+                if is_out_of_bounds(yt, upper_bound, lower_bound):
+                    print("a ", fk, " b ", sc, " y ", yt)
+                    break
                 x0 = xt
                 y0 = yt
             for t in range(20):
                 xt = f(a, b_x, x0, y0)
                 yt = g(a, b_x, x0, y0)
+                if is_out_of_bounds(xt, upper_bound, lower_bound):
+                    print("a ", fk, " b ", sc, " x ", xt)
+                    break
+                if is_out_of_bounds(yt, upper_bound, lower_bound):
+                    print("a ", fk, " b ", sc, " y ", yt)
+                    break
                 result_x[fk][sc].append(xt)
                 result_y[fk][sc].append(yt)
                 x0 = xt
@@ -46,7 +63,7 @@ def run0():
 
     res_x = dict()
     res_y = dict()
-    for j in range(1, 10 + 1):
+    for j in range(1, 15 + 1):
         res_x[j] = []
         res_y[j] = []
         for a in a_range:

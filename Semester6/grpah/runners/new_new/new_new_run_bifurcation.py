@@ -8,13 +8,13 @@ from visual.values import scale, grid, markers, colors
 
 
 def run1():
-    skip_range = range(1, 1000 + 1)
+    skip_range = range(1, 10000 + 1)
     time_range = range(1, 1000 + 1)
     x_start = 0.88
     y_start = 0.17
     α = 1
     β = 0.3962
-    p_range = np.arange(0, 0.11, 0.0001)
+    p_range = np.arange(0, 0.11, 0.001)
 
     f = lambda p, x, y: function.__x(α, β, p, x, y)
     g = lambda p, x, y: function.__y(α, β, p, x, y)

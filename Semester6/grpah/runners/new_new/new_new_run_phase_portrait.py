@@ -206,13 +206,13 @@ def run7():
 
 def run8():
     α = 1
-    β = 0.44
-    σ = 0.44
+    β = 0.445
+    σ = 0.27
 
     line = time_series(
-        skip_range=range(10000),
-        time_range=range(1, 100000 + 1),
-        x_start=[0.88, 0.17],
+        skip_range=range(20000),
+        time_range=range(1, 6 + 1),
+        x_start=[0.2, 0.5725],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
         check_bounds=False,
         upper_bounds=10_000,
@@ -221,6 +221,9 @@ def run8():
 
     x = list(map(lambda x: x[1][0], line))
     y = list(map(lambda x: x[1][1], line))
+
+    print(x)
+    print(y)
 
     (Plotter()
          .setup_x_label('x')
@@ -238,9 +241,10 @@ def run9():
     σ = 0.27
 
     line = time_series(
-        skip_range=range(10000),
-        time_range=range(1, 100000 + 1),
-        x_start=[0.88, 0.17],
+        skip_range=range(20000),
+        time_range=range(1, 10 + 1),
+        # x_start=[0.88, 0.17],
+        x_start=[0.5, 0.5],
         f=lambda x: function.f(α, β, σ, x[0], x[1]),
         check_bounds=False,
         upper_bounds=10_000,
@@ -249,6 +253,9 @@ def run9():
 
     x = list(map(lambda x: x[1][0], line))
     y = list(map(lambda x: x[1][1], line))
+
+    print(x)
+    print(y)
 
     (Plotter()
          .setup_x_label('x')

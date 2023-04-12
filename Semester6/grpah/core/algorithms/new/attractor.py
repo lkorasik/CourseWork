@@ -1,9 +1,14 @@
 from collections import Counter
 
 
-def basin_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc, gc, R):
+def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
     result_x = dict()
     result_y = dict()
+
+    neg_x = list()
+    neg_y = list()
+    over_x = list()
+    over_y = list()
 
     for x in x_range:
         x = round(x, R)
@@ -20,11 +25,27 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc,
             for _ in time_range:
                 xt = f(x0, y0)
                 yt = g(x0, y0)
+                if xt < 0 or yt < 0:
+                    print("low1")
+                    break
+                if xt > 1000 or yt > 1000:
+                    print("high1")
+                    break
                 x0 = xt
                 y0 = yt
             for t in range(20):
                 xt = f(x0, y0)
                 yt = g(x0, y0)
+                if xt < 0 or yt < 0:
+                    print("low2")
+                    neg_x.append(x)
+                    neg_y.append(y)
+                    break
+                if xt > 1000 or yt > 1000:
+                    print("high2")
+                    over_x.append(x)
+                    over_y.append(y)
+                    break
                 result_x[x][y].append(xt)
                 result_y[x][y].append(yt)
                 x0 = xt
@@ -41,6 +62,7 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc,
             x = round(x, R)
             for y in y_range:
                 y = round(y, R)
+                print(j, x, y)
                 data_x = result_x[x][y]
                 data_y = result_y[x][y]
                 for i in range(len(data_x)):
@@ -67,29 +89,71 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc,
 
     infinity_x = open(file_path + "infty_x.txt", 'w')
     zero_x = open(file_path + "zero_x.txt", 'w')
+    eq_x = open(file_path + "eq_x.txt", 'w')
+    cycle2_x = open(file_path + "cycle2_x.txt", 'w')
+    cycle3_x = open(file_path + 'cycle3_x.txt', 'w')
+    cycle4_x = open(file_path + 'cycle4_x.txt', 'w')
+    cycle5_x = open(file_path + 'cycle5_x.txt', 'w')
+    cycle6_x = open(file_path + 'cycle6_x.txt', 'w')
+    cycle7_x = open(file_path + 'cycle7_x.txt', 'w')
+    cycle8_x = open(file_path + 'cycle8_x.txt', 'w')
+    cycle9_x = open(file_path + "cycle9_x.txt", 'w')
+    cycle10_x = open(file_path + "cycle10_x.txt", 'w')
     others_x = open(file_path + "others_x.txt", 'w')
+    negative_x = open(file_path + "negative.txt", 'w')
+    overload_x = open(file_path + "overload.txt", 'w')
 
     infinity_y = open(file_path + "infty_y.txt", 'w')
     zero_y = open(file_path + "zero_y.txt", 'w')
     others_y = open(file_path + "others_y.txt", 'w')
 
+    line = ""
+    for i in range(len(neg_x)):
+        line += str(neg_x[i]) + " " + str(neg_y[i]) + "\n"
+    negative_x.write(line)
+
+    line = ""
+    for i in range(len(over_x)):
+        line += str(over_x[i]) + " " + str(over_y[i]) + "\n"
+    overload_x.write(line)
+
     for j in range(1, 10 + 1):
+        zero = ""
         line = ""
-        k = ""
         for item in res_x[j]:
             a = item[0]
             b = item[1]
 
             if j == 1:
                 if list(item[2]) == [0.0]:
-                    k += str(a) + " " + str(b) + "\n"
+                    zero += str(a) + " " + str(b) + "\n"
                 else:
                     line += str(a) + " " + str(b) + "\n"
             else:
                 line += str(a) + " " + str(b) + "\n"
 
         if j == 1:
-            zero_x.write(k)
+            zero_x.write(zero)
+            eq_x.write(line)
+        if j == 2:
+            cycle2_x.write(line)
+        if j == 3:
+            cycle3_x.write(line)
+        if j == 4:
+            cycle4_x.write(line)
+        if j == 5:
+            cycle5_x.write(line)
+        if j == 6:
+            cycle6_x.write(line)
+        if j == 7:
+            cycle7_x.write(line)
+        if j == 8:
+            cycle8_x.write(line)
+        if j == 9:
+            cycle9_x.write(line)
+        if j == 10:
+            cycle10_x.write(line)
+
 
     for j in range(1, 10 + 1):
         line = ""
@@ -112,6 +176,18 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, cycle, f, g, fc,
     infinity_x.close()
     zero_x.close()
     others_x.close()
+
+    cycle2_x.close()
+    cycle3_x.close()
+    cycle4_x.close()
+    cycle5_x.close()
+    cycle6_x.close()
+    cycle7_x.close()
+    cycle8_x.close()
+    cycle9_x.close()
+    cycle10_x.close()
+    negative_x.close()
+    overload_x.close()
 
     infinity_y.close()
     zero_y.close()
