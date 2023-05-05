@@ -10,6 +10,8 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
     over_x = list()
     over_y = list()
 
+    cycle6_variants = []
+
     for x in x_range:
         x = round(x, R)
         result_x[x] = dict()
@@ -75,9 +77,64 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
                 di_y = Counter(data_y)
                 # print(fk, sc, Counter(data))
                 if len(di_x.keys()) == j and len(di_y.keys()) == j:
+                    if j == 6:
+                        values = list(zip(list(di_x.keys()), list(di_y.keys())))
+                        if values not in cycle6_variants:
+                            # todo: запутить просчет
+                            result_temp = []
+                            x0 = list(di_x.keys())[0]
+                            y0 = list(di_y.keys())[0]
+                            for _ in time_range:
+                                xt = f(x0, y0)
+                                yt = g(x0, y0)
+                                if xt < 0 or yt < 0:
+                                    break
+                                if xt > 1000 or yt > 1000:
+                                    break
+                                x0 = xt
+                                y0 = yt
+                            for t in range(20):
+                                xt = f(x0, y0)
+                                yt = g(x0, y0)
+                                if xt < 0 or yt < 0:
+                                    break
+                                if xt > 1000 or yt > 1000:
+                                    break
+                                result_temp.append((round(xt, R), round(yt, R)))
+                                x0 = xt
+                                y0 = yt
+                            result_temp = list(set(result_temp))
+                            cycle6_variants.append(result_temp)
                     res_x[j].append([x, y, di_x.keys()])
                     res_y[j].append([x, y, di_y.keys()])
                     continue
+
+    s = []
+    for item in cycle6_variants:
+        if item not in s:
+            s.append(item)
+    cycle6_variants = s
+
+    other = open(file_path + "others_x.txt", 'w')
+    for x in x_range:
+        x = round(x, R)
+        for y in y_range:
+            y = round(y, R)
+            data_x = result_x[x][y]
+            data_y = result_y[x][y]
+            for i in range(len(data_x)):
+                data_x[i] = round(data_x[i], R)
+            for i in range(len(data_y)):
+                data_y[i] = round(data_y[i], R)
+
+            # используй set
+            di_x = Counter(data_x)
+            di_y = Counter(data_y)
+            # print(fk, sc, Counter(data))
+            if len(di_x.keys()) > 10 or len(di_y.keys()) > 10:
+                other.write(str(x) + " " + str(y) + "\n")
+    other.close()
+
     # todo: надо разделить двойки
 
     for j in res_x.keys():
@@ -91,15 +148,19 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
     zero_x = open(file_path + "zero_x.txt", 'w')
     eq_x = open(file_path + "eq_x.txt", 'w')
     cycle2_x = open(file_path + "cycle2_x.txt", 'w')
+    cycle2d_x = open(file_path + "cycle2d_x.txt", 'w')
     cycle3_x = open(file_path + 'cycle3_x.txt', 'w')
     cycle4_x = open(file_path + 'cycle4_x.txt', 'w')
     cycle5_x = open(file_path + 'cycle5_x.txt', 'w')
-    cycle6_x = open(file_path + 'cycle6_x.txt', 'w')
+    # cycle6_x = open(file_path + 'cycle6_x.txt', 'w')
+    cycle6_1_x = open(file_path + 'cycle6_1_x.txt', 'w')
+    cycle6_2_x = open(file_path + 'cycle6_2_x.txt', 'w')
+    cycle6 = [cycle6_1_x, cycle6_2_x]
     cycle7_x = open(file_path + 'cycle7_x.txt', 'w')
     cycle8_x = open(file_path + 'cycle8_x.txt', 'w')
     cycle9_x = open(file_path + "cycle9_x.txt", 'w')
     cycle10_x = open(file_path + "cycle10_x.txt", 'w')
-    others_x = open(file_path + "others_x.txt", 'w')
+    # others_x = open(file_path + "others_x.txt", 'w')
     negative_x = open(file_path + "negative.txt", 'w')
     overload_x = open(file_path + "overload.txt", 'w')
 
@@ -120,7 +181,12 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
     for j in range(1, 10 + 1):
         zero = ""
         line = ""
-        for item in res_x[j]:
+        diag = ""
+        c6_1 = ""
+        c6_2 = ""
+        c6 = [c6_1, c6_2]
+        for i in range(len(res_x[j])):
+            item = res_x[j][i]
             a = item[0]
             b = item[1]
 
@@ -129,6 +195,20 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
                     zero += str(a) + " " + str(b) + "\n"
                 else:
                     line += str(a) + " " + str(b) + "\n"
+            elif j == 2:
+                lst_x = list(item[2])
+                lst_y = list(res_y[j][i][2])
+                if lst_x[0] == lst_y[0]:
+                    diag += str(a) + " " + str(b) + "\n"
+                else:
+                    line += str(a) + " " + str(b) + "\n"
+            elif j == 6:
+                print("AAA")
+                cycle = list(zip(list(item[2]), list(res_y[j][i][2])))
+                index = cycle6_variants.index(cycle)
+                line = c6[index]
+                line += str(a) + " " + str(b) + "\n"
+                c6[index] = line
             else:
                 line += str(a) + " " + str(b) + "\n"
 
@@ -136,6 +216,7 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
             zero_x.write(zero)
             eq_x.write(line)
         if j == 2:
+            cycle2d_x.write(diag)
             cycle2_x.write(line)
         if j == 3:
             cycle3_x.write(line)
@@ -144,7 +225,9 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
         if j == 5:
             cycle5_x.write(line)
         if j == 6:
-            cycle6_x.write(line)
+            cycle6_1_x.write(c6[0])
+            cycle6_2_x.write(c6[1])
+            # cycle6_x.write(line)
         if j == 7:
             cycle7_x.write(line)
         if j == 8:
@@ -153,7 +236,6 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
             cycle9_x.write(line)
         if j == 10:
             cycle10_x.write(line)
-
 
     for j in range(1, 10 + 1):
         line = ""
@@ -175,13 +257,15 @@ def basin_of_attractor(file_path, x_range, y_range, time_range, f, g, R):
 
     infinity_x.close()
     zero_x.close()
-    others_x.close()
+    # others_x.close()
 
     cycle2_x.close()
     cycle3_x.close()
     cycle4_x.close()
     cycle5_x.close()
-    cycle6_x.close()
+    # cycle6_x.close()
+    cycle6_1_x.close()
+    cycle6_2_x.close()
     cycle7_x.close()
     cycle8_x.close()
     cycle9_x.close()

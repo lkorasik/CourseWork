@@ -1,8 +1,12 @@
+from math import sqrt, cos, sin
+
+import numpy
 import numpy as np
 
-from core.algorithms.new import regime_map
+from core.algorithms.new import regime_map, ellips
 from core.algorithms.new.attractor import basin_of_attractor
 from core.algorithms.old.bifurcation import bifurcation
+from core.algorithms.time_series import time_series
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
 from core.utils.is_out_of_bounds import is_out_of_bounds
 from core.utils.convert_dict_to_lists import convert_dict_to_lists
@@ -221,7 +225,8 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run6()
     # new_new_run_phase_portrait.run7()
     # new_new_run_phase_portrait.run8()
-    new_new_run_phase_portrait.run9()
+    # new_new_run_phase_portrait.run9()
+    new_new_run_phase_portrait.run10()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
@@ -238,16 +243,17 @@ if __name__ == "__main__":
 
     # a = 1
     # # b = 0.4
-    # # b = 0.445
-    # b = 0.4
+    # b = 0.445
+    # # b = 0.4
     # # σ = 0.03
-    # # σ = 0.27
-    # σ = 0.065
+    # σ = 0.27
+    # # σ = 0.2
+    # # σ = 0.1
     # basin_of_attractor(
     #     file_path="C:\\Users\\lkora\\Desktop\\kt6\\",
     #     # file_path="C:\\Users\\lkora\\Desktop\\ktData7\\",
-    #     x_range=np.arange(0, 1.0, 0.01),
-    #     y_range=np.arange(0, 1.0, 0.01),
+    #     x_range=np.arange(0, 1.0, 0.1),
+    #     y_range=np.arange(0, 1.0, 0.1),
     #     time_range=range(10000),
     #     g=lambda x, y: function.__y(a, b, σ, x, y),
     #     f=lambda x, y: function.__x(a, b, σ, x, y),
@@ -257,4 +263,9 @@ if __name__ == "__main__":
     # new_new_regime_map.run5()
     # new_new_bif.run0()
     # new_new_bif.run1()
+    # new_new_bif.run2()
+    # new_new_bif.run3()
+    # new_new_bif.run4()
     # attr.run1()
+
+    # ellips.run0()
