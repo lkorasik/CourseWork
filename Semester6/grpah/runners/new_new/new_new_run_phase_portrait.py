@@ -269,18 +269,23 @@ def run9():
 
 
 def run10():
-    α = 1
+    α = 1.0
     β = 0.445
-    σ = 0.0366
-    ε = 0.001
+    σ = 0.1
+    # ε = 0.001
+    ε = 0.1
     δ1 = 0
     δ2 = 1
+
+    x = [0.588023, 0.250809]
+    y = [0.250809, 0.588023]
 
     line = time_series(
         skip_range=range(20000),
         time_range=range(1, 500 + 1),
         # x_start=[0.88, 0.17],
-        x_start=[0.3, 0.42],
+        # x_start=[0.3, 0.42],
+        x_start=[0.588023, 0.250809],
         f=lambda x: function_stoch.f(α, β, β, σ, x[0], x[1], ε, δ1, δ2),
         check_bounds=False,
         upper_bounds=10_000,

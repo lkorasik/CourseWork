@@ -226,7 +226,7 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run7()
     # new_new_run_phase_portrait.run8()
     # new_new_run_phase_portrait.run9()
-    new_new_run_phase_portrait.run10()
+    # new_new_run_phase_portrait.run10()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
@@ -241,24 +241,26 @@ if __name__ == "__main__":
     # new_new_regime_map.run1()
     # ----- Карта режимов -----
 
-    # a = 1
-    # # b = 0.4
+    a = 1
+    # b = 0.4
     # b = 0.445
-    # # b = 0.4
-    # # σ = 0.03
+    b = 0.4
+    # b = 0.4
+    # σ = 0.03
     # σ = 0.27
-    # # σ = 0.2
-    # # σ = 0.1
-    # basin_of_attractor(
-    #     file_path="C:\\Users\\lkora\\Desktop\\kt6\\",
-    #     # file_path="C:\\Users\\lkora\\Desktop\\ktData7\\",
-    #     x_range=np.arange(0, 1.0, 0.1),
-    #     y_range=np.arange(0, 1.0, 0.1),
-    #     time_range=range(10000),
-    #     g=lambda x, y: function.__y(a, b, σ, x, y),
-    #     f=lambda x, y: function.__x(a, b, σ, x, y),
-    #     R=4
-    # )
+    σ = 0.1
+    # σ = 0.2
+    # σ = 0.1
+    basin_of_attractor(
+        file_path="C:\\Users\\lkora\\Desktop\\kt6\\",
+        # file_path="C:\\Users\\lkora\\Desktop\\ktData7\\",
+        x_range=np.arange(0, 1.0, 0.1),
+        y_range=np.arange(0, 1.0, 0.1),
+        time_range=range(10000),
+        g=lambda x, y: function.__y(a, b, σ, x, y),
+        f=lambda x, y: function.__x(a, b, σ, x, y),
+        R=4
+    )
 
     # new_new_regime_map.run5()
     # new_new_bif.run0()
@@ -268,4 +270,5 @@ if __name__ == "__main__":
     # new_new_bif.run4()
     # attr.run1()
 
-    # ellips.run0()
+    # ellips.run_eq()
+    # ellips.run_c2()
