@@ -1,7 +1,6 @@
 from math import sqrt, sin, cos
 
 import numpy as np
-import numpy.random
 
 from models.new_new_model import function
 
