@@ -3,7 +3,7 @@ from math import sqrt, cos, sin
 import numpy
 import numpy as np
 
-from core.algorithms.new import regime_map, ellips
+from core.algorithms.new import regime_map, ellips, fsch
 from core.algorithms.new.attractor import basin_of_attractor
 from core.algorithms.old.bifurcation import bifurcation
 from core.algorithms.time_series import time_series
@@ -15,7 +15,7 @@ from models.new_new_model import function
 from runners.new import run_phase_portrait, new_bif, run_regime_map
 from runners.new.run_phase_portrait import run1
 from runners.new_new import new_new_run_phase_portrait, new_new_run_bifurcation, new_new_regime_map, attr, new_new_bif
-from runners.old import run_bifurcation, run_time_series, run_others
+from runners.old import run_bifurcation, run_time_series, run_others, run_m_b
 from visual.line import Line
 from visual.plotter import Plotter
 from visual.values import scale, grid, markers, colors
@@ -227,6 +227,7 @@ if __name__ == "__main__":
     # new_new_run_phase_portrait.run8()
     # new_new_run_phase_portrait.run9()
     # new_new_run_phase_portrait.run10()
+    # new_new_run_phase_portrait.run11()
     # ----- Фазовые портреты -----
 
     # ----- Бифуркационная диаграмма -----
@@ -271,4 +272,11 @@ if __name__ == "__main__":
     # attr.run1()
 
     # ellips.run_eq()
+    # ellips.run_eq_search()
     # ellips.run_c2()
+    # ellips.run_c2_search()
+    # ellips.run_c2_linear_search()
+
+    # Стохастическая чувствительность равновесия
+    # fsch.run_eq()
+    # fsch.run_c2()
