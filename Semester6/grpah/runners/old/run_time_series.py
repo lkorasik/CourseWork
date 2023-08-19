@@ -19,6 +19,8 @@ def without_chaos():
     time = list(map(lambda x: x[0], source))
     values = list(map(lambda x: x[1], source))
 
+    print(values)
+
     (Plotter()
      .setup_x_label('t')
      .setup_y_label('x')

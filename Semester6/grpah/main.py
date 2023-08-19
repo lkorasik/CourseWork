@@ -269,6 +269,7 @@ if __name__ == "__main__":
     # new_new_bif.run2()
     # new_new_bif.run3()
     # new_new_bif.run4()
+    # new_new_bif.run5()
     # attr.run1()
 
     # ellips.run_eq()
@@ -277,6 +278,12 @@ if __name__ == "__main__":
     # ellips.run_c2_search()
     # ellips.run_c2_linear_search()
 
+    # ellips.run_c6()
+    # ellips.run_c10()
+
     # Стохастическая чувствительность равновесия
     # fsch.run_eq()
     # fsch.run_c2()
+
+    # fsch.new_eq()
+    # new_new_bif.run5()

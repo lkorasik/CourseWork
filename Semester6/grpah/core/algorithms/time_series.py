@@ -15,7 +15,7 @@ def time_series(skip_range, time_range, x_start, f, check_bounds, upper_bounds, 
     Выход:
         Набор точек
     """
-    line = []
+    line = [[0, x_start]]
 
     x_i = x_start
     for _ in skip_range:

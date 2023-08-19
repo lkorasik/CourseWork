@@ -503,15 +503,15 @@ def run2():
         file.write(line)
     file.close()
 
-    # (Plotter()
-    #  .setup_x_label('$\\sigma')
-    #  .setup_y_label('x')
-    #  .setup_y_scale(scale.linear)
-    #  .setup_grid(grid.major)
-    #  .setup_title('Bifurcation')
-    #  .scatter(source_ltr_x[0], source_ltr_x[1], '.', colors.steel_blue)
-    #  .scatter(source_rtl_x[0], source_rtl_x[1], '.', colors.orange)
-    #  .show_last())
+    (Plotter()
+     .setup_x_label('$\\sigma')
+     .setup_y_label('x')
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     .setup_title('Bifurcation')
+     .scatter(source_x0[0], source_x0[1], '.', colors.steel_blue)
+     .scatter(source_x1[0], source_x1[1], '.', colors.orange)
+     .show_last())
 
     # (Plotter()
     #  .setup_x_label('$\\sigma')
@@ -743,15 +743,17 @@ def run3():
         file.write(line)
     file.close()
 
-    # (Plotter()
-    #  .setup_x_label('$\\sigma')
-    #  .setup_y_label('x')
-    #  .setup_y_scale(scale.linear)
-    #  .setup_grid(grid.major)
-    #  .setup_title('Bifurcation')
-    #  .scatter(source_ltr_x[0], source_ltr_x[1], '.', colors.steel_blue)
-    #  .scatter(source_rtl_x[0], source_rtl_x[1], '.', colors.orange)
-    #  .show_last())
+    (Plotter()
+     .setup_x_label('$\\sigma')
+     .setup_y_label('x')
+     .setup_y_scale(scale.linear)
+     .setup_grid(grid.major)
+     .setup_title('Bifurcation')
+     .scatter(source_x0[0], source_x0[1], '.', colors.steel_blue)
+     .scatter(source_x1[0], source_x1[1], '.', colors.red)
+     .scatter(source_x2[0], source_x2[1], '.', colors.orange)
+     .scatter(source_x3[0], source_x3[1], '.', colors.dark_olive_green)
+     .show_last())
 
     # (Plotter()
     #  .setup_x_label('$\\sigma')
@@ -888,6 +890,241 @@ def run4():
     file.close()
     k = list(zip(source_x1[0], source_x1[1]))
     file = open("C:\\users\\lkora\\desktop\\data2\\x1.txt", "w")
+    for item in k:
+        line = str(item[0]) + " " + str(item[1]) + "\n"
+        file.write(line)
+    file.close()
+
+    # (Plotter()
+    #  .setup_x_label('$\\sigma')
+    #  .setup_y_label('x')
+    #  .setup_y_scale(scale.linear)
+    #  .setup_grid(grid.major)
+    #  .setup_title('Bifurcation')
+    #  .scatter(source_ltr_x[0], source_ltr_x[1], '.', colors.steel_blue)
+    #  .scatter(source_rtl_x[0], source_rtl_x[1], '.', colors.orange)
+    #  .show_last())
+
+    # (Plotter()
+    #  .setup_x_label('$\\sigma')
+    #  .setup_y_label('x')
+    #  .setup_y_scale(scale.linear    )
+    #  .setup_grid(grid.major)
+    #  .setup_title('Bifurcation')
+    #  .scatter(source_ltr_y[0], source_ltr_y[1], '.', colors.steel_blue)
+    #  # .scatter(source_rtl_y[0], source_rtl_y[1], '.', colors.green)
+    #  .show_last())
+
+def run5():
+    p_range0 = np.arange(0.0, 0.27, 0.0001)
+    p_range1 = np.arange(0.27, 0.331, 0.0001)
+    p_range2 = np.arange(0.27, 0.26, -0.00001)
+    p_range3 = np.arange(0.27, 0.331, 0.0001)
+    time_range = range(20000)
+    build_range = range(500)
+    α = 1
+    β = 0.445
+    x_start = 0.88
+    # x_start = 0.096
+    # y_start = 0.4
+    y_start = 0.17
+    # y_start = 0.087
+    f = lambda p, x, y: function.__x(α, β, p, x, y)
+    g = lambda p, x, y: function.__y(α, β, p, x, y)
+
+    upper_bound = 1000
+    lower_bound = None
+
+    # ->
+    values_x0 = dict()
+    values_y0 = dict()
+
+    dx = 0.02
+    dy = 0.03
+
+    x_0 = x_start
+    y_0 = y_start
+    for p in p_range0:
+        values_x0[p] = []
+        values_y0[p] = []
+
+        x_0 = x_0 + dx
+        y_0 = y_0 + dy
+
+        for _ in time_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out high", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+        for _ in build_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out high", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+            values_x0[p].append(x_t)
+            values_y0[p].append(y_t)
+
+    # <-
+    values_x1 = dict()
+    values_y1 = dict()
+
+    dx = 0
+    dy = 0
+
+    # x_0 = x_start
+    # y_0 = y_start
+    for p in p_range1:
+        values_x1[p] = []
+        values_y1[p] = []
+
+        x_0 = x_0 + dx
+        y_0 = y_0 + dy
+
+        for _ in time_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out hight", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+        for _ in build_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out hight", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+            values_x1[p].append(x_t)
+            values_y1[p].append(y_t)
+
+
+    values_x2 = dict()
+    values_y2 = dict()
+
+    dx = 0
+    dy = 0
+
+    # x_0 = x_start
+    # y_0 = y_start
+    for p in p_range2:
+        values_x2[p] = []
+        values_y2[p] = []
+
+        x_0 = x_0 + dx
+        y_0 = y_0 + dy
+
+        for _ in time_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out hight", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+        for _ in build_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out hight", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+            values_x2[p].append(x_t)
+            values_y2[p].append(y_t)
+
+
+    values_x3 = dict()
+    values_y3 = dict()
+
+    dx = 0
+    dy = 0
+
+    # x_0 = x_start
+    # y_0 = y_start
+    for p in p_range3:
+        values_x3[p] = []
+        values_y3[p] = []
+
+        x_0 = x_0 + dx
+        y_0 = y_0 + dy
+
+        for _ in time_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out hight", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+        for _ in build_range:
+            x_t = f(p, x_0, y_0)
+            y_t = g(p, x_0, y_0)
+            if x_t < 0 or y_t < 0:
+                print("out low", p)
+                break
+            if x_t > 1000 or y_t > 1000:
+                print("out hight", p)
+                break
+            x_0 = x_t
+            y_0 = y_t
+            values_x3[p].append(x_t)
+            values_y3[p].append(y_t)
+
+
+    source_x0 = convert_dict_to_lists(values_x0)
+    source_x1 = convert_dict_to_lists(values_x1)
+    source_x2 = convert_dict_to_lists(values_x2)
+    source_x3 = convert_dict_to_lists(values_x3)
+
+    k = list(zip(source_x0[0], source_x0[1]))
+    file = open("C:\\users\\lkora\\desktop\\data2\\x0.txt", "w")
+    for item in k:
+        line = str(item[0]) + " " + str(item[1]) + "\n"
+        file.write(line)
+    file.close()
+    k = list(zip(source_x1[0], source_x1[1]))
+    file = open("C:\\users\\lkora\\desktop\\data2\\x1.txt", "w")
+    for item in k:
+        line = str(item[0]) + " " + str(item[1]) + "\n"
+        file.write(line)
+    file.close()
+    k = list(zip(source_x2[0], source_x2[1]))
+    file = open("C:\\users\\lkora\\desktop\\data2\\x2.txt", "w")
+    for item in k:
+        line = str(item[0]) + " " + str(item[1]) + "\n"
+        file.write(line)
+    file.close()
+    k = list(zip(source_x3[0], source_x3[1]))
+    file = open("C:\\users\\lkora\\desktop\\data2\\x3.txt", "w")
     for item in k:
         line = str(item[0]) + " " + str(item[1]) + "\n"
         file.write(line)
