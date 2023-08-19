@@ -5,7 +5,6 @@ from core.algorithms.old.variance import variance
 from visual.line import Line
 
 
-# todo: уточни правильно ли реализован алгоритм...
 def cyclical_variance(time_range, x_start, b_range, f, count):
     line = Line()
     for b in b_range:
